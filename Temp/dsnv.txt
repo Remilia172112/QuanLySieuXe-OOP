@@ -1,0 +1,33 @@
+4
+1
+Nguyen Van A
+320763982
+273 An Duong Vuong, P3, Q5, TP.HCM
+0924832941
+19/1/2021
+0.5
+0
+2
+Nguyen Hoang B
+320763982
+273 An Duong Vuong, P3, Q5, TP.HCM
+0924832941
+17/6/2012
+1.2
+0
+3
+Doan Thi C
+320763982
+273 An Duong Vuong, P3, Q5, TP.HCM
+0924832941
+16/1/2021
+0.4
+1
+4
+Tran Van D
+320763982
+273 An Duong Vuong, P3, Q5, TP.HCM
+0924832941
+1/6/2015
+0.9
+3
