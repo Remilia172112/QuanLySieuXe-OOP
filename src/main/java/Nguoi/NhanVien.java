@@ -46,7 +46,11 @@ public class NhanVien extends Nguoi {
         return manhanvien;
     }
 
-    public void setMaNhanVien() {
+    public void setManhanvien(int a) {
+        manhanvien = a;
+    }
+
+    public void setManhanvien() {
         System.out.print("Nhap ma nhan vien: ");
         DanhSachNhanVien ttds = new DanhSachNhanVien();
         boolean check = false;
@@ -68,7 +72,11 @@ public class NhanVien extends Nguoi {
         return ngayvaolam;
     }
 
-    public void setNgayVaoLam() {
+    public void setNgayvaolam(String a) {
+        ngayvaolam = a;
+    }
+
+    public void setNgayvaolam() {
         System.out.print("Nhap ngay vao lam: ");
         boolean check;
         int ngay = 1, thang = 1, nam = 1;
@@ -133,8 +141,10 @@ public class NhanVien extends Nguoi {
     public double getHesoluong() {
         return hesoluong;
     }
-
-    public void setHeSoLuong() {
+    public void setHesoluong(double heSoLuong) {
+        this.hesoluong = heSoLuong;
+    }
+    public void setHesoluong() {
         System.out.print("Nhap he so luong: ");
         boolean check = false;
         String ch;
@@ -145,14 +155,9 @@ public class NhanVien extends Nguoi {
         hesoluong = Double.parseDouble(ch);
     }
 
-    public void setHesoluong(double heSoLuong) {
-        this.hesoluong = heSoLuong;
-    }
-
     public double getLuong() {
         return luong;
     }
-
     public void setLuong() {
         double luong = 0;
         luong = luongcoban * hesoluong + thuong;
@@ -195,11 +200,11 @@ public class NhanVien extends Nguoi {
         NhanVien.luongcoban = LuongCoBan;
     }
 
-    public int getSoNgayNghiTrongThang() {
+    public int getSongaynghitrongthang() {
         return soNgayNghiTrongThang;
     }
 
-    public void setSoNgayNghiTrongThang() {
+    public void setSongaynghitrongthang() {
         System.out.print("Nhap so ngay nghi trong thang: ");
         do {
 
@@ -223,7 +228,7 @@ public class NhanVien extends Nguoi {
         setLuong();
     }
 
-    public void setSoNgayNghiTrongThang(int soNgayNghiTrongThang) {
+    public void setSongaynghitrongthang(int soNgayNghiTrongThang) {
         this.soNgayNghiTrongThang = soNgayNghiTrongThang;
         if (soNgayNghiTrongThang < 2)
             setHang('A');
@@ -236,10 +241,10 @@ public class NhanVien extends Nguoi {
 
     @Override
     public void nhap() {
-        setMaNhanVien();
-        setNgayVaoLam();
-        setHeSoLuong();
-        setSoNgayNghiTrongThang();
+        setManhanvien();
+        setNgayvaolam();
+        setHesoluong();
+        setSongaynghitrongthang();
         super.nhap();
     }
 
@@ -251,7 +256,7 @@ public class NhanVien extends Nguoi {
         System.out.printf("\n%-25s %-25s %-30s %-10s %-10s %-10s\n", "Ngay vao lam", "He so luong",
                 "So ngay nghi trong thang", "Luong", "Thuong", "Hang");
         System.out.printf("\n%-25s %-25s %-30s %-10s %-10s %-10s\n", getNgayvaolam(), getHesoluong(),
-                getSoNgayNghiTrongThang(), getLuong(), getThuong(), getHang());
+                getSongaynghitrongthang(), getLuong(), getThuong(), getHang());
         System.out.println("***");
     }
 
@@ -276,33 +281,33 @@ public class NhanVien extends Nguoi {
             chon = Integer.parseInt(sc.nextLine());
             switch (chon) {
                 case 1:
-                    System.out.println("Thong tin hien tai: " + getHoTen());
-                    setHoTen();
+                    System.out.println("Thong tin hien tai: " + getHoten());
+                    setHoten();
                     break;
                 case 2:
-                    System.out.println("Thong tin hien tai: " + getCmt());
-                    setCmt();
+                    System.out.println("Thong tin hien tai: " + getCCCD());
+                    setCCCD();
                     break;
                 case 3:
-                    System.out.println("Thong tin hien tai: " + getDiaChi());
-                    setDiaChi();
+                    System.out.println("Thong tin hien tai: " + getDiachi());
+                    setDiachi();
                     break;
                 case 4:
-                    System.out.println("Thong tin hien tai: " + getSoDienThoai());
-                    setSoDienThoai();
+                    System.out.println("Thong tin hien tai: " + getSdt());
+                    setSdt();
                     break;
                 case 5:
                     System.out.println("Thong tin hien tai: " + getNgayvaolam());
-                    setSoDienThoai();
+                    setNgayvaolam();
                     break;
                 case 6:
                     System.out.println("Thong tin hien tai: " + getHesoluong());
                     System.out.print("Nhap noi dung: ");
-                    setSoDienThoai();
+                    setHesoluong();
                     break;
                 case 7:
-                    System.out.println("Thong tin hien tai: " + getSoNgayNghiTrongThang());
-                    setSoNgayNghiTrongThang();
+                    System.out.println("Thong tin hien tai: " + getSongaynghitrongthang());
+                    setSongaynghitrongthang();
                     break;
                 default:
                     chon = 0;

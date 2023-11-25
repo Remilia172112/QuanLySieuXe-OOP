@@ -17,7 +17,7 @@ public class KiemTra {
 		}
 		return true;
 	}
-
+	
 	public static boolean check_maso(String maso) {
 		String reg = "^[A-Za-z0-9]{2}\\d{8}$";
 		Pattern pattern = Pattern.compile(reg);
@@ -95,5 +95,14 @@ public class KiemTra {
 			return false;
 		}
 		return true;
+	}
+
+	public static boolean isNumber(String str) {
+		try {
+			Double.parseDouble(str);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
 	}
 }

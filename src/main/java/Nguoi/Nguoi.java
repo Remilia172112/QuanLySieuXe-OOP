@@ -51,7 +51,7 @@ public abstract class Nguoi extends PhanTu {
     public String getHoten() {
         return hoten;
     }
-
+    
     public void setHoten() {
         boolean check = false;
         do {
@@ -143,7 +143,37 @@ public abstract class Nguoi extends PhanTu {
             check = KiemTra.check_sdt(sdt);
         } while (!check);
     }
+    public void setHoten(String hoten) {
+        this.hoten = hoten;
+    }
 
+    public void setTuoi(int tuoi) {
+        this.tuoi = tuoi;
+    }
+
+    public void setNamsinh(int namsinh) {
+        this.namsinh = namsinh;
+    }
+
+    public void setCCCD(String cCCD) {
+        CCCD = cCCD;
+    }
+
+    public void setGioitinh(String gioitinh) {
+        this.gioitinh = gioitinh;
+    }
+
+    public void setDiachi(String diachi) {
+        this.diachi = diachi;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     @Override
     public void nhap() {
         System.out.println("Nhap ho ten: ");
