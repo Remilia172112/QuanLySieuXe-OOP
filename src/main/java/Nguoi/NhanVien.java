@@ -268,7 +268,7 @@ public class NhanVien extends Nguoi {
     public void suaThongTin() {
         System.out.println("=== Sua thong tin nhan vien ===");
         System.out.println("1. Sua ho ten");
-        System.out.println("2. Sua chung minh thu");
+        System.out.println("2. Sua can cuoc cong dan");
         System.out.println("3. Sua dia chi");
         System.out.println("4. Sua so dien thoai");
         System.out.println("5. Sua ngay vao lam");
