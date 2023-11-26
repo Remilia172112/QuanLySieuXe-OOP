@@ -5,14 +5,14 @@ import Nguoi.*;
 import ThanhToan.*;
 
 public class HoaDon extends PhanTu {
-    @Override
-    public  void nhap() {
+    public void  nhap() {
+
+    }
+    public void xuat() {
+
+    }
+    public void suaThongTin() {
         
     }
-    public  void xuat() {
-        
-    }
-    public  void suaThongTin() {
-        
-    }
+
 }
