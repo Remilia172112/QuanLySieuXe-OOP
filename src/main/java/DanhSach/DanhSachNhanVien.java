@@ -48,21 +48,21 @@ public class DanhSachNhanVien implements DanhSachChung {
 
             nv = new NhanVien();
 
-            nv.setMaNhanVien(Integer.parseInt(lArr[m++]));
+            nv.setManhanvien(Integer.parseInt(lArr[m++]));
 
-            nv.setHoTen(lArr[m++]);
+            nv.setHoten(lArr[m++]);
 
-            nv.setCmt(lArr[m++]);
+            nv.setCCCD(lArr[m++]);
 
-            nv.setDiaChi(lArr[m++]);
+            nv.setDiachi(lArr[m++]);
 
-            nv.setSoDienThoai(lArr[m++]);
+            nv.setSdt(lArr[m++]);
 
             nv.setNgayvaolam(lArr[m++]);
 
             nv.setHesoluong(Double.parseDouble(lArr[m++]));
 
-            nv.setSoNgayNghiTrongThang(Integer.parseInt(lArr[m++]));
+            nv.setSongaynghitrongthang(Integer.parseInt(lArr[m++]));
 
             dsNhanVien[k++] = nv;
         }
@@ -78,8 +78,8 @@ public class DanhSachNhanVien implements DanhSachChung {
 
         for (int i = 0; i < soLuong; i++) {
             nv = (NhanVien) dsSanPham[i];
-            FileHandler.themNv(nv.getMaNhanVien(), nv.getHoTen(), nv.getCmt(), nv.getDiaChi(), nv.getSoDienThoai(),
-                    nv.getNgayvaolam(), nv.getHesoluong(), nv.getSoNgayNghiTrongThang());
+            FileHandler.themNv(nv.getManhanvien(), nv.getHoten(), nv.getCCCD(), nv.getDiachi(), nv.getSdt(),
+                    nv.getNgayvaolam(), nv.getHesoluong(), nv.getSongaynghitrongthang());
         }
         this.dsNhanVien = (NhanVien[]) dsNhanVien;
     }
@@ -198,17 +198,17 @@ public class DanhSachNhanVien implements DanhSachChung {
         for (int i = 0; i < soLuong; i++) {
             if (chon == 1) { // tìm chính xác
                 if (loai == 1)
-                    if (dsNhanVienTmp[i].getHoTen().equalsIgnoreCase(giaTriCanTim))
+                    if (dsNhanVienTmp[i].getHoten().equalsIgnoreCase(giaTriCanTim))
                         return dsNhanVienTmp[i];
                 if (loai == 2)
-                    if (dsNhanVienTmp[i].getMaNhanVien() == Integer.parseInt(giaTriCanTim))
+                    if (dsNhanVienTmp[i].getManhanvien() == Integer.parseInt(giaTriCanTim))
                         return dsNhanVienTmp[i];
             } else {
                 if (loai == 1)
-                    if (dsNhanVienTmp[i].getHoTen().contains(giaTriCanTim))
+                    if (dsNhanVienTmp[i].getHoten().contains(giaTriCanTim))
                         return dsNhanVienTmp[i];
                 if (loai == 2)
-                    if (dsNhanVienTmp[i].getMaNhanVien() == Integer.parseInt(giaTriCanTim))
+                    if (dsNhanVienTmp[i].getManhanvien() == Integer.parseInt(giaTriCanTim))
                         return dsNhanVienTmp[i];
             }
         }
@@ -241,17 +241,17 @@ public class DanhSachNhanVien implements DanhSachChung {
         for (int i = 0; i < soLuong; i++) {
             if (chon == 1) { // tìm chính xác
                 if (loai == 1)
-                    if (dsNhanVienTmp[i].getHoTen().equalsIgnoreCase(giaTriCanTim))
+                    if (dsNhanVienTmp[i].getHoten().equalsIgnoreCase(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsNhanVienTmp[i].getMaNhanVien() == Integer.parseInt(giaTriCanTim))
+                    if (dsNhanVienTmp[i].getManhanvien() == Integer.parseInt(giaTriCanTim))
                         return i;
             } else {
                 if (loai == 1)
-                    if (dsNhanVienTmp[i].getHoTen().contains(giaTriCanTim))
+                    if (dsNhanVienTmp[i].getHoten().contains(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsNhanVienTmp[i].getMaNhanVien() == Integer.parseInt(giaTriCanTim))
+                    if (dsNhanVienTmp[i].getManhanvien() == Integer.parseInt(giaTriCanTim))
                         return i;
             }
         }
@@ -262,7 +262,7 @@ public class DanhSachNhanVien implements DanhSachChung {
     public PhanTu layPhanTuVoi(String thamSo) {
         NhanVien[] dsnv = getDsNhanVien();
         for (int i = 0; i < soLuong; i++) {
-            if (dsnv[i].getMaNhanVien() == Integer.parseInt(thamSo))
+            if (dsnv[i].getManhanvien() == Integer.parseInt(thamSo))
                 return dsnv[i];
         }
         return null;
