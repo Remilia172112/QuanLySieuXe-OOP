@@ -2,6 +2,7 @@ package ThanhToan;
 import static ThanhToan.ThanhToan.sc;
 
 public class CKTinDung {
+<<<<<<< HEAD
     private String soThe;
     private int CVV;
     private String loaiThe;
@@ -9,6 +10,15 @@ public class CKTinDung {
     public CKTinDung() {
 
     }
+=======
+   private String soThe;
+   private int CVV;
+   private String loaiThe;
+   
+   public CKTinDung(){
+       
+   }
+>>>>>>> c95ef4bf3dac230142a94acfacb6de77b07f67c6
 
     public CKTinDung(String soThe, int CVV, String loaiThe) {
         this.soThe = soThe;
