@@ -48,7 +48,7 @@ public class DanhSachNhanVien implements DanhSachChung {
 
             nv = new NhanVien();
 
-            nv.setManhanvien(Integer.parseInt(lArr[m++]));
+            nv.setManhanvien(lArr[m++]);
 
             nv.setHoten(lArr[m++]);
 
@@ -78,7 +78,7 @@ public class DanhSachNhanVien implements DanhSachChung {
 
         for (int i = 0; i < soLuong; i++) {
             nv = (NhanVien) dsSanPham[i];
-            FileHandler.themNv(nv.getManhanvien(), nv.getHoten(), nv.getCCCD(), nv.getDiachi(), nv.getSdt(),
+            FileHandler.themNv(nv.getManhanvien(), nv.getHoten(), nv.getNgaythangnamsinh(), nv.getGioitinh(), nv.getCCCD(), nv.getDiachi(), nv.getSdt(), nv.getEmail(),
                     nv.getNgayvaolam(), nv.getHesoluong(), nv.getSongaynghitrongthang());
         }
         this.dsNhanVien = (NhanVien[]) dsNhanVien;
@@ -104,8 +104,6 @@ public class DanhSachNhanVien implements DanhSachChung {
             setDsNhanVien(dsNhanVien);
         }
     }
-
-    @Override
     public void xuatDanhSach() {
         System.out.println("=== Danh sach nhan vien ===");
         for (int i = 0; i < soLuong; i++) {
@@ -113,8 +111,6 @@ public class DanhSachNhanVien implements DanhSachChung {
         }
         System.out.println();
     }
-
-    @Override
     public void themVaoDanhSach(PhanTu pt) {
         // tạo mảng tạm
         NhanVien[] dsNhanVienTmp = new NhanVien[soLuong + 1];
@@ -124,8 +120,6 @@ public class DanhSachNhanVien implements DanhSachChung {
         soLuong++;
         setDsNhanVien(dsNhanVienTmp);
     }
-
-    @Override
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong nhan vien can them vao danh sach: ");
         int sl = Integer.parseInt(sc.nextLine());
@@ -136,8 +130,6 @@ public class DanhSachNhanVien implements DanhSachChung {
             themVaoDanhSach(pt);
         }
     }
-
-    @Override
     public void chinhSuaThongTinPhanTu() {
         System.out.println("Tim nhan vien can chinh sua: ");
         int viTri = timViTriPhanTu();
@@ -150,8 +142,6 @@ public class DanhSachNhanVien implements DanhSachChung {
         } else
             System.out.println("Khong tim thay!");
     }
-
-    @Override
     public void xoaPhanTu() {
         // Tìm nhân viên trước
         System.out.println("Tim nhan vien can xoa: ");
@@ -171,8 +161,6 @@ public class DanhSachNhanVien implements DanhSachChung {
         } else
             System.out.println("Khong tim thay nhan vien!");
     }
-
-    @Override
     public PhanTu timPhanTu() { // tìm nhân viên theo tên hoặc khoá (tương đối || tuyệt đối)
         int loai;
         System.out.print("Tim nhan vien theo ten (1) hay theo ma (2), vui long chon: ");
@@ -201,21 +189,19 @@ public class DanhSachNhanVien implements DanhSachChung {
                     if (dsNhanVienTmp[i].getHoten().equalsIgnoreCase(giaTriCanTim))
                         return dsNhanVienTmp[i];
                 if (loai == 2)
-                    if (dsNhanVienTmp[i].getManhanvien() == Integer.parseInt(giaTriCanTim))
+                    if (dsNhanVienTmp[i].getManhanvien() == giaTriCanTim)
                         return dsNhanVienTmp[i];
             } else {
                 if (loai == 1)
                     if (dsNhanVienTmp[i].getHoten().contains(giaTriCanTim))
                         return dsNhanVienTmp[i];
                 if (loai == 2)
-                    if (dsNhanVienTmp[i].getManhanvien() == Integer.parseInt(giaTriCanTim))
+                    if (dsNhanVienTmp[i].getManhanvien() == giaTriCanTim)
                         return dsNhanVienTmp[i];
             }
         }
         return null;
     }
-
-    @Override
     public int timViTriPhanTu() {
         int loai;
         System.out.print("Tim nhan vien theo ten (1) hay theo ma (2), vui long chon: ");
@@ -244,31 +230,27 @@ public class DanhSachNhanVien implements DanhSachChung {
                     if (dsNhanVienTmp[i].getHoten().equalsIgnoreCase(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsNhanVienTmp[i].getManhanvien() == Integer.parseInt(giaTriCanTim))
+                    if (dsNhanVienTmp[i].getManhanvien() == giaTriCanTim)
                         return i;
             } else {
                 if (loai == 1)
                     if (dsNhanVienTmp[i].getHoten().contains(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsNhanVienTmp[i].getManhanvien() == Integer.parseInt(giaTriCanTim))
+                    if (dsNhanVienTmp[i].getManhanvien() == giaTriCanTim)
                         return i;
             }
         }
         return -1;
     }
-
-    @Override
     public PhanTu layPhanTuVoi(String thamSo) {
         NhanVien[] dsnv = getDsNhanVien();
         for (int i = 0; i < soLuong; i++) {
-            if (dsnv[i].getManhanvien() == Integer.parseInt(thamSo))
+            if (dsnv[i].getManhanvien() == thamSo)
                 return dsnv[i];
         }
         return null;
     }
-
-    @Override
     public void thongKe() {
         int chon;
 

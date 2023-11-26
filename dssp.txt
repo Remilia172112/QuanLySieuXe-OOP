@@ -1,0 +1,11 @@
+10
+SPORT01#McLaren P1#McLaren #Italy#10#40000
+SPORT02#Ferrari Roma#Ferrari#ITALY#10#60000
+SPORT03#Ford GT#Ford#ITALY#10#50000
+SPORT04#Tesla Roadster#Tesla#USA#20#90000
+SPORT05#Lamborghini Huracan#Lamborghini#ITALY#10#150000
+ROADSTER01#BMW 430i#BMW#Duc#5#80000
+ROADSTER02#Porsche 718 Boxster#Porsche#Italy#5#70000
+ROADSTER03#Jaguar F-Type Convertible#Jaguar#Duc#5#120000
+ROADSTER04#Mini Cooper Convertible#Mini#Anh#5#250000
+ROADSTER05#Porsche 911 Targa#Porsche#Italy#5#500000
