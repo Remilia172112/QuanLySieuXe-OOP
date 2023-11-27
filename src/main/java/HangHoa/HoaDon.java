@@ -1,5 +1,5 @@
 package HangHoa;
-
+import java.util.Scanner ;
 import DanhSach.*;
 import Nguoi.*;
 import ThanhToan.*;
@@ -11,7 +11,7 @@ public class HoaDon extends PhanTu {
    private String phThThanhToan;
    private KhachHang khachHang;
    private SanPham[] dsSanPham;
-
+   public static Scanner sc = new Scanner(System.in);
     public HoaDon() {
     }
 
@@ -418,4 +418,28 @@ public class HoaDon extends PhanTu {
             }
         } while(chon!=0);
     }
+   
+    public static void main(String []args) {
+        boolean check = true ;
+        HoaDon hd = new HoaDon() ;
+        while(check) {
+            System.out.println("MEnuu: ");
+            System.out.println("1. ");
+            System.out.println("Nhap lua chon : ");
+            int choose = Integer.parseInt(sc.nextLine());
+            switch (choose) {
+                case 1: {
+                    System.out.println("1. ");
+                    hd.setKhachHang();
+                    break;
+                }
+                    
+               case 0 :
+               check = false;
+               break;
+
+            }
+        }
+    }
+    
 }
