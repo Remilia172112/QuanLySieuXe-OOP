@@ -1,6 +1,6 @@
 package File;
 
-import HangHoa.SanPham;
+
 import ThanhToan.ThanhToan;
 import java.io.File;
 import java.io.FileWriter;
@@ -25,6 +25,12 @@ public class FileHandler {
     public static void themNCC(String maNhaCC , String tenNhaCC , String diachi , int sdt) {
         String tmp = maNhaCC + "#" + tenNhaCC + "#" + diachi + "#" + sdt;
         ghiFile(tmp, "dsncc.txt");
+    }
+
+    //Thêm phieu nhap vào file dspn.txt
+    public static void themPN(String maPhieuNhap , String maNhaCC , String maNV, String ngaynhap , int tongnhap) {
+        String tmp = maPhieuNhap + "#" + maNhaCC + "#" + maNV + "#" + ngaynhap + "#" + tongnhap;
+        ghiFile(tmp, "dspn.txt");
     }
 
     //Thêm tài khoản vào file dskh.txt
