@@ -31,7 +31,7 @@ public class HoaDon extends PhanTu {
     }
 
     public void setKhachHang() {
-        DanhSachKhachHang ttds = new DanhSachKhachHang();
+        DanhSachKhachHang  ttdss = new DanhSachKhachHang();
         PhanTu pt;
         String maKhachHang;
         int chon;
@@ -40,13 +40,13 @@ public class HoaDon extends PhanTu {
             chon = Integer.parseInt(sc.nextLine());
             chon = (chon==0) ? 0 : 1;
 
-            if (chon == 1) ttds.xuatDanhSach();
+            if (chon == 1) ttdss.xuatDanhSach();
 
             System.out.print("Nhap ma khach hang: ");
             maKhachHang = sc.nextLine();
+           
             
-            pt = ttds.layPhanTuVoi(maKhachHang);
-            
+            pt = ttdss.layPhanTuVoi(maKhachHang);
             if (pt == null) {
                 System.out.println("Khong tim thay khach hang!");
                 System.out.println("Ban co muon them khach hang moi khong? (1 - them, 0 - khong)");
@@ -56,7 +56,7 @@ public class HoaDon extends PhanTu {
                 if (chon == 1) {
                     pt = new KhachHang();
                     pt.nhap();
-                    ttds.themVaoDanhSach(pt);
+                    ttdss.themVaoDanhSach(pt);
                     khachHang = (KhachHang) pt;
                 }
 
@@ -418,28 +418,4 @@ public class HoaDon extends PhanTu {
             }
         } while(chon!=0);
     }
-   
-    public static void main(String []args) {
-        boolean check = true ;
-        HoaDon hd = new HoaDon() ;
-        while(check) {
-            System.out.println("MEnuu: ");
-            System.out.println("1. ");
-            System.out.println("Nhap lua chon : ");
-            int choose = Integer.parseInt(sc.nextLine());
-            switch (choose) {
-                case 1: {
-                    System.out.println("1. ");
-                    hd.setKhachHang();
-                    break;
-                }
-                    
-               case 0 :
-               check = false;
-               break;
-
-            }
-        }
-    }
-    
 }

@@ -281,7 +281,7 @@ public class DanhSachKhachHang implements DanhSachChung {
     public PhanTu layPhanTuVoi(String thamSo) { // tìm phần tử với mã
         KhachHang[] dskh = getDsKhachHang();
         for(int i=0;i<soLuong;i++) {
-            if (dskh[i].getMaKhachHang()== Integer.parseInt(thamSo))
+            if (dskh[i].getMaKhachHang() == Integer.parseInt(thamSo))
                 return dskh[i];
         }
         return null;
