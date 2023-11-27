@@ -105,7 +105,7 @@ public class TaiKhoan extends PhanTu {
         int chon;
         do {
             System.out.print("Nhap lua chon: ");
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();;
             switch (chon) {
                 case 1:
                     System.out.println("Thong tin hien tai: " + getUsername());

@@ -1,5 +1,6 @@
 package Nguoi;
 import DanhSach.DanhSachKhachHang;
+import KiemTra.KiemTra;
 import ThanhToan.ThanhToan;
 
 public class KhachHang extends Nguoi {
@@ -57,7 +58,7 @@ public class KhachHang extends Nguoi {
         boolean check = false;
         do
         {
-            maKhachHang = Integer.parseInt(sc.nextLine());
+            maKhachHang = KiemTra.checkNumber();;
             check = ttds.layPhanTuVoi(maKhachHang+"") == null;
             if (!check) System.out.print("Ma khach hang da ton tai, moi nhap lai: ");
         } while (!check);
@@ -74,7 +75,7 @@ public class KhachHang extends Nguoi {
     public void setPhThThanhToan() {
         int chon;
         System.out.print("Nhap 1 neu muon nhap phuong thuc thanh toan cho khach hang nay: ");
-        chon = Integer.parseInt(sc.nextLine());
+        chon = KiemTra.checkNumber();
         if (chon == 1) {
             phThThanhToan = new ThanhToan();
             phThThanhToan.chonPhThThanhToan();
@@ -89,7 +90,7 @@ public class KhachHang extends Nguoi {
         setPhThThanhToan();
     }
     public void xuat() {
-        System.out.printf("%-25s %-25s %-20s %-50s %-20s\n", "Ma khach hang", "Ho ten", "CMND/CCCD", "Dia chi", "SDT");
+        System.out.printf("%-25s %-25s %-25s %-25s %-20s %-50s %-20s %-25s\n", "Ma khach hang", "Ho ten", "Gioi tinh", "Ngay sinh", "CCCD", "Dia chi", "So dien thoai", "Email");
         System.out.printf("%-25s ", getMaKhachHang());
         super.xuat();
         System.out.println();
@@ -113,7 +114,7 @@ public class KhachHang extends Nguoi {
         int chon;
         do {
             System.out.print("Nhap lua chon: ");
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();;
             switch (chon) {
                 case 1:
                     System.out.println("Thong tin hien tai: " + getHoten());

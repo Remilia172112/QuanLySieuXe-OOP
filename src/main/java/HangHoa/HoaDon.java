@@ -10,17 +10,15 @@ public class HoaDon extends PhanTu {
    private int tongTien = 0;
    private String phThThanhToan;
    private KhachHang khachHang;
-   private NhanVien thuNgan;
    private SanPham[] dsSanPham;
 
     public HoaDon() {
     }
 
-    public HoaDon(int soHoaDon, int soLuongSanPham, KhachHang khachHang, NhanVien thuNgan, SanPham[] dsSanPham) {
+    public HoaDon(int soHoaDon, int soLuongSanPham, KhachHang khachHang, SanPham[] dsSanPham) {
         this.soHoaDon = soHoaDon;
         this.soLuongSanPham = soLuongSanPham;
         this.khachHang = khachHang;
-        this.thuNgan = thuNgan;
         this.dsSanPham = dsSanPham;
     }
     
@@ -67,27 +65,6 @@ public class HoaDon extends PhanTu {
         } while(pt == null);
     }
 
-    public NhanVien getThuNgan() {
-        return thuNgan;
-    }
-
-    public void setThuNgan(NhanVien thuNgan) {
-        this.thuNgan = thuNgan;
-    }
-
-    public void setThuNgan() {
-        DanhSachNhanVien ttds = new DanhSachNhanVien();
-        NhanVien pt;
-        do {
-            System.out.print("Nhap ma nhan vien la thu ngan: ");
-            
-            pt = (NhanVien) ttds.layPhanTuVoi(sc.nextLine());
-            
-            if (pt == null) System.out.println("Khong tim thay nhan vien!");
-            else thuNgan = pt;
-        } while(pt == null);
-    }
-
     public PhanTu[] getDsSanPham() {
         return dsSanPham;
     }
@@ -98,20 +75,14 @@ public class HoaDon extends PhanTu {
 
     public void setDsSanPham() {
         // Khai báo
-        DanhSachSanPham ttds = new DanhSachSanPham();
-        DanhSachDanhMucSP dmsp = new DanhSachDanhMucSP();
+        DanhSachXe ttds = new DanhSachXe();
         DanhSachKhachHang dskh = new DanhSachKhachHang();
         
         SanPham[] dsspFile = ttds.getdsSanPham();
         SanPham[] dssp = new SanPham[soLuongSanPham];
         
         SanPham pt, timThay;
-        int slcl, vtsp, stt, chon;
-        // xem lại danh mục sản phẩm (tuỳ chọn)
-        System.out.print("Ban co muon xem lai danh sach san pham? (0 - khong, 1 - xem):");
-        chon = Integer.parseInt(sc.nextLine());
-        
-        if (chon==1) dmsp.xuatDanhSach();
+        int slcl, vtsp, stt;
         
         for(int i=0;i<soLuongSanPham;i++) {
             stt=i+1;
@@ -156,7 +127,7 @@ public class HoaDon extends PhanTu {
                     ttds.setdsSanPham(dsspFile);
                     
                     // cập nhật tổng tiền
-                    tongTien += pt.getGia() * pt.getSoLuong();
+                    tongTien += pt.getPrice() * pt.getSoLuong();
                 }
             } while (pt == null);
         }
@@ -191,7 +162,7 @@ public class HoaDon extends PhanTu {
                     ttds.setdsSanPham(dsSanPham);
                     
                     // tìm tổng tiền cần trả lại cho khách
-                    tongTienTraLai += x.getGia() * x.getSoLuong();
+                    tongTienTraLai += x.getPrice() * x.getSoLuong();
                 }
                 
                 tienTam -= tongTienTraLai;
@@ -387,7 +358,6 @@ public class HoaDon extends PhanTu {
         setSoHoaDon();
         setSoLuongSanPham();
         setKhachHang();
-        setThuNgan();
         setDsSanPham();
         setPhThThanhToan();
     }
@@ -395,7 +365,7 @@ public class HoaDon extends PhanTu {
     @Override
     public void xuat() {
         System.out.printf("%-20s %-20s %-20s %-25s %-25s %-30s\n", "So hoa don", "So luong san pham", "Tong tien", "Ten khach hang", "Ten thu ngan", "Phuong thuc thanh toan");
-        System.out.printf("%-20s %-20s %-20s %-25s %-25s %-30s \n", soHoaDon, soLuongSanPham, tongTien, khachHang.getHoTen(), thuNgan.getHoTen(), phThThanhToan);
+        System.out.printf("%-20s %-20s %-20s %-25s %-25s %-30s \n", soHoaDon, soLuongSanPham, tongTien, khachHang.getHoten(), phThThanhToan);
         System.out.println("Danh sach san pham: ");
         System.out.printf("%-20s %-50s %-20s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
         for(int i=0;i<dsSanPham.length;i++)
@@ -408,9 +378,8 @@ public class HoaDon extends PhanTu {
         System.out.println("=== Sua thong tin hoa don ===");
         System.out.println("1. Sua so hoa don");
         System.out.println("2. Sua ma khach hang");
-        System.out.println("3. Sua ma thu ngan");
-        System.out.println("4. Sua danh sach san pham");
-        System.out.println("5. Sua phuong thuc thanh toan");
+        System.out.println("3. Sua danh sach san pham");
+        System.out.println("4. Sua phuong thuc thanh toan");
         System.out.println("0. Quay ve menu quan ly san pham");
         System.out.println("===============================");
         int chon;
@@ -429,10 +398,6 @@ public class HoaDon extends PhanTu {
                     setKhachHang();
                     break;
                 case 3:
-                    System.out.println("Thong tin hien tai: "+getThuNgan().getMaNhanVien());
-                    setThuNgan();
-                    break;
-                case 4:
                     System.out.println("Thong tin hien tai: ");
                     // xuất danh sách sản phẩm
                     SanPham[] dssp = (SanPham[]) getDsSanPham();
@@ -443,7 +408,7 @@ public class HoaDon extends PhanTu {
                     setSoLuongSanPham();
                     setDsSanPham();
                     break;
-                case 5:
+                case 4:
                     System.out.println("Thong tin hien tai: "+getPhThThanhToan());
                     setPhThThanhToan();
                     break;

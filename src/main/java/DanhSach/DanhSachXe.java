@@ -1,6 +1,7 @@
 package DanhSach;
 
 import File.FileHandler;
+import KiemTra.KiemTra;
 import HangHoa.SanPham;
 import HangHoa.PhanTu;
 
@@ -77,7 +78,7 @@ public class DanhSachXe implements DanhSachChung {
         FileHandler.resetFile("dssp.txt");
         System.out.print("Moi nhap so luong san pham: ");
 
-        soLuong = Integer.parseInt(sc.nextLine());
+        soLuong = KiemTra.checkNumber();;
         dsSanPham = new SanPham[soLuong];
 
         int stt, soLuongTemp=0, soLuongCurrent = soLuong;
@@ -116,7 +117,7 @@ public class DanhSachXe implements DanhSachChung {
     @Override
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong san pham can them vao danh sach: ");
-        int sl = Integer.parseInt(sc.nextLine());
+        int sl = KiemTra.checkNumber();;
         PhanTu pt;
         for(int i=0;i<sl;i++)
         {
@@ -164,7 +165,7 @@ public class DanhSachXe implements DanhSachChung {
         int loai;
         System.out.print("Tim san pham theo ten (1) hay theo khoa (2), vui long chon: ");
 
-        loai = Integer.parseInt(sc.nextLine());
+        loai = KiemTra.checkNumber();;
         loai = (loai != 2) ? 1 : 2;
 
         if (loai == 1)
@@ -176,7 +177,7 @@ public class DanhSachXe implements DanhSachChung {
         int chon;
 
         System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
-        chon = Integer.parseInt(sc.nextLine());
+        chon = KiemTra.checkNumber();;
         chon = (chon != 2) ? 1 : 2;
 
         SanPham[] dsSanPhamTmp = getdsSanPham();
@@ -206,7 +207,7 @@ public class DanhSachXe implements DanhSachChung {
         int loai;
         System.out.print("Tim san pham theo ten (1) hay theo khoa (2), vui long chon: ");
 
-        loai = Integer.parseInt(sc.nextLine());
+        loai = KiemTra.checkNumber();;
         loai = (loai != 2) ? 1 : 2;
 
         if (loai == 1)
@@ -218,7 +219,7 @@ public class DanhSachXe implements DanhSachChung {
         int chon;
 
         System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
-        chon = Integer.parseInt(sc.nextLine());
+        chon = KiemTra.checkNumber();;
         chon = (chon != 2) ? 1 : 2;
 
         SanPham[] dsSanPhamTmp = getdsSanPham();
@@ -272,11 +273,11 @@ public class DanhSachXe implements DanhSachChung {
             System.out.println("2. In san pham co gia ban lon hon n");
             System.out.println("0. Quay lai menu truoc");
             System.out.print("Moi chon: ");
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();;
             switch (chon) {
                 case 1:
                     System.out.print("Nhap so luong can tim: ");
-                    n = Integer.parseInt(sc.nextLine());
+                    n = KiemTra.checkNumber();;
                     for(int i=0;i<soLuong;i++) {
                         if(dsSanPham[i].getSoLuong() > n){
                             dsSanPham[i].xuat();
@@ -285,7 +286,7 @@ public class DanhSachXe implements DanhSachChung {
                     break;
                 case 2:
                     System.out.print("Nhap gia ban can tim: ");
-                    n = Integer.parseInt(sc.nextLine());
+                    n = KiemTra.checkNumber();;
                     for(int i=0;i<soLuong;i++) {
                         if(dsSanPham[i].getPrice() > n){
                             dsSanPham[i].xuat();
