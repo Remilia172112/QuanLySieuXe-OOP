@@ -4,7 +4,7 @@ import DanhSach.DanhSachNhanVien;
 import KiemTra.KiemTra;
 
 public class NhanVien extends Nguoi {
-    private int manhanvien;
+    private String manhanvien;
     private String ngayvaolam;
     private static int luongcoban = 4500000;
     private double hesoluong;
@@ -16,7 +16,7 @@ public class NhanVien extends Nguoi {
     public NhanVien() {
     }
 
-    public NhanVien(int maNhanVien, String ngayVaoLam, int LuongCoBan, double heSoLuong, double luong, double thuong,
+    public NhanVien(String maNhanVien, String ngayVaoLam, int LuongCoBan, double heSoLuong, double luong, double thuong,
             char hang, int soNgayNghiTrongThang) {
         this.manhanvien = maNhanVien;
         this.ngayvaolam = ngayVaoLam;
@@ -28,7 +28,7 @@ public class NhanVien extends Nguoi {
         this.soNgayNghiTrongThang = soNgayNghiTrongThang;
     }
 
-    public NhanVien(int maNhanVien, String ngayVaoLam, int LuongCoBan, double heSoLuong, double luong, double thuong,
+    public NhanVien(String maNhanVien, String ngayVaoLam, int LuongCoBan, double heSoLuong, double luong, double thuong,
             char hang, int soNgayNghiTrongThang, String hoten, String ngaythangnamsinh, String CCCD, String gioitinh,
             String diachi, String sdt, String email) {
         super(hoten, ngaythangnamsinh, CCCD, gioitinh, diachi, sdt, email);
@@ -42,11 +42,11 @@ public class NhanVien extends Nguoi {
         this.soNgayNghiTrongThang = soNgayNghiTrongThang;
     }
 
-    public int getManhanvien() {
+    public String getManhanvien() {
         return manhanvien;
     }
 
-    public void setManhanvien(int a) {
+    public void setManhanvien(String a) {
         manhanvien = a;
     }
 
@@ -56,16 +56,12 @@ public class NhanVien extends Nguoi {
         boolean check = false;
         do {
             check = true;
-            try {
-                manhanvien = Integer.parseInt(sc.nextLine());
-                check = ttds.layPhanTuVoi(manhanvien + "") == null;
-                if (!check)
-                    System.out.print("Ma nhan vien da ton tai, moi nhap lai: ");
-            } catch (Exception e) {
-                check = false;
-                System.out.print("Ma nhan vien phai la mot so, moi nhap lai: ");
-            }
-        } while (!check);
+            manhanvien = sc.nextLine();
+            check = ttds.layPhanTuVoi(manhanvien) == null;
+            if (!check) System.out.print("Ma nhan vien da ton tai, moi nhap lai: ");
+            check = KiemTra.check_maso(manhanvien);
+        }
+        while (!check);
     }
 
     public String getNgayvaolam() {
@@ -247,10 +243,8 @@ public class NhanVien extends Nguoi {
         setSongaynghitrongthang();
         super.nhap();
     }
-
-    @Override
     public void xuat() {
-        System.out.printf("%-25s %-25s %-20s %-50s %-20s\n", "Ma nhan vien", "Ho ten", "CMND/CCCD", "Dia chi", "SDT");
+        System.out.printf("%-25s %-25s %-25s %-25s %-20s %-50s %-20s %-25s\n", "Ma nhan vien", "Ho ten", "Gioi tinh", "Ngay sinh", "CCCD", "Dia chi", "So dien thoai", "Email");
         System.out.printf("%-25s ", getManhanvien());
         super.xuat();
         System.out.printf("\n%-25s %-25s %-30s %-10s %-10s %-10s\n", "Ngay vao lam", "He so luong",
@@ -263,17 +257,19 @@ public class NhanVien extends Nguoi {
     public static void xuat(NhanVien nv) {
         nv.xuat();
     }
-
-    @Override
     public void suaThongTin() {
         System.out.println("=== Sua thong tin nhan vien ===");
         System.out.println("1. Sua ho ten");
-        System.out.println("2. Sua can cuoc cong dan");
-        System.out.println("3. Sua dia chi");
-        System.out.println("4. Sua so dien thoai");
-        System.out.println("5. Sua ngay vao lam");
-        System.out.println("6. Sua he so luong");
-        System.out.println("7. Sua so ngay nghi trong thang");
+        System.out.println("2. Sua ngay thang nam sinh");
+        System.out.println("3. Sua gioi tinh");
+        System.out.println("4. Sua can cuoc cong dan");
+        System.out.println("5. Sua dia chi");
+        System.out.println("6. Sua so dien thoai");
+        System.out.println("7. Sua email");
+        System.out.println("8. Sua ngay vao lam");
+        System.out.println("9. Sua he so luong");
+        System.out.println("10. Sua so ngay nghi trong thang");
+        System.out.println("0. Thoat");
         System.out.println("===============================");
         int chon;
         do {
@@ -285,27 +281,39 @@ public class NhanVien extends Nguoi {
                     setHoten();
                     break;
                 case 2:
+                    System.out.println("Thong tin hien tai: " + getNgaythangnamsinh());
+                    setNgaythangnamsinh();
+                    break;
+                case 3:
+                    System.out.println("Thong tin hien tai: " + getGioitinh());
+                    setGioitinh();
+                    break;
+                case 4:
                     System.out.println("Thong tin hien tai: " + getCCCD());
                     setCCCD();
                     break;
-                case 3:
+                case 5:
                     System.out.println("Thong tin hien tai: " + getDiachi());
                     setDiachi();
                     break;
-                case 4:
+                case 6:
                     System.out.println("Thong tin hien tai: " + getSdt());
                     setSdt();
                     break;
-                case 5:
+                case 7:
+                    System.out.println("Thong tin hien tai: " + getEmail());
+                    setEmail();
+                    break;
+                case 8:
                     System.out.println("Thong tin hien tai: " + getNgayvaolam());
                     setNgayvaolam();
                     break;
-                case 6:
+                case 9:
                     System.out.println("Thong tin hien tai: " + getHesoluong());
                     System.out.print("Nhap noi dung: ");
                     setHesoluong();
                     break;
-                case 7:
+                case 10:
                     System.out.println("Thong tin hien tai: " + getSongaynghitrongthang());
                     setSongaynghitrongthang();
                     break;
@@ -313,8 +321,6 @@ public class NhanVien extends Nguoi {
                     chon = 0;
                     break;
             }
-            if (chon == 0)
-                System.out.println("Hay chon lai!");
         } while (chon == 0);
     }
 }

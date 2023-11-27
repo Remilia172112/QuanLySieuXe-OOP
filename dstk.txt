@@ -1,0 +1,6 @@
+5
+admin#123#admin
+NV1#NV1#nhan vien
+NV2#123#nhan vien
+QL1#123#quan ly
+QL2#123#quan ly

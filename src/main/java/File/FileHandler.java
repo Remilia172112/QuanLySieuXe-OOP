@@ -10,9 +10,9 @@ import java.util.Scanner;
 public class FileHandler {
     private static Scanner fr;
 
-     // Thêm nhân viên vào file dsnv.txt
-    public static void themNv(int manv, String hoten, String cccd, String diachi, String sdt, String ngayVaoLam, double heSoLuong, int soNgaynghitrongthang) {
-        String tmp = manv+"#"+hoten+"#"+cccd+"#"+diachi+"#"+sdt+"#"+ngayVaoLam+"#"+heSoLuong+"#"+soNgaynghitrongthang;
+    // Thêm nhân viên vào file dsnv.txt
+    public static void themNv(String manv, String hoten, String ntns, String gioitinh, String cccd, String diachi, String sdt, String email, String ngayVaoLam, double heSoLuong, int soNgaynghitrongthang) {
+        String tmp = manv+"#"+hoten+"#"+ntns+"#"+gioitinh+"#"+cccd+"#"+diachi+"#"+sdt+"#"+email+"#"+ngayVaoLam+"#"+heSoLuong+"#"+soNgaynghitrongthang;
         ghiFile(tmp, "dsnv.txt");
     }
     //Thêm sản phẩm vào file dssp.txt
@@ -21,20 +21,51 @@ public class FileHandler {
         ghiFile(tmp, "dssp.txt");
     }
 
-    //Thêm nha cung cap vào file dsncc.txt
-    public static void themNCC(String maNhaCC , String tenNhaCC , String diachi , int sdt) {
-        String tmp = maNhaCC + "#" + tenNhaCC + "#" + diachi + "#" + sdt;
-        ghiFile(tmp, "dsncc.txt");
+    //Thêm tài khoản vào file dskh.txt
+    public static void themKH(int makh, String hoten, String ntns, String gioitinh, String cccd, String diachi, String sdt, String email, int soDonHangDaThanhToan, int tongTienDaThanhToan, ThanhToan phThThanhToan) {
+        String tmp = makh+"#"+hoten+"#"+ntns+"#"+gioitinh+"#"+cccd+"#"+diachi+"#"+sdt+"#"+email+"#"+soDonHangDaThanhToan+"#"+tongTienDaThanhToan+"#";
+        if (phThThanhToan != null) {
+            tmp+=phThThanhToan.getPhuongThucThanhToan()+"#";
+            // -># # # # # # # #
+            // ghi phương thức ngân hàng
+            if (phThThanhToan.getPTNganHang() != null) {
+                tmp+=phThThanhToan.getPTNganHang().getSoTheTk()+"#"+phThThanhToan.getPTNganHang().getCVV()+"#";
+            } else for(int i=0;i<2;i++) tmp+=" #";
+            
+            // ghi phương thức tín dụng
+            if (phThThanhToan.getPTTinDung()!= null) {
+                tmp+=phThThanhToan.getPTTinDung().getSoThe()+"#"
+                +phThThanhToan.getPTTinDung().getLoaiThe()+"#"
+                +phThThanhToan.getPTTinDung().getCVV()+"#";
+            } else for(int i=0;i<3;i++) tmp+=" #";
+            
+            // ghi phương thức ví điện tử
+            if (phThThanhToan.getPTViDienTu()!= null) {
+                tmp+=phThThanhToan.getPTViDienTu().getSoDienThoaiLienKet()+"#"+phThThanhToan.getPTViDienTu().getTenVi();
+            } else {
+                tmp+=" # ";
+            }
+        } else {
+            tmp+="TienMat#";
+            for(int i=0;i<7;i++)
+                if (i!=6) tmp+=" #";
+                else tmp+=" ";
+        }
+        ghiFile(tmp, "dskh.txt");
     }
-
-
-
-
+    //Thêm tài khoản vào file dstk.txt
+    public static void themTK(String username, String password, String type) {
+        String tmp = username + "#" + password + "#" + type;
+        ghiFile(tmp, "dstk.txt");
+    }
     //Tạo file
     public static void taoCacFile() {
-        File[] f = new File[6];
+        File[] f = new File[4];
         try {
             f[0] = new File("dssp.txt");
+            f[1] = new File("dsnv.txt");
+            f[2] = new File("dskh.txt");
+            f[3] = new File("dstk.txt");
             String tenFile = "";
             for (int i = 0; i < f.length; i++) {
                 if (f[i].createNewFile()) {
@@ -58,14 +89,26 @@ public class FileHandler {
                         case 1:
                             tenFile = "dsnv.txt";
                             ghiFile("4", tenFile);
-                            themNv(1, "Tran Van A", "052204016288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "17/07/2023", 0.5, 0);
-                            themNv(2, "Tran Van B", "054524226300", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "21/09/2023", 1.2, 0);
-                            themNv(3, "Tran Thi C", "022201236288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "12/09/2023", 0.4, 1);
-                            themNv(4, "Tran Bui D", "054504012328", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "25/12/2023", 2, 1);
+                            themNv("NV1", "Tran Van A", "17/07/2004", "nam", "052204016288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "tranvana@gmail.com", "17/07/2023", 0.5, 0);
+                            themNv("NV2", "Tran Van B", "30/07/2000", "nu", "054524226300", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "tranvanb@gmail.com", "21/09/2023", 1.2, 0);
+                            themNv("QL1", "Tran Thi C", "01/01/1950", "nam", "022201236288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly1@gmail.com", "12/09/2023", 0.4, 1);
+                            themNv("QL2", "Tran Bui D", "02/02/2000", "nu", "054504012328", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly2@gmail.com", "25/12/2023", 2, 1);
                             break;
                         case 2:
+                            tenFile = "dskh.txt";
+                            ghiFile("4", tenFile);
+                            themKH(1, "Doan Van A", "20/12/1950", "nu", "320873941", "273 An Duong Vuong, P3, Q5, TP.HCM", "0894172635", "doanvana@gmail.com", 0, 0, null);
+                            themKH(2, "Nguyen Van B", "28/11/2002", "nam","320142913", "273 An Duong Vuong, P3, Q5, TP.HCM", "0913716241", "hahah@gmail.com", 0, 0, null);
+                            themKH(3, "Tran Van C", "10/10/1969", "nam", "320638711", "273 An Duong Vuong, P3, Q5, TP.HCM", "0907412663", "tranvanc@gmail.com", 0, 0, null);
                             break;
                         case 3:
+                            tenFile = "dstk.txt";
+                            ghiFile("5", tenFile);
+                            themTK("admin", "123", "admin");
+                            themTK("NV1", "123", "nhan vien");
+                            themTK("NV2", "123", "nhan vien");
+                            themTK("QL1", "123", "quan ly");
+                            themTK("QL2", "123", "quan ly");
                             break;
                         case 4:
                             break;

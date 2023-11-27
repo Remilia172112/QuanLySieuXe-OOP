@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import DanhSach.DanhSachNhanVien;
+
 public class KiemTra {
 	static Scanner sc = new Scanner(System.in);
 
@@ -96,7 +98,19 @@ public class KiemTra {
 		}
 		return true;
 	}
-
+	public static int checkNumber() {
+        boolean check = false;
+		String str;
+		do {
+			str = sc.nextLine();
+			check = true;
+			if(!isNumber(str)) {
+				check = false;
+				System.out.print("Nhap sai so!!! Moi nhap lai: ");
+			}
+		} while (!check);
+		return Integer.parseInt(str);
+	}
 	public static boolean isNumber(String str) {
 		try {
 			Double.parseDouble(str);

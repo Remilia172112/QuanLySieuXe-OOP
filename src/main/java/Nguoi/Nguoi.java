@@ -73,7 +73,9 @@ public abstract class Nguoi extends PhanTu {
         } while (!check);
         tuoi = Integer.parseInt(ch);
     }
-
+    public String getNgaythangnamsinh() {
+        return ngaythangnamsinh;
+    }
     public void setNgaythangnamsinh(String ngaythangnamsinh) {
         this.ngaythangnamsinh = ngaythangnamsinh;
         xulytuoinamsinh(ngaythangnamsinh);
@@ -151,10 +153,6 @@ public abstract class Nguoi extends PhanTu {
         this.tuoi = tuoi;
     }
 
-    public void setNamsinh(int namsinh) {
-        this.namsinh = namsinh;
-    }
-
     public void setCCCD(String cCCD) {
         CCCD = cCCD;
     }
@@ -193,14 +191,7 @@ public abstract class Nguoi extends PhanTu {
     }
 
     public void xuat() {
-        System.out.println("Ho ten: " + hoten);
-        System.out.println("Tuoi: " + tuoi);
-        System.out.println("Ngay/thang/nam sinh: " + ngaythangnamsinh);
-        System.out.println("CCCD: " + CCCD);
-        System.out.println("Gioi tinh: " + gioitinh);
-        System.out.println("Dia chi: " + diachi);
-        System.out.println("So dien thoai: " + sdt);
-        System.out.println("Email: " + email);
+        System.out.printf("%-25s %-25s %-25s %-20s %-50s %-20s %-25s", getHoten(), getGioitinh(),getNgaythangnamsinh(), getCCCD(), getDiachi(), getSdt(), getEmail());
     }
 
     public abstract void suaThongTin();
