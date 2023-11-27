@@ -7,10 +7,10 @@ import Nguoi.NhanVien;
 
 public class DanhSachNhanVien implements DanhSachChung {
     private int soLuong;
-    private NhanVien[] dsNhanVien = getDsNhanVien();
+    private NhanVien[] dsNhanVien; 
 
     public DanhSachNhanVien() {
-
+        dsNhanVien = getDsNhanVien();
     }
 
     public DanhSachNhanVien(int soLuong, NhanVien[] dsNhanVien) {

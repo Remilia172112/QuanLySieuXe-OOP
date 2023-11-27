@@ -7,10 +7,9 @@ import Nguoi.*;
 
 public class DanhSachTaiKhoan implements DanhSachChung {
     private int soLuong;
-    private TaiKhoan[] dsTaiKhoan = getDsTaiKhoan();
-
+    private TaiKhoan[] dsTaiKhoan;
     public DanhSachTaiKhoan() {
-
+        dsTaiKhoan = getDsTaiKhoan();
     }
 
     public DanhSachTaiKhoan(int soLuong, TaiKhoan[] dsTaiKhoan) {

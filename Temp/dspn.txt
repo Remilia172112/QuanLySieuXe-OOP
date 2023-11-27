@@ -1,5 +1,0 @@
-+ Mã phiếu nhập: string
-+ Mã nhà cung cấp: String
-+ Mã nhân viên: String
-+ Ngày lập: String
-+ Tổng nhập: long

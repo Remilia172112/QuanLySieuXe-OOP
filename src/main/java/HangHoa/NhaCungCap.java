@@ -110,7 +110,7 @@ public class NhaCungCap extends PhanTu {
                     break;
                 case 1:
                     System.out.println("Thong tin hien tai: "+getMaNhaCC());
-                    setMaNhaCC();;
+                    setMaNhaCC();
                     break;
                 case 2:
                     System.out.println("Thong tin hien tai: "+getTenNhaCC());

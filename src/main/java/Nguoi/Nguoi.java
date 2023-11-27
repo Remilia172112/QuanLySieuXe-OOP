@@ -38,7 +38,8 @@ public abstract class Nguoi extends PhanTu {
     }
 
     public void xulytuoinamsinh(String ngaythangnamsinh) {
-        String save[] = ngaythangnamsinh.split("/");
+        String save[];
+        save = ngaythangnamsinh.split("/");
         namsinh = Integer.parseInt(save[2]);
         if (Integer.parseInt(save[0]) >= ngayhientai && Integer.parseInt(save[1]) == thanghientai)
             tuoi = namhientai - namsinh;
@@ -53,8 +54,10 @@ public abstract class Nguoi extends PhanTu {
     }
     
     public void setHoten() {
+        System.out.print("Nhap ho ten: ");
         boolean check = false;
         do {
+            check = true;
             hoten = sc.nextLine();
             check = KiemTra.check_name(hoten);
         } while (!check);
@@ -76,8 +79,10 @@ public abstract class Nguoi extends PhanTu {
     }
 
     public void setNgaythangnamsinh() {
+        System.out.print("Nhap ngay/thang/nam sinh: ");
         boolean check = false;
         do {
+            check = true;
             ngaythangnamsinh = sc.nextLine();
             check = KiemTra.check_date(ngaythangnamsinh);
         } while (!check);
@@ -88,7 +93,8 @@ public abstract class Nguoi extends PhanTu {
         return gioitinh;
     }
 
-    public void setGioitinh() {
+    public void setGioitinh() { 
+        System.out.print("Nhap gioi tinh (nam/nu): ");
         boolean check = false;
         do {
             gioitinh = sc.nextLine();
@@ -100,8 +106,14 @@ public abstract class Nguoi extends PhanTu {
         return CCCD;
     }
 
-    public String setCCCD() {
-        return CCCD;
+    public void setCCCD() {
+        System.out.print("Nhap so CCCD: ");
+        boolean check = false;
+        do {
+            check = true;
+            CCCD = sc.nextLine();
+            check = KiemTra.check_cccd(gioitinh);
+        } while (!check);
     }
 
     public String getDiachi() {
@@ -109,6 +121,7 @@ public abstract class Nguoi extends PhanTu {
     }
 
     public void setDiachi() {
+        System.out.print("Nhap dia chi: ");
         boolean check = false;
         do {
             diachi = sc.nextLine();
@@ -121,6 +134,7 @@ public abstract class Nguoi extends PhanTu {
     }
 
     public void setEmail() {
+        System.out.print("Nhap email: ");
         boolean check = false;
         do {
             email = sc.nextLine();
@@ -133,6 +147,7 @@ public abstract class Nguoi extends PhanTu {
     }
 
     public void setSdt() {
+        System.out.print("Nhap so dien thoai: ");
         boolean check = false;
         do {
             sdt = sc.nextLine();
@@ -168,19 +183,12 @@ public abstract class Nguoi extends PhanTu {
     }
     @Override
     public void nhap() {
-        System.out.println("Nhap ho ten: ");
         setHoten();
-        System.out.println("Nhap ngay/thang/nam sinh: ");
-        setNgaythangnamsinh();
-        System.out.println("Nhap so CCCD: ");
-        setCCCD();
-        System.out.println("Nhap gioi tinh (nam/nu): ");
         setGioitinh();
-        System.out.println("Nhap dia chi: ");
+        setNgaythangnamsinh();
+        setCCCD();
         setDiachi();
-        System.out.println("Nhap so dien thoai: ");
-        setDiachi();
-        System.out.println("Nhap email: ");
+        setSdt();
         setEmail();
     }
 

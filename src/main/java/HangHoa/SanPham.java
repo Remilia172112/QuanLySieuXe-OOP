@@ -1,5 +1,6 @@
 package HangHoa;
 import DanhSach.DanhSachXe;
+import KiemTra.KiemTra;
 public class SanPham extends PhanTu {
     private String maSanPham ;
     private String tenSanPham ;
@@ -121,7 +122,7 @@ public class SanPham extends PhanTu {
 
     @Override
     public void xuat() {
-        System.out.printf("%-20s %-50s %-20s %-20s %-20s %-20s \n",maSanPham,tenSanPham,thuongHieu,noiSanXuat,soLuong,price);
+        System.out.printf("%-20s %-30s %-20s %-20s %-20s %-20s \n",maSanPham,tenSanPham,thuongHieu,noiSanXuat,soLuong,price);
     }
 
     @Override
@@ -138,7 +139,7 @@ public class SanPham extends PhanTu {
         int chon;
         do {
             System.out.print("Nhap lua chon: ");
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();;
             switch (chon) {
                 case 0:
                     break;
