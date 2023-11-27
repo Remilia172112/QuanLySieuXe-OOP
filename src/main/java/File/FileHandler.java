@@ -108,7 +108,7 @@ public class FileHandler {
                             break;
                         case 2:
                             tenFile = "dskh.txt";
-                            ghiFile("4", tenFile);
+                            ghiFile("3", tenFile);
                             themKH(1, "Doan Van A", "20/12/1950", "nu", "320873941", "273 An Duong Vuong, P3, Q5, TP.HCM", "0894172635", "doanvana@gmail.com", 0, 0, null);
                             themKH(2, "Nguyen Van B", "28/11/2002", "nam","320142913", "273 An Duong Vuong, P3, Q5, TP.HCM", "0913716241", "hahah@gmail.com", 0, 0, null);
                             themKH(3, "Tran Van C", "10/10/1969", "nam", "320638711", "273 An Duong Vuong, P3, Q5, TP.HCM", "0907412663", "tranvanc@gmail.com", 0, 0, null);
