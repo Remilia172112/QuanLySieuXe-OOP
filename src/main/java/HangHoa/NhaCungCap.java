@@ -1,7 +1,6 @@
 package HangHoa;
 
 import DanhSach.DanhSachNhaCungCap;
-// import DanhSach.DanhSachXe;
 
 public class NhaCungCap extends PhanTu {
     private String maNhaCC ;
@@ -17,7 +16,9 @@ public class NhaCungCap extends PhanTu {
         this.diachi = diachi ;
         this.sdt = sdt;
     }
-
+    public void setMaNhaCC(String a) {
+        maNhaCC = a;
+    }
     
     public void setMaNhaCC() {
         System.out.print("Nhap ma nha cung cap: ");
@@ -50,7 +51,7 @@ public class NhaCungCap extends PhanTu {
         System.out.print("Nhap dia chi nha cung cap: ");
         diachi = sc.nextLine();
     }
-  
+
     public void setSdt(int sdt) {
         this.sdt = sdt;
     }
@@ -89,13 +90,9 @@ public class NhaCungCap extends PhanTu {
         setDiaChi();
         setSdt();
     }
-
-    @Override
     public void xuat() {
         System.out.printf("%-20s %-20s %-50s %-20s  \n",maNhaCC,tenNhaCC,diachi,sdt);
     }
-
-    @Override
     public void suaThongTin() {
         System.out.println("=== Sua thong tin nha cung cap ===");
         System.out.println("1. Sua ma nha cung cap");

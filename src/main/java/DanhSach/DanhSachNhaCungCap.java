@@ -3,9 +3,6 @@ package DanhSach;
 import File.FileHandler;
 import HangHoa.PhanTu;
 import HangHoa.NhaCungCap;
-import HangHoa.NhaCungCap;
-// import HangHoa.NhaCungCap;
-import HangHoa.NhaCungCap;
 
 public class DanhSachNhaCungCap implements DanhSachChung{
     private int soLuong;
@@ -44,7 +41,7 @@ public class DanhSachNhaCungCap implements DanhSachChung{
 
             ncc = new NhaCungCap();
 
-            ncc.setMaNhaCC();(lArr[m++]);
+            ncc.setMaNhaCC(lArr[m++]);
 
             ncc.setTenNhaCC(lArr[m++]);
 
@@ -60,7 +57,7 @@ public class DanhSachNhaCungCap implements DanhSachChung{
 
     public void setdsNhaCC( NhaCungCap[] dsNhaCC){ // ghi file
         NhaCungCap ncc;
-        String tenFile = "./dssp.txt";
+        String tenFile = "dsncc.txt";
         FileHandler.resetFile(tenFile);
         FileHandler.ghiFile(soLuong+"", tenFile);
 
@@ -68,7 +65,6 @@ public class DanhSachNhaCungCap implements DanhSachChung{
             ncc = (NhaCungCap) dsNhaCC[i];
             FileHandler.themNCC(ncc.getMaNhaCC(), ncc.getTenNhaCC(), ncc.getDiaChi(), ncc.getSdt());
         }
-
         this.dsNhaCC = (NhaCungCap[]) dsNhaCC;
     }
 
@@ -76,7 +72,7 @@ public class DanhSachNhaCungCap implements DanhSachChung{
 
     @Override
     public void nhapDanhSach() {
-        FileHandler.resetFile("dssp.txt");
+        FileHandler.resetFile("dsncc.txt");
         System.out.print("Moi nhap so luong san pham: ");
 
         soLuong = Integer.parseInt(sc.nextLine());
@@ -93,8 +89,6 @@ public class DanhSachNhaCungCap implements DanhSachChung{
             setdsNhaCC(dsNhaCC);
         }
     }
-
-    @Override
     public void xuatDanhSach() {
         System.out.println();
         System.out.println("=== Danh sach san pham ===");
@@ -104,18 +98,14 @@ public class DanhSachNhaCungCap implements DanhSachChung{
         }
         System.out.println();
     }
-
-    @Override
     public void themVaoDanhSach(PhanTu pt) {
         NhaCungCap[] dsNhaCCTemp = new NhaCungCap[soLuong+1];
         for(int i=0;i<soLuong;i++)
             dsNhaCCTemp[i] = dsNhaCC[i];
         dsNhaCCTemp[soLuong] = (NhaCungCap) pt;
         soLuong++;
-        setdsNhaCC(dsNhaCC);(dsNhaCCTemp);
+        setdsNhaCC(dsNhaCCTemp);
     }
-
-    @Override
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong san pham can them vao danh sach: ");
         int sl = Integer.parseInt(sc.nextLine());
@@ -127,8 +117,6 @@ public class DanhSachNhaCungCap implements DanhSachChung{
             themVaoDanhSach(pt);
         }
     }
-
-    @Override
     public void chinhSuaThongTinPhanTu() {
         System.out.println("Tim san pham can chinh sua: ");
         int viTri = timViTriPhanTu();
@@ -137,12 +125,10 @@ public class DanhSachNhaCungCap implements DanhSachChung{
 
         if (viTri != -1) {
             dssp[viTri].suaThongTin();
-            setdsNhaCC(dsNhaCC);(dssp);
+            setdsNhaCC(dsNhaCC);
         }
         else System.out.println("Khong tim thay san pham!");
     }
-
-    @Override
     public void xoaPhanTu() {
         // Tìm sản phẩm trước
         System.out.println("Tim san pham can xoa: ");
@@ -157,11 +143,9 @@ public class DanhSachNhaCungCap implements DanhSachChung{
             }
 
             soLuong--;
-            setdsNhaCC(dsNhaCC);(dsNhaCCTemp);
+            setdsNhaCC(dsNhaCCTemp);
         } else System.out.println("Khong tim thay san pham!");
     }
-
-    @Override
     public PhanTu timPhanTu() { // tìm sản phẩm theo tên hoặc khoá (tương đối || tuyệt đối)
         int loai;
         System.out.print("Tim san pham theo ten (1) hay theo khoa (2), vui long chon: ");
@@ -202,8 +186,6 @@ public class DanhSachNhaCungCap implements DanhSachChung{
         }
         return null;
     }
-
-    @Override
     public int timViTriPhanTu() {
         int loai;
         System.out.print("Tim san pham theo ten (1) hay theo khoa (2), vui long chon: ");
@@ -244,7 +226,6 @@ public class DanhSachNhaCungCap implements DanhSachChung{
         }
         return -1;
     }
-
     public int timViTriSanPham(String maSanPham) { // tìm vị trí sản phẩm với mã sản phẩm
         NhaCungCap[] dsSanPhamTmp = getdsNhaCC();
         for(int i=0;i<soLuong;i++) {
@@ -253,8 +234,6 @@ public class DanhSachNhaCungCap implements DanhSachChung{
         }
         return -1;
     }
-
-    @Override
     public PhanTu layPhanTuVoi(String thamSo) { // tìm phần tử cụ thể với mã sản phẩm
         NhaCungCap[] dssp = getdsNhaCC();
         for(int i=0;i<soLuong;i++) {
@@ -263,8 +242,6 @@ public class DanhSachNhaCungCap implements DanhSachChung{
         }
         return null;
     }
-
-    @Override
     public void thongKe() {
         int chon,n;
         dsNhaCC = getdsNhaCC();

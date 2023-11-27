@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class XuLy {
     private static Scanner sc = new Scanner(System.in);
 
-    // Phương thức tạo menu hướng dẫn chính
     public static void xuLyTrungTam() {
         int chon;
         boolean check_break = false;

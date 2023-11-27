@@ -38,32 +38,22 @@ public class DanhSachNhanVien implements DanhSachChung {
         dsNhanVien = new NhanVien[soLuong];
         NhanVien nv;
         int k = 0, m;
-
         String[] lArr;
-
         for (int i = 1; i < dArr.length; i++) {
             lArr = dArr[i].split("#");
-
             m = 0;
-
             nv = new NhanVien();
-
             nv.setManhanvien(lArr[m++]);
-
             nv.setHoten(lArr[m++]);
-
+            nv.setNgaythangnamsinh(lArr[m++]);
+            nv.setGioitinh(lArr[m++]);            
             nv.setCCCD(lArr[m++]);
-
             nv.setDiachi(lArr[m++]);
-
             nv.setSdt(lArr[m++]);
-
+            nv.setEmail(lArr[m++]);
             nv.setNgayvaolam(lArr[m++]);
-
             nv.setHesoluong(Double.parseDouble(lArr[m++]));
-
             nv.setSongaynghitrongthang(Integer.parseInt(lArr[m++]));
-
             dsNhanVien[k++] = nv;
         }
         return dsNhanVien;
