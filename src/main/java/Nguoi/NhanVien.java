@@ -79,57 +79,47 @@ public class NhanVien extends Nguoi {
         // kiểm tra điều kiện ngày/tháng/năm
         do {
             check = true;
-
-            try {
-                System.out.print("Nhap ngay: ");
-                ngay = Integer.parseInt(sc.nextLine());
-                System.out.print("Nhap thang: ");
-                thang = Integer.parseInt(sc.nextLine());
-                System.out.print("Nhap nam: ");
-                nam = Integer.parseInt(sc.nextLine());
-
-                if (ngay <= 0 || ngay > 31) {
-                    check = false;
-                    System.out.println("Ngay khong hop le!");
-                }
-                if (thang <= 0 || thang > 12) {
-                    check = false;
-                    System.out.println("Thang khong hop le!");
-                }
-                if (nam <= 1920 || nam > 2022) {
-                    check = false;
-                    System.out.println("Nam khong hop le!");
-                }
-
-                if (nam % 400 == 0 || (nam % 4 == 0 && nam % 100 != 0)) { // năm nhuận
-                    if (thang == 2) {
-                        if (ngay > 29) {
-                            check = false;
-                            System.out.println("Thang 2 nam da nhap chi co 29 ngay!");
-                        }
-                    }
-                } else { // không nhuận
-                    if (thang == 2) {
-                        if (ngay > 28) {
-                            check = false;
-                            System.out.println("Thang 2 nam da nhap chi co 28 ngay!");
-                        }
-                    }
-                }
-
-                switch (thang) { // các trường hợp còn lại
-                    case 4, 6, 9, 11:
-                        if (ngay > 30) {
-                            check = false;
-                            System.out.println("Thang da nhap chi co 30 ngay!");
-                        }
-                        break;
-                }
-            } catch (Exception e) {
+            System.out.print("Nhap ngay: ");
+            ngay = KiemTra.checkNumber();;
+            System.out.print("Nhap thang: ");
+            thang = KiemTra.checkNumber();;
+            System.out.print("Nhap nam: ");
+            nam = KiemTra.checkNumber();;
+            if (ngay <= 0 || ngay > 31) {
                 check = false;
-                System.out.println("Ngay, thang, hoac nam da nhap khong hop le!");
+                System.out.println("Ngay khong hop le!");
             }
-
+            if (thang <= 0 || thang > 12) {
+                check = false;
+                System.out.println("Thang khong hop le!");
+            }
+            if (nam <= 1920 || nam > 2022) {
+                check = false;
+                System.out.println("Nam khong hop le!");
+            }
+            if (nam % 400 == 0 || (nam % 4 == 0 && nam % 100 != 0)) { // năm nhuận
+                if (thang == 2) {
+                    if (ngay > 29) {
+                        check = false;
+                        System.out.println("Thang 2 nam da nhap chi co 29 ngay!");
+                    }
+                }
+            } else { // không nhuận
+                if (thang == 2) {
+                    if (ngay > 28) {
+                        check = false;
+                        System.out.println("Thang 2 nam da nhap chi co 28 ngay!");
+                    }
+                }
+            }
+            switch (thang) { // các trường hợp còn lại
+                case 4, 6, 9, 11:
+                    if (ngay > 30) {
+                        check = false;
+                        System.out.println("Thang da nhap chi co 30 ngay!");
+                    }
+                    break;
+            }
         } while (!check);
         this.ngayvaolam = ngay + "/" + thang + "/" + nam;
     }
@@ -205,7 +195,7 @@ public class NhanVien extends Nguoi {
         do {
 
             try {
-                soNgayNghiTrongThang = Integer.parseInt(sc.nextLine());
+                soNgayNghiTrongThang = KiemTra.checkNumber();;
             } catch (Exception e) {
                 System.out.print("Vui long nhap mot so: ");
                 continue;
@@ -274,7 +264,7 @@ public class NhanVien extends Nguoi {
         int chon;
         do {
             System.out.print("Nhap lua chon: ");
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();;
             switch (chon) {
                 case 1:
                     System.out.println("Thong tin hien tai: " + getHoten());

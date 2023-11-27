@@ -65,13 +65,7 @@ public abstract class Nguoi extends PhanTu {
     }
 
     public void setTuoi() {
-        boolean check = false;
-        String ch;
-        do {
-            ch = sc.nextLine();
-            check = KiemTra.isNumber(ch);
-        } while (!check);
-        tuoi = Integer.parseInt(ch);
+        tuoi = KiemTra.checkNumber();
     }
     public String getNgaythangnamsinh() {
         return ngaythangnamsinh;

@@ -1,6 +1,7 @@
 package DanhSach;
 
 import File.FileHandler;
+import KiemTra.KiemTra;
 import HangHoa.PhanTu;
 import Nguoi.*;
 
@@ -93,7 +94,7 @@ public class DanhSachTaiKhoan implements DanhSachChung {
         FileHandler.resetFile("dstk.txt");
         System.out.println("Nhap so luong tai khoan: ");
 
-        soLuong = Integer.parseInt(sc.nextLine());
+        soLuong = KiemTra.checkNumber();
         dsTaiKhoan = new TaiKhoan[soLuong];
 
         int stt, soLuongTemp = 0, soLuongCurrent = soLuong;
@@ -125,7 +126,7 @@ public class DanhSachTaiKhoan implements DanhSachChung {
     }
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong tai khoan can them vao danh sach: ");
-        int sl = Integer.parseInt(sc.nextLine());
+        int sl = KiemTra.checkNumber();
         PhanTu pt;
         for (int i = 0; i < sl; i++) {
             pt = new TaiKhoan();
@@ -168,7 +169,7 @@ public class DanhSachTaiKhoan implements DanhSachChung {
         int loai;
         System.out.print("Tim tai khoan theo tai khoan (1) hay theo mat khau (2), vui long chon: ");
 
-        loai = Integer.parseInt(sc.nextLine());
+        loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;
 
         if (loai == 1)
@@ -181,7 +182,7 @@ public class DanhSachTaiKhoan implements DanhSachChung {
         int chon;
         System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
 
-        chon = Integer.parseInt(sc.nextLine());
+        chon = KiemTra.checkNumber();
         chon = (chon != 2) ? 1 : 2;
 
         TaiKhoan[] dsTaiKhoanTmp = getDsTaiKhoan();
@@ -209,7 +210,7 @@ public class DanhSachTaiKhoan implements DanhSachChung {
         int loai;
         System.out.print("Tim tai khoan theo tai khoan (1) hay theo mat khau (2), vui long chon: ");
 
-        loai = Integer.parseInt(sc.nextLine());
+        loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;
 
         if (loai == 1)
@@ -222,7 +223,7 @@ public class DanhSachTaiKhoan implements DanhSachChung {
         int chon;
         System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
 
-        chon = Integer.parseInt(sc.nextLine());
+        chon = KiemTra.checkNumber();
         chon = (chon != 2) ? 1 : 2;
 
         TaiKhoan[] dsTaiKhoanTmp = getDsTaiKhoan();
@@ -261,7 +262,7 @@ public class DanhSachTaiKhoan implements DanhSachChung {
             System.out.println("1. Loc tai khoan theo loai tai khoan");
             System.out.println("0. Quay lai menu truoc");
             System.out.print("Moi chon: ");
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();
             switch (chon) {
                 case 1:
                     String type;
