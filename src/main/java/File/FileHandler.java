@@ -21,6 +21,12 @@ public class FileHandler {
         ghiFile(tmp, "dssp.txt");
     }
 
+    //Thêm nha cung cap vào file dsncc.txt
+    public static void themNCC(String maNhaCC , String tenNhaCC , String diachi , int sdt) {
+        String tmp = maNhaCC + "#" + tenNhaCC + "#" + diachi + "#" + sdt;
+        ghiFile(tmp, "dsncc.txt");
+    }
+
     //Thêm tài khoản vào file dskh.txt
     public static void themKH(int makh, String hoten, String ntns, String gioitinh, String cccd, String diachi, String sdt, String email, int soDonHangDaThanhToan, int tongTienDaThanhToan, ThanhToan phThThanhToan) {
         String tmp = makh+"#"+hoten+"#"+ntns+"#"+gioitinh+"#"+cccd+"#"+diachi+"#"+sdt+"#"+email+"#"+soDonHangDaThanhToan+"#"+tongTienDaThanhToan+"#";
