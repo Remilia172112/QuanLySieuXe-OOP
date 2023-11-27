@@ -10,7 +10,9 @@ public class PhieuNhap extends PhanTu {
     private String maNV;
     private String ngaynhap;
     private int tongnhap;
-
+    public PhieuNhap(){
+    }
+    
     public PhieuNhap(String maPhieuNhap , String maNhaCC , String maNV , String ngaynhap, int tongnhap){
         this.maPhieuNhap = maPhieuNhap;
         this.maNhaCC = maNhaCC;
