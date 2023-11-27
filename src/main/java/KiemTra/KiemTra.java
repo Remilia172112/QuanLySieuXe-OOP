@@ -3,9 +3,6 @@ package KiemTra;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import DanhSach.DanhSachNhanVien;
-
 public class KiemTra {
 	static Scanner sc = new Scanner(System.in);
 
@@ -14,7 +11,7 @@ public class KiemTra {
 		Pattern pattern = Pattern.compile(reg);
 		Matcher matcher = pattern.matcher(phone);
 		if (!matcher.matches()) {
-			System.out.println("So dien thoai khong dung dinh dang!!!");
+			System.out.print("So dien thoai khong dung dinh dang!!! Moi nhap lai: ");
 			return false;
 		}
 		return true;
@@ -25,7 +22,7 @@ public class KiemTra {
 		Pattern pattern = Pattern.compile(reg);
 		Matcher matcher = pattern.matcher(maso);
 		if (!matcher.matches()) {
-			System.out.println("Ma so khong dung dinh dang!!!");
+			System.out.print("Ma so khong dung dinh dang!!! Moi nhap lai: ");
 			return false;
 		}
 		return true;
@@ -36,7 +33,7 @@ public class KiemTra {
 		Pattern pattern = Pattern.compile(reg);
 		Matcher matcher = pattern.matcher(text);
 		if (!matcher.matches()) {
-			System.out.println("Chuoi khong duoc bo trong!!!");
+			System.out.print("Chuoi khong duoc bo trong!!! Moi nhap lai: ");
 			return false;
 		}
 		return true;
@@ -47,7 +44,7 @@ public class KiemTra {
 		Pattern pattern = Pattern.compile(reg);
 		Matcher matcher = pattern.matcher(date);
 		if (!matcher.matches()) {
-			System.out.println("Dinh dang dung la dd/mm/yyyy!!!");
+			System.out.print("Dinh dang dung la dd/mm/yyyy!!! Moi nhap lai: ");
 			return false;
 		}
 		return true;
@@ -58,7 +55,7 @@ public class KiemTra {
 		Pattern pattern = Pattern.compile(reg);
 		Matcher matcher = pattern.matcher(name);
 		if (!matcher.matches()) {
-			System.out.println("Ten khong dung dinh dang");
+			System.out.print("Ten khong dung dinh dang!! Moi nhap lai: ");
 			return false;
 		}
 		return true;
@@ -69,7 +66,7 @@ public class KiemTra {
 		Pattern pattern = Pattern.compile(reg,Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher(sex);
 		if (!matcher.matches() || sex == "") {
-			System.out.println("Gioi tinh phai la nam/nu");
+			System.out.print("Gioi tinh phai la nam/nu!!! Moi nhap lai: ");
 			return false;
 		}
 		return true;
@@ -80,7 +77,7 @@ public class KiemTra {
 		Pattern pattern = Pattern.compile(reg);
 		Matcher matcher = pattern.matcher(mail);
 		if (!matcher.matches() || mail == "") {
-			System.out.println("Khong nhap dung dinh dang email");
+			System.out.print("Khong nhap dung dinh dang email!!! Moi nhap lai: ");
 			return false;
 		}
 		return true;
@@ -93,7 +90,7 @@ public class KiemTra {
 		Matcher matcher = pattern.matcher(cccd);
 		if(!matcher.matches() || cccd == "")
 		{
-			System.out.println("So can cuoc cong dan khong dung!");
+			System.out.print("So can cuoc cong dan khong dung!!! Moi nhap lai:");
 			return false;
 		}
 		return true;

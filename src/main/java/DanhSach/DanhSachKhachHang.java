@@ -152,7 +152,7 @@ public class DanhSachKhachHang implements DanhSachChung {
     }
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong khach hang can them vao danh sach: ");
-        int sl = KiemTra.checkNumber();;
+        int sl = KiemTra.checkNumber();
         PhanTu pt;
         for(int i=0;i<sl;i++)
         {

@@ -58,7 +58,7 @@ public class KhachHang extends Nguoi {
         boolean check = false;
         do
         {
-            maKhachHang = KiemTra.checkNumber();;
+            maKhachHang = KiemTra.checkNumber();
             check = ttds.layPhanTuVoi(maKhachHang+"") == null;
             if (!check) System.out.print("Ma khach hang da ton tai, moi nhap lai: ");
         } while (!check);

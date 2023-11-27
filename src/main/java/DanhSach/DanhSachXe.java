@@ -97,7 +97,7 @@ public class DanhSachXe implements DanhSachChung {
     public void xuatDanhSach() {
         System.out.println();
         System.out.println("=== Danh sach san pham ===");
-        System.out.printf("%-20s %-50s %-20s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
+        System.out.printf("%-20s %-30s %-20s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
         for(int i=0;i<soLuong;i++) {
             dsSanPham[i].xuat();
         }
