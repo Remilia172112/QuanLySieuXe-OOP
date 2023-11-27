@@ -73,7 +73,7 @@ public class DanhSachNhaCungCap implements DanhSachChung{
     @Override
     public void nhapDanhSach() {
         FileHandler.resetFile("dsncc.txt");
-        System.out.print("Moi nhap so luong san pham: ");
+        System.out.print("Moi nhap so luong nha cung cap: ");
 
         soLuong = Integer.parseInt(sc.nextLine());
         dsNhaCC = new NhaCungCap[soLuong];
@@ -83,7 +83,7 @@ public class DanhSachNhaCungCap implements DanhSachChung{
         for(int i=0;i<soLuongCurrent;i++){
             dsNhaCC[i] = new NhaCungCap();
             stt = i+1;
-            System.out.println("San pham thu "+stt+": ");
+            System.out.println("Nha cung cap thu "+stt+": ");
             dsNhaCC[i].nhap();
             soLuong = ++soLuongTemp;
             setdsNhaCC(dsNhaCC);
@@ -91,8 +91,8 @@ public class DanhSachNhaCungCap implements DanhSachChung{
     }
     public void xuatDanhSach() {
         System.out.println();
-        System.out.println("=== Danh sach san pham ===");
-        System.out.printf("%-20s %-50s %-20s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
+        System.out.println("=== Danh sach nha cung cap ===");
+        System.out.printf("%-25s %-25s %-50s %-20s \n","Ma nha cung cap", "Ten nha cung cap", "Dia chi", "So dien thoai");
         for(int i=0;i<soLuong;i++) {
             dsNhaCC[i].xuat();
         }
@@ -107,7 +107,7 @@ public class DanhSachNhaCungCap implements DanhSachChung{
         setdsNhaCC(dsNhaCCTemp);
     }
     public void themKPhanTuVaoDanhSach() {
-        System.out.print("Nhap so luong san pham can them vao danh sach: ");
+        System.out.print("Nhap so luong nha cung cap can them vao danh sach: ");
         int sl = Integer.parseInt(sc.nextLine());
         PhanTu pt;
         for(int i=0;i<sl;i++)
@@ -118,7 +118,7 @@ public class DanhSachNhaCungCap implements DanhSachChung{
         }
     }
     public void chinhSuaThongTinPhanTu() {
-        System.out.println("Tim san pham can chinh sua: ");
+        System.out.println("Tim nha cung cap can chinh sua: ");
         int viTri = timViTriPhanTu();
 
         NhaCungCap[] dssp = getdsNhaCC();
@@ -127,11 +127,11 @@ public class DanhSachNhaCungCap implements DanhSachChung{
             dssp[viTri].suaThongTin();
             setdsNhaCC(dsNhaCC);
         }
-        else System.out.println("Khong tim thay san pham!");
+        else System.out.println("Khong tim thay nha cung cap!");
     }
     public void xoaPhanTu() {
         // Tìm sản phẩm trước
-        System.out.println("Tim san pham can xoa: ");
+        System.out.println("Tim nha cung cap can xoa: ");
         int viTri = timViTriPhanTu();
         // Nếu tìm thấy
         if (viTri != -1) {
@@ -144,24 +144,24 @@ public class DanhSachNhaCungCap implements DanhSachChung{
 
             soLuong--;
             setdsNhaCC(dsNhaCCTemp);
-        } else System.out.println("Khong tim thay san pham!");
+        } else System.out.println("Khong tim thay nha cung cap!");
     }
-    public PhanTu timPhanTu() { // tìm sản phẩm theo tên hoặc khoá (tương đối || tuyệt đối)
+    public PhanTu timPhanTu() { // tìm theo tên hoặc khoá (tương đối || tuyệt đối)
         int loai;
-        System.out.print("Tim san pham theo ten (1) hay theo khoa (2), vui long chon: ");
+        System.out.print("Tim nha cc theo ten (1) hay theo khoa (2), vui long chon: ");
 
         loai = Integer.parseInt(sc.nextLine());
         loai = (loai != 2) ? 1 : 2;
 
         if (loai == 1)
-            System.out.print("Nhap ten san pham can tim: ");
+            System.out.print("Nhap ten nha cc can tim: ");
         if (loai == 2)
-            System.out.print("Nhap ma san pham can tim: ");
+            System.out.print("Nhap ma nha cc can tim: ");
 
         String giaTriCanTim = sc.nextLine();
         int chon;
 
-        System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
+        System.out.print("Tim chinh xac (1)/ tim tuong doi (2), vui long chon: ");
         chon = Integer.parseInt(sc.nextLine());
         chon = (chon != 2) ? 1 : 2;
 
@@ -226,7 +226,7 @@ public class DanhSachNhaCungCap implements DanhSachChung{
         }
         return -1;
     }
-    public int timViTriSanPham(String maSanPham) { // tìm vị trí sản phẩm với mã sản phẩm
+    public int timViTriSanPham(String maSanPham) { // tìm vị trí với mã ncc
         NhaCungCap[] dsSanPhamTmp = getdsNhaCC();
         for(int i=0;i<soLuong;i++) {
             if (dsSanPhamTmp[i].getTenNhaCC().equalsIgnoreCase(maSanPham))
@@ -234,7 +234,7 @@ public class DanhSachNhaCungCap implements DanhSachChung{
         }
         return -1;
     }
-    public PhanTu layPhanTuVoi(String thamSo) { // tìm phần tử cụ thể với mã sản phẩm
+    public PhanTu layPhanTuVoi(String thamSo) { // tìm phần tử cụ thể với mã ncc
         NhaCungCap[] dssp = getdsNhaCC();
         for(int i=0;i<soLuong;i++) {
             if (dssp[i].getTenNhaCC().equalsIgnoreCase(thamSo))
@@ -243,38 +243,38 @@ public class DanhSachNhaCungCap implements DanhSachChung{
         return null;
     }
     public void thongKe() {
-        int chon,n;
-        dsNhaCC = getdsNhaCC();
-        do {
-            System.out.println("=== Thong ke ===");
-            System.out.println("1. In san pham co so luong lon hon n");
-            System.out.println("2. In san pham co gia ban lon hon n");
-            System.out.println("0. Quay lai menu truoc");
-            System.out.print("Moi chon: ");
-            chon = Integer.parseInt(sc.nextLine());
-            switch (chon) {
-                case 1:
-                    System.out.print("Nhap so luong can tim: ");
-                    n = Integer.parseInt(sc.nextLine());
-                    for(int i=0;i<soLuong;i++) {
-                        if(dsNhaCC[i].getSoLuong() > n){
-                            dsNhaCC[i].xuat();
-                        }
-                    }
-                    break;
-                case 2:
-                    System.out.print("Nhap gia ban can tim: ");
-                    n = Integer.parseInt(sc.nextLine());
-                    for(int i=0;i<soLuong;i++) {
-                        if(dsNhaCC[i].getPrice() > n){
-                            dsNhaCC[i].xuat();
-                        }
-                    }
-                    break;
-                default:
-                    chon=0;
-                    break;
-            }
-        } while(chon!=0);
+        // int chon,n;
+        // dsNhaCC = getdsNhaCC();
+        // do {
+        //     System.out.println("=== Thong ke ===");
+        //     System.out.println("1. ");
+        //     System.out.println("2. In san pham co gia ban lon hon n");
+        //     System.out.println("0. Quay lai menu truoc");
+        //     System.out.print("Moi chon: ");
+        //     chon = Integer.parseInt(sc.nextLine());
+        //     switch (chon) {
+        //         case 1:
+        //             System.out.print("Nhap so luong can tim: ");
+        //             n = Integer.parseInt(sc.nextLine());
+        //             for(int i=0;i<soLuong;i++) {
+        //                 if(dsNhaCC[i].getSoLuong() > n){
+        //                     dsNhaCC[i].xuat();
+        //                 }
+        //             }
+        //             break;
+        //         case 2:
+        //             System.out.print("Nhap gia ban can tim: ");
+        //             n = Integer.parseInt(sc.nextLine());
+        //             for(int i=0;i<soLuong;i++) {
+        //                 if(dsNhaCC[i].getPrice() > n){
+        //                     dsNhaCC[i].xuat();
+        //                 }
+        //             }
+        //             break;
+        //         default:
+        //             chon=0;
+        //             break;
+        //     }
+        // } while(chon!=0);
     }
 }
