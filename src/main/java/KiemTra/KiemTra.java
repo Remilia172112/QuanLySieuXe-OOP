@@ -51,15 +51,16 @@ public class KiemTra {
 	}
 
 	public static boolean check_name(String name) {
-		String reg = "[A-Za-z]+$";
+		String reg = "^[^\\d]+(\\s[^\\d]+)+$";
 		Pattern pattern = Pattern.compile(reg);
 		Matcher matcher = pattern.matcher(name);
 		if (!matcher.matches()) {
-			System.out.print("Ten khong dung dinh dang!! Moi nhap lai: ");
+			System.out.println(name);
 			return false;
 		}
 		return true;
 	}
+
 
 	public static boolean check_sex(String sex) {
 		String reg = "nam|nu$";

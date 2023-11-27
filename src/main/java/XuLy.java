@@ -19,24 +19,26 @@ public class XuLy {
             System.out.print("Moi chon: ");
             chon = KiemTra.checkNumber();
             switch (chon) {
+                case 0:
+                    System.out.println("Cam on ban da su dung chuong trinh");
+                    break;
                 case 1:
-                    System.out.print("Tai khoan:");
+                    System.out.print("Tai khoan: ");
                     String user = sc.nextLine();
-                    System.out.print("Mat khau: ");
+                    System.out.print("Mat khau : ");
                     String pass = sc.nextLine();
                     TaiKhoan tk = dstk.checkLogin(user, pass);
                     if(tk != null) {
                         System.out.println("Dang nhap thanh cong!!!");
                         if(tk.getType().equals("nhan vien")) {
                             MenuNV();
+                            chon = 0;
                         }
                         if(tk.getType().equals("quan ly")) {
                             MenuQL();
+                            chon = 0;
                         }
                     }
-                    break;
-                case 0:
-                    System.out.println("Cam on ban da su dung chuong trinh");
                     break;
                 default:
                     System.out.println("Hay nhap so co trong menu");
@@ -64,6 +66,9 @@ public class XuLy {
         chon = KiemTra.checkNumber();
 
         switch (chon) {
+            case 0:
+                System.out.println("Cam on ban da su dung chuong trinh");
+                break;
             case 1:
                 break;
             case 2:
@@ -81,9 +86,6 @@ public class XuLy {
             case 7:
                 dsx.xuatDanhSach();
                 break;
-            case 0:
-                    System.out.println("Cam on ban da su dung chuong trinh");
-                    break;
             default:
                 System.out.println("Hay nhap so co trong menu");
                 break;
@@ -106,24 +108,28 @@ public class XuLy {
             System.out.print("Moi chon: ");
             chon = KiemTra.checkNumber();
             switch (chon) {
+                case 0:
+                    System.out.println("Cam on ban da su dung chuong trinh");
+                    break;
                 case 1:
                     quanLyDSX();
+                    chon = 0;
                     break;
                 case 2:
                     quanLyDSNV();
+                    chon = 0;
                     break;
                 case 3:
                     quanLyDSKH();
+                    chon = 0;
                     break;
                 case 4:
                     quanLyDSTK();
+                    chon = 0;
                     break;
                 case 5:
                     break;
                 case 6:
-                    break;
-                case 0:
-                    System.out.println("Cam on ban da su dung chuong trinh");
                     break;
                 default:
                     System.out.println("Hay nhap so co trong menu");

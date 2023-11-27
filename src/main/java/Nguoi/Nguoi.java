@@ -38,7 +38,8 @@ public abstract class Nguoi extends PhanTu {
     }
 
     public void xulytuoinamsinh(String ngaythangnamsinh) {
-        String save[] = ngaythangnamsinh.split("/");
+        String save[];
+        save = ngaythangnamsinh.split("/");
         namsinh = Integer.parseInt(save[2]);
         if (Integer.parseInt(save[0]) >= ngayhientai && Integer.parseInt(save[1]) == thanghientai)
             tuoi = namhientai - namsinh;
