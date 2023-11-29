@@ -1,22 +1,19 @@
 package HangHoa;
 import DanhSach.DanhSachXe;
-
-public class DanhMucXe extends PhanTu{
+import KiemTra.KiemTra;
+public class DongXe extends PhanTu{
     private String maDanhMuc;
     private String tenDanhMuc;
     private int soLuong;
     private String[] dsMaSanPham;
-
-    public DanhMucXe() {
+    public DongXe() {
     }
-
-    public DanhMucXe(String maDanhMuc, String tenDanhMuc, int soLuong, String[] dsMaSanPham) {
+    public DongXe(String maDanhMuc, String tenDanhMuc, int soLuong, String[] dsMaSanPham) {
         this.maDanhMuc = maDanhMuc;
         this.tenDanhMuc = tenDanhMuc;
         this.soLuong = soLuong;
         this.dsMaSanPham = dsMaSanPham;
     }
-
     public String getMaDanhMuc() {
         return maDanhMuc;
     }
@@ -192,7 +189,6 @@ public class DanhMucXe extends PhanTu{
             setDsMaSanPham(dsMaSP);
         } else System.out.println("Khong tim thay ma san pham!");
     }
-
     @Override
     public void nhap(){
         setMaDanhMuc();
@@ -203,11 +199,11 @@ public class DanhMucXe extends PhanTu{
 
     @Override
     public void xuat() {
-        System.out.printf("%-20s %-20s %-20s \n", "Ma danh muc", "Ten danh muc", "So luong");
+        System.out.printf("%-20s %-20s %-20s \n", "Ma Dong xe", "Ten Dong xe", "So luong");
         System.out.printf("%-20s %-20s %-20s \n", maDanhMuc, tenDanhMuc, soLuong);
 
         System.out.println("Danh sach san pham cung danh muc: ");
-        System.out.printf("%-20s %-50s %-20s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
+        System.out.printf("%-20s %-30s %-20s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
         PhanTu pt;
         DanhSachXe ttds = new DanhSachXe();
 
@@ -235,7 +231,7 @@ public class DanhMucXe extends PhanTu{
         int chon;
         do {
             System.out.print("Nhap lua chon: ");
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();
             switch (chon) {
                 case 0:
                     break;
@@ -291,4 +287,5 @@ public class DanhMucXe extends PhanTu{
             }
         } while (chon != 0);
     }
+
 }

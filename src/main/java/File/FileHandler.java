@@ -20,7 +20,15 @@ public class FileHandler {
         String tmp = masp + "#" + tensp + "#" + thuongHieu + "#" + noiSx + "#" + sl + "#" + gia;
         ghiFile(tmp, "dssp.txt");
     }
-
+    //them danh sach dong` xe vao` file dsdmsp.txt
+    public static void themDmSP(String maDanhMuc, String tenDanhMuc, int soLuong, String[] dsMaSanPham) {
+        String tmp = maDanhMuc+"#"+tenDanhMuc+"#"+soLuong+"#";
+        for(int i=0;i<dsMaSanPham.length;i++)
+            if (i!=dsMaSanPham.length-1)
+                tmp += dsMaSanPham[i]+"#";
+            else tmp += dsMaSanPham[i];
+        ghiFile(tmp, "dsdmsp.txt");
+    }
     //Thêm nha cung cap vào file dsncc.txt
     public static void themNCC(String maNhaCC , String tenNhaCC , String diachi , int sdt) {
         String tmp = maNhaCC + "#" + tenNhaCC + "#" + diachi + "#" + sdt;
@@ -72,12 +80,13 @@ public class FileHandler {
     }
     //Tạo file
     public static void taoCacFile() {
-        File[] f = new File[4];
+        File[] f = new File[5];
         try {
             f[0] = new File("dssp.txt");
             f[1] = new File("dsnv.txt");
             f[2] = new File("dskh.txt");
             f[3] = new File("dstk.txt");
+            f[4] = new File("dsdmsp.txt");
             String tenFile = "";
             for (int i = 0; i < f.length; i++) {
                 if (f[i].createNewFile()) {
@@ -123,6 +132,16 @@ public class FileHandler {
                             themTK("QL2", "123", "quan ly");
                             break;
                         case 4:
+                            tenFile = "dsdmsp.txt";
+                            ghiFile("2", tenFile);
+                            // 1
+                            String[] dsMaSp = new String[]{"SPORT01","SPORT02","SPORT03","SPORT04", "SPORT05"};
+                            themDmSP("SPORT", "Xe the thao", 5, dsMaSp);
+                            // 2
+                            dsMaSp = new String[]{"ROADSTER01","ROADSTER02","ROADSTER03","ROADSTER04" , "ROADSTER05"};
+                            themDmSP("ROADSTER", "Xe Mui tran", 5, dsMaSp);
+                            // 3
+
                             break;
                         case 5:
                             break;

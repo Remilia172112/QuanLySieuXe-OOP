@@ -106,7 +106,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         PhieuNhap[] dsSanPhamTemp = new PhieuNhap[soLuong+1];
         for(int i=0;i<soLuong;i++)
             dsSanPhamTemp[i] = dsPhieuNhap[i];
-        dsSanPhamTemp[soLuong] = (PhieuNhap) pt; 
+        dsSanPhamTemp[soLuong] = (PhieuNhap) pt;
         soLuong++;
         setdsSanPham(dsSanPhamTemp);
     }
@@ -203,7 +203,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
     public int timViTriPhanTu() {
         // int loai;
         // System.out.print("Tim phieu nhap theo ten (1) hay theo khoa (2), vui long chon: ");
-        
+
         // loai = KiemTra.checkNumber();;
         // loai = (loai != 2) ? 1 : 2;
         // if (loai == 1)
