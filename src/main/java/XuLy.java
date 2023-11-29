@@ -103,6 +103,7 @@ public class XuLy {
             System.out.println("4. Quan ly danh sach tai khoan");
             System.out.println("5. Quan ly danh sach phieu nhap");
             System.out.println("6. Quan ly danh sach hoa don");
+            System.out.println("7. Quan ly danh sach Dong Xe");
             System.out.println("0. Thoat chuong trinh");
             System.out.println("==============================");
             System.out.print("Moi chon: ");
@@ -128,8 +129,12 @@ public class XuLy {
                     chon = 0;
                     break;
                 case 5:
+                    quanLyDSDanhMucSP();
                     break;
                 case 6:
+                    break;
+                case 7:
+                    quanLyDSDanhMucSP();
                     break;
                 default:
                     System.out.println("Hay nhap so co trong menu");
@@ -310,6 +315,51 @@ public class XuLy {
                     break;
             }
             if (chon!=0) inMenu("tai khoan");
+        } while(chon!=0);
+    }
+    public static void quanLyDSDanhMucSP() {
+        DanhSachDongXe ttds = new DanhSachDongXe();
+        DanhSachXe dssp = new DanhSachXe();
+        inMenu("danh muc san pham");
+        int chon;
+        do {
+            chon = Integer.parseInt(sc.nextLine());
+            if (dssp.getsoLuong() == 0) {
+                System.out.println("Vui long nhap danh sach san pham truoc khi quan ly danh muc!");
+                chon = 0;
+            }
+            switch (chon) {
+                case 1:
+                    ttds.nhapDanhSach();
+                    break;
+                case 2:
+                    ttds.xuatDanhSach();
+                    break;
+                case 3:
+                    ttds.themKPhanTuVaoDanhSach();
+                    break;
+                case 4:
+                    ttds.chinhSuaThongTinPhanTu();
+                    break;
+                case 5:
+                    ttds.xoaPhanTu();
+                    break;
+                case 6:
+                    PhanTu pt = ttds.timPhanTu();
+                    if (pt != null) {
+                        System.out.println("** Thong tin tim thay **");
+                        pt.xuat();
+                    } else System.out.println("Khong tim thay!");
+                    break;
+                case 7:
+                    ttds.thongKe();
+                    break;
+                default:
+                    if (chon==0) MenuQL();
+                    chon = 0;
+                    break;
+            }
+            if (chon!=0)inMenu("danh muc san pham");
         } while(chon!=0);
     }
 }

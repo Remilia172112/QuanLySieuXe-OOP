@@ -1,7 +1,5 @@
 package DanhSach;
-
 import HangHoa.PhanTu;
-
 import java.util.Scanner;
 
 public interface DanhSachChung {

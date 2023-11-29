@@ -33,8 +33,7 @@ public class DanhSachXe implements DanhSachChung {
         dsSanPham = new SanPham[soLuong];
         SanPham sp;
         int k = 0, m;
-        String []lArr;
-
+        String [] lArr;
         for (int i = 1; i < dArr.length; i++) {
             lArr = dArr[i].split("#");
 
@@ -56,7 +55,6 @@ public class DanhSachXe implements DanhSachChung {
 
             dsSanPham[k++] = sp;
         }
-
         return dsSanPham;
     }
     public void setdsSanPham( SanPham[] dsSanPham){ // ghi file
@@ -70,7 +68,6 @@ public class DanhSachXe implements DanhSachChung {
             FileHandler.themSP(sp.getMaSanPham(), sp.getTenSanPham(), sp.getThuongHieu(), sp.getNoiSanXuat(),
                     sp.getSoLuong(), sp.getPrice());
         }
-
         this.dsSanPham = (SanPham[]) dsSanPham;
     }
     @Override
@@ -107,8 +104,9 @@ public class DanhSachXe implements DanhSachChung {
     @Override
     public void themVaoDanhSach(PhanTu pt) {
         SanPham[] dsSanPhamTemp = new SanPham[soLuong+1];
-        for(int i=0;i<soLuong;i++)
+        for(int i=0;i<soLuong;i++){
             dsSanPhamTemp[i] = dsSanPham[i];
+        }
         dsSanPhamTemp[soLuong] = (SanPham) pt;
         soLuong++;
         setdsSanPham(dsSanPhamTemp);
@@ -126,14 +124,11 @@ public class DanhSachXe implements DanhSachChung {
             themVaoDanhSach(pt);
         }
     }
-
     @Override
     public void chinhSuaThongTinPhanTu() {
         System.out.println("Tim san pham can chinh sua: ");
         int viTri = timViTriPhanTu();
-
         SanPham[] dssp = getdsSanPham();
-
         if (viTri != -1) {
             dssp[viTri].suaThongTin();
             setdsSanPham(dssp);
@@ -209,7 +204,6 @@ public class DanhSachXe implements DanhSachChung {
 
         loai = KiemTra.checkNumber();;
         loai = (loai != 2) ? 1 : 2;
-
         if (loai == 1)
             System.out.print("Nhap ten san pham can tim: ");
         if (loai == 2)
