@@ -28,12 +28,11 @@ public class KiemTra {
 		return true;
 	}
 
-	public static boolean check_diachi(String text) {
-		String reg = "[^\\s*]$";
-		Pattern pattern = Pattern.compile(reg);
-		Matcher matcher = pattern.matcher(text);
-		if (!matcher.matches()) {
-			System.out.print("Chuoi khong duoc bo trong!!! Moi nhap lai: ");
+	public static boolean check_diachi(String text)
+	{
+		if(text == null || text == "")
+		{
+			System.out.println("Khong duoc bo trong!!!");
 			return false;
 		}
 		return true;

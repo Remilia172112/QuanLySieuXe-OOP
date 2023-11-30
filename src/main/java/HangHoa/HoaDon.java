@@ -1,5 +1,5 @@
 package HangHoa;
-
+import java.util.Scanner ;
 import DanhSach.*;
 import Nguoi.*;
 import ThanhToan.*;
@@ -11,7 +11,7 @@ public class HoaDon extends PhanTu {
    private String phThThanhToan;
    private KhachHang khachHang;
    private SanPham[] dsSanPham;
-
+   public static Scanner sc = new Scanner(System.in);
     public HoaDon() {
     }
 
@@ -31,7 +31,7 @@ public class HoaDon extends PhanTu {
     }
 
     public void setKhachHang() {
-        DanhSachKhachHang ttds = new DanhSachKhachHang();
+        DanhSachKhachHang  ttdss = new DanhSachKhachHang();
         PhanTu pt;
         String maKhachHang;
         int chon;
@@ -40,13 +40,13 @@ public class HoaDon extends PhanTu {
             chon = Integer.parseInt(sc.nextLine());
             chon = (chon==0) ? 0 : 1;
 
-            if (chon == 1) ttds.xuatDanhSach();
+            if (chon == 1) ttdss.xuatDanhSach();
 
             System.out.print("Nhap ma khach hang: ");
             maKhachHang = sc.nextLine();
+           
             
-            pt = ttds.layPhanTuVoi(maKhachHang);
-            
+            pt = ttdss.layPhanTuVoi(maKhachHang);
             if (pt == null) {
                 System.out.println("Khong tim thay khach hang!");
                 System.out.println("Ban co muon them khach hang moi khong? (1 - them, 0 - khong)");
@@ -56,7 +56,7 @@ public class HoaDon extends PhanTu {
                 if (chon == 1) {
                     pt = new KhachHang();
                     pt.nhap();
-                    ttds.themVaoDanhSach(pt);
+                    ttdss.themVaoDanhSach(pt);
                     khachHang = (KhachHang) pt;
                 }
 
@@ -184,11 +184,13 @@ public class HoaDon extends PhanTu {
     public void setSoHoaDon() {
         System.out.print("Nhap so hoa don: ");
         DanhSachHoaDon ttds = new DanhSachHoaDon();
+        
         boolean check;
         do
         {
             check = true;
             try {
+
                 soHoaDon = Integer.parseInt(sc.nextLine());
                 check = ttds.layPhanTuVoi(soHoaDon+"") == null;
                 if (!check) System.out.print("So hoa don da ton tai, moi nhap lai: ");

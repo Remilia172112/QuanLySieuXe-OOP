@@ -12,16 +12,16 @@ public class PhieuNhap extends PhanTu {
     private int tongnhap;
     public PhieuNhap(){
     }
-    
+
     public PhieuNhap(String maPhieuNhap , String maNhaCC , String maNV , String ngaynhap, int tongnhap){
         this.maPhieuNhap = maPhieuNhap;
         this.maNhaCC = maNhaCC;
         this.maNV = maNV;
         this.ngaynhap = ngaynhap;
-        this.tongnhap = tongnhap; 
+        this.tongnhap = tongnhap;
     }
 
-   
+
     public String getMaPhieuNhap() {
         return maPhieuNhap;
     }
@@ -51,7 +51,7 @@ public class PhieuNhap extends PhanTu {
         this.maNhaCC = maNhaCC;
     }
     public void setMaNhaCC() {
-        DanhSachNhaCungCap dsncc = new DanhSachNhaCungCap();       
+        DanhSachNhaCungCap dsncc = new DanhSachNhaCungCap();
         dsncc.xuatDanhSach();
         System.out.print("Nhap ma nha cung cap: ");
         DanhSachPhieuNhap ttds = new DanhSachPhieuNhap();
@@ -63,7 +63,7 @@ public class PhieuNhap extends PhanTu {
             if (check) System.out.print("Ma nha cung cap ko ton tai, moi nhap lai: ");
         } while (!check);
     }
-    
+
 
     public String getMaNV() {
         return maNV;
@@ -73,7 +73,7 @@ public class PhieuNhap extends PhanTu {
         this.maNV = maNV;
     }
     public void setMaNV() {
-        DanhSachNhanVien dsncc = new DanhSachNhanVien();       
+        DanhSachNhanVien dsncc = new DanhSachNhanVien();
         dsncc.xuatDanhSach();
         System.out.print("Nhap ma nhan vien lap phieu nhap: ");
         DanhSachPhieuNhap ttds = new DanhSachPhieuNhap();
@@ -172,7 +172,7 @@ public class PhieuNhap extends PhanTu {
                     System.out.println("Thong tin hien tai: "+getTongnhap());
                     setTongnhap();
                     break;
-                
+
                 default:
                     System.out.println("Hay chon lai!");
                     break;

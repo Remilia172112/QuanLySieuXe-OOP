@@ -112,7 +112,7 @@ public abstract class Nguoi extends PhanTu {
         do {
             check = true;
             CCCD = sc.nextLine();
-            check = KiemTra.check_cccd(gioitinh);
+            check = KiemTra.check_cccd(CCCD);
         } while (!check);
     }
 
