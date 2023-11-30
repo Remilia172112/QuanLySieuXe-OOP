@@ -98,11 +98,12 @@ public class XuLy {
         do {
             System.out.println("==============================");
             System.out.println("1. Quan ly danh sach xe");
-            System.out.println("2. Quan ly danh sach nhan vien");
-            System.out.println("3. Quan ly danh sach khach hang");
-            System.out.println("4. Quan ly danh sach tai khoan");
-            System.out.println("5. Quan ly danh sach phieu nhap");
-            System.out.println("6. Quan ly danh sach hoa don");
+            System.out.println("2. Quan ly danh sach nha cung cap");
+            System.out.println("3. Quan ly danh sach nhan vien");
+            System.out.println("4. Quan ly danh sach khach hang");
+            System.out.println("5. Quan ly danh sach tai khoan");
+            System.out.println("6. Quan ly danh sach phieu nhap");
+            System.out.println("7. Quan ly danh sach hoa don");
             System.out.println("0. Thoat chuong trinh");
             System.out.println("==============================");
             System.out.print("Moi chon: ");
@@ -116,20 +117,22 @@ public class XuLy {
                     chon = 0;
                     break;
                 case 2:
+                    break;
+                case 3:
                     quanLyDSNV();
                     chon = 0;
                     break;
-                case 3:
+                case 4:
                     quanLyDSKH();
                     chon = 0;
                     break;
-                case 4:
+                case 5:
                     quanLyDSTK();
                     chon = 0;
                     break;
-                case 5:
-                    break;
                 case 6:
+                    break;
+                case 7:
                     break;
                 default:
                     System.out.println("Hay nhap so co trong menu");
