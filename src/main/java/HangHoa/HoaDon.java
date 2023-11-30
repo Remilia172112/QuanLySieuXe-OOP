@@ -184,11 +184,13 @@ public class HoaDon extends PhanTu {
     public void setSoHoaDon() {
         System.out.print("Nhap so hoa don: ");
         DanhSachHoaDon ttds = new DanhSachHoaDon();
+        
         boolean check;
         do
         {
             check = true;
             try {
+
                 soHoaDon = Integer.parseInt(sc.nextLine());
                 check = ttds.layPhanTuVoi(soHoaDon+"") == null;
                 if (!check) System.out.print("So hoa don da ton tai, moi nhap lai: ");

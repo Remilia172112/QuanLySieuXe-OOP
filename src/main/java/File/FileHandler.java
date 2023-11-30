@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+import HangHoa.SanPham;
+
 public class FileHandler {
     private static Scanner fr;
 
@@ -78,15 +80,27 @@ public class FileHandler {
         String tmp = username + "#" + password + "#" + type;
         ghiFile(tmp, "dstk.txt");
     }
+    // thêm hoá đơn vào file dshd.txt
+    public static void themHd(int soHoaDon, int soLuongSanPham, int tongTien, int maKhachHang, 
+                        String phThThanhToan, SanPham[] dssp) {
+         String tmp = soHoaDon+"#"+soLuongSanPham+"#"+tongTien+"#"+maKhachHang+"#"+phThThanhToan+"#";
+    
+        for(int i=0;i<dssp.length;i++)
+        {
+            tmp+=dssp[i].getMaSanPham()+"#"+dssp[i].getSoLuong();
+        }
+        ghiFile(tmp, "dshd.txt");
+    }
     //Tạo file
     public static void taoCacFile() {
-        File[] f = new File[5];
+        File[] f = new File[6];
         try {
             f[0] = new File("dssp.txt");
             f[1] = new File("dsnv.txt");
             f[2] = new File("dskh.txt");
             f[3] = new File("dstk.txt");
             f[4] = new File("dsdmsp.txt");
+            f[5] = new File("dshd.text");
             String tenFile = "";
             for (int i = 0; i < f.length; i++) {
                 if (f[i].createNewFile()) {
