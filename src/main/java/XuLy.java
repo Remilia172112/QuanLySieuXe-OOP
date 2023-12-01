@@ -50,6 +50,7 @@ public class XuLy {
         DanhSachXe dsx = new DanhSachXe();
         DanhSachKhachHang dskh = new DanhSachKhachHang();
         DanhSachHoaDon dshd = new DanhSachHoaDon() ;
+        // DanhSachPhieuNhap dspn =  new DanhSachPhieuNhap();
         int chon;
         System.out.println("***** Chuong Trinh Quan Ly Cua Hang Sieu Xe Version Nhan vien *****");
         do {
@@ -77,6 +78,7 @@ public class XuLy {
                 dshd.xuatDanhSach();
                 break;
             case 3:
+                // dspn.themKPhanTuVaoDanhSach();
                 break;
             case 4:
                 break;
@@ -135,6 +137,7 @@ public class XuLy {
                     chon = 0;
                     break;
                 case 6:
+                    quanLyDSPN();
                     break;
                 case 7:
                     quanLyDSHD();
@@ -412,6 +415,47 @@ public class XuLy {
                     break;
             }
             if (chon!=0)inMenu("hoa don");
+        } while(chon!=0);
+    }
+
+    public static void quanLyDSPN() {
+        DanhSachPhieuNhap  ttds = new DanhSachPhieuNhap();
+        inMenu("phieu nhap");
+        int chon;
+        do {
+            chon = KiemTra.checkNumber();
+            switch (chon) {
+                case 1:
+                    ttds.nhapDanhSach();
+                    break;
+                case 2:
+                    ttds.xuatDanhSach();
+                    break;
+                case 3:
+                    ttds.themKPhanTuVaoDanhSach();
+                    break;
+                case 4:
+                    ttds.chinhSuaThongTinPhanTu();
+                    break;
+                case 5:
+                    ttds.xoaPhanTu();
+                    break;
+                case 6:
+                    PhanTu pt = ttds.timPhanTu();
+                    if (pt != null) {
+                        System.out.println("** Thong tin tim thay **");
+                        pt.xuat();
+                    } else System.out.println("Khong tim thay!");
+                    break;
+                case 7:
+                    ttds.thongKe();
+                    break;
+                default:
+                    if (chon==0) MenuQL();
+                    chon = 0;
+                    break;
+            }
+            if (chon!=0) inMenu("xe");
         } while(chon!=0);
     }
 }
