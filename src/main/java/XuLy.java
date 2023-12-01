@@ -74,6 +74,7 @@ public class XuLy {
                 dshd.themKPhanTuVaoDanhSach();
                 break;
             case 2:
+                dshd.xuatDanhSach();
                 break;
             case 3:
                 break;
@@ -106,12 +107,7 @@ public class XuLy {
             System.out.println("5. Quan ly danh sach tai khoan");
             System.out.println("6. Quan ly danh sach phieu nhap");
             System.out.println("7. Quan ly danh sach hoa don");
-            System.out.println("2. Quan ly danh sach nhan vien");
-            System.out.println("3. Quan ly danh sach khach hang");
-            System.out.println("4. Quan ly danh sach tai khoan");
-            System.out.println("5. Quan ly danh sach phieu nhap");
-            System.out.println("6. Quan ly danh sach hoa don");
-            System.out.println("7. Quan ly danh sach Dong Xe");
+            System.out.println("8. Quan ly danh sach Dong Xe");
             System.out.println("0. Thoat chuong trinh");
             System.out.println("==============================");
             System.out.print("Moi chon: ");
@@ -141,6 +137,9 @@ public class XuLy {
                 case 6:
                     break;
                 case 7:
+                    quanLyDSHD();
+                    break;
+                case 8:
                     quanLyDSDanhMucSP();
                     break;
                 default:
@@ -367,6 +366,52 @@ public class XuLy {
                     break;
             }
             if (chon!=0)inMenu("danh muc san pham");
+        } while(chon!=0);
+    }
+    public static void quanLyDSHD() {
+        DanhSachHoaDon ttds = new DanhSachHoaDon();
+        DanhSachXe dssp = new DanhSachXe();
+        inMenu("hoa don");
+        int chon;
+        do {
+            chon = Integer.parseInt(sc.nextLine());
+            // chỉ cho phép thao tác nếu đã có danh sách sản phẩm
+            if (dssp.getsoLuong() == 0) {
+                System.out.println("Vui long nhap danh sach san pham truoc khi quan ly hoa don!");
+                chon = 0;
+            }
+            switch (chon) {
+                case 1:
+                    ttds.nhapDanhSach();
+                    break;
+                case 2:
+                    ttds.xuatDanhSach();
+                    break;
+                case 3:
+                    ttds.themKPhanTuVaoDanhSach();
+                    break;
+                case 4:
+                    ttds.chinhSuaThongTinPhanTu();
+                    break;
+                case 5:
+                    ttds.xoaPhanTu();
+                    break;
+                case 6:
+                    PhanTu pt = ttds.timPhanTu();
+                    if (pt != null) {
+                        System.out.println("** Thong tin tim thay **");
+                        pt.xuat();
+                    } else System.out.println("Khong tim thay!");
+                    break;
+                case 7:
+                    ttds.thongKe();
+                    break;
+                default:
+                    chon = 0;
+                    if (chon==0) MenuQL();
+                    break;
+            }
+            if (chon!=0)inMenu("hoa don");
         } while(chon!=0);
     }
 }
