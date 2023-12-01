@@ -14,55 +14,55 @@ public class PhieuNhap extends PhanTu {
     private int Tongnhap;
 
 
-    public static void main(String[] args) throws IOException {
-        PhieuNhap pn = new PhieuNhap();
-        pn.menu();
+    // public static void main(String[] args) throws IOException {
+    //     PhieuNhap pn = new PhieuNhap();
+    //     pn.menu();
         
-    }
-    public void menu() {
-        boolean check = true;
-        while (check) {
-            System.out.println("");
-            System.out.println("+------------------------------+");
-            System.out.println("Menu: ");
-            System.out.println("1. set ma phieu nhap ");
-            System.out.println("2. set nha cung cap");
-            System.out.println("3. set ma nhan vien ");
-            System.out.println("4. set ma san pham ");
-            System.out.println("5. set tong nhap ");
-            System.out.println("6. set ngaynhap");
-            System.out.println("0. Thoat");
-            System.out.print("Chon: ");
-            int chose = sc.nextInt();
-            System.out.println("+------------------------------+");
-            switch (chose) {
-                case 1:
-                    setMaPhieuNhap();
-                    break;
-                case 2:
-                    setMaNhaCC();
-                    break;
-                case 3:
-                    setMaNV();
-                    break;
-                case 4:
-                    setMaSanPham();
-                    break;
-                case 5:
-                    setMaSanPham();
-                    break;
-                case 6:
-                    setNgaynhap();
-                    break;
-                case 0:
-                    System.out.println("Thoat chuong trinh thanh cong!!!");
-                    check = false;
-                    return;
-                default:
-                    System.out.println("Nhap sai");
-            }
-        }
-    }
+    // }
+    // public void menu() {
+    //     boolean check = true;
+    //     while (check) {
+    //         System.out.println("");
+    //         System.out.println("+------------------------------+");
+    //         System.out.println("Menu: ");
+    //         System.out.println("1. set ma phieu nhap ");
+    //         System.out.println("2. set nha cung cap");
+    //         System.out.println("3. set ma nhan vien ");
+    //         System.out.println("4. set ma san pham ");
+    //         System.out.println("5. set tong nhap ");
+    //         System.out.println("6. set ngaynhap");
+    //         System.out.println("0. Thoat");
+    //         System.out.print("Chon: ");
+    //         int chose = sc.nextInt();
+    //         System.out.println("+------------------------------+");
+    //         switch (chose) {
+    //             case 1:
+    //                 setMaPhieuNhap();
+    //                 break;
+    //             case 2:
+    //                 setMaNhaCC();
+    //                 break;
+    //             case 3:
+    //                 setMaNV();
+    //                 break;
+    //             case 4:
+    //                 setMaSanPham();
+    //                 break;
+    //             case 5:
+    //                 setMaSanPham();
+    //                 break;
+    //             case 6:
+    //                 setNgaynhap();
+    //                 break;
+    //             case 0:
+    //                 System.out.println("Thoat chuong trinh thanh cong!!!");
+    //                 check = false;
+    //                 return;
+    //             default:
+    //                 System.out.println("Nhap sai");
+    //         }
+    //     }
+    // }
 
 
     public PhieuNhap(){
@@ -89,10 +89,12 @@ public class PhieuNhap extends PhanTu {
         System.out.print("Nhap ma phieu nhap: ");
         DanhSachPhieuNhap ttds = new DanhSachPhieuNhap();
         boolean check = false;
+        // sc.nextLine();
         do
         {
+            check = true;
             maPhieuNhap = sc.nextLine();
-            check = ttds.layPhanTuVoi(maPhieuNhap) == null; // kiểm tra mã xem đã tồn tại trong danh sách chưa
+            check = (ttds.layPhanTuVoi(maPhieuNhap) == null); // kiểm tra mã xem đã tồn tại trong danh sách chưa
             if (!check) System.out.print("Ma phieu nhap da ton tai, moi nhap lai: ");
         } while (!check);
     }
@@ -134,7 +136,6 @@ public class PhieuNhap extends PhanTu {
         sc.nextLine();
         do
         {
-            
             maNV = sc.nextLine();
             check = (dsnv.layPhanTuVoi(maNV) == null); // kiểm tra mã xem đã tồn tại trong danh sách chưa
             if (check) System.out.print("Ma nhan vien ko ton tai, moi nhap lai: ");
@@ -152,6 +153,7 @@ public class PhieuNhap extends PhanTu {
     public void setNgaynhap() {
         System.out.print("Nhap ngay lap phieu nhap: ");
         boolean check = false;
+        sc.nextLine();
         do
         {
             ngaynhap = sc.nextLine();

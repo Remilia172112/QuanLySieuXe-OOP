@@ -30,8 +30,8 @@ public class DanhSachHoaDon implements DanhSachChung {
         
         dsHoaDon = new HoaDon[soLuong];
         HoaDon hd;
-        SanPham sp;
-        SanPham[] dssp;
+        Xe sp;
+        Xe[] dssp;
         String[] lArr;
         int k = 0, m, slsp=0;
         // khởi tạo các đối tượng từ các class danh sách trung tâm
@@ -58,9 +58,9 @@ public class DanhSachHoaDon implements DanhSachChung {
             hd.setPhThThanhToan(lArr[m++]);
             
             // đọc danh sách sản phẩm
-            dssp = new SanPham[slsp];
+            dssp = new Xe[slsp];
             for(int j=0;j<slsp;j++) {
-                sp = (SanPham) ttdssp.layPhanTuVoi(lArr[m++]);
+                sp = (Xe) ttdssp.layPhanTuVoi(lArr[m++]);
                 sp.setSoLuong(Integer.parseInt(lArr[m++]));
                 dssp[j] = sp;
             }
@@ -76,15 +76,15 @@ public class DanhSachHoaDon implements DanhSachChung {
         String tenFile = "dshd.txt";
         FileHandler.resetFile(tenFile);
         FileHandler.ghiFile(soLuong+"", tenFile);
-        SanPham[] dssp;
+        Xe[] dssp;
         
         for(int i=0;i<soLuong;i++) {
             // đọc từng phần tử từ mảng dsHoaDon
             hd = (HoaDon) dsHoaDon[i];
             // khởi tạo dssp và đọc từng phần tử của danh sách
-            dssp = new SanPham[hd.getSoLuongSanPham()];
+            dssp = new Xe[hd.getSoLuongSanPham()];
             for(int j=0;j<dssp.length;j++) {
-                dssp[j] = (SanPham) hd.getDsSanPham()[j];
+                dssp[j] = (Xe) hd.getDsSanPham()[j];
             }
             FileHandler.themHd(hd.getSoHoaDon(),hd.getSoLuongSanPham(), hd.getTongTien(),
                     hd.getKhachHang().getMaKhachHang(),

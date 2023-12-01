@@ -2,16 +2,16 @@ package DanhSach;
 
 import File.FileHandler;
 import HangHoa.PhanTu;
-import HangHoa.SanPham;
+import HangHoa.Xe;
 import KiemTra.KiemTra;
 
 public class DanhSachCTPhieuNhap {
     
     private int soLuong;
-    private SanPham[] dsSanPham;
+    private Xe[] dsXe;
 
     public DanhSachXe() {
-        dsSanPham = getdsSanPham();
+        dsXe = getdsSanPham();
     }
 
     public int getsoLuong(){
@@ -22,7 +22,7 @@ public class DanhSachCTPhieuNhap {
         this.soLuong = soLuong;
     }
 
-    public SanPham[] getdsSanPham() { // đọc từ file
+    public Xe[] getdsSanPham() { // đọc từ file
         String data = FileHandler.docFile("./dssp.txt");
         String[] dArr = data.split("\n"); // tạo mảng từ file
 
@@ -31,8 +31,8 @@ public class DanhSachCTPhieuNhap {
             setSoLuong(0);
         else
             setSoLuong(Integer.parseInt(dArr[0]));
-        dsSanPham = new SanPham[soLuong];
-        SanPham sp;
+        dsXe = new Xe[soLuong];
+        Xe sp;
         int k = 0, m;
         String []lArr;
 
@@ -41,7 +41,7 @@ public class DanhSachCTPhieuNhap {
 
             m = 0;
 
-            sp = new SanPham();
+            sp = new Xe();
 
             sp.setMaSanPham(lArr[m++]);
 
@@ -55,24 +55,24 @@ public class DanhSachCTPhieuNhap {
 
             sp.setPrice(Integer.parseInt(lArr[m++]));
 
-            dsSanPham[k++] = sp;
+            dsXe[k++] = sp;
         }
 
-        return dsSanPham;
+        return dsXe;
     }
-    public void setdsSanPham( SanPham[] dsSanPham){ // ghi file
-        SanPham sp;
+    public void setdsSanPham( Xe[] dsXe){ // ghi file
+        Xe sp;
         String tenFile = "./dssp.txt";
         FileHandler.resetFile(tenFile);
         FileHandler.ghiFile(soLuong+"", tenFile);
 
         for(int i=0;i<soLuong;i++) {
-            sp = (SanPham) dsSanPham[i];
+            sp = (Xe) dsXe[i];
             FileHandler.themSP(sp.getMaSanPham(), sp.getTenSanPham(), sp.getThuongHieu(), sp.getNoiSanXuat(),
                     sp.getSoLuong(), sp.getPrice());
         }
 
-        this.dsSanPham = (SanPham[]) dsSanPham;
+        this.dsXe = (Xe[]) dsXe;
     }
     @Override
     public void nhapDanhSach() {
@@ -80,17 +80,17 @@ public class DanhSachCTPhieuNhap {
         System.out.print("Moi nhap so luong san pham: ");
 
         soLuong = KiemTra.checkNumber();;
-        dsSanPham = new SanPham[soLuong];
+        dsXe = new Xe[soLuong];
 
         int stt, soLuongTemp=0, soLuongCurrent = soLuong;
 
         for(int i=0;i<soLuongCurrent;i++){
-            dsSanPham[i] = new SanPham();
+            dsXe[i] = new Xe();
             stt = i+1;
             System.out.println("San pham thu "+stt+": ");
-            dsSanPham[i].nhap();
+            dsXe[i].nhap();
             soLuong = ++soLuongTemp;
-            setdsSanPham(dsSanPham);
+            setdsSanPham(dsXe);
         }
     }
 
@@ -100,19 +100,19 @@ public class DanhSachCTPhieuNhap {
         System.out.println("=== Danh sach san pham ===");
         System.out.printf("%-20s %-30s %-20s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
         for(int i=0;i<soLuong;i++) {
-            dsSanPham[i].xuat();
+            dsXe[i].xuat();
         }
         System.out.println();
     }
 
     @Override
     public void themVaoDanhSach(PhanTu pt) {
-        SanPham[] dsSanPhamTemp = new SanPham[soLuong+1];
+        Xe[] dsXeTemp = new Xe[soLuong+1];
         for(int i=0;i<soLuong;i++)
-            dsSanPhamTemp[i] = dsSanPham[i];
-        dsSanPhamTemp[soLuong] = (SanPham) pt;
+            dsXeTemp[i] = dsXe[i];
+        dsXeTemp[soLuong] = (Xe) pt;
         soLuong++;
-        setdsSanPham(dsSanPhamTemp);
+        setdsSanPham(dsXeTemp);
     }
 
     @Override
@@ -122,7 +122,7 @@ public class DanhSachCTPhieuNhap {
         PhanTu pt;
         for(int i=0;i<sl;i++)
         {
-            pt = new SanPham();
+            pt = new Xe();
             pt.nhap();
             themVaoDanhSach(pt);
         }
@@ -133,7 +133,7 @@ public class DanhSachCTPhieuNhap {
         System.out.println("Tim san pham can chinh sua: ");
         int viTri = timViTriPhanTu();
 
-        SanPham[] dssp = getdsSanPham();
+        Xe[] dssp = getdsSanPham();
 
         if (viTri != -1) {
             dssp[viTri].suaThongTin();
@@ -149,15 +149,15 @@ public class DanhSachCTPhieuNhap {
         int viTri = timViTriPhanTu();
         // Nếu tìm thấy
         if (viTri != -1) {
-            SanPham[] dsSanPhamTemp = new SanPham[soLuong-1];
+            Xe[] dsXeTemp = new Xe[soLuong-1];
 
             for(int i=0, k=0;i<soLuong;i++) {
                 if (i==viTri) continue;// bỏ phần tử
-                dsSanPhamTemp[k++] = getdsSanPham()[i];
+                dsXeTemp[k++] = getdsSanPham()[i];
             }
 
             soLuong--;
-            setdsSanPham(dsSanPhamTemp);
+            setdsSanPham(dsXeTemp);
         } else System.out.println("Khong tim thay san pham!");
     }
 
@@ -181,23 +181,23 @@ public class DanhSachCTPhieuNhap {
         chon = KiemTra.checkNumber();;
         chon = (chon != 2) ? 1 : 2;
 
-        SanPham[] dsSanPhamTmp = getdsSanPham();
+        Xe[] dsXeTmp = getdsSanPham();
 
         for(int i=0;i<soLuong;i++) {
             if (chon == 1) { // tìm chính xác
                 if (loai == 1)
-                    if (dsSanPhamTmp[i].getTenSanPham().equalsIgnoreCase(giaTriCanTim))
-                        return dsSanPhamTmp[i];
+                    if (dsXeTmp[i].getTenSanPham().equalsIgnoreCase(giaTriCanTim))
+                        return dsXeTmp[i];
                 if (loai == 2)
-                    if (dsSanPhamTmp[i].getMaSanPham().equalsIgnoreCase(giaTriCanTim))
-                        return dsSanPhamTmp[i];
+                    if (dsXeTmp[i].getMaSanPham().equalsIgnoreCase(giaTriCanTim))
+                        return dsXeTmp[i];
             } else {
                 if (loai == 1)
-                    if (dsSanPhamTmp[i].getTenSanPham().contains(giaTriCanTim))
-                        return dsSanPhamTmp[i];
+                    if (dsXeTmp[i].getTenSanPham().contains(giaTriCanTim))
+                        return dsXeTmp[i];
                 if (loai == 2)
-                    if (dsSanPhamTmp[i].getMaSanPham().contains(giaTriCanTim))
-                        return dsSanPhamTmp[i];
+                    if (dsXeTmp[i].getMaSanPham().contains(giaTriCanTim))
+                        return dsXeTmp[i];
             }
         }
         return null;
@@ -223,22 +223,22 @@ public class DanhSachCTPhieuNhap {
         chon = KiemTra.checkNumber();;
         chon = (chon != 2) ? 1 : 2;
 
-        SanPham[] dsSanPhamTmp = getdsSanPham();
+        Xe[] dsXeTmp = getdsSanPham();
 
         for(int i=0;i<soLuong;i++) {
             if (chon == 1) { // tìm chính xác
                 if (loai == 1)
-                    if (dsSanPhamTmp[i].getTenSanPham().equalsIgnoreCase(giaTriCanTim))
+                    if (dsXeTmp[i].getTenSanPham().equalsIgnoreCase(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsSanPhamTmp[i].getMaSanPham().equalsIgnoreCase(giaTriCanTim))
+                    if (dsXeTmp[i].getMaSanPham().equalsIgnoreCase(giaTriCanTim))
                         return i;
             } else {
                 if (loai == 1)
-                    if (dsSanPhamTmp[i].getTenSanPham().contains(giaTriCanTim))
+                    if (dsXeTmp[i].getTenSanPham().contains(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsSanPhamTmp[i].getMaSanPham().contains(giaTriCanTim))
+                    if (dsXeTmp[i].getMaSanPham().contains(giaTriCanTim))
                         return i;
             }
         }
@@ -246,9 +246,9 @@ public class DanhSachCTPhieuNhap {
     }
 
     public int timViTriSanPham(String maSanPham) { // tìm vị trí sản phẩm với mã sản phẩm
-        SanPham[] dsSanPhamTmp = getdsSanPham();
+        Xe[] dsXeTmp = getdsSanPham();
         for(int i=0;i<soLuong;i++) {
-            if (dsSanPhamTmp[i].getMaSanPham().equalsIgnoreCase(maSanPham))
+            if (dsXeTmp[i].getMaSanPham().equalsIgnoreCase(maSanPham))
                 return i;
         }
         return -1;
@@ -256,7 +256,7 @@ public class DanhSachCTPhieuNhap {
 
     @Override
     public PhanTu layPhanTuVoi(String thamSo) { // tìm phần tử cụ thể với mã sản phẩm
-        SanPham[] dssp = getdsSanPham();
+        Xe[] dssp = getdsSanPham();
         for(int i=0;i<soLuong;i++) {
             if (dssp[i].getMaSanPham().equalsIgnoreCase(thamSo))
                 return dssp[i];
@@ -267,7 +267,7 @@ public class DanhSachCTPhieuNhap {
     @Override
     public void thongKe() {
         int chon,n;
-        dsSanPham = getdsSanPham();
+        dsXe = getdsSanPham();
         do {
             System.out.println("=== Thong ke ===");
             System.out.println("1. In san pham co so luong lon hon n");
@@ -280,8 +280,8 @@ public class DanhSachCTPhieuNhap {
                     System.out.print("Nhap so luong can tim: ");
                     n = KiemTra.checkNumber();;
                     for(int i=0;i<soLuong;i++) {
-                        if(dsSanPham[i].getSoLuong() > n){
-                            dsSanPham[i].xuat();
+                        if(dsXe[i].getSoLuong() > n){
+                            dsXe[i].xuat();
                         }
                     }
                     break;
@@ -289,8 +289,8 @@ public class DanhSachCTPhieuNhap {
                     System.out.print("Nhap gia ban can tim: ");
                     n = KiemTra.checkNumber();;
                     for(int i=0;i<soLuong;i++) {
-                        if(dsSanPham[i].getPrice() > n){
-                            dsSanPham[i].xuat();
+                        if(dsXe[i].getPrice() > n){
+                            dsXe[i].xuat();
                         }
                     }
                     break;
