@@ -39,13 +39,9 @@ public class HoaDon extends PhanTu {
             System.out.println("Ban co muon xuat ra man hinh danh sach khach hang khong? (1 - in, 0 - khong)");
             chon = Integer.parseInt(sc.nextLine());
             chon = (chon==0) ? 0 : 1;
-
             if (chon == 1) ttdss.xuatDanhSach();
-
             System.out.print("Nhap ma khach hang: ");
             maKhachHang = sc.nextLine();
-           
-            
             pt = ttdss.layPhanTuVoi(maKhachHang);
             if (pt == null) {
                 System.out.println("Khong tim thay khach hang!");
@@ -83,7 +79,9 @@ public class HoaDon extends PhanTu {
         
         SanPham pt, timThay;
         int slcl, vtsp, stt;
-        
+        System.out.println("Ban co muon xuat ra man hinh danh sach xe khong? (1 - in, 0 - khong)");
+        int chon = Integer.parseInt(sc.nextLine());
+        if (chon == 1) ttds.xuatDanhSach();
         for(int i=0;i<soLuongSanPham;i++) {
             stt=i+1;
             System.out.println("Them san pham thu "+stt);
@@ -176,7 +174,7 @@ public class HoaDon extends PhanTu {
         
         dsSanPham = dssp;
     }
-   
+
     public int getSoHoaDon() {
         return soHoaDon;
     }
@@ -270,10 +268,10 @@ public class HoaDon extends PhanTu {
                     phThThanhToan = "CK_NganHang";
                     break;
                 case 3:
-                     phThThanhToan = "CK_TinDung";
+                    phThThanhToan = "CK_TinDung";
                     break;
                 case 4:
-                     phThThanhToan = "CK_ViDienTu";
+                    phThThanhToan = "CK_ViDienTu";
                     break;
                 default:
                     chon = 0;

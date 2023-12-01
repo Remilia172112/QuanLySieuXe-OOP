@@ -1,6 +1,7 @@
 package Nguoi;
 
 import DanhSach.DanhSachNhanVien;
+import DanhSach.DanhSachTaiKhoan;
 import HangHoa.PhanTu;
 import KiemTra.KiemTra;
 public class TaiKhoan extends PhanTu {
@@ -27,15 +28,27 @@ public class TaiKhoan extends PhanTu {
     }
 
     public void setUsername() {
-        System.out.print("Nhap tai khoan: ");
-        DanhSachNhanVien ttds = new DanhSachNhanVien();
+        DanhSachNhanVien dsnv = new DanhSachNhanVien();
+        DanhSachTaiKhoan dstk = new DanhSachTaiKhoan();
+        dsnv.xuatDanhSach();
+        System.out.print("Nhap ma so nhan vien muon tao tai khoan: ");
         boolean check = false;
         do {
             check = true;
             username = sc.nextLine();
-            check = ttds.layPhanTuVoi(username) == null;
-            if (!check) System.out.print("Ma nhan vien da ton tai, moi nhap lai: ");
             check = KiemTra.check_maso(username);
+            if(check) {
+                check = dstk.layPhanTuVoi(username) == null;
+                if (!check) System.out.print("Nhan vien da co tai khoan!! Hay nhap lai: ");
+            }
+            if(check) {
+                check = dsnv.layPhanTuVoi(username) != null;
+                if (!check) {
+                    System.out.print("Ma nhan vien khong ton tai!! Ban co muon them nhan vien moi (1/0): ");
+                    int chon = Integer.parseInt(sc.nextLine());
+                    if(chon == 1) dsnv.themPhanTuVaoDanhSach();
+                }
+            }
         }
         while (!check);
     }
@@ -68,12 +81,12 @@ public class TaiKhoan extends PhanTu {
     }
 
     public void setType() {
-        System.out.print("Nhap loai tai khoan (admin/quan ly/nhan vien): ");
+        System.out.print("Nhap loai tai khoan (quan ly/nhan vien): ");
         boolean check = false;
         do {
             check = true;
             type = sc.nextLine();
-            if(type == "admin" || type == "quan ly" || type == "nhan vien") check = true;
+            if(type == "quan ly" || type == "nhan vien") check = true;
             else check = false;
         }
         while (!check);
@@ -107,6 +120,9 @@ public class TaiKhoan extends PhanTu {
             System.out.print("Nhap lua chon: ");
             chon = KiemTra.checkNumber();;
             switch (chon) {
+                case 0:
+                    System.out.println("Thoat sua thong tin!!!");
+                    break;
                 case 1:
                     System.out.println("Thong tin hien tai: " + getUsername());
                     setUsername();
@@ -120,8 +136,7 @@ public class TaiKhoan extends PhanTu {
                     setType();
                     break;
                 default:
-                    chon = 0;
-                    System.out.println("Thoat sua thong tin!!!");
+                    System.out.println("Hay nhap so co trong menu");
                     break;
             }
 

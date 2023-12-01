@@ -4,7 +4,7 @@ import File.FileHandler;
 import HangHoa.PhanTu;
 import HangHoa.NhaCungCap;
 
-public class DanhSachNhaCungCap implements DanhSachChung{
+public class DanhSachNhaCungCap implements DanhSachChung {
     private int soLuong;
     private NhaCungCap[] dsNhaCC;
 

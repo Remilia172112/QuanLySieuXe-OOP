@@ -54,7 +54,7 @@ public class DanhSachHoaDon implements DanhSachChung {
             hd.setTongTien(Integer.parseInt(lArr[m++]));
             
             hd.setKhachHang((KhachHang) ttdskh.layPhanTuVoi(lArr[m++]));
-                        
+            
             hd.setPhThThanhToan(lArr[m++]);
             
             // đọc danh sách sản phẩm
@@ -116,6 +116,10 @@ public class DanhSachHoaDon implements DanhSachChung {
 
     @Override
     public void xuatDanhSach() {
+        if(soLuong == 0) {
+            System.out.println("Chua co hoa don nao!!");
+            return;
+        }
         System.out.println("=== Danh sach hoa don ===");
         for(int i=0;i<soLuong;i++) {
             dsHoaDon[i].xuat();

@@ -85,7 +85,7 @@ public class NhanVien extends Nguoi {
             thang = KiemTra.checkNumber();;
             System.out.print("Nhap nam: ");
             nam = KiemTra.checkNumber();;
-            if (ngay <= 0 || ngay > 31) {
+            if (ngay <= 0 | ngay > 31) {
                 check = false;
                 System.out.println("Ngay khong hop le!");
             }
@@ -234,8 +234,8 @@ public class NhanVien extends Nguoi {
         super.nhap();
     }
     public void xuat() {
-        System.out.printf("%-25s %-25s %-25s %-25s %-20s %-50s %-20s %-25s\n", "Ma nhan vien", "Ho ten", "Gioi tinh", "Ngay sinh", "CCCD", "Dia chi", "So dien thoai", "Email");
-        System.out.printf("%-25s ", getManhanvien());
+        System.out.printf("%-20s %-25s %-15s %-15s %-15s %-40s %-15s %-15s\n", "Ma nhan vien", "Ho ten", "Gioi tinh", "Ngay sinh", "CCCD", "Dia chi", "So dien thoai", "Email");
+        System.out.printf("%-20s ", getManhanvien());
         super.xuat();
         System.out.printf("\n%-25s %-25s %-30s %-10s %-10s %-10s\n", "Ngay vao lam", "He so luong",
                 "So ngay nghi trong thang", "Luong", "Thuong", "Hang");
@@ -266,6 +266,9 @@ public class NhanVien extends Nguoi {
             System.out.print("Nhap lua chon: ");
             chon = KiemTra.checkNumber();;
             switch (chon) {
+                case 0:
+                    System.out.println("Thoat sua thong tin!!");
+                    break;
                 case 1:
                     System.out.println("Thong tin hien tai: " + getHoten());
                     setHoten();
@@ -308,9 +311,9 @@ public class NhanVien extends Nguoi {
                     setSongaynghitrongthang();
                     break;
                 default:
-                    chon = 0;
+                    System.out.println("Hay nhap so co trong menu");
                     break;
             }
-        } while (chon == 0);
+        } while (chon != 0);
     }
 }

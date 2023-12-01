@@ -83,7 +83,7 @@ public class FileHandler {
     // thêm hoá đơn vào file dshd.txt
     public static void themHd(int soHoaDon, int soLuongSanPham, int tongTien, int maKhachHang, 
                         String phThThanhToan, SanPham[] dssp) {
-         String tmp = soHoaDon+"#"+soLuongSanPham+"#"+tongTien+"#"+maKhachHang+"#"+phThThanhToan+"#";
+        String tmp = soHoaDon+"#"+soLuongSanPham+"#"+tongTien+"#"+maKhachHang+"#"+phThThanhToan+"#";
     
         for(int i=0;i<dssp.length;i++)
         {
@@ -155,7 +155,6 @@ public class FileHandler {
                             dsMaSp = new String[]{"ROADSTER01","ROADSTER02","ROADSTER03","ROADSTER04" , "ROADSTER05"};
                             themDmSP("ROADSTER", "Xe Mui tran", 5, dsMaSp);
                             // 3
-
                             break;
                         case 5:
                             break;

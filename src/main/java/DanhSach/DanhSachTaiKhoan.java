@@ -88,6 +88,13 @@ public class DanhSachTaiKhoan implements DanhSachChung {
         return check;
     }
 
+    public void themPhanTuVaoDanhSach() {    
+        PhanTu pt;
+        pt = new TaiKhoan();
+        pt.nhap();
+        themVaoDanhSach(pt);
+    }
+
     @Override
     public void nhapDanhSach(){
         FileHandler.resetFile("dstk.txt");

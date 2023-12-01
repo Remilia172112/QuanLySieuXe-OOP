@@ -1,12 +1,13 @@
 import DanhSach.*;
 import HangHoa.PhanTu;
+import Nguoi.NhanVien;
 import Nguoi.TaiKhoan;
 import KiemTra.KiemTra;
 
 import java.util.Scanner;
 public class XuLy {
     private static Scanner sc = new Scanner(System.in);
-
+    static String username;
     public static void xuLyTrungTam() {
         int chon;
         DanhSachTaiKhoan dstk = new DanhSachTaiKhoan();
@@ -31,10 +32,12 @@ public class XuLy {
                     if(tk != null) {
                         System.out.println("Dang nhap thanh cong!!!");
                         if(tk.getType().equals("nhan vien")) {
+                            username = user;
                             MenuNV();
                             chon = 0;
                         }
                         if(tk.getType().equals("quan ly")) {
+                            username = user;
                             MenuQL();
                             chon = 0;
                         }
@@ -50,17 +53,22 @@ public class XuLy {
         DanhSachXe dsx = new DanhSachXe();
         DanhSachKhachHang dskh = new DanhSachKhachHang();
         DanhSachHoaDon dshd = new DanhSachHoaDon() ;
+        DanhSachNhanVien dsnv = new DanhSachNhanVien();
+        NhanVien nv = (NhanVien) dsnv.layPhanTuVoi(username);
         int chon;
         System.out.println("***** Chuong Trinh Quan Ly Cua Hang Sieu Xe Version Nhan vien *****");
         do {
             System.out.println("==============================");
-            System.out.println("1. Tao hoa don moi");
-            System.out.println("2. In danh sach hoa don");
-            System.out.println("3. Tao phieu nhap moi");
-            System.out.println("4. In danh sach phieu nhap");
-            System.out.println("5. Them khach hang moi");
-            System.out.println("6. In danh sach khach hang");
-            System.out.println("7. In danh sach xe");
+            System.out.println("Xin chao " + nv.getHoten());
+            System.out.println("1. Xem thong tin tai khoan");
+            System.out.println("2. Sua thong tin tai khoan");
+            System.out.println("3. Tao hoa don moi");
+            System.out.println("4. In danh sach hoa don");
+            System.out.println("5. Tao phieu nhap moi");
+            System.out.println("6. In danh sach phieu nhap");
+            System.out.println("7. Them khach hang moi");
+            System.out.println("8. In danh sach khach hang");
+            System.out.println("9. In danh sach xe");
             System.out.println("0. Thoat chuong trinh");
             System.out.println("==============================");
             System.out.print("Moi chon: ");
@@ -71,22 +79,29 @@ public class XuLy {
                 System.out.println("Cam on ban da su dung chuong trinh");
                 break;
             case 1:
-                dshd.themKPhanTuVaoDanhSach();
+                nv.xuat();
                 break;
             case 2:
-                dshd.xuatDanhSach();
+                dsnv.chinhSuaThongTinPhanTu(username);
+                nv = (NhanVien) dsnv.layPhanTuVoi(username);
                 break;
             case 3:
+                dshd.themKPhanTuVaoDanhSach();
                 break;
             case 4:
+                dshd.xuatDanhSach();
                 break;
             case 5:
-                dskh.themKPhanTuVaoDanhSach();
                 break;
             case 6:
-                dskh.xuatDanhSach();
                 break;
             case 7:
+                dskh.themKPhanTuVaoDanhSach();
+                break;
+            case 8:
+                dskh.xuatDanhSach();
+                break;
+            case 9:
                 dsx.xuatDanhSach();
                 break;
             default:
@@ -96,18 +111,23 @@ public class XuLy {
         }while (chon!=0);
     }
     public static void MenuQL() {
+        DanhSachNhanVien dsnv = new DanhSachNhanVien();
+        NhanVien nv = (NhanVien) dsnv.layPhanTuVoi(username);
         int chon;
         System.out.println("***** Chuong Trinh Quan Ly Cua Hang Sieu Xe Version Quan ly *****");
         do {
             System.out.println("==============================");
-            System.out.println("1. Quan ly danh sach xe");
-            System.out.println("2. Quan ly danh sach nha cung cap");
-            System.out.println("3. Quan ly danh sach nhan vien");
-            System.out.println("4. Quan ly danh sach khach hang");
-            System.out.println("5. Quan ly danh sach tai khoan");
-            System.out.println("6. Quan ly danh sach phieu nhap");
-            System.out.println("7. Quan ly danh sach hoa don");
-            System.out.println("8. Quan ly danh sach Dong Xe");
+            System.out.println("Xin chao " + nv.getHoten());
+            System.out.println("1.  Xem thong tin tai khoan");
+            System.out.println("2.  Sua thong tin tai khoan");
+            System.out.println("3.  Quan ly danh sach xe");
+            System.out.println("4.  Quan ly danh sach dong Xe");
+            System.out.println("5.  Quan ly danh sach nha cung cap");
+            System.out.println("6.  Quan ly danh sach nhan vien");
+            System.out.println("7.  Quan ly danh sach khach hang");
+            System.out.println("8.  Quan ly danh sach tai khoan");
+            System.out.println("9.  Quan ly danh sach hoa don");
+            System.out.println("10. Quan ly danh sach phieu nhap");
             System.out.println("0. Thoat chuong trinh");
             System.out.println("==============================");
             System.out.print("Moi chon: ");
@@ -117,30 +137,37 @@ public class XuLy {
                     System.out.println("Cam on ban da su dung chuong trinh");
                     break;
                 case 1:
+                    nv.xuat();
+                    break;
+                case 2:
+                    dsnv.chinhSuaThongTinPhanTu(username);
+                    nv = (NhanVien) dsnv.layPhanTuVoi(username);
+                break;
+                case 3:
                     quanLyDSX();
                     chon = 0;
                     break;
-                case 2:
+                case 4:
+                    quanLyDSDanhMucSP();
                     break;
-                case 3:
+                case 5:
+                    break;
+                case 6:
                     quanLyDSNV();
                     chon = 0;
                     break;
-                case 4:
+                case 7:
                     quanLyDSKH();
                     chon = 0;
                     break;
-                case 5:
+                case 8:
                     quanLyDSTK();
                     chon = 0;
                     break;
-                case 6:
-                    break;
-                case 7:
+                case 9:
                     quanLyDSHD();
                     break;
-                case 8:
-                    quanLyDSDanhMucSP();
+                case 10:
                     break;
                 default:
                     System.out.println("Hay nhap so co trong menu");
@@ -331,7 +358,7 @@ public class XuLy {
         do {
             chon = Integer.parseInt(sc.nextLine());
             if (dssp.getsoLuong() == 0) {
-                System.out.println("Vui long nhap danh sach san pham truoc khi quan ly danh muc!");
+                System.out.println("Vui long nhap danh sach xe truoc khi quan ly danh muc!");
                 chon = 0;
             }
             switch (chon) {
@@ -377,7 +404,7 @@ public class XuLy {
             chon = Integer.parseInt(sc.nextLine());
             // chỉ cho phép thao tác nếu đã có danh sách sản phẩm
             if (dssp.getsoLuong() == 0) {
-                System.out.println("Vui long nhap danh sach san pham truoc khi quan ly hoa don!");
+                System.out.println("Vui long nhap danh sach xe truoc khi quan ly hoa don!");
                 chon = 0;
             }
             switch (chon) {

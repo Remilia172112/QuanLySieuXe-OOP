@@ -1,5 +1,6 @@
 package Nguoi;
 import DanhSach.DanhSachKhachHang;
+import DanhSach.DanhSachXe;
 import KiemTra.KiemTra;
 import ThanhToan.ThanhToan;
 
@@ -7,6 +8,7 @@ public class KhachHang extends Nguoi {
     private int soDonHangDaThanhToan;
     private int tongTienDaThanhToan;
     private int maKhachHang;
+    private String[] dsmspDamua;
     private ThanhToan phThThanhToan = null;
 
     public KhachHang() {
@@ -83,6 +85,40 @@ public class KhachHang extends Nguoi {
         }
     }
 
+    public String[] getDsmspDamua() {
+        return dsmspDamua;
+    }
+
+    public void setDsmspDamua(String[] dsmspDamua) {
+        this.dsmspDamua = dsmspDamua;
+    }
+
+    public void setDsmspDamua() {
+        System.out.println("Nhap day cac ma san pham da mua, phan cach boi dau cham phay (;):");
+
+        String dsMaSP;
+
+        String[] dsMaSpArr;
+
+        DanhSachXe ttds = new DanhSachXe(); // tạo đối tượng DanhSachSanPham
+
+        boolean check;
+        do {
+            check = true;
+            dsMaSP = sc.nextLine(); // đọc từ input
+            dsMaSpArr = dsMaSP.split(";"); // tách thành mảng bởi dấu ;
+
+            for(int i=0;i<dsMaSpArr.length;i++) // ứng với từng phần tử mảng
+                if (ttds.layPhanTuVoi(dsMaSpArr[i]) == null){ // nếu không tìm thấy
+                    check = false;
+                    System.out.println("Khong tim thay ma san pham tai vi tri thu "+i);
+                    break;
+            }
+            if (!check) System.out.println("Day cac ma san pham khong hop le, hay nhap lai!");
+        } while (!check);
+        setDsmspDamua(dsMaSpArr);
+    }
+
     @Override
     public void nhap() {
         setMaKhachHang();
@@ -90,8 +126,8 @@ public class KhachHang extends Nguoi {
         setPhThThanhToan();
     }
     public void xuat() {
-        System.out.printf("%-25s %-25s %-25s %-25s %-20s %-50s %-20s %-25s\n", "Ma khach hang", "Ho ten", "Gioi tinh", "Ngay sinh", "CCCD", "Dia chi", "So dien thoai", "Email");
-        System.out.printf("%-25s ", getMaKhachHang());
+        System.out.printf("%-20s %-25s %-15s %-15s %-15s %-40s %-15s %-15s\n", "Ma khach hang", "Ho ten", "Gioi tinh", "Ngay sinh", "CCCD", "Dia chi", "So dien thoai", "Email");
+        System.out.printf("%-20s ", getMaKhachHang());
         super.xuat();
         System.out.println();
         if (phThThanhToan != null) phThThanhToan.xuat();
@@ -116,6 +152,9 @@ public class KhachHang extends Nguoi {
             System.out.print("Nhap lua chon: ");
             chon = KiemTra.checkNumber();;
             switch (chon) {
+                case 0:
+                    System.out.println("Thoat sua thong tin!!");
+                    break;
                 case 1:
                     System.out.println("Thong tin hien tai: " + getHoten());
                     setHoten();
@@ -149,10 +188,9 @@ public class KhachHang extends Nguoi {
                     setPhThThanhToan();
                     break;
                 default:
-                    chon = 0;
+                    System.out.println("Hay nhap so co trong menu");
                     break;
             }
-            if (chon==0) System.out.println("Hay chon lai!");
-        } while(chon==0);
+        } while(chon != 0);
     }
 }
