@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import HangHoa.SanPham;
+import HangHoa.Xe;
 
 public class FileHandler {
     private static Scanner fr;
@@ -82,7 +82,7 @@ public class FileHandler {
     }
     // thêm hoá đơn vào file dshd.txt
     public static void themHd(int soHoaDon, int soLuongSanPham, int tongTien, int maKhachHang, 
-                        String phThThanhToan, SanPham[] dssp) {
+                        String phThThanhToan, Xe[] dssp) {
          String tmp = soHoaDon+"#"+soLuongSanPham+"#"+tongTien+"#"+maKhachHang+"#"+phThThanhToan+"#";
     
         for(int i=0;i<dssp.length;i++)
