@@ -49,6 +49,7 @@ public class XuLy {
     public static void MenuNV() {
         DanhSachXe dsx = new DanhSachXe();
         DanhSachKhachHang dskh = new DanhSachKhachHang();
+        DanhSachHoaDon dshd = new DanhSachHoaDon() ;
         int chon;
         System.out.println("***** Chuong Trinh Quan Ly Cua Hang Sieu Xe Version Nhan vien *****");
         do {
@@ -70,6 +71,7 @@ public class XuLy {
                 System.out.println("Cam on ban da su dung chuong trinh");
                 break;
             case 1:
+                dshd.themKPhanTuVaoDanhSach();
                 break;
             case 2:
                 break;
@@ -98,21 +100,18 @@ public class XuLy {
         do {
             System.out.println("==============================");
             System.out.println("1. Quan ly danh sach xe");
-<<<<<<< HEAD
             System.out.println("2. Quan ly danh sach nha cung cap");
             System.out.println("3. Quan ly danh sach nhan vien");
             System.out.println("4. Quan ly danh sach khach hang");
             System.out.println("5. Quan ly danh sach tai khoan");
             System.out.println("6. Quan ly danh sach phieu nhap");
             System.out.println("7. Quan ly danh sach hoa don");
-=======
             System.out.println("2. Quan ly danh sach nhan vien");
             System.out.println("3. Quan ly danh sach khach hang");
             System.out.println("4. Quan ly danh sach tai khoan");
             System.out.println("5. Quan ly danh sach phieu nhap");
             System.out.println("6. Quan ly danh sach hoa don");
             System.out.println("7. Quan ly danh sach Dong Xe");
->>>>>>> 48dd0bdf64bd7bff0d75cd53fe7bb9f45ce1962c
             System.out.println("0. Thoat chuong trinh");
             System.out.println("==============================");
             System.out.print("Moi chon: ");
@@ -139,19 +138,10 @@ public class XuLy {
                     quanLyDSTK();
                     chon = 0;
                     break;
-<<<<<<< HEAD
-                case 6:
-                    break;
-                case 7:
-=======
-                case 5:
-                    quanLyDSDanhMucSP();
-                    break;
                 case 6:
                     break;
                 case 7:
                     quanLyDSDanhMucSP();
->>>>>>> 48dd0bdf64bd7bff0d75cd53fe7bb9f45ce1962c
                     break;
                 default:
                     System.out.println("Hay nhap so co trong menu");
