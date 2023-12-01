@@ -366,13 +366,13 @@ public class HoaDon extends PhanTu {
 
     @Override
     public void xuat() {
-        System.out.printf("%-20s %-20s %-20s %-25s %-25s %-30s\n", "So hoa don", "So luong san pham", "Tong tien", "Ten khach hang", "Ten thu ngan", "Phuong thuc thanh toan");
-        System.out.printf("%-20s %-20s %-20s %-25s %-25s %-30s \n", soHoaDon, soLuongSanPham, tongTien, khachHang.getHoten(), phThThanhToan);
-        System.out.println("Danh sach san pham: ");
-        System.out.printf("%-20s %-50s %-20s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
+        System.out.printf("%-20s %-20s %-20s %-25s %-30s\n", "So hoa don", "So luong san pham", "Tong tien", "Ten khach hang", "Phuong thuc thanh toan");
+        System.out.printf("%-20s %-20s %-20s %-25s %-30s \n", soHoaDon, soLuongSanPham, tongTien, khachHang.getHoten(), phThThanhToan);
+        System.out.println("\nDanh sach san pham: \n");
+        System.out.printf("%-20s %-30s %-20s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
         for(int i=0;i<dsSanPham.length;i++)
-            dsSanPham[i].xuat();
-        System.out.println("**************************");
+        dsSanPham[i].xuat();
+        System.out.println("\n**************************");
     }
 
     @Override

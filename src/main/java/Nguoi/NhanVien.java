@@ -239,7 +239,7 @@ public class NhanVien extends Nguoi {
         super.xuat();
         System.out.printf("\n%-25s %-25s %-30s %-10s %-10s %-10s\n", "Ngay vao lam", "He so luong",
                 "So ngay nghi trong thang", "Luong", "Thuong", "Hang");
-        System.out.printf("\n%-25s %-25s %-30s %-10s %-10s %-10s\n", getNgayvaolam(), getHesoluong(),
+        System.out.printf("%-25s %-25s %-30s %-10s %-10s %-10s\n", getNgayvaolam(), getHesoluong(),
                 getSongaynghitrongthang(), getLuong(), getThuong(), getHang());
         System.out.println("***");
     }

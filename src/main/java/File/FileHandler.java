@@ -100,7 +100,7 @@ public class FileHandler {
             f[2] = new File("dskh.txt");
             f[3] = new File("dstk.txt");
             f[4] = new File("dsdmsp.txt");
-            f[5] = new File("dshd.text");
+            f[5] = new File("dshd.txt");
             String tenFile = "";
             for (int i = 0; i < f.length; i++) {
                 if (f[i].createNewFile()) {
