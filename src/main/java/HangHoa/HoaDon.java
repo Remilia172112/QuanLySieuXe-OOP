@@ -5,13 +5,13 @@ import Nguoi.*;
 import ThanhToan.*;
 
 public class HoaDon extends PhanTu {
-   private int soHoaDon;
-   private int soLuongSanPham;
-   private int tongTien = 0;
-   private String phThThanhToan;
-   private KhachHang khachHang;
-   private SanPham[] dsSanPham;
-   public static Scanner sc = new Scanner(System.in);
+    private int soHoaDon;
+    private int soLuongSanPham;
+    private int tongTien = 0;
+    private String phThThanhToan;
+    private KhachHang khachHang;
+    private SanPham[] dsSanPham;
+    public static Scanner sc = new Scanner(System.in);
     public HoaDon() {
     }
 

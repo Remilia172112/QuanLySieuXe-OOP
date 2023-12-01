@@ -1,7 +1,7 @@
 package HangHoa;
 import DanhSach.DanhSachXe;
 import KiemTra.KiemTra;
-public class DongXe extends PhanTu{
+public class DongXe extends PhanTu {
     private String maDanhMuc;
     private String tenDanhMuc;
     private int soLuong;

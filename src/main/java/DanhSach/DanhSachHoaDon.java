@@ -88,7 +88,7 @@ public class DanhSachHoaDon implements DanhSachChung {
             }
             FileHandler.themHd(hd.getSoHoaDon(),hd.getSoLuongSanPham(), hd.getTongTien(),
                     hd.getKhachHang().getMaKhachHang(),
-                     hd.getPhThThanhToan(), dssp);
+                    hd.getPhThThanhToan(), dssp);
         }
         this.dsHoaDon = (HoaDon[])dsHoaDon;
     }
