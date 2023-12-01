@@ -1,7 +1,5 @@
 package DanhSach;
 
-import java.io.IOException;
-
 import File.FileHandler;
 import HangHoa.*;
 import KiemTra.KiemTra;

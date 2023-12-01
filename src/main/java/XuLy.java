@@ -53,12 +53,8 @@ public class XuLy {
         DanhSachXe dsx = new DanhSachXe();
         DanhSachKhachHang dskh = new DanhSachKhachHang();
         DanhSachHoaDon dshd = new DanhSachHoaDon() ;
-<<<<<<< HEAD
         DanhSachNhanVien dsnv = new DanhSachNhanVien();
         NhanVien nv = (NhanVien) dsnv.layPhanTuVoi(username);
-=======
-        // DanhSachPhieuNhap dspn =  new DanhSachPhieuNhap();
->>>>>>> c8c599588790dcf33f2d63f3b3ec6a532951e3f1
         int chon;
         System.out.println("***** Chuong Trinh Quan Ly Cua Hang Sieu Xe Version Nhan vien *****");
         do {
@@ -90,11 +86,7 @@ public class XuLy {
                 nv = (NhanVien) dsnv.layPhanTuVoi(username);
                 break;
             case 3:
-<<<<<<< HEAD
                 dshd.themKPhanTuVaoDanhSach();
-=======
-                // dspn.themKPhanTuVaoDanhSach();
->>>>>>> c8c599588790dcf33f2d63f3b3ec6a532951e3f1
                 break;
             case 4:
                 dshd.xuatDanhSach();
@@ -172,14 +164,7 @@ public class XuLy {
                     quanLyDSTK();
                     chon = 0;
                     break;
-<<<<<<< HEAD
                 case 9:
-=======
-                case 6:
-                    quanLyDSPN();
-                    break;
-                case 7:
->>>>>>> c8c599588790dcf33f2d63f3b3ec6a532951e3f1
                     quanLyDSHD();
                     break;
                 case 10:
