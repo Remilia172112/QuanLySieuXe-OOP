@@ -237,7 +237,7 @@ public class DanhSachNhanVien implements DanhSachChung {
     public PhanTu layPhanTuVoi(String thamSo) {
         NhanVien[] dsnv = getDsNhanVien();
         for (int i = 0; i < soLuong; i++) {
-            if (dsnv[i].getManhanvien() == thamSo)
+            if (dsnv[i].getManhanvien().equalsIgnoreCase(thamSo) )
                 return dsnv[i];
         }
         return null;
