@@ -5,13 +5,13 @@ import java.util.Scanner ;
 
 import DanhSach.DanhSachBaoHanh;
 
-public class BaoHanh extends {
-    private String soBaoHanh ;
+public class BaoHanh extends PhanTu {
+    private int soBaoHanh ;
     private int soThangBaoHanh ;
     
     public static Scanner sc = new Scanner(System.in);
 
-    LocalDay localDate = LocalDate.now();
+    LocalDate localDate = LocalDate.now();
     int ngayhientai = localDate.getDayOfMonth();
     int thanghientai = localDate.getMonthValue();;
     int namhientai = localDate.getYear();
@@ -20,12 +20,12 @@ public class BaoHanh extends {
     }
 
     
-    public String getSoBaoHanh() {
+    public int getSoBaoHanh() {
         return soBaoHanh;
     }
 
 
-    public void setSoBaoHanh(String soBaoHanh) {
+    public void setSoBaoHanh(int soBaoHanh) {
         this.soBaoHanh = soBaoHanh;
     }
 
@@ -62,8 +62,8 @@ public class BaoHanh extends {
 
     @Override
     public void nhap() {
-        setMaBaoHanh();
         /* 
+        setMaBaoHanh();
          * setSoThangBaoHanh();
          * setDongXeBaoHanh();
          * setKhachHang();
@@ -79,7 +79,7 @@ public class BaoHanh extends {
     }
 
     @Override
-    public void suaThongTing(){
+    public void suaThongTin(){
     }
 
 }

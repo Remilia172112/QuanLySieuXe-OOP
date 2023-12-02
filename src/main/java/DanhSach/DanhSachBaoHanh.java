@@ -5,7 +5,8 @@ import HangHoa.*;
 import Nguoi.*;
 
 public class DanhSachBaoHanh {
-    
+    private int soLuong;
+    private BaoHanh[] dsBaoHanh;
 
 
 
