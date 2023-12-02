@@ -32,7 +32,7 @@ public class FileHandler {
         ghiFile(tmp, "dsdmsp.txt");
     }
     //Thêm nha cung cap vào file dsncc.txt
-    public static void themNCC(String maNhaCC , String tenNhaCC , String diachi , int sdt) {
+    public static void themNCC(String maNhaCC , String tenNhaCC , String diachi , String sdt) {
         String tmp = maNhaCC + "#" + tenNhaCC + "#" + diachi + "#" + sdt;
         ghiFile(tmp, "dsncc.txt");
     }
@@ -95,7 +95,7 @@ public class FileHandler {
     }
     //Tạo file
     public static void taoCacFile() {
-        File[] f = new File[6];
+        File[] f = new File[7];
         try {
             f[0] = new File("dssp.txt");
             f[1] = new File("dsnv.txt");
@@ -103,6 +103,8 @@ public class FileHandler {
             f[3] = new File("dstk.txt");
             f[4] = new File("dsdmsp.txt");
             f[5] = new File("dshd.txt");
+            f[6] = new File("dsncc.txt");
+
             String tenFile = "";
             for (int i = 0; i < f.length; i++) {
                 if (f[i].createNewFile()) {
@@ -169,6 +171,16 @@ public class FileHandler {
                             themDmSP("VINFAST" , "Xe dien oto" , 5,48, dsMaSp);
                             break;
                         case 5:
+
+                            break;
+                        case 6:
+                            tenFile = "dsncc.txt";
+                            ghiFile("5", tenFile);
+                            themNCC("320763982","GiaNguyen","273 An Duong Vuong, P3, Q5, TP.HCM","0924832941");
+                            themNCC("320763982","TheMinh","273 An Duong Vuong, P3, Q5, TP.HCM","0924832941");
+                            themNCC("320763982","DuyTan","273 An Duong Vuong, P3, Q5, TP.HCM","0924832941");
+                            themNCC("320763982","KhoiNguyen","273 An Duong Vuong, P3, Q5, TP.HCM","0924832941");
+                            themNCC("320763982","CaoSang","273 An Duong Vuong, P3, Q5, TP.HCM","0924832941");
                             break;
                         default:
                             break;

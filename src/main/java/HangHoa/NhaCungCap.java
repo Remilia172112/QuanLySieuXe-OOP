@@ -1,16 +1,17 @@
 package HangHoa;
 
 import DanhSach.DanhSachNhaCungCap;
+import KiemTra.KiemTra;
 
 public class NhaCungCap extends PhanTu {
     private String maNhaCC ;
     private String tenNhaCC ;
     private String diachi ;
-    private int sdt ;
+    private String sdt ;
     public NhaCungCap(){
     }
 
-    public NhaCungCap(String maNhaCC , String tenNhaCC , String diachi , int sdt){
+    public NhaCungCap(String maNhaCC , String tenNhaCC , String diachi , String sdt){
         this.maNhaCC = maNhaCC ;
         this.tenNhaCC = tenNhaCC;
         this.diachi = diachi ;
@@ -47,21 +48,15 @@ public class NhaCungCap extends PhanTu {
         diachi = sc.nextLine();
     }
 
-    public void setSdt(int sdt) {
+    public void setSdt(String sdt) {
         this.sdt = sdt;
     }
     public void setSdt() {
-        System.out.print("Nhap so dien thoai cua nha cung cap: ");
-        boolean check;
+        System.out.print("Nhap so dien thoai nha cung cap: ");
+        boolean check = false;
         do {
-            check = true;
-            try {
-                sdt = Integer.parseInt(sc.nextLine());
-            } catch (Exception e) {
-                check = false;
-                System.out.print("Vui long nhap so dien thoai dung: ");
-                //them ktra sdt 
-            }
+            sdt = sc.nextLine();
+            check = KiemTra.check_sdt(sdt);
         } while (!check);
     }
 
@@ -74,7 +69,7 @@ public class NhaCungCap extends PhanTu {
     public String getDiaChi() {
         return diachi;
     }
-    public int getSdt() {
+    public String getSdt() {
         return sdt;
     }
 
