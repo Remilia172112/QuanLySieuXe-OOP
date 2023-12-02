@@ -47,7 +47,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
 
             ncc.setDiaChi(lArr[m++]);
 
-            ncc.setSdt(Integer.parseInt(lArr[m++]));
+            ncc.setSdt(lArr[m++]);
 
             dsNhaCC[k++] = ncc;
         }

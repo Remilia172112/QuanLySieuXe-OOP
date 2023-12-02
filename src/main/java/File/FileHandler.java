@@ -95,7 +95,7 @@ public class FileHandler {
     }
     //Tạo file
     public static void taoCacFile() {
-        File[] f = new File[7];
+        File[] f = new File[8];
         try {
             f[0] = new File("dssp.txt");
             f[1] = new File("dsnv.txt");
@@ -104,6 +104,8 @@ public class FileHandler {
             f[4] = new File("dsdmsp.txt");
             f[5] = new File("dshd.txt");
             f[6] = new File("dsncc.txt");
+            f[7] = new File("dspn.txt");
+
 
             String tenFile = "";
             for (int i = 0; i < f.length; i++) {
@@ -181,6 +183,9 @@ public class FileHandler {
                             themNCC("320763982","DuyTan","273 An Duong Vuong, P3, Q5, TP.HCM","0924832941");
                             themNCC("320763982","KhoiNguyen","273 An Duong Vuong, P3, Q5, TP.HCM","0924832941");
                             themNCC("320763982","CaoSang","273 An Duong Vuong, P3, Q5, TP.HCM","0924832941");
+                            break;
+                        case 7:
+                            
                             break;
                         default:
                             break;

@@ -112,7 +112,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
     }
     public void setdsSanPham( PhieuNhap[] dsPhieuNhap){ // ghi file
         PhieuNhap pn;
-        String tenFile = "./dssp.txt";
+        String tenFile = "dspn.txt";
         FileHandler.resetFile(tenFile);
         FileHandler.ghiFile(soLuong+"", tenFile);
 
