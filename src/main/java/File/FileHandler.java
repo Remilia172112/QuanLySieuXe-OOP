@@ -93,14 +93,9 @@ public class FileHandler {
         }
         ghiFile(tmp, "dshd.txt");
     }
-        // thêm hoá đơn vào file dsbh.txt
-    public static void themBh(int soBaoHanh, String maXeKhachHang, int soThangBaoHanh) {
-        String tmp = soBaoHanh+"#"+maXeKhachHang+"#"+soThangBaoHanh+"#";
-        ghiFile(tmp, "dsbh.txt");
-    }
     //Tạo file
     public static void taoCacFile() {
-        File[] f = new File[7];
+        File[] f = new File[6];
         try {
             f[0] = new File("dssp.txt");
             f[1] = new File("dsnv.txt");
@@ -165,8 +160,6 @@ public class FileHandler {
                             // 3
                             break;
                         case 5:
-                            break;
-                        case 6: 
                             break;
                         default:
                             break;
