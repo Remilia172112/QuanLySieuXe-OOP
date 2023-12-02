@@ -85,8 +85,8 @@ public class FileHandler {
         ghiFile(tmp, "dstk.txt");
     }
     // thêm hoá đơn vào file dshd.txt
-    public static void themHd(int soHoaDon, int soLuongSanPham, int tongTien, String maKhachHang, String phThThanhToan, Xe[] dssp) {
-        String tmp = soHoaDon+"#"+soLuongSanPham+"#"+tongTien+"#"+maKhachHang+"#"+phThThanhToan;    
+    public static void themHd(int soHoaDon, int soLuongSanPham, String ngaylapdon, int tongTien, String manhanvien, String maKhachHang, String phThThanhToan, Xe[] dssp) {
+        String tmp = soHoaDon+"#"+soLuongSanPham+"#"+ngaylapdon+"#"+tongTien+"#"+manhanvien+"#"+maKhachHang+"#"+phThThanhToan;    
         for(int i=0;i<dssp.length;i++)
         {
             tmp+="#" + dssp[i].getMaSanPham();
@@ -108,7 +108,6 @@ public class FileHandler {
             f[3] = new File("dstk.txt");
             f[4] = new File("dsdmsp.txt");
             f[5] = new File("dshd.txt");
-            f[6] = new File("dsbh.txt");
             String tenFile = "";
             for (int i = 0; i < f.length; i++) {
                 if (f[i].createNewFile()) {

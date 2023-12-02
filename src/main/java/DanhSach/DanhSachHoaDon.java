@@ -50,8 +50,12 @@ public class DanhSachHoaDon implements DanhSachChung {
             slsp = Integer.parseInt(lArr[m++]);
             
             hd.setSoLuongSanPham(slsp);
+
+            hd.setNgaylapdon(lArr[m++]);
             
             hd.setTongTien(Integer.parseInt(lArr[m++]));
+
+            hd.setMnv(lArr[m++]);
             
             hd.setKhachHang((KhachHang) ttdskh.layPhanTuVoi(lArr[m++]));
             
@@ -86,11 +90,16 @@ public class DanhSachHoaDon implements DanhSachChung {
             for(int j=0;j<dssp.length;j++) {
                 dssp[j] = (Xe) hd.getDsSanPham()[j];
             }
-            FileHandler.themHd(hd.getSoHoaDon(),hd.getSoLuongSanPham(), hd.getTongTien(),
-                    hd.getKhachHang().getMaKhachHang(),
-                    hd.getPhThThanhToan(), dssp);
+            FileHandler.themHd(hd.getSoHoaDon(),hd.getSoLuongSanPham(), hd.getNgaylapdon(),hd.getTongTien(), hd.getMnv(),hd.getKhachHang().getMaKhachHang(), hd.getPhThThanhToan(), dssp);
         }
         this.dsHoaDon = (HoaDon[])dsHoaDon;
+    }
+
+    public void themPhanTuVaoDanhSach(String username) {
+        PhanTu pt;
+        pt = new HoaDon();
+        pt.nhap();
+        themVaoDanhSach(pt);
     }
 
     @Override

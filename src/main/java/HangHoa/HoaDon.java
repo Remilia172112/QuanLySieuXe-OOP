@@ -3,22 +3,32 @@ import java.time.LocalDate;
 import java.util.Scanner ;
 import DanhSach.*;
 import Nguoi.*;
+import KiemTra.KiemTra;
 import ThanhToan.*;
 
 public class HoaDon extends PhanTu {
+    // Tạo tháng năm hiện tại
+    LocalDate localDate = LocalDate.now();
+    private int namhientai = localDate.getYear();
+    private int thanghientai = localDate.getMonthValue() + 1;
+    private int ngayhientai = localDate.getDayOfMonth();
+
+    private String ngaylapdon;
     private int soHoaDon;
     private int soLuongSanPham;
     private int tongTien = 0;
     private String phThThanhToan;
     private KhachHang khachHang;
+    private String mnv;
     private Xe[] dsXe;
     public static Scanner sc = new Scanner(System.in);
     public HoaDon() {
     }
 
-    public HoaDon(int soHoaDon, int soLuongSanPham, KhachHang khachHang, Xe[] dsXe) {
+    public HoaDon(int soHoaDon, int soLuongSanPham, String ngaylapdon,KhachHang khachHang, Xe[] dsXe) {
         this.soHoaDon = soHoaDon;
         this.soLuongSanPham = soLuongSanPham;
+        this.ngaylapdon = ngaylapdon;
         this.khachHang = khachHang;
         this.dsXe = dsXe;
     }
@@ -77,11 +87,6 @@ public class HoaDon extends PhanTu {
         
         Xe[] dsspFile = ttds.getdsSanPham();
         Xe[] dssp = new Xe[soLuongSanPham];
-
-        // Tạo tháng năm hiện tại
-        LocalDate localDate = LocalDate.now();
-        int namhientai = localDate.getYear();
-        int thanghientai = localDate.getMonthValue() + 1;
 
         // Tìm khách hàng trong danh sách
         KhachHang[] dsKhTemp = dskh.getDsKhachHang();
@@ -174,7 +179,8 @@ public class HoaDon extends PhanTu {
                 tienTam -= tongTienTraLai;
             }
         } else dhDaThanhToan++; // nếu đơn hàng mới hoàn toàn
-        
+        // Lưu ngày lập đơn
+        ngaylapdon = ngayhientai + "/" + thanghientai + "/" + namhientai;
         // lưu lại
         dsKhTemp[vtkh].setDsmspDamua(dsmspDamua);
         dsKhTemp[vtkh].setTongTienDaThanhToan(tienTam);
@@ -250,7 +256,27 @@ public class HoaDon extends PhanTu {
     public void setPhThThanhToan(String phThThanhToan) {
         this.phThThanhToan = phThThanhToan;
     }
+
+    public void setNgaylapdon(String ngaylapdon) {
+        this.ngaylapdon = ngaylapdon;
+    }
+
+    public String getNgaylapdon() {
+        return ngaylapdon;
+    }
     
+    public void setNgaylapdon() {
+        boolean check;
+        do
+        {
+            check = true;
+            System.out.print("Nhap ngay lap don (dd/mm/yyyy): ");
+            ngaylapdon = sc.nextLine();
+            check = KiemTra.isValidDate(ngaylapdon);
+            if(!check) System.out.print("Nhap sai dinh dang ngay!! Moi nhap lai: ");
+        } while (!check);
+    }
+
     public void setPhThThanhToan() {
         System.out.println("Moi chon phuong thuc thanh toan cho hoa don nay: ");
         System.out.println("1. Tien mat");
@@ -362,10 +388,43 @@ public class HoaDon extends PhanTu {
         }while (chontl == 0);
     }
     
+    public String getMnv() {
+        return mnv;
+    }
+
+    public void setMnv(String mnv) {
+        this.mnv = mnv;
+    }
+
+    public void setMnv() {
+        System.out.print("Nhap ma nhan vien quan li don hang: ");
+        DanhSachNhanVien ttds = new DanhSachNhanVien();
+        boolean check = false;
+        do {
+            check = true;
+            mnv = sc.nextLine();
+            check = ttds.layPhanTuVoi(mnv) == null;
+            if (!check) System.out.print("Ma nhan vien da ton tai, moi nhap lai: ");
+            check = KiemTra.check_maso(mnv);
+        }
+        while (!check);
+    }
+
+    public void nhap(String username){
+        setSoHoaDon();
+        setSoLuongSanPham();
+        setNgaylapdon();
+        setMnv(username);
+        setKhachHang();
+        setDsSanPham();
+        setPhThThanhToan();
+    }
     @Override
     public void nhap(){
         setSoHoaDon();
         setSoLuongSanPham();
+        setNgaylapdon();
+        setMnv();
         setKhachHang();
         setDsSanPham();
         setPhThThanhToan();

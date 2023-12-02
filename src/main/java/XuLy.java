@@ -7,7 +7,7 @@ import KiemTra.KiemTra;
 import java.util.Scanner;
 public class XuLy {
     private static Scanner sc = new Scanner(System.in);
-    static String username;
+    public static String username;
     public static void xuLyTrungTam() {
         int chon;
         DanhSachTaiKhoan dstk = new DanhSachTaiKhoan();
@@ -72,43 +72,42 @@ public class XuLy {
             System.out.println("0. Thoat chuong trinh");
             System.out.println("==============================");
             System.out.print("Moi chon: ");
-        chon = KiemTra.checkNumber();
-
-        switch (chon) {
-            case 0:
-                System.out.println("Cam on ban da su dung chuong trinh");
-                break;
-            case 1:
-                nv.xuat();
-                break;
-            case 2:
-                dsnv.chinhSuaThongTinPhanTu(username);
-                nv = (NhanVien) dsnv.layPhanTuVoi(username);
-                break;
-            case 3:
-                dshd.themKPhanTuVaoDanhSach();
-                break;
-            case 4:
-                dshd.xuatDanhSach();
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                dskh.themKPhanTuVaoDanhSach();
-                break;
-            case 8:
-                dskh.xuatDanhSach();
-                break;
-            case 9:
-                dsx.xuatDanhSach();
-                break;
-            default:
-                System.out.println("Hay nhap so co trong menu");
-                break;
-            }
-        }while (chon!=0);
+            chon = KiemTra.checkNumber();
+            switch (chon) {
+                case 0:
+                    System.out.println("Cam on ban da su dung chuong trinh");
+                    break;
+                case 1:
+                    nv.xuat();
+                    break;
+                case 2:
+                    dsnv.chinhSuaThongTinPhanTu(username);
+                    nv = (NhanVien) dsnv.layPhanTuVoi(username);
+                    break;
+                case 3:
+                    dshd.themPhanTuVaoDanhSach(username);
+                    break;
+                case 4:
+                    dshd.xuatDanhSach();
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    dskh.themKPhanTuVaoDanhSach();
+                    break;
+                case 8:
+                    dskh.xuatDanhSach();
+                    break;
+                case 9:
+                    dsx.xuatDanhSach();
+                    break;
+                default:
+                    System.out.println("Hay nhap so co trong menu");
+                    break;
+                }
+            }while (chon!=0);
     }
     public static void MenuQL() {
         DanhSachNhanVien dsnv = new DanhSachNhanVien();
