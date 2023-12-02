@@ -132,7 +132,7 @@ public class PhieuNhap extends PhanTu {
         dsnv.xuatDanhSach();
         System.out.print("Nhap ma nhan vien lap phieu nhap: ");
         boolean check = true;
-        sc.nextLine();
+        // sc.nextLine();
         do
         {
             maNV = sc.nextLine();
@@ -152,7 +152,7 @@ public class PhieuNhap extends PhanTu {
     public void setNgaynhap() {
         System.out.print("Nhap ngay lap phieu nhap: ");
         boolean check = false;
-        sc.nextLine();
+        // sc.nextLine();
         do
         {
             ngaynhap = sc.nextLine();
@@ -166,13 +166,14 @@ public class PhieuNhap extends PhanTu {
     public void setMaSanPham() {
         System.out.print("Nhap ma san pham: ");
         DanhSachXe ttds = new DanhSachXe();
-        boolean check = true;
+        ttds.xuatDanhSach();
+        boolean check = false;
         do
         {
             maSanPham = sc.nextLine();
             check = ttds.layPhanTuVoi(maSanPham) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
-            if (check) System.out.print("Ma san pham da ton tai, moi nhap lai: ");
-        } while (check);
+            if (!check) System.out.print("Ma san pham ko ton tai, moi nhap lai: ");
+        } while (!check);
     }
     public void setMaSanPham(String maSanPham) {
         this.maSanPham = maSanPham;
