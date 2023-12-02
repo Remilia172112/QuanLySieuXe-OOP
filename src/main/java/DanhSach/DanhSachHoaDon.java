@@ -65,7 +65,7 @@ public class DanhSachHoaDon implements DanhSachChung {
             dssp = new Xe[slsp];
             for(int j=0;j<slsp;j++) {
                 sp = (Xe) ttdssp.layPhanTuVoi(lArr[m++]);
-                sp.setSoLuong(Integer.parseInt(lArr[m++]));
+                sp.setSoLuong(1);
                 dssp[j] = sp;
             }
             
@@ -96,10 +96,10 @@ public class DanhSachHoaDon implements DanhSachChung {
     }
 
     public void themPhanTuVaoDanhSach(String username) {
-        PhanTu pt;
+        HoaDon pt;
         pt = new HoaDon();
-        pt.nhap();
-        themVaoDanhSach(pt);
+        pt.nhap(username);
+        themVaoDanhSach((PhanTu) pt);
     }
 
     @Override
