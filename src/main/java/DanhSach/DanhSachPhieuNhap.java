@@ -147,7 +147,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
     public void xuatDanhSach() {
         System.out.println();
         System.out.println("=== Danh sach phieu nhap ===");
-        System.out.printf("%-20s %-50s %-20s %-20s %-20s  \n","Ma phieu nhap", "Ma nha cung cap", "Ma nha vien", "Ngay nhap", "Tong nhap");
+        System.out.printf("%-20s %-50s %-20s %-20s %-20s %-20s  \n","Ma phieu nhap", "Ma nha cung cap", "Ma nha vien", "Ngay nhap", "ma sanpham","Tong nhap");
         for(int i=0;i<soLuong;i++) {
             getdsPhieuNhap()[i].xuat();
             // dsPhieuNhap[i].xuat();
