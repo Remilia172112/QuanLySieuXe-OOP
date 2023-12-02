@@ -193,7 +193,12 @@ public abstract class Nguoi extends PhanTu {
     }
 
     public void xuat() {
-        System.out.printf("%-25s %-15s %-15s %-15s %-40s %-15s %-15s", getHoten(), getGioitinh(),getNgaythangnamsinh(), getCCCD(), getDiachi(), getSdt(), getEmail());
+        System.out.printf("%-25s %-15s %-15s %-15s\n", "Ho ten", "Gioi tinh", "Ngay sinh", "CCCD");
+        System.out.printf("%-25s %-15s %-15s %-15s\n", getHoten(), getGioitinh(),getNgaythangnamsinh(), getCCCD());
+        System.out.println();
+        System.out.printf("%-40s %-15s %-15s\n", "Dia chi", "So dien thoai", "Email");
+        System.out.printf("%-40s %-15s %-15s", getDiachi(), getSdt(), getEmail());
+        System.out.println();
     }
 
     public abstract void suaThongTin();

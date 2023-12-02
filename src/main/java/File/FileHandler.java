@@ -86,10 +86,10 @@ public class FileHandler {
     }
     // thêm hoá đơn vào file dshd.txt
     public static void themHd(int soHoaDon, int soLuongSanPham, int tongTien, String maKhachHang, String phThThanhToan, Xe[] dssp) {
-        String tmp = soHoaDon+"#"+soLuongSanPham+"#"+tongTien+"#"+maKhachHang+"#"+phThThanhToan+"#";    
+        String tmp = soHoaDon+"#"+soLuongSanPham+"#"+tongTien+"#"+maKhachHang+"#"+phThThanhToan;    
         for(int i=0;i<dssp.length;i++)
         {
-            tmp+=dssp[i].getMaSanPham()+"#"+dssp[i].getSoLuong();
+            tmp+="#" + dssp[i].getMaSanPham();
         }
         ghiFile(tmp, "dshd.txt");
     }
