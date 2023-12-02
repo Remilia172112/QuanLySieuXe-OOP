@@ -92,7 +92,7 @@ public class CKTinDung {
         setSoThe();
         setCVV();
     }
-   
+
     public void xuat() {
         System.out.println("So the/tai khoan: "+soThe);
         System.out.println("Loai the: "+loaiThe);

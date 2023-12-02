@@ -1,5 +1,4 @@
 import File.FileHandler;
-
 import java.io.IOException;
 
 public class Main {

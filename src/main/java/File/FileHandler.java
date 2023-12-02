@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import HangHoa.SanPham;
+import HangHoa.Xe;
 
 public class FileHandler {
     private static Scanner fr;
@@ -44,8 +44,12 @@ public class FileHandler {
     }
 
     //Thêm tài khoản vào file dskh.txt
-    public static void themKH(int makh, String hoten, String ntns, String gioitinh, String cccd, String diachi, String sdt, String email, int soDonHangDaThanhToan, int tongTienDaThanhToan, ThanhToan phThThanhToan) {
-        String tmp = makh+"#"+hoten+"#"+ntns+"#"+gioitinh+"#"+cccd+"#"+diachi+"#"+sdt+"#"+email+"#"+soDonHangDaThanhToan+"#"+tongTienDaThanhToan+"#";
+    public static void themKH(String makh, String hoten, String ntns, String gioitinh, String cccd, String diachi, String sdt, String email, String[] dsmspDamua, int soDonHangDaThanhToan, int tongTienDaThanhToan, ThanhToan phThThanhToan) {
+        String tmp = makh+"#"+hoten+"#"+ntns+"#"+gioitinh+"#"+cccd+"#"+diachi+"#"+sdt+"#"+email+"#"+dsmspDamua.length+"#";
+        for(int i=0; i < dsmspDamua.length; i++) {
+            tmp+=dsmspDamua[i] + "#";
+        }
+        tmp+=soDonHangDaThanhToan+"#"+tongTienDaThanhToan+"#";
         if (phThThanhToan != null) {
             tmp+=phThThanhToan.getPhuongThucThanhToan()+"#";
             // -># # # # # # # #
@@ -81,10 +85,8 @@ public class FileHandler {
         ghiFile(tmp, "dstk.txt");
     }
     // thêm hoá đơn vào file dshd.txt
-    public static void themHd(int soHoaDon, int soLuongSanPham, int tongTien, int maKhachHang, 
-                        String phThThanhToan, SanPham[] dssp) {
-         String tmp = soHoaDon+"#"+soLuongSanPham+"#"+tongTien+"#"+maKhachHang+"#"+phThThanhToan+"#";
-    
+    public static void themHd(int soHoaDon, int soLuongSanPham, int tongTien, String maKhachHang, String phThThanhToan, Xe[] dssp) {
+        String tmp = soHoaDon+"#"+soLuongSanPham+"#"+tongTien+"#"+maKhachHang+"#"+phThThanhToan+"#";    
         for(int i=0;i<dssp.length;i++)
         {
             tmp+=dssp[i].getMaSanPham()+"#"+dssp[i].getSoLuong();
@@ -137,10 +139,11 @@ public class FileHandler {
                             break;
                         case 2:
                             tenFile = "dskh.txt";
+                            String[] rong = new String[0];
                             ghiFile("3", tenFile);
-                            themKH(1, "Doan Van A", "20/12/1950", "nu", "320873941", "273 An Duong Vuong, P3, Q5, TP.HCM", "0894172635", "doanvana@gmail.com", 0, 0, null);
-                            themKH(2, "Nguyen Van B", "28/11/2002", "nam","320142913", "273 An Duong Vuong, P3, Q5, TP.HCM", "0913716241", "hahah@gmail.com", 0, 0, null);
-                            themKH(3, "Tran Van C", "10/10/1969", "nam", "320638711", "273 An Duong Vuong, P3, Q5, TP.HCM", "0907412663", "tranvanc@gmail.com", 0, 0, null);
+                            themKH("KH1", "Doan Van A", "20/12/1950", "nu", "320873941", "273 An Duong Vuong, P3, Q5, TP.HCM", "0894172635", "doanvana@gmail.com", rong, 0, 0, null);
+                            themKH("KH2", "Nguyen Van B", "28/11/2002", "nam","320142913", "273 An Duong Vuong, P3, Q5, TP.HCM", "0913716241", "hahah@gmail.com", rong, 0, 0, null);
+                            themKH("KH3", "Tran Van C", "10/10/1969", "nam", "320638711", "273 An Duong Vuong, P3, Q5, TP.HCM", "0907412663", "tranvanc@gmail.com", rong, 0, 0, null);
                             break;
                         case 3:
                             tenFile = "dstk.txt";
@@ -161,7 +164,6 @@ public class FileHandler {
                             dsMaSp = new String[]{"ROADSTER01","ROADSTER02","ROADSTER03","ROADSTER04" , "ROADSTER05"};
                             themDmSP("ROADSTER", "Xe Mui tran", 5, dsMaSp);
                             // 3
-
                             break;
                         case 5:
                             break;

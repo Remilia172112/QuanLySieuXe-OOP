@@ -4,6 +4,7 @@ import File.FileHandler;
 import KiemTra.KiemTra;
 import HangHoa.PhanTu;
 import Nguoi.NhanVien;
+import Nguoi.TaiKhoan;
 
 public class DanhSachNhanVien implements DanhSachChung {
     private int soLuong;
@@ -74,6 +75,32 @@ public class DanhSachNhanVien implements DanhSachChung {
         }
         this.dsNhanVien = (NhanVien[]) dsNhanVien;
     }
+
+    public void themPhanTuVaoDanhSach() {    
+        PhanTu pt;
+        pt = new TaiKhoan();
+        pt.nhap();
+        themVaoDanhSach(pt);
+    }
+
+    public void chinhSuaThongTinPhanTu(String mnv) {
+        int viTri = -1;
+        for(int i = 0; i < soLuong; i++)
+        {
+            if(dsNhanVien[i].getManhanvien().equals(mnv)) {
+                viTri = i;
+                break;
+            }
+        }
+        NhanVien[] dsnv = getDsNhanVien();
+        // tìm thấy
+        if (viTri != -1) {
+            dsnv[viTri].suaThongTin();
+            setDsNhanVien(dsnv);
+        } else
+            System.out.println("Khong tim thay!");
+    }
+
 
     @Override
     public void nhapDanhSach() {
@@ -237,7 +264,7 @@ public class DanhSachNhanVien implements DanhSachChung {
     public PhanTu layPhanTuVoi(String thamSo) {
         NhanVien[] dsnv = getDsNhanVien();
         for (int i = 0; i < soLuong; i++) {
-            if (dsnv[i].getManhanvien() == thamSo)
+            if (dsnv[i].getManhanvien().equalsIgnoreCase(thamSo) )
                 return dsnv[i];
         }
         return null;

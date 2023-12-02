@@ -1,7 +1,7 @@
 package HangHoa;
 import DanhSach.DanhSachXe;
 import KiemTra.KiemTra;
-public class DongXe extends PhanTu{
+public class DongXe extends PhanTu {
     private String maDanhMuc;
     private String tenDanhMuc;
     private int soLuong;
@@ -108,12 +108,12 @@ public class DongXe extends PhanTu{
         DanhSachXe ttds = new DanhSachXe();
         String[] dsMaSp = new String[soLuong];
 
-        SanPham pt;
+        Xe pt;
         for(int i=0;i<soLuong;i++) {
 
             System.out.println("Them ma san pham thu "+i);
             do {
-                pt = (SanPham) ttds.timPhanTu();
+                pt = (Xe) ttds.timPhanTu();
 
                 if (pt == null) System.out.println("Khong tim thay san pham!");
                 else dsMaSp[i] = pt.getMaSanPham();
@@ -131,7 +131,7 @@ public class DongXe extends PhanTu{
         for(int i=0;i<soLuong;i++)
             dsMaSP[i] = dsMaSanPham[i];
 
-        SanPham pt;
+        Xe pt;
         String maSP;
         DanhSachXe ttds = new DanhSachXe();
 
@@ -139,7 +139,7 @@ public class DongXe extends PhanTu{
             System.out.print("Nhap ma san pham: ");
             maSP = sc.nextLine();
 
-            pt = (SanPham) ttds.layPhanTuVoi(maSP); // tìm sản phẩm
+            pt = (Xe) ttds.layPhanTuVoi(maSP); // tìm sản phẩm
 
             if (pt == null)  // nếu không tìm thấy
                 System.out.println("Khong ton tai ma san pham!");

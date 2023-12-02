@@ -47,7 +47,7 @@ public class DanhSachKhachHang implements DanhSachChung {
             m = 0;
 
             kh = new KhachHang();
-            kh.setMaKhachHang(Integer.parseInt(lArr[m++]));
+            kh.setMaKhachHang(lArr[m++]);
             kh.setHoten(lArr[m++]);
             kh.setNgaythangnamsinh(lArr[m++]);
             kh.setGioitinh(lArr[m++]);            
@@ -55,6 +55,10 @@ public class DanhSachKhachHang implements DanhSachChung {
             kh.setDiachi(lArr[m++]);
             kh.setSdt(lArr[m++]);
             kh.setEmail(lArr[m++]);
+            int n = Integer.parseInt(lArr[m++]);
+            String[] tmp = new String[n];
+            for(int j = 0; j < n; j++) tmp[j] = lArr[m++];
+            kh.setDsmspDamua(tmp);
             kh.setSoDonHangDaThanhToan(Integer.parseInt(lArr[m++]));
             kh.setTongTienDaThanhToan(Integer.parseInt(lArr[m++]));
             // ghi phương thức thanh toán
@@ -106,7 +110,7 @@ public class DanhSachKhachHang implements DanhSachChung {
         for(int i=0;i<soLuong;i++) {
             kh = (KhachHang) dsKhachhang[i];
             FileHandler.themKH(kh.getMaKhachHang(), kh.getHoten(), kh.getNgaythangnamsinh(), kh.getGioitinh(), kh.getCCCD(), kh.getDiachi(), 
-                    kh.getSdt(), kh.getEmail(), kh.getSoDonHangDaThanhToan(), kh.getTongTienDaThanhToan(), kh.getPhThThanhToan());
+                    kh.getSdt(), kh.getEmail(),kh.getDsmspDamua(), kh.getSoDonHangDaThanhToan(), kh.getTongTienDaThanhToan(), kh.getPhThThanhToan());
         }
         this.dsKhachHang = (KhachHang[]) dsKhachhang;
     }
@@ -216,14 +220,14 @@ public class DanhSachKhachHang implements DanhSachChung {
                     if (dsKhachHangTmp[i].getHoten().equalsIgnoreCase(giaTriCanTim))
                         return dsKhachHangTmp[i];
                 if (loai == 2)
-                    if (dsKhachHangTmp[i].getMaKhachHang() == Integer.parseInt(giaTriCanTim))
+                    if (dsKhachHangTmp[i].getMaKhachHang() == giaTriCanTim)
                         return dsKhachHangTmp[i];
             } else {
                 if (loai == 1)
                     if (dsKhachHangTmp[i].getHoten().contains(giaTriCanTim))
                         return dsKhachHangTmp[i];
                 if (loai == 2)
-                    if (dsKhachHangTmp[i].getMaKhachHang() == Integer.parseInt(giaTriCanTim))
+                    if (dsKhachHangTmp[i].getMaKhachHang() == giaTriCanTim)
                         return dsKhachHangTmp[i];
             }
         }
@@ -257,23 +261,23 @@ public class DanhSachKhachHang implements DanhSachChung {
                     if (dsKhachHangTmp[i].getHoten().equalsIgnoreCase(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsKhachHangTmp[i].getMaKhachHang() == Integer.parseInt(giaTriCanTim))
+                    if (dsKhachHangTmp[i].getMaKhachHang() == giaTriCanTim)
                         return i;
             } else {
                 if (loai == 1)
                     if (dsKhachHangTmp[i].getHoten().contains(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsKhachHangTmp[i].getMaKhachHang() == Integer.parseInt(giaTriCanTim))
+                    if (dsKhachHangTmp[i].getMaKhachHang() == giaTriCanTim)
                         return i;
             }
         }
         return -1;
     }
-    public int timViTriKhachHang(int maKhachHang) { // tìm vị trí sản phẩm với mã sản phẩm
+    public int timViTriKhachHang(String maKhachHang) { // tìm vị trí sản phẩm với mã sản phẩm
         KhachHang[] dskh = getDsKhachHang();
         for(int i=0;i<soLuong;i++) {
-            if (dskh[i].getMaKhachHang() == maKhachHang)
+            if (dskh[i].getMaKhachHang().equals(maKhachHang))
                 return i;
         }
         return -1;
@@ -281,7 +285,7 @@ public class DanhSachKhachHang implements DanhSachChung {
     public PhanTu layPhanTuVoi(String thamSo) { // tìm phần tử với mã
         KhachHang[] dskh = getDsKhachHang();
         for(int i=0;i<soLuong;i++) {
-            if (dskh[i].getMaKhachHang() == Integer.parseInt(thamSo))
+            if (dskh[i].getMaKhachHang().equals(thamSo))
                 return dskh[i];
         }
         return null;

@@ -4,7 +4,7 @@ import HangHoa.DongXe;
 import HangHoa.PhanTu;
 import KiemTra.KiemTra;
 
-public class DanhSachDongXe implements DanhSachChung{
+public class DanhSachDongXe implements DanhSachChung { 
     private int soLuong;
     private DongXe[] dsDanhMucSP = getDsDanhMucSP();
 

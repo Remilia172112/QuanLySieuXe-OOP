@@ -3,11 +3,62 @@ package DanhSach;
 import File.FileHandler;
 import HangHoa.*;
 import KiemTra.KiemTra;
-import Nguoi.NhanVien;
 
 public class DanhSachPhieuNhap implements DanhSachChung {
     private int soLuong;
     private PhieuNhap[] dsPhieuNhap;
+
+    // public static void main(String[] args) throws IOException {
+    //     DanhSachPhieuNhap dspn = new DanhSachPhieuNhap(); 
+    //     dspn.menu();
+        
+    // }
+    // public void menu() {
+    //     boolean check = true;
+    //     while (check) {
+    //         System.out.println("");
+    //         System.out.println("+------------------------------+");
+    //         System.out.println("Menu: ");
+    //         System.out.println("1. set ma phieu nhap ");
+    //         System.out.println("2. set nha cung cap");
+    //         System.out.println("3. set ma nhan vien ");
+    //         System.out.println("4. set ma san pham ");
+    //         System.out.println("5. set tong nhap ");
+    //         System.out.println("6. set ngaynhap");
+    //         System.out.println("0. Thoat");
+    //         System.out.print("Chon: ");
+    //         int chose = sc.nextInt();
+    //         System.out.println("+------------------------------+");
+    //         switch (chose) {
+    //             case 1:
+    //                 setMaPhieuNhap();
+    //                 break;
+    //             case 2:
+    //                 setMaNhaCC();
+    //                 break;
+    //             case 3:
+    //                 setMaNV();
+    //                 break;
+    //             case 4:
+    //                 setMaSanPham();
+    //                 break;
+    //             case 5:
+    //                 setMaSanPham();
+    //                 break;
+    //             case 6:
+    //                 setNgaynhap();
+    //                 break;
+    //             case 0:
+    //                 System.out.println("Thoat chuong trinh thanh cong!!!");
+    //                 check = false;
+    //                 return;
+    //             default:
+    //                 System.out.println("Nhap sai");
+    //         }
+    //     }
+    //     }
+
+
 
     public DanhSachPhieuNhap() {
         dsPhieuNhap = getdsPhieuNhap();
@@ -49,6 +100,8 @@ public class DanhSachPhieuNhap implements DanhSachChung {
             pn.setMaNV(lArr[m++]);
 
             pn.setNgaynhap(lArr[m++]);
+
+            pn.setMaSanPham(lArr[m++]);
 
             pn.setTongnhap(Integer.parseInt(lArr[m++]));
 
@@ -96,7 +149,8 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         System.out.println("=== Danh sach phieu nhap ===");
         System.out.printf("%-20s %-50s %-20s %-20s %-20s  \n","Ma phieu nhap", "Ma nha cung cap", "Ma nha vien", "Ngay nhap", "Tong nhap");
         for(int i=0;i<soLuong;i++) {
-            dsPhieuNhap[i].xuat();
+            getdsPhieuNhap()[i].xuat();
+            // dsPhieuNhap[i].xuat();
         }
         System.out.println();
     }

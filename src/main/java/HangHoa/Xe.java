@@ -1,17 +1,17 @@
 package HangHoa;
 import DanhSach.DanhSachXe;
 import KiemTra.KiemTra;
-public class SanPham extends PhanTu {
+public class Xe extends PhanTu {
     private String maSanPham ;
     private String tenSanPham ;
     private String thuongHieu ;
     private  String noiSanXuat ;
     private int soLuong ;
     private int price ;
-    public SanPham(){
+    public Xe(){
     }
 
-    public SanPham(String maSanPham , String tenSanPham , String thuongHieu , String noiSanXuat , int soLuong , int price){
+    public Xe(String maSanPham , String tenSanPham , String thuongHieu , String noiSanXuat , int soLuong , int price){
         this.maSanPham = maSanPham ;
         this.tenSanPham = tenSanPham ;
         this.thuongHieu = thuongHieu ;
