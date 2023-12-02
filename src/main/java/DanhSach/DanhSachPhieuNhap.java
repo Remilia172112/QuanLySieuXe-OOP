@@ -3,62 +3,11 @@ package DanhSach;
 import File.FileHandler;
 import HangHoa.*;
 import KiemTra.KiemTra;
+import Nguoi.NhanVien;
 
 public class DanhSachPhieuNhap implements DanhSachChung {
     private int soLuong;
     private PhieuNhap[] dsPhieuNhap;
-
-    // public static void main(String[] args) throws IOException {
-    //     DanhSachPhieuNhap dspn = new DanhSachPhieuNhap(); 
-    //     dspn.menu();
-        
-    // }
-    // public void menu() {
-    //     boolean check = true;
-    //     while (check) {
-    //         System.out.println("");
-    //         System.out.println("+------------------------------+");
-    //         System.out.println("Menu: ");
-    //         System.out.println("1. set ma phieu nhap ");
-    //         System.out.println("2. set nha cung cap");
-    //         System.out.println("3. set ma nhan vien ");
-    //         System.out.println("4. set ma san pham ");
-    //         System.out.println("5. set tong nhap ");
-    //         System.out.println("6. set ngaynhap");
-    //         System.out.println("0. Thoat");
-    //         System.out.print("Chon: ");
-    //         int chose = sc.nextInt();
-    //         System.out.println("+------------------------------+");
-    //         switch (chose) {
-    //             case 1:
-    //                 setMaPhieuNhap();
-    //                 break;
-    //             case 2:
-    //                 setMaNhaCC();
-    //                 break;
-    //             case 3:
-    //                 setMaNV();
-    //                 break;
-    //             case 4:
-    //                 setMaSanPham();
-    //                 break;
-    //             case 5:
-    //                 setMaSanPham();
-    //                 break;
-    //             case 6:
-    //                 setNgaynhap();
-    //                 break;
-    //             case 0:
-    //                 System.out.println("Thoat chuong trinh thanh cong!!!");
-    //                 check = false;
-    //                 return;
-    //             default:
-    //                 System.out.println("Nhap sai");
-    //         }
-    //     }
-    //     }
-
-
 
     public DanhSachPhieuNhap() {
         dsPhieuNhap = getdsPhieuNhap();
@@ -213,98 +162,44 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
     @Override
     public PhanTu timPhanTu() { // tìm sản phẩm theo tên hoặc khoá (tương đối || tuyệt đối)
-        // int loai;
-        // System.out.print("Tim san pham theo ten (1) hay theo khoa (2), vui long chon: ");
+        System.out.print("Nhap ma phieu nhap can tim:");
+        String giaTriCanTim = sc.nextLine();
+        int chon;
 
-        // loai = KiemTra.checkNumber();
-        // loai = (loai != 2) ? 1 : 2;
+        System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
+        chon = KiemTra.checkNumber();
+        chon = (chon != 2) ? 1 : 2;
 
-        // if (loai == 1)
-        //     System.out.print("Nhap ten san pham can tim: ");
-        // if (loai == 2)
-        //     System.out.print("Nhap ma san pham can tim: ");
-
-        // String giaTriCanTim = sc.nextLine();
-        // int chon;
-
-        // System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
-        // chon = KiemTra.checkNumber();
-        // chon = (chon != 2) ? 1 : 2;
-
-        // PhieuNhap[] dsSanPhamTmp = getdsPhieuNhap();
-
-        // for(int i=0;i<soLuong;i++) {
-        //     if (chon == 1) { // tìm chính xác
-        //         if (loai == 1)
-        //             if (dsSanPhamTmp[i].getTenSanPham().equalsIgnoreCase(giaTriCanTim))
-        //                 return dsSanPhamTmp[i];
-        //         if (loai == 2)
-        //             if (dsSanPhamTmp[i].getMaSanPham().equalsIgnoreCase(giaTriCanTim))
-        //                 return dsSanPhamTmp[i];
-        //     } else {
-        //         if (loai == 1)
-        //             if (dsSanPhamTmp[i].getTenSanPham().contains(giaTriCanTim))
-        //                 return dsSanPhamTmp[i];
-        //         if (loai == 2)
-        //             if (dsSanPhamTmp[i].getMaSanPham().contains(giaTriCanTim))
-        //                 return dsSanPhamTmp[i];
-        //     }
-        // }
+        PhieuNhap[] dsNCCTmp = getdsPhieuNhap();
+        for(int i=0;i<soLuong;i++) {
+            if (chon == 1) { // tìm chính xác
+                if (dsNCCTmp[i].getMaPhieuNhap().equalsIgnoreCase(giaTriCanTim))
+                    return dsNCCTmp[i];
+            } else {
+                if (dsNCCTmp[i].getMaPhieuNhap().contains(giaTriCanTim))
+                    return dsNCCTmp[i];
+            }
+        }
         return null;
     }
 
     @Override
     public int timViTriPhanTu() {
-        // int loai;
-        // System.out.print("Tim phieu nhap theo ten (1) hay theo khoa (2), vui long chon: ");
-
-        // loai = KiemTra.checkNumber();;
-        // loai = (loai != 2) ? 1 : 2;
-        // if (loai == 1)
-        //     System.out.print("Nhap ten san pham can tim: ");
-        // if (loai == 2)
-        //     System.out.print("Nhap ma san pham can tim: ");
-        // String giaTriCanTim = sc.nextLine();
-        // int chon;
-        // System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
-        // chon = KiemTra.checkNumber();;
-        // chon = (chon != 2) ? 1 : 2;
-
-        // PhieuNhap[] dsSanPhamTmp = getdsPhieuNhap();
-        // for(int i=0;i<soLuong;i++) {
-        //     if (chon == 1) { // tìm chính xác
-        //         if (loai == 1)
-        //             if (dsSanPhamTmp[i].getTenSanPham().equalsIgnoreCase(giaTriCanTim))
-        //                 return i;
-        //         if (loai == 2)
-        //             if (dsSanPhamTmp[i].getMaSanPham().equalsIgnoreCase(giaTriCanTim))
-        //                 return i;
-        //     } else {
-        //         if (loai == 1)
-        //             if (dsSanPhamTmp[i].getTenSanPham().contains(giaTriCanTim))
-        //                 return i;
-        //         if (loai == 2)
-        //             if (dsSanPhamTmp[i].getMaSanPham().contains(giaTriCanTim))
-        //                 return i;
-        //     }
-        // }
-        // return -1;
-
-
-        System.out.print("Tim phieu nhap theo ma phieu nhap, hay nhap mapn: ");
+        System.out.print("Nhap ma phieu nhap can tim vi tri :");
         String giaTriCanTim = sc.nextLine();
         int chon;
-        System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
-        chon = KiemTra.checkNumber();;
-        chon = (chon != 2) ? 1 : 2;
-        PhieuNhap[] dsSanPhamTmp = getdsPhieuNhap();
 
+        System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
+        chon = KiemTra.checkNumber();
+        chon = (chon != 2) ? 1 : 2;
+
+        PhieuNhap[] dsNCCTmp = getdsPhieuNhap();
         for(int i=0;i<soLuong;i++) {
             if (chon == 1) { // tìm chính xác
-                if (dsSanPhamTmp[i].getMaPhieuNhap().equalsIgnoreCase(giaTriCanTim))
+                if (dsNCCTmp[i].getMaPhieuNhap().equalsIgnoreCase(giaTriCanTim))
                     return i;
             } else {
-                if (dsSanPhamTmp[i].getMaPhieuNhap().contains(giaTriCanTim))
+                if (dsNCCTmp[i].getMaPhieuNhap().contains(giaTriCanTim))
                     return i;
             }
         }
@@ -331,38 +226,85 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
     @Override
     public void thongKe() { // thong kê theo ngày, theo nha cung cap 
-    //     int chon,n;
-    //     dsPhieuNhap = getdsPhieuNhap();
-    //     do {
-    //         System.out.println("=== Thong ke ===");
-    //         System.out.println("1. In san pham co so luong lon hon n");
-    //         System.out.println("2. In san pham co gia ban lon hon n");
-    //         System.out.println("0. Quay lai menu truoc");
-    //         System.out.print("Moi chon: ");
-    //         chon = KiemTra.checkNumber();;
-    //         switch (chon) {
-    //             case 1:
-    //                 System.out.print("Nhap so luong can tim: ");
-    //                 n = KiemTra.checkNumber();;
-    //                 for(int i=0;i<soLuong;i++) {
-    //                     if(dsPhieuNhap[i].getSoLuong() > n){
-    //                         dsPhieuNhap[i].xuat();
-    //                     }
-    //                 }
-    //                 break;
-    //             case 2:
-    //                 System.out.print("Nhap gia ban can tim: ");
-    //                 n = KiemTra.checkNumber();;
-    //                 for(int i=0;i<soLuong;i++) {
-    //                     if(dsPhieuNhap[i].getPrice() > n){
-    //                         dsPhieuNhap[i].xuat();
-    //                     }
-    //                 }
-    //                 break;
-    //             default:
-    //                 chon=0;
-    //                 break;
-    //         }
-    //     } while(chon!=0);
+        int chon;
+        do {
+            System.out.println("=== Thong ke ===");
+            System.out.println("1. In phieu nhap nhap boi nhan vien ");
+            System.out.println("2. In phieu nhap nhap vao ngay  ");
+            System.out.println("3. In phieu nhap nhap boi nha cung cap");
+            System.out.println("0. Quay lai menu truoc");
+            System.out.print("Moi chon: ");
+            PhieuNhap[] dspn = getdsPhieuNhap();
+            String giatricanloc;
+            boolean check;
+            chon = KiemTra.checkNumber();;
+            switch (chon) {
+                case 1:
+                    System.out.print("Nhap ma nhan vien can loc: ");
+                    giatricanloc = sc.nextLine();
+                    check = false;
+                    for(int i=0;i<soLuong;i++){
+                        if ((dspn[i].getMaNV().equalsIgnoreCase(giatricanloc))){
+                            check = true;
+                            break;
+                        } 
+                    }
+                    if (!check) {
+                        System.out.println("Ma nhan vien ko ton tai.");
+                        break;
+                    } else{
+                        for(int i=0;i<soLuong;i++) {
+                            if (dspn[i].getMaNV().equalsIgnoreCase(giatricanloc))
+                                dspn[i].xuat();
+                        }
+                    }
+                    break;
+                case 2:
+                    System.out.print("Nhap ngay can loc: ");
+                    giatricanloc = sc.nextLine();
+                    check = false;
+                    for(int i=0;i<soLuong;i++){
+                        if ((dspn[i].getNgaynhap().equalsIgnoreCase(giatricanloc))){
+                            check = true;
+                            break;
+                        } 
+                    }
+                    if (!check) {
+                        System.out.println("Ngay nay khong co phieu nhap.");
+                        break;
+                    } else{
+                        for(int i=0;i<soLuong;i++) {
+                            if (dspn[i].getNgaynhap().equalsIgnoreCase(giatricanloc))
+                                dspn[i].xuat();
+                        }
+                    }
+                    break;
+                case 3:
+                    System.out.print("Nhap ma nha cung cap can loc: ");
+                    giatricanloc = sc.nextLine();
+                    check = false;
+                    for(int i=0;i<soLuong;i++){
+                        if ((dspn[i].getMaNhaCC().equalsIgnoreCase(giatricanloc))){
+                            check = true;
+                            break;
+                        } 
+                    }
+                    if (!check) {
+                        System.out.println("Ngay nay khong co phieu nhap.");
+                        break;
+                    } else{
+                        for(int i=0;i<soLuong;i++) {
+                            if (dspn[i].getMaNhaCC().equalsIgnoreCase(giatricanloc))
+                                dspn[i].xuat();
+                        }
+                    }
+                    break;
+
+                
+                default:
+                    chon=0;
+                    break;
+            }
+        } while(chon!=0);
     }
 }

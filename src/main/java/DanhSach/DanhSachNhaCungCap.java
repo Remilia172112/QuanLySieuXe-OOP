@@ -2,6 +2,8 @@ package DanhSach;
 
 import File.FileHandler;
 import HangHoa.PhanTu;
+import HangHoa.PhieuNhap;
+import KiemTra.KiemTra;
 import HangHoa.NhaCungCap;
 
 public class DanhSachNhaCungCap implements DanhSachChung {
@@ -244,38 +246,65 @@ public class DanhSachNhaCungCap implements DanhSachChung {
         return null;
     }
     public void thongKe() {
-        // int chon,n;
-        // dsNhaCC = getdsNhaCC();
-        // do {
-        //     System.out.println("=== Thong ke ===");
-        //     System.out.println("1. ");
-        //     System.out.println("2. In san pham co gia ban lon hon n");
-        //     System.out.println("0. Quay lai menu truoc");
-        //     System.out.print("Moi chon: ");
-        //     chon = Integer.parseInt(sc.nextLine());
-        //     switch (chon) {
-        //         case 1:
-        //             System.out.print("Nhap so luong can tim: ");
-        //             n = Integer.parseInt(sc.nextLine());
-        //             for(int i=0;i<soLuong;i++) {
-        //                 if(dsNhaCC[i].getSoLuong() > n){
-        //                     dsNhaCC[i].xuat();
-        //                 }
-        //             }
-        //             break;
-        //         case 2:
-        //             System.out.print("Nhap gia ban can tim: ");
-        //             n = Integer.parseInt(sc.nextLine());
-        //             for(int i=0;i<soLuong;i++) {
-        //                 if(dsNhaCC[i].getPrice() > n){
-        //                     dsNhaCC[i].xuat();
-        //                 }
-        //             }
-        //             break;
-        //         default:
-        //             chon=0;
-        //             break;
-        //     }
-        // } while(chon!=0);
+        int chon;
+        dsNhaCC = getdsNhaCC();
+        do {
+            System.out.println("=== Thong ke ===");
+            System.out.println("1. In Nha cung cap theo ma nha cung cap ");
+            System.out.println("2. In Nha cung cap theo so dien thoai");
+            System.out.println("0. Quay lai menu truoc");
+            System.out.print("Moi chon: ");
+            NhaCungCap[] dspn = getdsNhaCC();
+            String giatricanloc;
+            boolean check;
+            chon = KiemTra.checkNumber();;
+            switch (chon) {
+                case 1:
+                    System.out.print("Nhap ma nha cung cap can loc: ");
+                    giatricanloc = sc.nextLine();
+                    check = false;
+                    for(int i=0;i<soLuong;i++){
+                        if ((dspn[i].getMaNhaCC().equalsIgnoreCase(giatricanloc))){
+                            check = true;
+                            break;
+                        } 
+                    }
+                    if (!check) {
+                        System.out.println("Ma nhan vien ko ton tai.");
+                        break;
+                    } else{
+                        for(int i=0;i<soLuong;i++) {
+                            if (dspn[i].getMaNhaCC().equalsIgnoreCase(giatricanloc))
+                                dspn[i].xuat();
+                        }
+                    }
+                    break;
+                case 2:
+                    System.out.print("Nhap so dien thoai cap can loc: ");
+                    giatricanloc = sc.nextLine();
+                    check = false;
+                    for(int i=0;i<soLuong;i++){
+                        if ((dspn[i].getSdt().equalsIgnoreCase(giatricanloc))){
+                            check = true;
+                            break;
+                        } 
+                    }
+                    if (!check) {
+                        System.out.println("Ngay nay khong co phieu nhap.");
+                        break;
+                    } else{
+                        for(int i=0;i<soLuong;i++) {
+                            if (dspn[i].getSdt().equalsIgnoreCase(giatricanloc))
+                                dspn[i].xuat();
+                        }
+                    }
+                    break;
+
+                
+                default:
+                    chon=0;
+                    break;
+            }
+        } while(chon!=0);
     }
 }
