@@ -6,13 +6,15 @@ public class DongXe extends PhanTu {
     private String tenDanhMuc;
     private int soLuong;
     private String[] dsMaSanPham;
+    private  int baoHanh ;
     public DongXe() {
     }
-    public DongXe(String maDanhMuc, String tenDanhMuc, int soLuong, String[] dsMaSanPham) {
+    public DongXe(String maDanhMuc, String tenDanhMuc, int soLuong, String[] dsMaSanPham ,int baoHanh) {
         this.maDanhMuc = maDanhMuc;
         this.tenDanhMuc = tenDanhMuc;
         this.soLuong = soLuong;
         this.dsMaSanPham = dsMaSanPham;
+        this.baoHanh = baoHanh;
     }
     public String getMaDanhMuc() {
         return maDanhMuc;
@@ -64,6 +66,26 @@ public class DongXe extends PhanTu {
                 check = false;
             }
         } while(!check);
+    }
+
+    public int getBaoHanh() {
+        return baoHanh;
+    }
+    public void setBaoHanh(){
+        System.out.print("Nhap thoi han bao hanh: ");
+        boolean check;
+        do {
+            check = true;
+            try {
+                baoHanh = KiemTra.checkNumber();
+            } catch (Exception e) {
+                System.out.println("Vui long nhap mot so!");
+                check = false;
+            }
+        } while(!check);
+    }
+    public void setBaoHanh(int baoHanh) {
+        this.baoHanh = baoHanh;
     }
 
     public void setSoLuong(int soLuong) {
@@ -194,13 +216,14 @@ public class DongXe extends PhanTu {
         setMaDanhMuc();
         setTenDanhMuc();
         setSoLuong();
+        setBaoHanh();
         nhapDsMaSanPham();
     }
 
     @Override
     public void xuat() {
-        System.out.printf("%-20s %-20s %-20s \n", "Ma Dong xe", "Ten Dong xe", "So luong");
-        System.out.printf("%-20s %-20s %-20s \n", maDanhMuc, tenDanhMuc, soLuong);
+        System.out.printf("%-20s %-20s %-10s %10s \n", "Ma Dong xe", "Ten Dong xe", "So luong", " Thang bao hanh");
+        System.out.printf("%-20s %-20s %-10s %10s \n", maDanhMuc, tenDanhMuc, soLuong ,baoHanh);
 
         System.out.println("Danh sach san pham cung danh muc: ");
         System.out.printf("%-20s %-30s %-20s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");

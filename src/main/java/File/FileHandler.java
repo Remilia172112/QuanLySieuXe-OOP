@@ -23,8 +23,8 @@ public class FileHandler {
         ghiFile(tmp, "dssp.txt");
     }
     //them danh sach dong` xe vao` file dsdmsp.txt
-    public static void themDmSP(String maDanhMuc, String tenDanhMuc, int soLuong, String[] dsMaSanPham) {
-        String tmp = maDanhMuc+"#"+tenDanhMuc+"#"+soLuong+"#";
+    public static void themDmSP(String maDanhMuc, String tenDanhMuc, int soLuong, int baoHanh,String[] dsMaSanPham) {
+        String tmp = maDanhMuc+"#"+tenDanhMuc+"#"+soLuong+"#"+baoHanh+"#";
         for(int i=0;i<dsMaSanPham.length;i++)
             if (i!=dsMaSanPham.length-1)
                 tmp += dsMaSanPham[i]+"#";
@@ -93,11 +93,6 @@ public class FileHandler {
         }
         ghiFile(tmp, "dshd.txt");
     }
-        // thêm hoá đơn vào file dsbh.txt
-    public static void themBh(int soBaoHanh, String maXeKhachHang, int soThangBaoHanh) {
-        String tmp = soBaoHanh+"#"+maXeKhachHang+"#"+soThangBaoHanh+"#";
-        ghiFile(tmp, "dsbh.txt");
-    }
     //Tạo file
     public static void taoCacFile() {
         File[] f = new File[6];
@@ -114,7 +109,7 @@ public class FileHandler {
                     switch (i) {
                         case 0:
                             tenFile = "dssp.txt";
-                            ghiFile("10", tenFile);
+                            ghiFile("15", tenFile);
                             //XE THE THAO
                             themSP("SPORT01", "McLaren P1", "McLaren ", "Italy", 10, 40000);
                             themSP("SPORT02", "Ferrari Roma", "Ferrari", "ITALY", 10, 60000);
@@ -127,6 +122,13 @@ public class FileHandler {
                             themSP("ROADSTER03", "Jaguar F-Type Convertible", "Jaguar", "Duc", 5, 120000);
                             themSP("ROADSTER04", "Mini Cooper Convertible", "Mini", "Anh", 5, 250000);
                             themSP("ROADSTER05", "Porsche 911 Targa", "Porsche", "Italy", 5, 500000);
+                            //XE DIEN
+                            themSP("VINFAST01", "VinFast VF e34" , "VINFAST" , "VIETNAM" , 2, 30000);
+                            themSP("VINFAST02", "VinFast VF 8" , "VINFAST" , "VIETNAM" , 5, 50000);
+                            themSP("VINFAST03", "VinFast VF 9" , "VINFAST" , "VIETNAM" , 3, 60000);
+                            themSP("VINFAST04", "VinFast VF 5" , "VINFAST" , "VIETNAM" , 6, 90000);
+                            themSP("VINFAST05", "VinFast VF 6" , "VINFAST" , "VIETNAM" , 4, 120000);
+
                             break;
                         case 1:
                             tenFile = "dsnv.txt";
@@ -155,20 +157,20 @@ public class FileHandler {
                             break;
                         case 4:
                             tenFile = "dsdmsp.txt";
-                            ghiFile("2", tenFile);
+                            ghiFile("3", tenFile);
                             // 1
                             String[] dsMaSp = new String[]{"SPORT01","SPORT02","SPORT03","SPORT04", "SPORT05"};
-                            themDmSP("SPORT", "Xe the thao", 5, dsMaSp);
+                            themDmSP("SPORT", "Xe the thao", 5,12 , dsMaSp);
                             // 2
                             dsMaSp = new String[]{"ROADSTER01","ROADSTER02","ROADSTER03","ROADSTER04" , "ROADSTER05"};
-                            themDmSP("ROADSTER", "Xe Mui tran", 5, dsMaSp);
+                            themDmSP("ROADSTER", "Xe Mui tran", 5, 32,dsMaSp);
                             // 3
+                            dsMaSp = new String[]{"VINFAST01", "VINFAST02", "VINFAST03", "VINFAST04", "VINFAST05"};
+                            themDmSP("VINFAST" , "Xe dien oto" , 5,48, dsMaSp);
                             break;
                         case 5:
                             tenFile = "dshd.txt";
                             ghiFile("", tenFile);
-                            break;
-                        case 6: 
                             break;
                         default:
                             break;
