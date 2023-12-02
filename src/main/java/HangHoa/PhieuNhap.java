@@ -203,7 +203,7 @@ public class PhieuNhap extends PhanTu {
         setTongnhap();
     }
     public void xuat() {
-        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s  \n",maPhieuNhap, maNhaCC , maNV , ngaynhap, maSanPham, Tongnhap );
+        System.out.printf("%-20s %-50s %-20s %-20s %-20s %-20s   \n",maPhieuNhap, maNhaCC , maNV , ngaynhap, maSanPham, Tongnhap );
     }
     public void suaThongTin() {
         System.out.println("=== Sua thong tin phieu nhap ===");

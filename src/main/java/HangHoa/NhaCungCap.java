@@ -86,7 +86,7 @@ public class NhaCungCap extends PhanTu {
         setSdt();
     }
     public void xuat() {
-        System.out.printf("%-20s %-20s %-50s %-20s  \n","maNhaCC","tenNhaCC","diachi","sdt");
+        // System.out.printf("%-20s %-20s %-50s %-20s  \n","maNhaCC","tenNhaCC","diachi","sdt");
         System.out.printf("%-20s %-20s %-50s %-20s  \n",getMaNhaCC(),getTenNhaCC(),getDiaChi(),getSdt());
 
     }
