@@ -25,14 +25,13 @@ public class KiemTra {
 			check = true;
 			if(!check_maso(str)) {
 				check = false;
-				System.out.print("Nhap sai ma so!!! Moi nhap lai: ");
 			}
 		} while (!check);
 		return str;
 	}
 	
 	public static boolean check_maso(String maso) {
-		String reg = "^[A-Za-z0-9]{2}\\d{8}$";
+		String reg = "^[A-Za-z0-9]{2}\\d$";
 		Pattern pattern = Pattern.compile(reg);
 		Matcher matcher = pattern.matcher(maso);
 		if (!matcher.matches()) {
