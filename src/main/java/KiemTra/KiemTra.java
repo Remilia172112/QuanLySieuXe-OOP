@@ -1,5 +1,7 @@
 package KiemTra;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -67,7 +69,7 @@ public class KiemTra {
 		Pattern pattern = Pattern.compile(reg);
 		Matcher matcher = pattern.matcher(name);
 		if (!matcher.matches()) {
-			System.out.println(name);
+			System.out.println("Nhap sai dinh dang ten!!! Moi nhap lai: ");
 			return false;
 		}
 		return true;
@@ -137,4 +139,22 @@ public class KiemTra {
 
         return matcher.matches();
     }
+	public static boolean isValidDate(String dateString) {
+        // Định dạng cho chuỗi ngày tháng
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        try {
+            // Chuyển đổi chuỗi thành đối tượng LocalDate
+            LocalDate inputDate = LocalDate.parse(dateString, formatter);
+
+            // Lấy ngày tháng năm hiện tại
+            LocalDate currentDate = LocalDate.now();
+
+            // Kiểm tra xem ngày tháng năm có hợp lệ và nhỏ hơn hoặc bằng ngày hiện tại không
+            return !inputDate.isAfter(currentDate);
+        } catch (Exception e) {
+            // Xử lý ngoại lệ nếu có lỗi khi chuyển đổi
+            return false;
+        }
+	}
 }
