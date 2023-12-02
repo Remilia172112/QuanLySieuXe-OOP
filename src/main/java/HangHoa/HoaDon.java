@@ -290,8 +290,8 @@ public class HoaDon extends PhanTu {
             // kiểm tra
             DanhSachKhachHang dskh = new DanhSachKhachHang();
         
-            int maKH = getKhachHang().getMaKhachHang();
-            int vtkh = dskh.timViTriKhachHang(maKH);
+            String maKH = getKhachHang().getMaKhachHang();
+            int vtkh = dskh.timViTriKhachHang(maKH+"");
             
             dsKhachHang = dskh.getDsKhachHang();
 

@@ -16,6 +16,20 @@ public class KiemTra {
 		}
 		return true;
 	}
+
+	public static String checkMaso() {
+        boolean check = false;
+		String str;
+		do {
+			str = sc.nextLine();
+			check = true;
+			if(!check_maso(str)) {
+				check = false;
+				System.out.print("Nhap sai ma so!!! Moi nhap lai: ");
+			}
+		} while (!check);
+		return str;
+	}
 	
 	public static boolean check_maso(String maso) {
 		String reg = "^[A-Za-z0-9]{2}\\d{8}$";
@@ -116,4 +130,12 @@ public class KiemTra {
 			return false;
 		}
 	}
+	public static boolean isValidMonthYear(String input) {
+        // Sử dụng biểu thức chính quy để kiểm tra định dạng MMYYYY
+        String regex = "^(0[1-9]|1[0-2])(20\\d{2})$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+
+        return matcher.matches();
+    }
 }

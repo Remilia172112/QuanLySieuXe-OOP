@@ -1,27 +1,28 @@
 package Nguoi;
 import DanhSach.DanhSachKhachHang;
 import DanhSach.DanhSachXe;
+import HangHoa.Xe;
 import KiemTra.KiemTra;
 import ThanhToan.ThanhToan;
 
 public class KhachHang extends Nguoi {
     private int soDonHangDaThanhToan;
     private int tongTienDaThanhToan;
-    private int maKhachHang;
     private String[] dsmspDamua;
+    private String maKhachHang;
     private ThanhToan phThThanhToan = null;
 
     public KhachHang() {
     }
 
-    public KhachHang(int soDonHangDaThanhToan, int tongTienDaThanhToan, int maKhachHang, ThanhToan phThThanhToan) {
+    public KhachHang(int soDonHangDaThanhToan, int tongTienDaThanhToan, String maKhachHang, ThanhToan phThThanhToan) {
         this.soDonHangDaThanhToan = soDonHangDaThanhToan;
         this.tongTienDaThanhToan = tongTienDaThanhToan;
         this.maKhachHang = maKhachHang;
         this.phThThanhToan = phThThanhToan;
     }
 
-    public KhachHang(int soDonHangDaThanhToan, int tongTienDaThanhToan, int maKhachHang, ThanhToan phThThanhToan, String hoten, String ngaythangnamsinh, String CCCD, String gioitinh,
+    public KhachHang(int soDonHangDaThanhToan, int tongTienDaThanhToan, String maKhachHang, ThanhToan phThThanhToan, String hoten, String ngaythangnamsinh, String CCCD, String gioitinh,
     String diachi, String sdt, String email) {
         super(hoten, ngaythangnamsinh, CCCD, gioitinh, diachi, sdt, email);
         this.soDonHangDaThanhToan = soDonHangDaThanhToan;
@@ -46,11 +47,11 @@ public class KhachHang extends Nguoi {
         this.tongTienDaThanhToan = tongTienDaThanhToan;
     }
 
-    public int getMaKhachHang() {
+    public String getMaKhachHang() {
         return maKhachHang;
     }
 
-    public void setMaKhachHang(int maKhachHang) {
+    public void setMaKhachHang(String maKhachHang) {
         this.maKhachHang = maKhachHang;
     }
     
@@ -60,7 +61,7 @@ public class KhachHang extends Nguoi {
         boolean check = false;
         do
         {
-            maKhachHang = KiemTra.checkNumber();
+            maKhachHang = KiemTra.checkMaso();
             check = ttds.layPhanTuVoi(maKhachHang+"") == null;
             if (!check) System.out.print("Ma khach hang da ton tai, moi nhap lai: ");
         } while (!check);
@@ -108,11 +109,23 @@ public class KhachHang extends Nguoi {
             dsMaSP = sc.nextLine(); // đọc từ input
             dsMaSpArr = dsMaSP.split(";"); // tách thành mảng bởi dấu ;
 
-            for(int i=0;i<dsMaSpArr.length;i++) // ứng với từng phần tử mảng
-                if (ttds.layPhanTuVoi(dsMaSpArr[i]) == null){ // nếu không tìm thấy
+            for(int i=0;i<dsMaSpArr.length;i++) { // ứng với từng phần tử mảng
+                if (ttds.kiemtraChuoidonhang(dsMaSpArr[i]) == -1){ // nếu không tìm thấy
                     check = false;
-                    System.out.println("Khong tim thay ma san pham tai vi tri thu "+i);
+                    System.out.println("Khong tim thay ma san pham tai vi tri thu " + i);
                     break;
+                }
+                if (dsMaSpArr[i].contains(maKhachHang) == false){ // nếu không tìm thấy
+                    check = false;
+                    System.out.println("Khong tim thay ma khach hang tai vi tri thu " + i);
+                    break;
+                }
+                String dateyearbuy = dsMaSpArr[i].substring(dsMaSpArr[i].length() - 6);
+                if(!KiemTra.isValidMonthYear(dateyearbuy)) {
+                    check = false;
+                    System.out.println("Thang nam khong hop le tai vi tri thu " + i);
+                    break;
+                }
             }
             if (!check) System.out.println("Day cac ma san pham khong hop le, hay nhap lai!");
         } while (!check);
@@ -124,6 +137,7 @@ public class KhachHang extends Nguoi {
         setMaKhachHang();
         super.nhap();
         setPhThThanhToan();
+        setDsmspDamua();
     }
     public void xuat() {
         System.out.printf("%-20s %-25s %-15s %-15s %-15s %-40s %-15s %-15s\n", "Ma khach hang", "Ho ten", "Gioi tinh", "Ngay sinh", "CCCD", "Dia chi", "So dien thoai", "Email");
@@ -131,7 +145,19 @@ public class KhachHang extends Nguoi {
         super.xuat();
         System.out.println();
         if (phThThanhToan != null) phThThanhToan.xuat();
-        System.out.println("---");
+        System.out.println("****************************");
+        System.out.println("Danh sach san pham da mua: ");
+        System.out.printf("%-20s %-30s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "Gia");
+        Xe pt;
+        DanhSachXe ttds = new DanhSachXe();
+
+        for(int i=0;i<dsmspDamua.length;i++) {
+
+            pt = (Xe) ttds.layPhanTuVoi(dsmspDamua[i]);
+
+            if (pt != null) System.out.printf("%-20s %-30s %-20s %-20s %-20s \n", pt.getMaSanPham(), pt.getTenSanPham(), pt.getThuongHieu(), pt.getNoiSanXuat(), pt.getPrice());
+        }
+        System.out.println("****************************");
     }    
     public static void xuat(KhachHang kh) {
         kh.xuat();

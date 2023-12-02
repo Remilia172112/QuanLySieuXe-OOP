@@ -70,6 +70,15 @@ public class DanhSachXe implements DanhSachChung {
         }
         this.dsXe = (Xe[]) dsXe;
     }
+
+    public int kiemtraChuoidonhang(String maSanPham) { // tìm vị trí sản phẩm với mã sản phẩm
+        Xe[] dsXeTmp = getdsSanPham();
+        for(int i=0;i<soLuong;i++) {
+            if (maSanPham.contains(dsXeTmp[i].getMaSanPham()))
+                return i;
+        }
+        return -1;
+    }
     @Override
     public void nhapDanhSach() {
         FileHandler.resetFile("dssp.txt");
