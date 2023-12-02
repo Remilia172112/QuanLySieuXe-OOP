@@ -2,11 +2,11 @@ package DanhSach;
 
 import File.FileHandler;
 import HangHoa.PhanTu;
-import HangHoa.Xe;
+import HangHoa.*;
 import KiemTra.KiemTra;
 
 public class DanhSachCTPhieuNhap {
-    
+
     private int soLuong;
     private Xe[] dsXe;
 
@@ -71,7 +71,6 @@ public class DanhSachCTPhieuNhap {
             FileHandler.themSP(sp.getMaSanPham(), sp.getTenSanPham(), sp.getThuongHieu(), sp.getNoiSanXuat(),
                     sp.getSoLuong(), sp.getPrice());
         }
-
         this.dsXe = (Xe[]) dsXe;
     }
     @Override
@@ -302,4 +301,3 @@ public class DanhSachCTPhieuNhap {
     }
 }
 
-}

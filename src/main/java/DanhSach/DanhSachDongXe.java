@@ -6,13 +6,15 @@ import KiemTra.KiemTra;
 
 public class DanhSachDongXe implements DanhSachChung { 
     private int soLuong;
+    private int baoHanh ;
     private DongXe[] dsDanhMucSP = getDsDanhMucSP();
 
     public DanhSachDongXe() {
         dsDanhMucSP = getDsDanhMucSP();
     }
-    public DanhSachDongXe(int soLuong, DongXe[] dsDanhMucSP) {
+    public DanhSachDongXe(int soLuong,int baoHanh, DongXe[] dsDanhMucSP) {
         this.soLuong = soLuong;
+        this.baoHanh  =baoHanh ;
         this.dsDanhMucSP = dsDanhMucSP;
     }
 
@@ -23,6 +25,11 @@ public class DanhSachDongXe implements DanhSachChung {
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
+
+    public void setDsDanhMucSP(DongXe[] dsDanhMucSP) {
+        this.dsDanhMucSP = dsDanhMucSP;
+    }
+
     public DongXe[] getDsDanhMucSP() { // đọc từ file
         String data = FileHandler.docFile("dsdmsp.txt");
         // chia thành các phần tử mảng
@@ -33,25 +40,22 @@ public class DanhSachDongXe implements DanhSachChung {
 
         dsDanhMucSP = new DongXe[soLuong];
         DongXe dmsp;
-        int k = 0, m, sldmsp;
+        int k = 0, m, sldmsp, thangBaoHanh ;
         String [] dsMaSP;
-
         String[] lArr;
         for (int i = 1; i < dArr.length; i++) {
             lArr = dArr[i].split("#");
-
             m = 0;
 
             dmsp = new DongXe();
 
             dmsp.setMaDanhMuc(lArr[m++]);
             dmsp.setTenDanhMuc(lArr[m++]);
-
             sldmsp = Integer.parseInt(lArr[m++]);
             dmsp.setSoLuong(sldmsp);
-
+            thangBaoHanh = Integer.parseInt(lArr[m++]) ;
+            dmsp.setBaoHanh(thangBaoHanh);
             dsMaSP = new String[sldmsp];
-
             for(int j=0;j<sldmsp;j++)
                 dsMaSP[j] = lArr[m++];
 
@@ -68,7 +72,7 @@ public class DanhSachDongXe implements DanhSachChung {
         FileHandler.ghiFile(soLuong+"\n", tenFile);
         for(int i=0;i<soLuong;i++) {
             dmsp = (DongXe) dsDanhMucSP[i];
-            FileHandler.themDmSP(dmsp.getMaDanhMuc(), dmsp.getTenDanhMuc(), dmsp.getSoLuong(), dmsp.getDsMaSanPham());
+            FileHandler.themDmSP(dmsp.getMaDanhMuc(), dmsp.getTenDanhMuc(), dmsp.getSoLuong(), dmsp.getBaoHanh(), dmsp.getDsMaSanPham());
         }
         this.dsDanhMucSP = (DongXe[]) dsDanhMucSP;
     }
