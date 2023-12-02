@@ -2,6 +2,7 @@ package HangHoa;
 
 import java.time.LocalDate;
 import java.util.Scanner ;
+import KiemTra.*;
 
 import DanhSach.DanhSachBaoHanh;
 
@@ -19,6 +20,10 @@ public class BaoHanh extends PhanTu {
     public BaoHanh() {
     }
 
+    public BaoHanh(int soBaoHanh, int soThangBaoHanh) {
+        this.soBaoHanh = soBaoHanh;
+        this.soThangBaoHanh = soThangBaoHanh ;
+    }
     
     public int getSoBaoHanh() {
         return soBaoHanh;
@@ -58,13 +63,19 @@ public class BaoHanh extends PhanTu {
         this.soThangBaoHanh = soThangBaoHanh;
     }
 
+    public void setSoThangBaoHanh() {
+        System.out.print("Nhap so thang duoc bao hanh : ");
+        soThangBaoHanh = KiemTra.checkNumber();
+
+    }
+
 
 
     @Override
     public void nhap() {
+        setSoBaoHanh();
+        setSoThangBaoHanh();
         /* 
-        setMaBaoHanh();
-         * setSoThangBaoHanh();
          * setDongXeBaoHanh();
          * setKhachHang();
          * 
