@@ -132,7 +132,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
     }
     public void xoaPhanTu() {
         // Tìm sản phẩm trước
-        System.out.println("Tim nha cung cap can xoa: ");
+        System.out.println("Tim nha cung cap can xoa !");
         int viTri = timViTriPhanTu();
         // Nếu tìm thấy
         if (viTri != -1) {
@@ -171,17 +171,17 @@ public class DanhSachNhaCungCap implements DanhSachChung {
         for(int i=0;i<soLuong;i++) {
             if (chon == 1) { // tìm chính xác
                 if (loai == 1)
-                    if (dsSanPhamTmp[i].getMaNhaCC().equalsIgnoreCase(giaTriCanTim))
+                    if (dsSanPhamTmp[i].getTenNhaCC().equalsIgnoreCase(giaTriCanTim))
                         return dsSanPhamTmp[i];
                 if (loai == 2)
-                    if (dsSanPhamTmp[i].getTenNhaCC().equalsIgnoreCase(giaTriCanTim))
+                    if (dsSanPhamTmp[i].getMaNhaCC().equalsIgnoreCase(giaTriCanTim))
                         return dsSanPhamTmp[i];
             } else {
                 if (loai == 1)
-                    if (dsSanPhamTmp[i].getMaNhaCC().contains(giaTriCanTim))
+                    if (dsSanPhamTmp[i].getTenNhaCC().contains(giaTriCanTim))
                         return dsSanPhamTmp[i];
                 if (loai == 2)
-                    if (dsSanPhamTmp[i].getTenNhaCC().contains(giaTriCanTim))
+                    if (dsSanPhamTmp[i].getMaNhaCC().contains(giaTriCanTim))
                         return dsSanPhamTmp[i];
             }
         }
@@ -189,15 +189,15 @@ public class DanhSachNhaCungCap implements DanhSachChung {
     }
     public int timViTriPhanTu() {
         int loai;
-        System.out.print("Tim san pham theo ten (1) hay theo khoa (2), vui long chon: ");
+        System.out.print("Tim nha cung cap theo ten (1) hay theo khoa (2), vui long chon: ");
 
         loai = Integer.parseInt(sc.nextLine());
         loai = (loai != 2) ? 1 : 2;
 
         if (loai == 1)
-            System.out.print("Nhap ten san pham can tim: ");
+            System.out.print("Nhap ten nha cung cap can tim: ");
         if (loai == 2)
-            System.out.print("Nhap ma san pham can tim: ");
+            System.out.print("Nhap ma nha cung can tim: ");
 
         String giaTriCanTim = sc.nextLine();
         int chon;
@@ -211,17 +211,17 @@ public class DanhSachNhaCungCap implements DanhSachChung {
         for(int i=0;i<soLuong;i++) {
             if (chon == 1) { // tìm chính xác
                 if (loai == 1)
-                    if (dsSanPhamTmp[i].getMaNhaCC().equalsIgnoreCase(giaTriCanTim))
+                    if (dsSanPhamTmp[i].getTenNhaCC().equalsIgnoreCase(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsSanPhamTmp[i].getTenNhaCC().equalsIgnoreCase(giaTriCanTim))
+                    if (dsSanPhamTmp[i].getMaNhaCC().equalsIgnoreCase(giaTriCanTim))
                         return i;
             } else {
                 if (loai == 1)
                     if (dsSanPhamTmp[i].getMaNhaCC().contains(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsSanPhamTmp[i].getTenNhaCC().contains(giaTriCanTim))
+                    if (dsSanPhamTmp[i].getMaNhaCC().contains(giaTriCanTim))
                         return i;
             }
         }
@@ -238,7 +238,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
     public PhanTu layPhanTuVoi(String thamSo) { // tìm phần tử cụ thể với mã ncc
         NhaCungCap[] dssp = getdsNhaCC();
         for(int i=0;i<soLuong;i++) {
-            if (dssp[i].getTenNhaCC().equalsIgnoreCase(thamSo))
+            if (dssp[i].getMaNhaCC().equalsIgnoreCase(thamSo))
                 return dssp[i];
         }
         return null;

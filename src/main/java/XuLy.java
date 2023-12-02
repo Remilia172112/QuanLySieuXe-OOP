@@ -151,6 +151,7 @@ public class XuLy {
                     quanLyDSDanhMucSP();
                     break;
                 case 5:
+                    quanLyDSNCC();
                     break;
                 case 6:
                     quanLyDSNV();
@@ -168,6 +169,7 @@ public class XuLy {
                     quanLyDSHD();
                     break;
                 case 10:
+                    quanLyDSPN();
                     break;
                 default:
                     System.out.println("Hay nhap so co trong menu");
@@ -479,7 +481,47 @@ public class XuLy {
                     chon = 0;
                     break;
             }
-            if (chon!=0) inMenu("xe");
+            if (chon!=0) inMenu("phieu nhap");
+        } while(chon!=0);
+    }
+    public static void quanLyDSNCC() {
+        DanhSachNhaCungCap ttds = new DanhSachNhaCungCap();
+        inMenu("Nha cung cap ");
+        int chon;
+        do {
+            chon = KiemTra.checkNumber();
+            switch (chon) {
+                case 1:
+                    ttds.nhapDanhSach();
+                    break;
+                case 2:
+                    ttds.xuatDanhSach();
+                    break;
+                case 3:
+                    ttds.themKPhanTuVaoDanhSach();
+                    break;
+                case 4:
+                    ttds.chinhSuaThongTinPhanTu();
+                    break;
+                case 5:
+                    ttds.xoaPhanTu();
+                    break;
+                case 6:
+                    PhanTu pt = ttds.timPhanTu();
+                    if (pt != null) {
+                        System.out.println("** Thong tin tim thay **");
+                        pt.xuat();
+                    } else System.out.println("Khong tim thay!");
+                    break;
+                case 7:
+                    ttds.thongKe();
+                    break;
+                default:
+                    if (chon==0) MenuQL();
+                    chon = 0;
+                    break;
+            }
+            if (chon!=0) inMenu("nha cung cap");
         } while(chon!=0);
     }
 }

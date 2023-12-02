@@ -23,19 +23,14 @@ public class NhaCungCap extends PhanTu {
     public void setMaNhaCC() {
         System.out.print("Nhap ma nha cung cap: ");
         DanhSachNhaCungCap ttds = new DanhSachNhaCungCap();
-        boolean check = true;
+        boolean check = false;
         do
         {
             maNhaCC = sc.nextLine();
             check = ttds.layPhanTuVoi(maNhaCC) == null; // kiểm tra mã nha cung cap xem đã tồn tại trong danh sách chưa
-            if (check) System.out.print("Ma nha cung cap da ton tai, moi nhap lai: ");
-        } while (check);
+            if (!check) System.out.print("Ma nha cung cap da ton tai, moi nhap lai: ");
+        } while (!check);
     }
-    public void setMaSanPham(String maNhaCC) {
-        this.maNhaCC = maNhaCC;
-    }
-
-
     public void setTenNhaCC() {
         System.out.print("Nhap ten nha cung cap: ");
         tenNhaCC = sc.nextLine();
