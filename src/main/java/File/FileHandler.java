@@ -38,8 +38,8 @@ public class FileHandler {
     }
 
     //Thêm phieu nhap vào file dspn.txt
-    public static void themPN(String maPhieuNhap , String maNhaCC , String maNV, String ngaynhap , int tongnhap) {
-        String tmp = maPhieuNhap + "#" + maNhaCC + "#" + maNV + "#" + ngaynhap + "#" + tongnhap;
+    public static void themPN(String maPhieuNhap , String maNhaCC , String maNV, String ngaynhap ,String maSanPham, int tongnhap) {
+        String tmp = maPhieuNhap + "#" + maNhaCC + "#" + maNV + "#" + ngaynhap + "#" + maSanPham +"#" + tongnhap;
         ghiFile(tmp, "dspn.txt");
     }
 
