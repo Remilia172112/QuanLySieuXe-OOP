@@ -60,10 +60,10 @@ public class ThanhToan {
                     phuongThucThanhToan = "CK_NganHang";
                     break;
                 case 3:
-                     phuongThucThanhToan = "CK_TinDung";
+                    phuongThucThanhToan = "CK_TinDung";
                     break;
                 case 4:
-                     phuongThucThanhToan = "CK_ViDienTu";
+                    phuongThucThanhToan = "CK_ViDienTu";
                     break;
                 default:
                     chon = 0;
