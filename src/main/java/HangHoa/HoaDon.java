@@ -10,7 +10,7 @@ public class HoaDon extends PhanTu {
     // Tạo tháng năm hiện tại
     LocalDate localDate = LocalDate.now();
     private int namhientai = localDate.getYear();
-    private int thanghientai = localDate.getMonthValue() + 1;
+    private int thanghientai = localDate.getMonthValue();
     private int ngayhientai = localDate.getDayOfMonth();
 
     private String ngaylapdon;
@@ -266,15 +266,20 @@ public class HoaDon extends PhanTu {
     }
     
     public void setNgaylapdon() {
-        boolean check;
-        do
-        {
-            check = true;
+        System.out.print("Sua dung ngay thang hien tai? (1/0): ");
+        int chon = Integer.parseInt(sc.nextLine());
+        if(chon == 1) ngaylapdon = ngayhientai + "/" + thanghientai + "/" + namhientai;
+        else {
+            boolean check;
             System.out.print("Nhap ngay lap don (dd/mm/yyyy): ");
-            ngaylapdon = sc.nextLine();
-            check = KiemTra.isValidDate(ngaylapdon);
-            if(!check) System.out.print("Nhap sai dinh dang ngay!! Moi nhap lai: ");
-        } while (!check);
+            do
+            {
+                check = true;
+                ngaylapdon = sc.nextLine();
+                check = KiemTra.isValidDate(ngaylapdon);
+                if(!check) System.out.print("Nhap sai dinh dang ngay!! Moi nhap lai: ");
+            } while (!check);
+        }
     }
 
     public void setPhThThanhToan() {
@@ -403,9 +408,9 @@ public class HoaDon extends PhanTu {
         do {
             check = true;
             mnv = sc.nextLine();
-            check = ttds.layPhanTuVoi(mnv) == null;
-            if (!check) System.out.print("Ma nhan vien da ton tai, moi nhap lai: ");
-            check = KiemTra.check_maso(mnv);
+            check = ttds.layPhanTuVoi(mnv) != null;
+            if (!check) System.out.print("Ma nhan vien khong ton tai, moi nhap lai: ");
+            if(check) check = KiemTra.check_maso(mnv);
         }
         while (!check);
     }

@@ -53,6 +53,7 @@ public class XuLy {
         DanhSachXe dsx = new DanhSachXe();
         DanhSachKhachHang dskh = new DanhSachKhachHang();
         DanhSachHoaDon dshd = new DanhSachHoaDon() ;
+        DanhSachPhieuNhap dspn = new DanhSachPhieuNhap();
         DanhSachNhanVien dsnv = new DanhSachNhanVien();
         NhanVien nv = (NhanVien) dsnv.layPhanTuVoi(username);
         int chon;
@@ -91,8 +92,10 @@ public class XuLy {
                     dshd.xuatDanhSach();
                     break;
                 case 5:
+                    dspn.themKPhanTuVaoDanhSach();
                     break;
                 case 6:
+                    dspn.xuatDanhSach();
                     break;
                 case 7:
                     dskh.themKPhanTuVaoDanhSach();

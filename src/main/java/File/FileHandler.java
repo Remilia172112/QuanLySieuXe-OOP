@@ -100,7 +100,7 @@ public class FileHandler {
     }
     //Tạo file
     public static void taoCacFile() {
-        File[] f = new File[7];
+        File[] f = new File[6];
         try {
             f[0] = new File("dssp.txt");
             f[1] = new File("dsnv.txt");
@@ -165,6 +165,8 @@ public class FileHandler {
                             // 3
                             break;
                         case 5:
+                            tenFile = "dshd.txt";
+                            ghiFile("", tenFile);
                             break;
                         case 6: 
                             break;
