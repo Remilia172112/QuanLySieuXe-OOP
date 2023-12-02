@@ -234,14 +234,13 @@ public class NhanVien extends Nguoi {
         super.nhap();
     }
     public void xuat() {
-        System.out.printf("%-20s %-25s %-15s %-15s %-15s %-40s %-15s %-15s\n", "Ma nhan vien", "Ho ten", "Gioi tinh", "Ngay sinh", "CCCD", "Dia chi", "So dien thoai", "Email");
-        System.out.printf("%-20s ", getManhanvien());
+        System.out.println("Ma nhan vien: " + getManhanvien());
         super.xuat();
         System.out.printf("\n%-25s %-25s %-30s %-10s %-10s %-10s\n", "Ngay vao lam", "He so luong",
                 "So ngay nghi trong thang", "Luong", "Thuong", "Hang");
         System.out.printf("%-25s %-25s %-30s %-10s %-10s %-10s\n", getNgayvaolam(), getHesoluong(),
                 getSongaynghitrongthang(), getLuong(), getThuong(), getHang());
-        System.out.println("***");
+        System.out.println("****************************");
     }
 
     public static void xuat(NhanVien nv) {

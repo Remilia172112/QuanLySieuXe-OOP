@@ -1,4 +1,5 @@
 package HangHoa;
+import java.time.LocalDate;
 import java.util.Scanner ;
 import DanhSach.*;
 import Nguoi.*;
@@ -76,9 +77,23 @@ public class HoaDon extends PhanTu {
         
         Xe[] dsspFile = ttds.getdsSanPham();
         Xe[] dssp = new Xe[soLuongSanPham];
-        
+
+        // Tạo tháng năm hiện tại
+        LocalDate localDate = LocalDate.now();
+        int namhientai = localDate.getYear();
+        int thanghientai = localDate.getMonthValue() + 1;
+
+        // Tìm khách hàng trong danh sách
+        KhachHang[] dsKhTemp = dskh.getDsKhachHang();
+        int vtkh = dskh.timViTriKhachHang(khachHang.getMaKhachHang());
+
+        // Lấy mảng sản phẩm đã mua
+        int slspDamua = dsKhTemp[vtkh].getDsmspDamua().length;
+        String[] dsmspDamua = new String[slspDamua+soLuongSanPham];
+        System.arraycopy(dsKhTemp[vtkh].getDsmspDamua(), 0, dsmspDamua, 0, slspDamua);
+
         Xe pt, timThay;
-        int slcl, vtsp, stt;
+        int vtsp, stt;
         System.out.println("Ban co muon xuat ra man hinh danh sach xe khong? (1 - in, 0 - khong)");
         int chon = Integer.parseInt(sc.nextLine());
         if (chon == 1) ttds.xuatDanhSach();
@@ -100,38 +115,31 @@ public class HoaDon extends PhanTu {
                         pt=null;
                         continue;
                     }
-                    
-                    // tìm sản phẩm trong danh sách sp với mã sản phẩm
-                    timThay = (Xe) ttds.layPhanTuVoi(pt.getMaSanPham());
-                    
-                    do {
-                        pt.setSoLuong();
+                    else {
+                        // Lưu mã sản phẩm riêng của người mua vào
+                        String tmp = pt.getMaSanPham() + dsKhTemp[vtkh].getMaKhachHang() + thanghientai + namhientai;
+                        dsmspDamua[slspDamua++] = tmp;
+
+                        // tìm sản phẩm trong danh sách sp với mã sản phẩm
+                        timThay = (Xe) ttds.layPhanTuVoi(pt.getMaSanPham());
                         
-                        // tính toán số lượng sản phẩm còn lại
-                        slcl = timThay.getSoLuong()-pt.getSoLuong();
+                        // giảm số lượng sản phẩm trong danh sách vì đã thêm sản phẩm vào hoá đơn.
+                        timThay.setSoLuong(timThay.getSoLuong()-1);
                         
-                        // nếu vượt quá số lượng sản phẩm hiện có
-                        if (slcl < 0) System.out.println("So luong san pham khong du! San pham hien tai con: " + timThay.getSoLuong());
-                    } while (slcl < 0);
-                    
-                    // giảm số lượng sản phẩm trong danh sách vì đã thêm sản phẩm vào hoá đơn.
-                    timThay.setSoLuong(timThay.getSoLuong()-pt.getSoLuong());
-                    
-                    // tìm vị trí sản phẩm đã nhập trong danh sách
-                    vtsp = ttds.timViTriSanPham(pt.getMaSanPham());
-                    
-                    // cập nhật lại số lượng sản phẩm
-                    dsspFile[vtsp] = timThay;
-                    ttds.setdsSanPham(dsspFile);
-                    
-                    // cập nhật tổng tiền
-                    tongTien += pt.getPrice() * pt.getSoLuong();
+                        // tìm vị trí sản phẩm đã nhập trong danh sách
+                        vtsp = ttds.timViTriSanPham(pt.getMaSanPham());
+                        
+                        // cập nhật lại số lượng sản phẩm
+                        dsspFile[vtsp] = timThay;
+                        ttds.setdsSanPham(dsspFile);
+                        
+                        // cập nhật tổng tiền
+                        tongTien += pt.getPrice() * pt.getSoLuong();
+                    }
                 }
             } while (pt == null);
         }
-        // Tìm khách hàng trong danh sách
-        KhachHang[] dsKhTemp = dskh.getDsKhachHang();
-        int vtkh = dskh.timViTriKhachHang(khachHang.getMaKhachHang());
+        
         
         // lấy thuộc tính tổng tiền đã thanh toán và số đơn hàng đã thanh toán
         int tienTam = dsKhTemp[vtkh].getTongTienDaThanhToan();
@@ -168,6 +176,7 @@ public class HoaDon extends PhanTu {
         } else dhDaThanhToan++; // nếu đơn hàng mới hoàn toàn
         
         // lưu lại
+        dsKhTemp[vtkh].setDsmspDamua(dsmspDamua);
         dsKhTemp[vtkh].setTongTienDaThanhToan(tienTam);
         dsKhTemp[vtkh].setSoDonHangDaThanhToan(dhDaThanhToan);
         dskh.setDsKhachHang(dsKhTemp);

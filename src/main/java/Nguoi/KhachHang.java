@@ -1,4 +1,6 @@
 package Nguoi;
+import java.time.LocalDate;
+
 import DanhSach.DanhSachKhachHang;
 import DanhSach.DanhSachXe;
 import HangHoa.Xe;
@@ -95,7 +97,7 @@ public class KhachHang extends Nguoi {
     }
 
     public void setDsmspDamua() {
-        System.out.println("Nhap day cac ma san pham da mua, phan cach boi dau cham phay (;):");
+        System.out.println("Nhap day cac ma xe da mua, phan cach boi dau cham phay (;):");
 
         String dsMaSP;
 
@@ -112,12 +114,7 @@ public class KhachHang extends Nguoi {
             for(int i=0;i<dsMaSpArr.length;i++) { // ứng với từng phần tử mảng
                 if (ttds.kiemtraChuoidonhang(dsMaSpArr[i]) == -1){ // nếu không tìm thấy
                     check = false;
-                    System.out.println("Khong tim thay ma san pham tai vi tri thu " + i);
-                    break;
-                }
-                if (dsMaSpArr[i].contains(maKhachHang) == false){ // nếu không tìm thấy
-                    check = false;
-                    System.out.println("Khong tim thay ma khach hang tai vi tri thu " + i);
+                    System.out.println("Khong tim thay ma xe tai vi tri thu " + i);
                     break;
                 }
                 String dateyearbuy = dsMaSpArr[i].substring(dsMaSpArr[i].length() - 6);
@@ -126,8 +123,21 @@ public class KhachHang extends Nguoi {
                     System.out.println("Thang nam khong hop le tai vi tri thu " + i);
                     break;
                 }
+                LocalDate localDate = LocalDate.now();
+                int namhientai = localDate.getYear();
+                int thanghientai = localDate.getMonthValue();
+                if(Integer.parseInt(dateyearbuy.substring(dateyearbuy.length() - 4)) > namhientai) {
+                    check = false;
+                    System.out.println("Nam mua xe lon hon nam hien tai tai vi tri thu " + i);
+                    break;
+                }
+                if(Integer.parseInt(dateyearbuy.substring(0, 2)) > thanghientai) {
+                    check = false;
+                    System.out.println("Thang mua xe lon hon thang hien tai tai vi tri thu " + i);
+                    break;
+                }
             }
-            if (!check) System.out.println("Day cac ma san pham khong hop le, hay nhap lai!");
+            if (!check) System.out.println("Day cac ma xe khong hop le, hay nhap lai!");
         } while (!check);
         setDsmspDamua(dsMaSpArr);
     }
@@ -137,25 +147,35 @@ public class KhachHang extends Nguoi {
         setMaKhachHang();
         super.nhap();
         setPhThThanhToan();
-        setDsmspDamua();
+        System.out.println("Cap nhat danh sach da mua cua khach hang? (1/0): ");
+        int chon = Integer.parseInt(sc.nextLine());
+        if(chon == 1) {
+            System.out.println("Ma xe da mua bao gom: ma xe + ma khach hang + thang nam mua xe");
+            setDsmspDamua();
+        }
+        else {
+            String[] tmp = new String[0];
+            setDsmspDamua(tmp);
+        }
     }
     public void xuat() {
-        System.out.printf("%-20s %-25s %-15s %-15s %-15s %-40s %-15s %-15s\n", "Ma khach hang", "Ho ten", "Gioi tinh", "Ngay sinh", "CCCD", "Dia chi", "So dien thoai", "Email");
-        System.out.printf("%-20s ", getMaKhachHang());
+        System.out.println("Ma nhan vien: " + getMaKhachHang());        
         super.xuat();
-        System.out.println();
         if (phThThanhToan != null) phThThanhToan.xuat();
-        System.out.println("****************************");
-        System.out.println("Danh sach san pham da mua: ");
-        System.out.printf("%-20s %-30s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "Gia");
-        Xe pt;
-        DanhSachXe ttds = new DanhSachXe();
+        System.out.println();
+        if(dsmspDamua.length != 0) {
+            System.out.println("****************************");
+            System.out.println("Danh sach xe da mua: ");
+            System.out.printf("%-20s %-30s %-20s %-20s %-20s \n","Ma xe khach hang", "Ten xe", "Thuong hieu", "Noi san xuat", "Gia");
+            Xe pt;
+            DanhSachXe ttds = new DanhSachXe();
 
-        for(int i=0;i<dsmspDamua.length;i++) {
+            for(int i=0;i<dsmspDamua.length;i++) {
 
-            pt = (Xe) ttds.layPhanTuVoi(dsmspDamua[i]);
+                pt = (Xe) ttds.layPhanTuVoi(dsmspDamua[i].substring(0, dsmspDamua[i].length()-6-maKhachHang.length()));
 
-            if (pt != null) System.out.printf("%-20s %-30s %-20s %-20s %-20s \n", pt.getMaSanPham(), pt.getTenSanPham(), pt.getThuongHieu(), pt.getNoiSanXuat(), pt.getPrice());
+                if (pt != null) System.out.printf("%-20s %-30s %-20s %-20s %-20s \n", dsmspDamua[i], pt.getTenSanPham(), pt.getThuongHieu(), pt.getNoiSanXuat(), pt.getPrice());
+            }
         }
         System.out.println("****************************");
     }    

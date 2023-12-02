@@ -118,7 +118,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
         for(int i=0;i<soLuong;i++) {
             pn = (PhieuNhap) dsPhieuNhap[i];
-            FileHandler.themPN(pn.getMaPhieuNhap() , pn.getMaNhaCC() , pn.getMaNV(), pn.getNgaynhap() , pn.getTongnhap());
+            FileHandler.themPN(pn.getMaPhieuNhap() , pn.getMaNhaCC() , pn.getMaNV(), pn.getNgaynhap() , pn.getMaSanPham(), pn.getTongnhap());
         }
 
         this.dsPhieuNhap = (PhieuNhap[]) dsPhieuNhap;

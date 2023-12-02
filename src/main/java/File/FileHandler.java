@@ -38,8 +38,8 @@ public class FileHandler {
     }
 
     //Thêm phieu nhap vào file dspn.txt
-    public static void themPN(String maPhieuNhap , String maNhaCC , String maNV, String ngaynhap , int tongnhap) {
-        String tmp = maPhieuNhap + "#" + maNhaCC + "#" + maNV + "#" + ngaynhap + "#" + tongnhap;
+    public static void themPN(String maPhieuNhap , String maNhaCC , String maNV, String ngaynhap ,String maSanPham, int tongnhap) {
+        String tmp = maPhieuNhap + "#" + maNhaCC + "#" + maNV + "#" + ngaynhap + "#" + maSanPham +"#" + tongnhap;
         ghiFile(tmp, "dspn.txt");
     }
 
@@ -86,10 +86,10 @@ public class FileHandler {
     }
     // thêm hoá đơn vào file dshd.txt
     public static void themHd(int soHoaDon, int soLuongSanPham, int tongTien, String maKhachHang, String phThThanhToan, Xe[] dssp) {
-        String tmp = soHoaDon+"#"+soLuongSanPham+"#"+tongTien+"#"+maKhachHang+"#"+phThThanhToan+"#";    
+        String tmp = soHoaDon+"#"+soLuongSanPham+"#"+tongTien+"#"+maKhachHang+"#"+phThThanhToan;    
         for(int i=0;i<dssp.length;i++)
         {
-            tmp+=dssp[i].getMaSanPham()+"#"+dssp[i].getSoLuong();
+            tmp+="#" + dssp[i].getMaSanPham();
         }
         ghiFile(tmp, "dshd.txt");
     }
