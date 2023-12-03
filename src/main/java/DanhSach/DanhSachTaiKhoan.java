@@ -274,9 +274,13 @@ public class DanhSachTaiKhoan implements DanhSachChung {
                     String type;
                     System.out.print("Nhap loai can loc: ");
                     String find = sc.nextLine();
+                    if(!find.equals("nhan vien") && !find.equals("quan ly")) {
+                        System.out.println("Nhap sai loai tai khoan!!");
+                        break;
+                    }
                     for (int i = 0; i < soLuong; i++) {
                         type = dsTaiKhoan[i].getType();
-                        if (find == type) {
+                        if (find.equalsIgnoreCase(type)) {
                             dsTaiKhoan[i].xuat();
                         }
                     }

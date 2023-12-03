@@ -21,8 +21,8 @@ public class XuLy {
         do {
             System.out.println("============================================================");
             System.out.println("***   Moi ban dang nhap vao chuong trinh!!! Ban la...   ***");
-            System.out.println("***  1. Quan ly                                         ***");
-            System.out.println("***  2. Nhan vien                                       ***");
+            System.out.println("***  1. Nhan vien                                       ***");
+            System.out.println("***  2. Quan ly                                         ***");
             System.out.println("***  0. Thoat chuong trinh                              ***");
             System.out.println("============================================================");
             System.out.print("Moi chon: ");
@@ -32,21 +32,6 @@ public class XuLy {
                     System.out.println("Cam on ban da su dung chuong trinh");
                     break;
                 case 1:
-                    System.out.print("Tai khoan: ");
-                    String user = sc.nextLine();
-                    System.out.print("Mat khau : ");
-                    String pass = sc.nextLine();
-                    TaiKhoan tk = dstk.checkLogin(user, pass);
-                    if(tk != null) {
-                        System.out.println("Dang nhap thanh cong!!!");
-                        if(tk.getType().equals("quan ly")) {
-                            username = user;
-                            MenuQL();
-                            chon = 0;
-                        }
-                    }
-                    break;
-                case 2:
                     System.out.print("Tai khoan: ");
                     String user1 = sc.nextLine();
                     System.out.print("Mat khau : ");
@@ -61,8 +46,23 @@ public class XuLy {
                         }
                     }
                     break;
+                case 2:
+                    System.out.print("Tai khoan: ");
+                    String user = sc.nextLine();
+                    System.out.print("Mat khau : ");
+                    String pass = sc.nextLine();
+                    TaiKhoan tk = dstk.checkLogin(user, pass);
+                    if(tk != null) {
+                        System.out.println("Dang nhap thanh cong!!!");
+                        if(tk.getType().equals("quan ly")) {
+                            username = user;
+                            MenuQL();
+                            chon = 0;
+                        }
+                    }
+                    break;
                 default:
-                    System.out.println("Hay nhap so co trong menu");
+                    System.out.println("Hay nhap so co trong menu!!!");
                     break;
                 }
         } while (chon!=0);
@@ -130,7 +130,7 @@ public class XuLy {
                     dsdx.Checkbaohanh();
                     break;
                 default:
-                    System.out.println("Hay nhap so co trong menu");
+                    System.out.println("Hay nhap so co trong menu!!!");
                     break;
                 }
             }while (chon!=0);
@@ -202,7 +202,7 @@ public class XuLy {
                     dsdx.Checkbaohanh();
                     break;
                 default:
-                    System.out.println("Hay nhap so co trong menu");
+                    System.out.println("Hay nhap so co trong menu!!!");
                     break;
             }
         } while (chon!=0);
@@ -297,6 +297,9 @@ public class XuLy {
                 case 7:
                     ttds.thongKe();
                     break;
+                case 8:
+                    System.out.println("So luong: " + ttds.getSoLuong());
+                    break;
                 default:
                     if (chon==0) MenuQL();
                     chon = 0;
@@ -337,6 +340,9 @@ public class XuLy {
                 case 7:
                     ttds.thongKe();
                     break;
+                case 8:
+                    System.out.println("So luong: " + ttds.getSoLuong());
+                    break;
                 default:
                     if (chon==0) MenuQL();
                     chon = 0;
@@ -376,6 +382,9 @@ public class XuLy {
                     break;
                 case 7:
                     ttds.thongKe();
+                    break;
+                case 8:
+                    System.out.println("So luong: " + ttds.getSoLuong());
                     break;
                 default:
                     if (chon==0) MenuQL();
@@ -424,6 +433,9 @@ public class XuLy {
                 case 7:
                     ttds.thongKe();
                     break;
+                case 8:
+                    System.out.println("So luong: " + ttds.getSoLuong());
+                    break;
                 default:
                     if (chon==0) MenuQL();
                     chon = 0;
@@ -470,6 +482,9 @@ public class XuLy {
                 case 7:
                     ttds.thongKe();
                     break;
+                case 8:
+                    System.out.println("So luong: " + ttds.getsoLuong());
+                    break;
                 default:
                     chon = 0;
                     if (chon==0) MenuQL();
@@ -513,7 +528,7 @@ public class XuLy {
                     ttds.thongKe();
                     break;
                 case 8:
-                    System.out.println("So luong phieu nhap: " + ttds.getsoLuong());
+                    System.out.println("So luong: " + ttds.getsoLuong());
                     break;
                 default:
                     if (chon==0) MenuQL();
@@ -555,8 +570,9 @@ public class XuLy {
                 case 7:
                     ttds.thongKe();
                     break;
-                
-
+                case 8:
+                    System.out.println("So luong: " + ttds.getSoLuong());
+                    break;
                 default:
                     if (chon==0) MenuQL();
                     chon = 0;

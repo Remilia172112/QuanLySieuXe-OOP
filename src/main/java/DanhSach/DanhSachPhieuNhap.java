@@ -61,9 +61,8 @@ public class DanhSachPhieuNhap implements DanhSachChung {
                 sp.setSoLuong(Integer.parseInt(lArr[m++]));
                 dsx[j] = sp;
             }
+            pn.setDsSanPham(dsx);
             
-
-
             dsPhieuNhap[k++] = pn;
         }
 
@@ -88,6 +87,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         pt = new PhieuNhap();
         pt.nhap(username);
         themVaoDanhSach((PhanTu) pt);
+        System.out.println("Tao phieu nhap thanh cong!!");
     }
 
     @Override
@@ -112,12 +112,14 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
     @Override
     public void xuatDanhSach() {
-        System.out.println();
+        if(soLuong == 0) {
+            System.out.println("Chua co hoa don nao!!");
+            return;
+        }
         System.out.println("=== Danh sach phieu nhap ===");
-        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s  \n","Ma phieu nhap", "Ma nha cung cap", "Ma nha vien", "Ngay nhap", "ma sanpham","Tong nhap");
+        System.out.printf("%-20s %-20s %-20s %-20s \n","Ma phieu nhap", "Ma nha cung cap", "Ma nha vien", "Ngay nhap");
         for(int i=0;i<soLuong;i++) {
             getdsPhieuNhap()[i].xuat();
-            // dsPhieuNhap[i].xuat();
         }
         System.out.println();
     }
@@ -271,11 +273,11 @@ public class DanhSachPhieuNhap implements DanhSachChung {
                     }
                     break;
                 case 2:
-                    System.out.print("Nhap ngay can loc: ");
-                    giatricanloc = sc.nextLine();
+                    System.out.print("Nhap thang can loc: ");
+                    int tmp = KiemTra.checkMonth();
                     check = false;
                     for(int i=0;i<soLuong;i++){
-                        if ((dspn[i].getNgaynhap().equalsIgnoreCase(giatricanloc))){
+                        if (Integer.parseInt((dspn[i].getNgaynhap().substring(3,2))) == tmp){
                             check = true;
                             break;
                         } 
@@ -285,7 +287,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
                         break;
                     } else{
                         for(int i=0;i<soLuong;i++) {
-                            if (dspn[i].getNgaynhap().equalsIgnoreCase(giatricanloc))
+                            if (Integer.parseInt((dspn[i].getNgaynhap().substring(4,2))) == tmp)
                                 dspn[i].xuat();
                         }
                     }
@@ -301,7 +303,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
                         } 
                     }
                     if (!check) {
-                        System.out.println("Ngay nay khong co phieu nhap.");
+                        System.out.println("Khong co phieu nhap co ma nha cung cap nay.");
                         break;
                     } else{
                         for(int i=0;i<soLuong;i++) {

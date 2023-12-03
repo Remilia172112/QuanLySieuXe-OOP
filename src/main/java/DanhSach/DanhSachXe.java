@@ -84,7 +84,7 @@ public class DanhSachXe implements DanhSachChung {
         FileHandler.resetFile("dsx.txt");
         System.out.print("Moi nhap so luong san pham: ");
 
-        soLuong = KiemTra.checkNumber();;
+        soLuong = KiemTra.checkNumber();
         dsXe = new Xe[soLuong];
 
         int stt, soLuongTemp=0, soLuongCurrent = soLuong;
@@ -169,7 +169,7 @@ public class DanhSachXe implements DanhSachChung {
         int loai;
         System.out.print("Tim san pham theo ten (1) hay theo khoa (2), vui long chon: ");
 
-        loai = KiemTra.checkNumber();;
+        loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;
 
         if (loai == 1)
@@ -181,7 +181,7 @@ public class DanhSachXe implements DanhSachChung {
         int chon;
 
         System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
-        chon = KiemTra.checkNumber();;
+        chon = KiemTra.checkNumber();
         chon = (chon != 2) ? 1 : 2;
 
         Xe[] dsXeTmp = getdsSanPham();
@@ -211,7 +211,7 @@ public class DanhSachXe implements DanhSachChung {
         int loai;
         System.out.print("Tim san pham theo ten (1) hay theo khoa (2), vui long chon: ");
 
-        loai = KiemTra.checkNumber();;
+        loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;
         if (loai == 1)
             System.out.print("Nhap ten san pham can tim: ");
@@ -222,7 +222,7 @@ public class DanhSachXe implements DanhSachChung {
         int chon;
 
         System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
-        chon = KiemTra.checkNumber();;
+        chon = KiemTra.checkNumber();
         chon = (chon != 2) ? 1 : 2;
 
         Xe[] dsXeTmp = getdsSanPham();
@@ -276,11 +276,11 @@ public class DanhSachXe implements DanhSachChung {
             System.out.println("2. In san pham co gia ban lon hon n");
             System.out.println("0. Quay lai menu truoc");
             System.out.print("Moi chon: ");
-            chon = KiemTra.checkNumber();;
+            chon = KiemTra.checkNumber();
             switch (chon) {
                 case 1:
                     System.out.print("Nhap so luong can tim: ");
-                    n = KiemTra.checkNumber();;
+                    n = KiemTra.checkNumber();
                     for(int i=0;i<soLuong;i++) {
                         if(dsXe[i].getSoLuong() > n){
                             dsXe[i].xuat();
@@ -289,7 +289,7 @@ public class DanhSachXe implements DanhSachChung {
                     break;
                 case 2:
                     System.out.print("Nhap gia ban can tim: ");
-                    n = KiemTra.checkNumber();;
+                    n = KiemTra.checkNumber();
                     for(int i=0;i<soLuong;i++) {
                         if(dsXe[i].getPrice() > n){
                             dsXe[i].xuat();

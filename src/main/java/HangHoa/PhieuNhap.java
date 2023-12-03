@@ -226,7 +226,11 @@ public class PhieuNhap extends PhanTu {
         setDsSanPham();
     }
     public void xuat() {
-        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s  \n", maPhieuNhap, maNhaCC , maNV , ngaynhap, dsmspNhap, SoluongNhap );
+        System.out.printf("%-20s %-20s %-20s %-20s  \n", maPhieuNhap, maNhaCC , maNV , ngaynhap);
+        System.out.println("\nDanh sach san pham: \n");
+        System.out.printf("%-20s %-25s %-20s %-20s %-15s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
+        for(int i = 0; i< dsmspNhap.length; i++) dsmspNhap[i].xuat();
+        System.out.println("\n**************************");
     }
     public void suaThongTin() {
         System.out.println("=== Sua thong tin phieu nhap ===");
@@ -235,7 +239,7 @@ public class PhieuNhap extends PhanTu {
         System.out.println("3. Sua ma nhan vien lap phieu nhap");
         System.out.println("4. Sua ngay lap phieu nhap");
         System.out.println("5. Sua danh sach ma xe");
-        System.out.println("6. Sua tong loai xe nhap");
+        System.out.println("6. Sua so luong xe nhap");
         System.out.println("0. Quay ve menu quan ly xe");
         System.out.println("===============================");
         int chon;

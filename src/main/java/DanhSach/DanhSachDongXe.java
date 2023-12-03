@@ -329,7 +329,6 @@ public class DanhSachDongXe implements DanhSachChung {
                         if (dmSP.getSoLuong() >= n) dmSP.xuat();
                     }
                     break;
-
                 default:
                     chon = 0;
                     break;

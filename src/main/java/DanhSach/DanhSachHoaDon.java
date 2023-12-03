@@ -95,6 +95,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         pt = new HoaDon();
         pt.nhap(username);
         themVaoDanhSach((PhanTu) pt);
+        System.out.println("Tao hoa don thanh cong!!");
     }
 
     @Override
