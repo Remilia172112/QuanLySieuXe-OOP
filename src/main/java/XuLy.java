@@ -11,12 +11,17 @@ public class XuLy {
     public static void xuLyTrungTam() {
         int chon;
         DanhSachTaiKhoan dstk = new DanhSachTaiKhoan();
-         System.out.println("***** Chao mung ban den voi chuong trinh quan ly cua hang sieu xe *****");
+         System.out.println("************************************************************\n" +
+                            "***          Chao mung ban den voi chuong trinh          ***\n" +
+                            "***              QUAN LI CUA HANG SIEU XE                ***\n"+
+                            "************************************************************");
         do {
-            System.out.println("==============================");
-            System.out.println("1. Dang Nhap");
-            System.out.println("0. Thoat chuong trinh");
-            System.out.println("==============================");
+            System.out.println("============================================================");
+            System.out.println("***          Moi ban dang nhap vao chuong trinh         ***");
+            System.out.println("***  1. Quan tri vien                                   ***");
+            System.out.println("***  2. Nhan vien                                       ***");
+            System.out.println("***  0. Thoat chuong trinh                              ***");
+            System.out.println("============================================================");
             System.out.print("Moi chon: ");
             chon = KiemTra.checkNumber();
             switch (chon) {
@@ -31,14 +36,24 @@ public class XuLy {
                     TaiKhoan tk = dstk.checkLogin(user, pass);
                     if(tk != null) {
                         System.out.println("Dang nhap thanh cong!!!");
-                        if(tk.getType().equals("nhan vien")) {
-                            username = user;
-                            MenuNV();
-                            chon = 0;
-                        }
                         if(tk.getType().equals("quan ly")) {
                             username = user;
                             MenuQL();
+                            chon = 0;
+                        }
+                    }
+                    break;
+                case 2:
+                    System.out.print("Tai khoan: ");
+                    String user1 = sc.nextLine();
+                    System.out.print("Mat khau : ");
+                    String pass1 = sc.nextLine();
+                    TaiKhoan tk1 = dstk.checkLogin(user1, pass1);
+                    if(tk1 != null) {
+                        System.out.println("Dang nhap thanh cong!!!");
+                        if(tk1.getType().equals("nhan vien")) {
+                            username = user1;
+                            MenuNV();
                             chon = 0;
                         }
                     }
