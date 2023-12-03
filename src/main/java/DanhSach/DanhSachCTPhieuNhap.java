@@ -1,17 +1,17 @@
 package DanhSach;
-
 import File.FileHandler;
 import HangHoa.PhanTu;
 import HangHoa.*;
 import KiemTra.KiemTra;
 
-public class DanhSachCTPhieuNhap {
+public class DanhSachCTPhieuNhap implements DanhSachChung{
 
     private int soLuong;
     private Xe[] dsXe;
 
-    public DanhSachXe() {
-        dsXe = getdsSanPham();
+    public Xe[] DanhSachXe() {
+         dsXe = getdsSanPham();
+        return new Xe[0];
     }
 
     public int getsoLuong(){
