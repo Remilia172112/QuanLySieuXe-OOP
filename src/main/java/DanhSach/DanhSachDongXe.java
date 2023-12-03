@@ -6,16 +6,14 @@ import KiemTra.KiemTra;
 
 public class DanhSachDongXe implements DanhSachChung { 
     private int soLuong;
-    private int baoHanh ;
-    private DongXe[] dsDanhMucSP = getDsDanhMucSP();
+    private DongXe[] dsDongXe = getDsDongXe();
 
     public DanhSachDongXe() {
-        dsDanhMucSP = getDsDanhMucSP();
+        dsDongXe = getDsDongXe();
     }
-    public DanhSachDongXe(int soLuong,int baoHanh, DongXe[] dsDanhMucSP) {
+    public DanhSachDongXe(int soLuong, DongXe[] dsDongXe) {
         this.soLuong = soLuong;
-        this.baoHanh  =baoHanh ;
-        this.dsDanhMucSP = dsDanhMucSP;
+        this.dsDongXe = dsDongXe;
     }
 
     public int getSoLuong() {
@@ -26,19 +24,19 @@ public class DanhSachDongXe implements DanhSachChung {
         this.soLuong = soLuong;
     }
 
-    public void setDsDanhMucSP(DongXe[] dsDanhMucSP) {
-        this.dsDanhMucSP = dsDanhMucSP;
+    public void setDsDongXe(DongXe[] dsDongXe) {
+        this.dsDongXe = dsDongXe;
     }
 
-    public DongXe[] getDsDanhMucSP() { // đọc từ file
-        String data = FileHandler.docFile("dsdmsp.txt");
+    public DongXe[] getDsDongXe() { // đọc từ file
+        String data = FileHandler.docFile("dsdx.txt");
         // chia thành các phần tử mảng
         String[] dArr = data.split("\n");
         // trường hợp file rỗng
         if (dArr[0].length() == 0) setSoLuong(0);
         else setSoLuong(Integer.parseInt(dArr[0]));
 
-        dsDanhMucSP = new DongXe[soLuong];
+        dsDongXe = new DongXe[soLuong];
         DongXe dmsp;
         int k = 0, m, sldmsp, thangBaoHanh ;
         String [] dsMaSP;
@@ -51,57 +49,74 @@ public class DanhSachDongXe implements DanhSachChung {
 
             dmsp.setMaDanhMuc(lArr[m++]);
             dmsp.setTenDanhMuc(lArr[m++]);
+            thangBaoHanh = Integer.parseInt(lArr[m++]);
+            dmsp.setThangbaoHanh(thangBaoHanh);
             sldmsp = Integer.parseInt(lArr[m++]);
             dmsp.setSoLuong(sldmsp);
-            thangBaoHanh = Integer.parseInt(lArr[m++]) ;
-            dmsp.setBaoHanh(thangBaoHanh);
             dsMaSP = new String[sldmsp];
             for(int j=0;j<sldmsp;j++)
                 dsMaSP[j] = lArr[m++];
 
             dmsp.setDsMaSanPham(dsMaSP);
 
-            dsDanhMucSP[k++] = dmsp;
+            dsDongXe[k++] = dmsp;
         }
-        return dsDanhMucSP;
+        return dsDongXe;
     }
-    public void setDsDanhMucSP(PhanTu[] dsDanhMucSP) { // ghi vào file
+    public void setDsDX(PhanTu[] dsDongXe) { // ghi vào file
         DongXe dmsp;
-        String tenFile = "dsdmsp.txt";
+        String tenFile = "dsdx.txt";
         FileHandler.resetFile(tenFile);
         FileHandler.ghiFile(soLuong+"\n", tenFile);
         for(int i=0;i<soLuong;i++) {
-            dmsp = (DongXe) dsDanhMucSP[i];
-            FileHandler.themDmSP(dmsp.getMaDanhMuc(), dmsp.getTenDanhMuc(), dmsp.getSoLuong(), dmsp.getBaoHanh(), dmsp.getDsMaSanPham());
+            dmsp = (DongXe) dsDongXe[i];
+            FileHandler.themDX(dmsp.getMaDanhMuc(), dmsp.getTenDanhMuc(), dmsp.getSoLuong(), dmsp.getThangbaoHanh(), dmsp.getDsMaSanPham());
         }
-        this.dsDanhMucSP = (DongXe[]) dsDanhMucSP;
+        this.dsDongXe = (DongXe[]) dsDongXe;
     }
+
+    public boolean Checkmadongxe(String thamSo) {
+        DongXe[] dsDm = getDsDongXe();
+        for(int i=0;i<soLuong;i++) {
+            if (thamSo.contains(dsDm[i].getMaDanhMuc()))
+                return true;
+        }
+        return false;
+    }
+
     @Override
     public void nhapDanhSach() {
         System.out.println("Nhap so luong danh muc: ");
         soLuong = Integer.parseInt(sc.nextLine());
 
-        dsDanhMucSP = new DongXe[soLuong];
+        dsDongXe = new DongXe[soLuong];
 
 
         int stt, soLuongTemp=0, soLuongCurrent = soLuong;
         for (int i = 0; i < soLuongCurrent; i++){
-            dsDanhMucSP[i] = new DongXe();
+            dsDongXe[i] = new DongXe();
             stt = i+1;
             System.out.println("** Danh muc san pham thu "+stt+" **");
 
-            dsDanhMucSP[i].nhap();
+            dsDongXe[i].nhap();
             soLuong = ++soLuongTemp;
             // mỗi lần đọc phần tử từ mảng sẽ ghi trực tiếp vào file kèm số lượng phần tử đã đọc
-            setDsDanhMucSP(dsDanhMucSP);
+            setDsDongXe(dsDongXe);
         }
     }
-
+    // Chỉ xuất dòng xe
+    public void xuatDanhSachDongxe() {
+        System.out.println("=== Danh sach dong xe ===");
+        for (int i = 0; i < soLuong; i++){
+            dsDongXe[i].xuatDongxe();
+        }
+        System.out.println();
+    }
     @Override
     public void xuatDanhSach() {
-        System.out.println("=== Danh sach danh muc san pham ===");
+        System.out.println("=== Danh sach dong xe ===");
         for (int i = 0; i < soLuong; i++){
-            dsDanhMucSP[i].xuat();
+            dsDongXe[i].xuat();
         }
         System.out.println();
     }
@@ -110,15 +125,15 @@ public class DanhSachDongXe implements DanhSachChung {
     public void themVaoDanhSach(PhanTu pt) {
         DongXe[] dsDm = new DongXe[soLuong+1];
         for(int i=0;i<soLuong;i++)
-            dsDm[i] = getDsDanhMucSP()[i];
+            dsDm[i] = getDsDongXe()[i];
         dsDm[soLuong] = (DongXe) pt;
         soLuong++;
-        setDsDanhMucSP(dsDm);
+        setDsDongXe(dsDm);
     }
 
     @Override
     public void themKPhanTuVaoDanhSach() {
-        System.out.print("Nhap so luong danh muc san pham can them vao danh sach: ");
+        System.out.print("Nhap so luong dong xe can them vao danh sach: ");
         int sl = Integer.parseInt(sc.nextLine());
         PhanTu pt;
         for(int i=0;i<sl;i++)
@@ -131,21 +146,21 @@ public class DanhSachDongXe implements DanhSachChung {
 
     @Override
     public void chinhSuaThongTinPhanTu() {
-        System.out.println("Tim danh muc san pham can chinh sua: ");
+        System.out.println("Tim dong xe can chinh sua: ");
 
         int viTri = timViTriPhanTu();
 
-        DongXe[] dsDmSp = getDsDanhMucSP();
+        DongXe[] dsDmSp = getDsDongXe();
 
         if (viTri != -1) {
             dsDmSp[viTri].suaThongTin();
-            setDsDanhMucSP(dsDmSp);
+            setDsDongXe(dsDmSp);
         } else System.out.println("Khong tim thay!");
     }
 
     @Override
     public void xoaPhanTu() {
-        System.out.println("Tim danh muc san pham can xoa: ");
+        System.out.println("Tim dong xe can xoa: ");
 
         int viTri = timViTriPhanTu();
 
@@ -155,27 +170,27 @@ public class DanhSachDongXe implements DanhSachChung {
 
             for(int i=0, k=0;i<soLuong;i++) {
                 if (i==viTri) continue; // bỏ phần tử
-                dsDm[k++] = getDsDanhMucSP()[i];
+                dsDm[k++] = getDsDongXe()[i];
             }
 
             soLuong--;
-            setDsDanhMucSP(dsDm);
-        } else System.out.println("Khong tim thay danh muc san pham!");
+            setDsDongXe(dsDm);
+        } else System.out.println("Khong tim thay dong xe!");
     }
 
     @Override
     public PhanTu timPhanTu() { // tìm danh mục sản phẩm dựa theo tên hoặc khoá (tương đối || tuyệt đối)
 
         int loai;
-        System.out.print("Tim danh muc san pham theo ten (1) hay theo ma (2), vui long chon: ");
+        System.out.print("Tim dong xe theo ten (1) hay theo ma (2), vui long chon: ");
 
         loai = Integer.parseInt(sc.nextLine());
         loai = (loai != 2) ? 1 : 2;
 
         if (loai == 1)
-            System.out.print("Nhap ten danh muc san pham can tim: ");
+            System.out.print("Nhap ten dong xe can tim: ");
         if (loai == 2)
-            System.out.print("Nhap ma danh muc san pham can tim: ");
+            System.out.print("Nhap ma dong xe can tim: ");
 
         String giaTriCanTim = sc.nextLine();
 
@@ -183,7 +198,7 @@ public class DanhSachDongXe implements DanhSachChung {
         System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
         chon = KiemTra.checkNumber();
         chon = (chon != 2) ? 1 : 2;
-        DongXe[] dsDm = getDsDanhMucSP();
+        DongXe[] dsDm = getDsDongXe();
 
         for(int i=0;i<soLuong;i++) {
             if (chon == 1) { // tìm chính xác
@@ -212,19 +227,19 @@ public class DanhSachDongXe implements DanhSachChung {
     @Override
     public int timViTriPhanTu() { // trả về vị trí phần tử trong mảng
         int loai;
-        System.out.print("Tim danh muc san pham theo ten (1) hay theo ma (2), vui long chon: ");
+        System.out.print("Tim dong xe theo ten (1) hay theo ma (2), vui long chon: ");
         loai = Integer.parseInt(sc.nextLine());
         loai = (loai != 2) ? 1 : 2;
         if (loai == 1)
-            System.out.print("Nhap ten danh muc san pham can tim: ");
+            System.out.print("Nhap ten dong xe can tim: ");
         if (loai == 2)
-            System.out.print("Nhap ma danh muc san pham can tim: ");
+            System.out.print("Nhap ma dong xe can tim: ");
         String giaTriCanTim = sc.nextLine();
         int chon;
         System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
         chon = Integer.parseInt(sc.nextLine());
         chon = (chon != 2) ? 1 : 2;
-        DongXe[] dsDm = getDsDanhMucSP();
+        DongXe[] dsDm = getDsDongXe();
         for(int i=0;i<soLuong;i++) {
             if (chon == 1) {
                 if (loai == 1)
@@ -247,7 +262,7 @@ public class DanhSachDongXe implements DanhSachChung {
 
     @Override
     public PhanTu layPhanTuVoi(String thamSo) {
-        DongXe[] dsDm = getDsDanhMucSP();
+        DongXe[] dsDm = getDsDongXe();
         for(int i=0;i<soLuong;i++) {
             if (dsDm[i].getMaDanhMuc().equalsIgnoreCase(thamSo))
                 return dsDm[i];
@@ -258,10 +273,10 @@ public class DanhSachDongXe implements DanhSachChung {
     @Override
     public void thongKe() {
         int chon, n;
-        dsDanhMucSP = getDsDanhMucSP();
+        dsDongXe = getDsDongXe();
         do {
             System.out.println("=== Thong ke ===");
-            System.out.println("1. Loc danh muc san pham co so luong >= n");
+            System.out.println("1. Loc dong xe co so luong >= n");
             System.out.println("0. Quay lai menu truoc");
             System.out.print("Moi chon: ");
 
@@ -271,7 +286,7 @@ public class DanhSachDongXe implements DanhSachChung {
                 case 1:
                     System.out.print("Nhap so luong can tim: ");
                     n = Integer.parseInt(sc.nextLine());
-                    for (DongXe dmSP: dsDanhMucSP) {
+                    for (DongXe dmSP: dsDongXe) {
                         if (dmSP.getSoLuong() >= n) dmSP.xuat();
                     }
                     break;

@@ -22,7 +22,7 @@ public class DanhSachXe implements DanhSachChung {
     }
 
     public Xe[] getdsSanPham() { // đọc từ file
-        String data = FileHandler.docFile("./dssp.txt");
+        String data = FileHandler.docFile("dsx.txt");
         String[] dArr = data.split("\n"); // tạo mảng từ file
 
         // nếu file rỗng
@@ -59,7 +59,7 @@ public class DanhSachXe implements DanhSachChung {
     }
     public void setdsSanPham( Xe[] dsXe){ // ghi file
         Xe sp;
-        String tenFile = "./dssp.txt";
+        String tenFile = "dsx.txt";
         FileHandler.resetFile(tenFile);
         FileHandler.ghiFile(soLuong+"", tenFile);
 
@@ -81,7 +81,7 @@ public class DanhSachXe implements DanhSachChung {
     }
     @Override
     public void nhapDanhSach() {
-        FileHandler.resetFile("dssp.txt");
+        FileHandler.resetFile("dsx.txt");
         System.out.print("Moi nhap so luong san pham: ");
 
         soLuong = KiemTra.checkNumber();;
@@ -124,7 +124,7 @@ public class DanhSachXe implements DanhSachChung {
     @Override
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong san pham can them vao danh sach: ");
-        int sl = KiemTra.checkNumber();;
+        int sl = KiemTra.checkNumber();
         PhanTu pt;
         for(int i=0;i<sl;i++)
         {
@@ -137,10 +137,10 @@ public class DanhSachXe implements DanhSachChung {
     public void chinhSuaThongTinPhanTu() {
         System.out.println("Tim san pham can chinh sua: ");
         int viTri = timViTriPhanTu();
-        Xe[] dssp = getdsSanPham();
+        Xe[] dsx = getdsSanPham();
         if (viTri != -1) {
-            dssp[viTri].suaThongTin();
-            setdsSanPham(dssp);
+            dsx[viTri].suaThongTin();
+            setdsSanPham(dsx);
         }
         else System.out.println("Khong tim thay san pham!");
     }
@@ -258,10 +258,10 @@ public class DanhSachXe implements DanhSachChung {
 
     @Override
     public PhanTu layPhanTuVoi(String thamSo) { // tìm phần tử cụ thể với mã sản phẩm
-        Xe[] dssp = getdsSanPham();
+        Xe[] dsx = getdsSanPham();
         for(int i=0;i<soLuong;i++) {
-            if (dssp[i].getMaSanPham().equalsIgnoreCase(thamSo))
-                return dssp[i];
+            if (dsx[i].getMaSanPham().equalsIgnoreCase(thamSo))
+                return dsx[i];
         }
         return null;
     }

@@ -2,7 +2,6 @@ package DanhSach;
 
 import File.FileHandler;
 import HangHoa.PhanTu;
-import HangHoa.PhieuNhap;
 import KiemTra.KiemTra;
 import HangHoa.NhaCungCap;
 

@@ -31,12 +31,12 @@ public class DanhSachHoaDon implements DanhSachChung {
         dsHoaDon = new HoaDon[soLuong];
         HoaDon hd;
         Xe sp;
-        Xe[] dssp;
+        Xe[] dsx;
         String[] lArr;
         int k = 0, m, slsp=0;
         // khởi tạo các đối tượng từ các class danh sách trung tâm
         DanhSachKhachHang ttdskh = new DanhSachKhachHang();
-        DanhSachXe ttdssp = new DanhSachXe();
+        DanhSachXe ttdsx = new DanhSachXe();
         
         for (int i = 1; i < dArr.length; i++) {
             lArr = dArr[i].split("#");
@@ -62,14 +62,14 @@ public class DanhSachHoaDon implements DanhSachChung {
             hd.setPhThThanhToan(lArr[m++]);
             
             // đọc danh sách sản phẩm
-            dssp = new Xe[slsp];
+            dsx = new Xe[slsp];
             for(int j=0;j<slsp;j++) {
-                sp = (Xe) ttdssp.layPhanTuVoi(lArr[m++]);
-                sp.setSoLuong(1);
-                dssp[j] = sp;
+                sp = (Xe) ttdsx.layPhanTuVoi(lArr[m++]);
+                sp.setSoLuong(Integer.parseInt(lArr[m++]));
+                dsx[j] = sp;
             }
             
-            hd.setDsSanPham(dssp);
+            hd.setDsSanPham(dsx);
             dsHoaDon[k++] = hd;
         }
         return dsHoaDon;
@@ -80,17 +80,17 @@ public class DanhSachHoaDon implements DanhSachChung {
         String tenFile = "dshd.txt";
         FileHandler.resetFile(tenFile);
         FileHandler.ghiFile(soLuong+"", tenFile);
-        Xe[] dssp;
+        Xe[] dsx;
         
         for(int i=0;i<soLuong;i++) {
             // đọc từng phần tử từ mảng dsHoaDon
             hd = (HoaDon) dsHoaDon[i];
-            // khởi tạo dssp và đọc từng phần tử của danh sách
-            dssp = new Xe[hd.getSoLuongSanPham()];
-            for(int j=0;j<dssp.length;j++) {
-                dssp[j] = (Xe) hd.getDsSanPham()[j];
+            // khởi tạo dsx và đọc từng phần tử của danh sách
+            dsx = new Xe[hd.getSoLuongSanPham()];
+            for(int j=0;j<dsx.length;j++) {
+                dsx[j] = (Xe) hd.getDsSanPham()[j];
             }
-            FileHandler.themHd(hd.getSoHoaDon(),hd.getSoLuongSanPham(), hd.getNgaylapdon(),hd.getTongTien(), hd.getMnv(),hd.getKhachHang().getMaKhachHang(), hd.getPhThThanhToan(), dssp);
+            FileHandler.themHd(hd.getSoHoaDon(),hd.getSoLuongSanPham(), hd.getNgaylapdon(),hd.getTongTien(), hd.getMnv(),hd.getKhachHang().getMaKhachHang(), hd.getPhThThanhToan(), dsx);
         }
         this.dsHoaDon = (HoaDon[])dsHoaDon;
     }

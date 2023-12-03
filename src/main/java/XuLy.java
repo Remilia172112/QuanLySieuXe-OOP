@@ -123,7 +123,7 @@ public class XuLy {
             System.out.println("1.  Xem thong tin tai khoan");
             System.out.println("2.  Sua thong tin tai khoan");
             System.out.println("3.  Quan ly danh sach xe");
-            System.out.println("4.  Quan ly danh sach dong Xe");
+            System.out.println("4.  Quan ly danh sach dong xe");
             System.out.println("5.  Quan ly danh sach nha cung cap");
             System.out.println("6.  Quan ly danh sach nhan vien");
             System.out.println("7.  Quan ly danh sach khach hang");
@@ -150,7 +150,7 @@ public class XuLy {
                     chon = 0;
                     break;
                 case 4:
-                    quanLyDSDanhMucSP();
+                    quanLyDSDX();
                     break;
                 case 5:
                     quanLyDSNCC();
@@ -354,15 +354,15 @@ public class XuLy {
             if (chon!=0) inMenu("tai khoan");
         } while(chon!=0);
     }
-    public static void quanLyDSDanhMucSP() {
+    public static void quanLyDSDX() {
         DanhSachDongXe ttds = new DanhSachDongXe();
-        DanhSachXe dssp = new DanhSachXe();
-        inMenu("danh muc san pham");
+        DanhSachXe dsx = new DanhSachXe();
+        inMenu("dong xe");
         int chon;
         do {
             chon = Integer.parseInt(sc.nextLine());
-            if (dssp.getsoLuong() == 0) {
-                System.out.println("Vui long nhap danh sach xe truoc khi quan ly danh muc!");
+            if (dsx.getsoLuong() == 0) {
+                System.out.println("Vui long nhap danh sach xe truoc khi quan ly dong xe!");
                 chon = 0;
             }
             switch (chon) {
@@ -396,18 +396,18 @@ public class XuLy {
                     chon = 0;
                     break;
             }
-            if (chon!=0)inMenu("danh muc san pham");
+            if (chon!=0)inMenu("dong xe");
         } while(chon!=0);
     }
     public static void quanLyDSHD() {
         DanhSachHoaDon ttds = new DanhSachHoaDon();
-        DanhSachXe dssp = new DanhSachXe();
+        DanhSachXe dsx = new DanhSachXe();
         inMenu("hoa don");
         int chon;
         do {
             chon = Integer.parseInt(sc.nextLine());
             // chỉ cho phép thao tác nếu đã có danh sách sản phẩm
-            if (dssp.getsoLuong() == 0) {
+            if (dsx.getsoLuong() == 0) {
                 System.out.println("Vui long nhap danh sach xe truoc khi quan ly hoa don!");
                 chon = 0;
             }

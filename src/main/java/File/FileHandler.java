@@ -17,19 +17,16 @@ public class FileHandler {
         String tmp = manv+"#"+hoten+"#"+ntns+"#"+gioitinh+"#"+cccd+"#"+diachi+"#"+sdt+"#"+email+"#"+ngayVaoLam+"#"+heSoLuong+"#"+soNgaynghitrongthang;
         ghiFile(tmp, "dsnv.txt");
     }
-    //Thêm sản phẩm vào file dssp.txt
+    //Thêm sản phẩm vào file dsx.txt
     public static void themSP(String masp, String tensp, String thuongHieu, String noiSx, int sl, int gia) {
         String tmp = masp + "#" + tensp + "#" + thuongHieu + "#" + noiSx + "#" + sl + "#" + gia;
-        ghiFile(tmp, "dssp.txt");
+        ghiFile(tmp, "dsx.txt");
     }
-    //them danh sach dong` xe vao` file dsdmsp.txt
-    public static void themDmSP(String maDanhMuc, String tenDanhMuc, int soLuong, int baoHanh,String[] dsMaSanPham) {
-        String tmp = maDanhMuc+"#"+tenDanhMuc+"#"+soLuong+"#"+baoHanh+"#";
-        for(int i=0;i<dsMaSanPham.length;i++)
-            if (i!=dsMaSanPham.length-1)
-                tmp += dsMaSanPham[i]+"#";
-            else tmp += dsMaSanPham[i];
-        ghiFile(tmp, "dsdmsp.txt");
+    //them danh sach dong` xe vao` file dsdx.txt
+    public static void themDX(String maDongXe, String tenDongXe, int soLuong, int Thangbaohanh,String[] dsMaSanPham) {
+        String tmp = maDongXe+"#"+tenDongXe+"#"+Thangbaohanh+"#"+soLuong;
+        for(int i=0;i<dsMaSanPham.length;i++) tmp += "#" + dsMaSanPham[i];
+        ghiFile(tmp, "dsdx.txt");
     }
     //Thêm nha cung cap vào file dsncc.txt
     public static void themNCC(String maNhaCC , String tenNhaCC , String diachi , String sdt) {
@@ -85,11 +82,11 @@ public class FileHandler {
         ghiFile(tmp, "dstk.txt");
     }
     // thêm hoá đơn vào file dshd.txt
-    public static void themHd(int soHoaDon, int soLuongSanPham, String ngaylapdon, int tongTien, String manhanvien, String maKhachHang, String phThThanhToan, Xe[] dssp) {
+    public static void themHd(int soHoaDon, int soLuongSanPham, String ngaylapdon, int tongTien, String manhanvien, String maKhachHang, String phThThanhToan, Xe[] dsx) {
         String tmp = soHoaDon+"#"+soLuongSanPham+"#"+ngaylapdon+"#"+tongTien+"#"+manhanvien+"#"+maKhachHang+"#"+phThThanhToan;    
-        for(int i=0;i<dssp.length;i++)
+        for(int i=0;i<dsx.length;i++)
         {
-            tmp+="#" + dssp[i].getMaSanPham();
+            tmp+="#" + dsx[i].getMaSanPham() + "#" + dsx[i].getSoLuong();
         }
         ghiFile(tmp, "dshd.txt");
     }
@@ -97,11 +94,11 @@ public class FileHandler {
     public static void taoCacFile() {
         File[] f = new File[8];
         try {
-            f[0] = new File("dssp.txt");
+            f[0] = new File("dsx.txt");
             f[1] = new File("dsnv.txt");
             f[2] = new File("dskh.txt");
             f[3] = new File("dstk.txt");
-            f[4] = new File("dsdmsp.txt");
+            f[4] = new File("dsdx.txt");
             f[5] = new File("dshd.txt");
             f[6] = new File("dsncc.txt");
             f[7] = new File("dspn.txt");
@@ -112,7 +109,7 @@ public class FileHandler {
                 if (f[i].createNewFile()) {
                     switch (i) {
                         case 0:
-                            tenFile = "dssp.txt";
+                            tenFile = "dsx.txt";
                             ghiFile("15", tenFile);
                             //XE THE THAO
                             themSP("SPORT01", "McLaren P1", "McLaren ", "Italy", 10, 40000);
@@ -160,17 +157,17 @@ public class FileHandler {
                             themTK("QL2", "123", "quan ly");
                             break;
                         case 4:
-                            tenFile = "dsdmsp.txt";
+                            tenFile = "dsdx.txt";
                             ghiFile("3", tenFile);
                             // 1
                             String[] dsMaSp = new String[]{"SPORT01","SPORT02","SPORT03","SPORT04", "SPORT05"};
-                            themDmSP("SPORT", "Xe the thao", 5,12 , dsMaSp);
+                            themDX("SPORT", "Xe the thao", 5,12 , dsMaSp);
                             // 2
                             dsMaSp = new String[]{"ROADSTER01","ROADSTER02","ROADSTER03","ROADSTER04" , "ROADSTER05"};
-                            themDmSP("ROADSTER", "Xe Mui tran", 5, 32,dsMaSp);
+                            themDX("ROADSTER", "Xe Mui tran", 5, 32,dsMaSp);
                             // 3
                             dsMaSp = new String[]{"VINFAST01", "VINFAST02", "VINFAST03", "VINFAST04", "VINFAST05"};
-                            themDmSP("VINFAST" , "Xe dien oto" , 5,48, dsMaSp);
+                            themDX("VINFAST" , "Xe dien oto" , 5,48, dsMaSp);
                             break;
                         case 5:
 

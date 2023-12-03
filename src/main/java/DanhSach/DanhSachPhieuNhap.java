@@ -3,7 +3,6 @@ package DanhSach;
 import File.FileHandler;
 import HangHoa.*;
 import KiemTra.KiemTra;
-import Nguoi.NhanVien;
 
 public class DanhSachPhieuNhap implements DanhSachChung {
     private int soLuong;

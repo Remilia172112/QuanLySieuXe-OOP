@@ -117,7 +117,7 @@ public class KhachHang extends Nguoi {
                     System.out.println("Khong tim thay ma xe tai vi tri thu " + i);
                     break;
                 }
-                String dateyearbuy = dsMaSpArr[i].substring(dsMaSpArr[i].length() - 6);
+                String dateyearbuy = dsMaSpArr[i].substring(dsMaSpArr[i].length() - 7, 6);
                 if(!KiemTra.isValidMonthYear(dateyearbuy)) {
                     check = false;
                     System.out.println("Thang nam khong hop le tai vi tri thu " + i);

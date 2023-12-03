@@ -1,4 +1,5 @@
 package HangHoa;
+import DanhSach.DanhSachDongXe;
 import DanhSach.DanhSachXe;
 import KiemTra.KiemTra;
 public class Xe extends PhanTu {
@@ -24,14 +25,22 @@ public class Xe extends PhanTu {
         return maSanPham;
     }
     public void setMaSanPham() {
-        System.out.print("Nhap ma san pham: ");
         DanhSachXe ttds = new DanhSachXe();
+        DanhSachDongXe dsdx = new DanhSachDongXe();
+        System.out.println("Ban co muon xuat ra man hinh danh sach dong xe khong? (1 - in, 0 - khong)");
+        int chon = Integer.parseInt(sc.nextLine());
+        if (chon == 1) dsdx.xuatDanhSachDongxe();
+        System.out.print("Nhap ma san pham: ");
         boolean check = false;
         do
         {
             maSanPham = sc.nextLine();
-            check = ttds.layPhanTuVoi(maSanPham) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
-            if (!check) System.out.print("Ma san pham da ton tai, moi nhap lai: ");
+            check = dsdx.Checkmadongxe(maSanPham) == true;
+            if(!check) System.out.print("Ma san pham phai trung 1 phan voi ma dong xe!! Moi nhap lai: ");
+            if(check) {
+                check = ttds.layPhanTuVoi(maSanPham) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
+                if (!check) System.out.print("Ma san pham da ton tai, moi nhap lai: ");
+            }
         } while (!check);
     }
     public String getTenSanPham() {
@@ -122,7 +131,7 @@ public class Xe extends PhanTu {
 
     @Override
     public void xuat() {
-        System.out.printf("%-20s %-30s %-20s %-20s %-20s %-20s \n",maSanPham,tenSanPham,thuongHieu,noiSanXuat,soLuong,price);
+        System.out.printf("%-20s %-25s %-20s %-20s %-15s %-20s \n",maSanPham,tenSanPham,thuongHieu,noiSanXuat,soLuong,price);
     }
 
     @Override

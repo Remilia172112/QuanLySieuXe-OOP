@@ -6,15 +6,15 @@ public class DongXe extends PhanTu {
     private String tenDanhMuc;
     private int soLuong;
     private String[] dsMaSanPham;
-    private  int baoHanh ;
+    private  int thangbaoHanh ;
     public DongXe() {
     }
-    public DongXe(String maDanhMuc, String tenDanhMuc, int soLuong, String[] dsMaSanPham ,int baoHanh) {
+    public DongXe(String maDanhMuc, String tenDanhMuc, int soLuong, String[] dsMaSanPham ,int thangbaoHanh) {
         this.maDanhMuc = maDanhMuc;
         this.tenDanhMuc = tenDanhMuc;
         this.soLuong = soLuong;
         this.dsMaSanPham = dsMaSanPham;
-        this.baoHanh = baoHanh;
+        this.thangbaoHanh = thangbaoHanh;
     }
     public String getMaDanhMuc() {
         return maDanhMuc;
@@ -25,7 +25,7 @@ public class DongXe extends PhanTu {
     }
 
     public void setMaDanhMuc() {
-        System.out.print("Nhap ma danh muc: ");
+        System.out.print("Nhap ma dong xe: ");
         DanhSachXe ttds = new DanhSachXe();
         boolean check = false;
         do
@@ -33,7 +33,7 @@ public class DongXe extends PhanTu {
             maDanhMuc = sc.nextLine();
             // kiểm tra xem mã danh mục đã tồn tại hay chưa
             check = ttds.layPhanTuVoi(maDanhMuc) == null;
-            if (!check) System.out.print("Ma danh muc da ton tai, moi nhap lai: ");
+            if (!check) System.out.print("Ma dong xe da ton tai, moi nhap lai: ");
         } while (!check);
     }
 
@@ -46,7 +46,7 @@ public class DongXe extends PhanTu {
     }
 
     public void setTenDanhMuc() {
-        System.out.print("Nhap ten danh muc: ");
+        System.out.print("Nhap ten dong xe: ");
         maDanhMuc = sc.nextLine();
     }
 
@@ -68,24 +68,24 @@ public class DongXe extends PhanTu {
         } while(!check);
     }
 
-    public int getBaoHanh() {
-        return baoHanh;
+    public int getThangbaoHanh() {
+        return thangbaoHanh;
     }
-    public void setBaoHanh(){
-        System.out.print("Nhap thoi han bao hanh: ");
+    public void setThangbaohanh(){
+        System.out.print("Nhap thoi han bao hanh theo thang: ");
         boolean check;
         do {
             check = true;
             try {
-                baoHanh = KiemTra.checkNumber();
+                thangbaoHanh = KiemTra.checkNumber();
             } catch (Exception e) {
                 System.out.println("Vui long nhap mot so!");
                 check = false;
             }
         } while(!check);
     }
-    public void setBaoHanh(int baoHanh) {
-        this.baoHanh = baoHanh;
+    public void setThangbaoHanh(int baoHanh) {
+        this.thangbaoHanh = baoHanh;
     }
 
     public void setSoLuong(int soLuong) {
@@ -101,7 +101,7 @@ public class DongXe extends PhanTu {
     }
 
     public void setDsMaSanPham() {
-        System.out.println("Nhap day cac ma san pham, phan cach boi dau cham phay (;):");
+        System.out.println("Nhap day cac ma xe, phan cach boi dau cham phay (;):");
 
         String dsMaSP;
 
@@ -118,10 +118,10 @@ public class DongXe extends PhanTu {
             for(int i=0;i<dsMaSpArr.length;i++) // ứng với từng phần tử mảng
                 if (ttds.layPhanTuVoi(dsMaSpArr[i]) == null){ // nếu không tìm thấy
                     check = false;
-                    System.out.println("Khong tim thay ma san pham tai vi tri thu "+i);
+                    System.out.println("Khong tim thay ma xe tai vi tri thu "+i);
                     break;
                 }
-            if (!check) System.out.println("Day cac ma san pham khong hop le, hay nhap lai!");
+            if (!check) System.out.println("Day cac ma xe khong hop le, hay nhap lai!");
         } while (!check);
         setDsMaSanPham(dsMaSpArr);
     }
@@ -133,11 +133,11 @@ public class DongXe extends PhanTu {
         Xe pt;
         for(int i=0;i<soLuong;i++) {
 
-            System.out.println("Them ma san pham thu "+i);
+            System.out.println("Them ma xe thu "+i);
             do {
                 pt = (Xe) ttds.timPhanTu();
 
-                if (pt == null) System.out.println("Khong tim thay san pham!");
+                if (pt == null) System.out.println("Khong tim thay xe!");
                 else dsMaSp[i] = pt.getMaSanPham();
 
             } while (pt == null);
@@ -158,13 +158,13 @@ public class DongXe extends PhanTu {
         DanhSachXe ttds = new DanhSachXe();
 
         do {
-            System.out.print("Nhap ma san pham: ");
+            System.out.print("Nhap ma xe: ");
             maSP = sc.nextLine();
 
             pt = (Xe) ttds.layPhanTuVoi(maSP); // tìm sản phẩm
 
             if (pt == null)  // nếu không tìm thấy
-                System.out.println("Khong ton tai ma san pham!");
+                System.out.println("Khong ton tai ma xe!");
             else dsMaSP[soLuong] = pt.getMaSanPham();
 
         } while (pt == null);
@@ -172,7 +172,7 @@ public class DongXe extends PhanTu {
     }
 
     public void themKMaSPVaoDs() {
-        System.out.print("Nhap so ma san pham can them vao danh sach: ");
+        System.out.print("Nhap so ma xe can them vao danh sach: ");
         int k;
         boolean check;
         do {
@@ -191,7 +191,7 @@ public class DongXe extends PhanTu {
     public void xoaMaSPKhoiDs() {
         String[] dsMaSP = new String[soLuong-1];
 
-        System.out.print("Nhap ma san pham can xoa khoi danh sach: ");
+        System.out.print("Nhap ma xe can xoa khoi danh sach: ");
         String giaTriCanXoa = sc.nextLine();
 
         boolean check = false;
@@ -209,24 +209,30 @@ public class DongXe extends PhanTu {
                 dsMaSP[k++] = dsMaSanPham[i];
             }
             setDsMaSanPham(dsMaSP);
-        } else System.out.println("Khong tim thay ma san pham!");
+        } else System.out.println("Khong tim thay ma xe!");
     }
+    public void xuatDongxe() {
+        System.out.printf("%-20s %-20s %-10s %10s \n", "Ma Dong xe", "Ten Dong xe", "So luong", "Thang bao hanh");
+        System.out.printf("%-20s %-20s %-10s %10s \n", maDanhMuc, tenDanhMuc, soLuong ,thangbaoHanh);
+        System.out.println("****************************");
+    }
+
     @Override
     public void nhap(){
         setMaDanhMuc();
         setTenDanhMuc();
         setSoLuong();
-        setBaoHanh();
+        setThangbaohanh();
         nhapDsMaSanPham();
     }
 
     @Override
     public void xuat() {
-        System.out.printf("%-20s %-20s %-10s %10s \n", "Ma Dong xe", "Ten Dong xe", "So luong", " Thang bao hanh");
-        System.out.printf("%-20s %-20s %-10s %10s \n", maDanhMuc, tenDanhMuc, soLuong ,baoHanh);
+        System.out.printf("%-20s %-20s %-10s %10s \n", "Ma Dong xe", "Ten Dong xe", "So luong", "Thang bao hanh");
+        System.out.printf("%-20s %-20s %-10s %10s \n", maDanhMuc, tenDanhMuc, soLuong ,thangbaoHanh);
 
-        System.out.println("Danh sach san pham cung danh muc: ");
-        System.out.printf("%-20s %-30s %-20s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
+        System.out.println("Danh sach xe cung dong xe: ");
+        System.out.printf("%-20s %-25s %-20s %-20s %-15s %-20s \n","Ma xe", "Ten xe", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
         PhanTu pt;
         DanhSachXe ttds = new DanhSachXe();
 
@@ -241,14 +247,14 @@ public class DongXe extends PhanTu {
 
     @Override
     public void suaThongTin() {
-        System.out.println("=== Sua thong tin danh muc san pham ===");
-        System.out.println("1. Sua ma danh muc");
-        System.out.println("2. Sua ten danh muc");
-        System.out.println("3. Them ma san pham vao danh sach ma san pham");
-        System.out.println("4. Xoa ma san pham khoi danh sach ma san pham");
-        System.out.println("5. Nhap moi danh sach ma san pham");
-        System.out.println("6. Them ma san pham vao danh sach ma san pham");
-        System.out.println("7. Xoa ma san pham vao danh sach ma san pham");
+        System.out.println("=== Sua thong tin dong xe ===");
+        System.out.println("1. Sua ma dong xe");
+        System.out.println("2. Sua ten dong xe");
+        System.out.println("3. Them ma xe vao danh sach ma xe");
+        System.out.println("4. Xoa ma xe khoi danh sach ma xe");
+        System.out.println("5. Nhap moi danh sach ma xe");
+        System.out.println("6. Them ma xe vao danh sach ma xe");
+        System.out.println("7. Xoa ma xe vao danh sach ma xe");
         System.out.println("0. Thoat");
         System.out.println("===============================");
         int chon;
