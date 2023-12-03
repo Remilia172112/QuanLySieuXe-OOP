@@ -10,7 +10,7 @@ public class DanhSachCTPhieuNhap implements DanhSachChung{
     private Xe[] dsXe;
 
     public Xe[] DanhSachXe() {
-         dsXe = getdsSanPham();
+        dsXe = getdsSanPham();
         return new Xe[0];
     }
 
