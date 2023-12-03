@@ -1,4 +1,5 @@
 package HangHoa;
+import DanhSach.DanhSachDongXe;
 import DanhSach.DanhSachXe;
 import KiemTra.KiemTra;
 public class DongXe extends PhanTu {
@@ -26,15 +27,7 @@ public class DongXe extends PhanTu {
 
     public void setMaDanhMuc() {
         System.out.print("Nhap ma dong xe: ");
-        DanhSachXe ttds = new DanhSachXe();
-        boolean check = false;
-        do
-        {
-            maDanhMuc = sc.nextLine();
-            // kiểm tra xem mã danh mục đã tồn tại hay chưa
-            check = ttds.layPhanTuVoi(maDanhMuc) == null;
-            if (!check) System.out.print("Ma dong xe da ton tai, moi nhap lai: ");
-        } while (!check);
+        maDanhMuc = sc.nextLine() ;
     }
 
     public String getTenDanhMuc() {
@@ -47,7 +40,7 @@ public class DongXe extends PhanTu {
 
     public void setTenDanhMuc() {
         System.out.print("Nhap ten dong xe: ");
-        maDanhMuc = sc.nextLine();
+        tenDanhMuc = sc.nextLine();
     }
 
     public int getSoLuong() {
@@ -202,13 +195,8 @@ public class DongXe extends PhanTu {
         setMaDanhMuc();
         setTenDanhMuc();
         setThangbaohanh();
-        System.out.println("Ban co muon them xe da co vao dong xe moi tao khong? (1 - co, 0 - khong): ");
-        int chon = KiemTra.checkNumber();
-        if (chon == 1) {
-            setSoLuong();
-            nhapDsMaSanPham();
-        }
-        
+        setSoLuong();
+        nhapDsMaSanPham();
     }
 
     @Override
