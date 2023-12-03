@@ -1,6 +1,6 @@
 # OOPs-2023
 
-## Đồ án Java - Quản lý cửa hàng bán xe - NHÓM 7
+## Đồ án Java - Quản lý cửa hàng bán xe - NHÓM 11
 
 ## Thành viên nhóm :
 
