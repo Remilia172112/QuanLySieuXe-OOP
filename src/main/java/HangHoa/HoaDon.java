@@ -25,9 +25,10 @@ public class HoaDon extends PhanTu {
     public HoaDon() {
     }
 
-    public HoaDon(int soHoaDon, int soLuongSanPham, String ngaylapdon,KhachHang khachHang, Xe[] dsXe) {
+    public HoaDon(int soHoaDon, int soLuongSanPham, int tongTien,String ngaylapdon,KhachHang khachHang, Xe[] dsXe) {
         this.soHoaDon = soHoaDon;
         this.soLuongSanPham = soLuongSanPham;
+        this.tongTien = tongTien;
         this.ngaylapdon = ngaylapdon;
         this.khachHang = khachHang;
         this.dsXe = dsXe;

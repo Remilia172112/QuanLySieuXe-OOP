@@ -17,8 +17,8 @@ public class XuLy {
                             "************************************************************");
         do {
             System.out.println("============================================================");
-            System.out.println("***          Moi ban dang nhap vao chuong trinh         ***");
-            System.out.println("***  1. Quan tri vien                                   ***");
+            System.out.println("***   Moi ban dang nhap vao chuong trinh!!! Ban la...   ***");
+            System.out.println("***  1. Quan ly                                         ***");
             System.out.println("***  2. Nhan vien                                       ***");
             System.out.println("***  0. Thoat chuong trinh                              ***");
             System.out.println("============================================================");
@@ -107,7 +107,7 @@ public class XuLy {
                     dshd.xuatDanhSach();
                     break;
                 case 5:
-                    dspn.themKPhanTuVaoDanhSach();
+                    dspn.themPhanTuVaoDanhSach(username);
                     break;
                 case 6:
                     dspn.xuatDanhSach();
@@ -240,6 +240,9 @@ public class XuLy {
                     break;
                 case 7:
                     ttds.thongKe();
+                    break;
+                case 8:
+                    System.out.println("So luong: " + ttds.getsoLuong());
                     break;
                 default:
                     if (chon==0) MenuQL();

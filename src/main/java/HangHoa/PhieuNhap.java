@@ -1,79 +1,37 @@
 package HangHoa;
 
 
+import java.time.LocalDate;
+
 import DanhSach.*;
 import KiemTra.KiemTra;
 //mỗi lần nhập 1 loại sp thoi 
 public class PhieuNhap extends PhanTu {
+    // Tạo tháng năm hiện tại
+    LocalDate localDate = LocalDate.now();
+    private int namhientai = localDate.getYear();
+    private int thanghientai = localDate.getMonthValue();
+    private int ngayhientai = localDate.getDayOfMonth();
+
     private String maPhieuNhap;
     private String maNhaCC;
     private String maNV;
     private String ngaynhap;
-    private String maSanPham;
-    private int Tongnhap;
-
-
-    // public static void main(String[] args) throws IOException {
-    //     PhieuNhap pn = new PhieuNhap();
-    //     pn.menu();
-        
-    // }
-    // public void menu() {
-    //     boolean check = true;
-    //     while (check) {
-    //         System.out.println("");
-    //         System.out.println("+------------------------------+");
-    //         System.out.println("Menu: ");
-    //         System.out.println("1. set ma phieu nhap ");
-    //         System.out.println("2. set nha cung cap");
-    //         System.out.println("3. set ma nhan vien ");
-    //         System.out.println("4. set ma san pham ");
-    //         System.out.println("5. set tong nhap ");
-    //         System.out.println("6. set ngaynhap");
-    //         System.out.println("0. Thoat");
-    //         System.out.print("Chon: ");
-    //         int chose = sc.nextInt();
-    //         System.out.println("+------------------------------+");
-    //         switch (chose) {
-    //             case 1:
-    //                 setMaPhieuNhap();
-    //                 break;
-    //             case 2:
-    //                 setMaNhaCC();
-    //                 break;
-    //             case 3:
-    //                 setMaNV();
-    //                 break;
-    //             case 4:
-    //                 setMaSanPham();
-    //                 break;
-    //             case 5:
-    //                 setMaSanPham();
-    //                 break;
-    //             case 6:
-    //                 setNgaynhap();
-    //                 break;
-    //             case 0:
-    //                 System.out.println("Thoat chuong trinh thanh cong!!!");
-    //                 check = false;
-    //                 return;
-    //             default:
-    //                 System.out.println("Nhap sai");
-    //         }
-    //     }
-    // }
-
+    private Xe[] dsmspNhap;
+    private int SoluongNhap;
+    private int tongTien = 0;
 
     public PhieuNhap(){
     }
 
-    public PhieuNhap(String maPhieuNhap , String maNhaCC , String maNV , String ngaynhap, String maSanPham, int Tongnhap){
+    public PhieuNhap(String maPhieuNhap , String maNhaCC , String maNV , String ngaynhap, Xe[] dsmspNhap, int SoluongNhap, int tongTien){
         this.maPhieuNhap = maPhieuNhap;
         this.maNhaCC = maNhaCC;
         this.maNV = maNV;
         this.ngaynhap = ngaynhap;
-        this.maSanPham = maSanPham;
-        this.Tongnhap = Tongnhap;
+        this.dsmspNhap = dsmspNhap;
+        this.SoluongNhap = SoluongNhap;
+        this.tongTien = tongTien;
     }
 
 
@@ -88,7 +46,6 @@ public class PhieuNhap extends PhanTu {
         System.out.print("Nhap ma phieu nhap: ");
         DanhSachPhieuNhap ttds = new DanhSachPhieuNhap();
         boolean check = false;
-        // sc.nextLine();
         do
         {
             check = true;
@@ -108,7 +65,11 @@ public class PhieuNhap extends PhanTu {
     }
     public void setMaNhaCC() {
         DanhSachNhaCungCap dsncc = new DanhSachNhaCungCap();
-        dsncc.xuatDanhSach();
+        System.out.println("Ban co muon xuat ra man hinh danh sach nha cung cap khong? (1 - in, 0 - khong): ");
+        int chon = KiemTra.checkNumber();
+        if(chon == 1) {
+            dsncc.xuatDanhSach();
+        }
         System.out.print("Nhap ma nha cung cap: ");
         boolean check = true;
         do
@@ -150,48 +111,110 @@ public class PhieuNhap extends PhanTu {
         this.ngaynhap = ngaynhap;
     }
     public void setNgaynhap() {
-        System.out.print("Nhap ngay lap phieu nhap: ");
-        boolean check = false;
-        // sc.nextLine();
-        do
-        {
-            ngaynhap = sc.nextLine();
-            check = KiemTra.check_date(ngaynhap) ; // kiểm tra ngày
-        } while (!check);
+        System.out.print("Sua dung ngay thang nam hien tai de lam ngay lap don? (1/0): ");
+        int chon = KiemTra.checkNumber();
+        if(chon == 1) ngaynhap = ngayhientai + "/" + thanghientai + "/" + namhientai;
+        else {
+            boolean check;
+            System.out.print("Nhap ngay lap don (dd/mm/yyyy): ");
+            do
+            {
+                check = true;
+                ngaynhap = sc.nextLine();
+                check = KiemTra.isValidDate(ngaynhap);
+                if(!check) System.out.print("Nhap sai dinh dang ngay!! Moi nhap lai: ");
+            } while (!check);
+        }
     }
 
-    public String getMaSanPham() {
-        return maSanPham;
+    public Xe[] getDsSanPham() {
+        return dsmspNhap;
     }
-    public void setMaSanPham() {
-        System.out.print("Nhap ma san pham: ");
+
+    public void setDsSanPham(Xe[] dsmspNhap) {
+        this.dsmspNhap = dsmspNhap;
+    }
+
+    public void setDsSanPham() {
+        // Khai báo
         DanhSachXe ttds = new DanhSachXe();
-        ttds.xuatDanhSach();
-        boolean check = true;
-        do
-        {
-            maSanPham = sc.nextLine();
-            check = ttds.layPhanTuVoi(maSanPham) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
-            if (check) System.out.print("Ma san pham ko ton tai, moi nhap lai: ");
-        } while (check);
-    }
-    public void setMaSanPham(String maSanPham) {
-        this.maSanPham = maSanPham;
+        DanhSachDongXe dsdx = new DanhSachDongXe();
+        
+        Xe[] dsspFile = ttds.getdsSanPham();
+        Xe[] dssp = new Xe[SoluongNhap];
+        
+        Xe pt, timThay;
+        int vtsp, stt, chon;
+        // xem lại danh mục sản phẩm (tuỳ chọn)
+        System.out.print("Ban co muon xem lai danh sach xe? (1 - in, 0 - khong): ");
+        chon = KiemTra.checkNumber();
+        if (chon==1) dsdx.xuatDanhSach();
+        
+        for(int i=0;i<SoluongNhap;i++) {
+            stt=i+1;
+            System.out.println("Nhap xe thu "+stt);
+            
+            do {
+                System.out.print("Nhap ma xe: ");
+                pt = (Xe) ttds.layPhanTuVoi(sc.nextLine());
+                
+                if (pt == null) 
+                    System.out.println("Khong tim thay xe!");
+                else {
+                    dssp[i] = pt;
+                    
+                    // tìm sản phẩm trong danh sách sp với mã sản phẩm
+                    timThay = (Xe) ttds.layPhanTuVoi(pt.getMaSanPham());
+                    
+                    pt.setSoLuong();
+                    
+                    // tăng số lượng sản phẩm trong danh sách vì đã thêm sản phẩm vào hoá đơn.
+                    timThay.setSoLuong(timThay.getSoLuong()+pt.getSoLuong());
+                    
+                    // tìm vị trí sản phẩm đã nhập trong danh sách
+                    vtsp = ttds.timViTriSanPham(pt.getMaSanPham());
+                    
+                    // cập nhật lại số lượng sản phẩm
+                    dsspFile[vtsp] = timThay;
+                    ttds.setdsSanPham(dsspFile);
+                    
+                    // cập nhật tổng tiền
+                    tongTien += pt.getPrice() * pt.getSoLuong();
+                }
+            } while (pt == null);
+        }
+        
+        dsmspNhap = dssp;
     }
 
-
-    public int getTongnhap() {
-        return Tongnhap;
+    public int getSoluongNhap() {
+        return SoluongNhap;
     }
 
-    public void setTongnhap(int Tongnhap) {
-        this.Tongnhap = Tongnhap;
+    public void setSoluongNhap(int SoluongNhap) {
+        this.SoluongNhap = SoluongNhap;
     }
-    public void setTongnhap() {
+    public void setSoluongNhap() {
         System.out.print("Nhap so xe can nhap: ");
-        Tongnhap = KiemTra.checkNumber();
+        SoluongNhap = KiemTra.checkNumber();
     }
 
+    public int getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(int tongTien) {
+        this.tongTien = tongTien;
+    }
+    // Nhập version nhân viên
+    public void nhap(String username){
+        setMaPhieuNhap();
+        setMaNhaCC();
+        setMaNV(username);
+        setNgaynhap();
+        setSoluongNhap();
+        setDsSanPham();
+    }
 
     @Override
     public void nhap(){
@@ -199,11 +222,11 @@ public class PhieuNhap extends PhanTu {
         setMaNhaCC();
         setMaNV();
         setNgaynhap();
-        setMaSanPham();
-        setTongnhap();
+        setSoluongNhap();
+        setDsSanPham();
     }
     public void xuat() {
-        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s  \n", maPhieuNhap, maNhaCC , maNV , ngaynhap, maSanPham, Tongnhap );
+        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s  \n", maPhieuNhap, maNhaCC , maNV , ngaynhap, dsmspNhap, SoluongNhap );
     }
     public void suaThongTin() {
         System.out.println("=== Sua thong tin phieu nhap ===");
@@ -211,9 +234,9 @@ public class PhieuNhap extends PhanTu {
         System.out.println("2. Sua ma nha cung cap");
         System.out.println("3. Sua ma nhan vien lap phieu nhap");
         System.out.println("4. Sua ngay lap phieu nhap");
-        System.out.println("5. Sua ma san pham can nhap");
+        System.out.println("5. Sua danh sach ma xe");
         System.out.println("6. Sua tong loai xe nhap");
-        System.out.println("0. Quay ve menu quan ly san pham");
+        System.out.println("0. Quay ve menu quan ly xe");
         System.out.println("===============================");
         int chon;
         do {
@@ -239,14 +262,20 @@ public class PhieuNhap extends PhanTu {
                     setNgaynhap();
                     break;
                 case 5:
-                    System.out.println("Thong tin hien tai: "+getMaSanPham());
-                    setMaSanPham();
+                    System.out.println("Thong tin hien tai: ");
+                    // xuất danh sách sản phẩm
+                    Xe[] dsx = (Xe[]) getDsSanPham();
+                    for(int i=0;i<dsx.length;i++)
+                        dsx[i].xuat();
+                    
+                    System.out.println("Nhap moi danh sach san pham: ");
+                    setSoluongNhap();
+                    setDsSanPham();
                     break;
                 case 6:
-                    System.out.println("Thong tin hien tai: "+getTongnhap());
-                    setTongnhap();
+                    System.out.println("Thong tin hien tai: "+getSoluongNhap());
+                    setSoluongNhap();
                     break;
-
                 default:
                     System.out.println("Hay chon lai!");
                     break;

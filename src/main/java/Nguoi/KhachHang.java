@@ -97,6 +97,12 @@ public class KhachHang extends Nguoi {
     }
 
     public void setDsmspDamua() {
+        System.out.print("Ban co muon xuat ra man hinh danh sach xe khong? (1 - in, 0 - khong): ");
+        int chon = KiemTra.checkNumber();
+        if (chon == 1) {
+            DanhSachXe ttds = new DanhSachXe();
+            ttds.xuatDanhSach();
+        }
         System.out.println("Nhap day cac ma xe da mua, phan cach boi dau cham phay (;):");
 
         String dsMaSP;
@@ -166,6 +172,61 @@ public class KhachHang extends Nguoi {
         } else System.out.println("Khong tim thay ma san pham khach hang!");
     }
 
+    public void themMaSPVaoDs() {
+        // thêm mã sản phẩm vào danh sách
+        String[] dsMaSP = new String[dsmspDamua.length+1]; // tạo mảng tạm
+
+        // thủ tục copy từ mảng danh sách cũ
+        for(int i=0;i<dsmspDamua.length;i++)
+            dsMaSP[i] = dsmspDamua[i];
+
+        String maSP;
+        DanhSachXe ttds = new DanhSachXe();
+        boolean check = false;
+        System.out.println("Ma xe da mua bao gom: ma xe + ma khach hang + thang nam mua xe");
+        System.out.print("Ban co muon xuat ra man hinh danh sach xe khong? (1 - in, 0 - khong): ");
+        int chon = KiemTra.checkNumber();
+        if (chon == 1) {
+            ttds.xuatDanhSach();
+        }
+        do {
+            System.out.print("Nhap ma xe khach hang: ");
+            maSP = sc.nextLine();
+            if (ttds.kiemtraChuoidonhang(maSP) == -1){ // nếu không tìm thấy
+                check = false;
+                System.out.println("Khong tim thay ma xe");
+                continue;
+            }
+            String dateyearbuy = maSP.substring(maSP.length() - 7, 6);
+            if(!KiemTra.isValidMonthYear(dateyearbuy)) {
+                check = false;
+                System.out.println("Thang nam khong hop le");
+                continue;                
+            }
+            LocalDate localDate = LocalDate.now();
+            int namhientai = localDate.getYear();
+            int thanghientai = localDate.getMonthValue();
+            if(Integer.parseInt(dateyearbuy.substring(dateyearbuy.length() - 4)) > namhientai) {
+                check = false;
+                System.out.println("Nam mua xe lon hon nam hien tai");
+                continue;
+            }
+            if(Integer.parseInt(dateyearbuy.substring(0, 2)) > thanghientai) {
+                check = false;
+                System.out.println("Thang mua xe lon hon thang hien tai");
+                continue;
+            }
+        } while (!check);
+        setDsmspDamua(dsMaSP);
+    }
+
+    public void themKMaSPVaoDs() {
+        System.out.print("Nhap so ma xe khach hang can them vao danh sach: ");
+        int k;
+        k = KiemTra.checkNumber();
+        for(int i=0;i<k;i++)
+            themMaSPVaoDs();
+    }
     
 
     @Override
@@ -209,7 +270,7 @@ public class KhachHang extends Nguoi {
         kh.xuat();
     }
     public void suaThongTin() {
-        System.out.println("=== Sua thong tin nhan vien ===");
+        System.out.println("=== Sua thong tin khach hang ===");
         System.out.println("1. Sua ho ten");
         System.out.println("2. Sua ngay thang nam sinh");
         System.out.println("3. Sua gioi tinh");
@@ -218,11 +279,16 @@ public class KhachHang extends Nguoi {
         System.out.println("6. Sua so dien thoai");
         System.out.println("7. Sua email");
         System.out.println("8. Sua phuong thuc thanh toan");
+        System.out.println("9. Them ma xe khach hang vao danh sach ma xe khach hang");
+        System.out.println("10. Xoa ma xe khach hang khoi danh sach ma xe khach hang");
+        System.out.println("11. Nhap moi danh sach ma xe khach hang");
+        System.out.println("12. Them ma xe khach hang vao danh sach ma xe khach hang");
+        System.out.println("13. Xoa ma xe khach hang khoi danh sach ma xe khach hang");
         System.out.println("===============================");
         int chon;
         do {
             System.out.print("Nhap lua chon: ");
-            chon = KiemTra.checkNumber();;
+            chon = KiemTra.checkNumber();
             switch (chon) {
                 case 0:
                     System.out.println("Thoat sua thong tin!!");
@@ -258,6 +324,44 @@ public class KhachHang extends Nguoi {
                 case 8:
                     System.out.println("Thong tin hien tai: "+getPhThThanhToan().getPhuongThucThanhToan());
                     setPhThThanhToan();
+                    break;
+                case 9:
+                    System.out.println("Thong tin hien tai: ");
+
+                    for (String x : getDsmspDamua())
+                        System.out.print(x + " ");
+
+                    themKMaSPVaoDs();
+                    break;
+                case 10:
+                    System.out.println("Thong tin hien tai: ");
+
+                    for (String x : getDsmspDamua())
+                        System.out.print(x + " ");
+
+                    xoaMaSPKhoiDs();
+                    break;
+                case 11:
+                    System.out.println("Thong tin hien tai: ");
+
+                    for (String x : getDsmspDamua())
+                        System.out.print(x + " ");
+
+                    setDsmspDamua();
+                    break;
+                case 12:
+                    System.out.println("Thong tin hien tai: ");
+                    for (String x : getDsmspDamua())
+                        System.out.print(x + " ");
+                    themKMaSPVaoDs();
+                    break;
+                case 13:
+                    System.out.println("Thong tin hien tai: ");
+
+                    for (String x : getDsmspDamua())
+                        System.out.print(x + " ");
+
+                    xoaMaSPKhoiDs();
                     break;
                 default:
                     System.out.println("Hay nhap so co trong menu");

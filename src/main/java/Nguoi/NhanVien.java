@@ -73,18 +73,18 @@ public class NhanVien extends Nguoi {
     }
 
     public void setNgayvaolam() {
-        System.out.print("Nhap ngay vao lam: ");
+        System.out.println("Nhap ngay vao lam: ");
         boolean check;
         int ngay = 1, thang = 1, nam = 1;
         // kiểm tra điều kiện ngày/tháng/năm
         do {
             check = true;
             System.out.print("Nhap ngay: ");
-            ngay = KiemTra.checkNumber();;
+            ngay = KiemTra.checkNumber();
             System.out.print("Nhap thang: ");
-            thang = KiemTra.checkNumber();;
+            thang = KiemTra.checkNumber();
             System.out.print("Nhap nam: ");
-            nam = KiemTra.checkNumber();;
+            nam = KiemTra.checkNumber();
             if (ngay <= 0 | ngay > 31) {
                 check = false;
                 System.out.println("Ngay khong hop le!");

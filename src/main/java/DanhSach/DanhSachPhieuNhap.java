@@ -31,8 +31,11 @@ public class DanhSachPhieuNhap implements DanhSachChung {
             setSoLuong(Integer.parseInt(dArr[0]));
         dsPhieuNhap = new PhieuNhap[soLuong];
         PhieuNhap pn;
-        int k = 0, m;
+        Xe sp;
+        Xe[] dsx;
+        int k = 0, m, sl;
         String []lArr;
+        DanhSachXe ttdsx = new DanhSachXe();
 
         for (int i = 1; i < dArr.length; i++) {
             lArr = dArr[i].split("#");
@@ -49,9 +52,17 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
             pn.setNgaynhap(lArr[m++]);
 
-            pn.setMaSanPham(lArr[m++]);
+            sl = Integer.parseInt(lArr[m++]);
+            pn.setSoluongNhap(sl);
 
-            pn.setTongnhap(Integer.parseInt(lArr[m++]));
+            dsx = new Xe[sl];
+            for(int j=0;j<sl;j++) {
+                sp = (Xe) ttdsx.layPhanTuVoi(lArr[m++]);
+                sp.setSoLuong(Integer.parseInt(lArr[m++]));
+                dsx[j] = sp;
+            }
+            
+
 
             dsPhieuNhap[k++] = pn;
         }
@@ -66,11 +77,19 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
         for(int i=0;i<soLuong;i++) {
             pn = (PhieuNhap) dsPhieuNhap[i];
-            FileHandler.themPN(pn.getMaPhieuNhap() , pn.getMaNhaCC() , pn.getMaNV(), pn.getNgaynhap() , pn.getMaSanPham(), pn.getTongnhap());
+            FileHandler.themPN(pn.getMaPhieuNhap() , pn.getMaNhaCC() , pn.getMaNV(), pn.getNgaynhap() , pn.getSoluongNhap(), pn.getDsSanPham());
         }
 
         this.dsPhieuNhap = (PhieuNhap[]) dsPhieuNhap;
     }
+
+    public void themPhanTuVaoDanhSach(String username) {
+        PhieuNhap pt;
+        pt = new PhieuNhap();
+        pt.nhap(username);
+        themVaoDanhSach((PhanTu) pt);
+    }
+
     @Override
     public void nhapDanhSach() {
         FileHandler.resetFile("dspn.txt");
@@ -205,13 +224,6 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         return -1;
     }
 
-    public int timViTriSanPham(String maSanPham) { // tìm vị trí  với mã phieu nhap 
-        // for(int i=0;i<soLuong;i++) {
-        //     if (dsSanPhamTmp[i].getMaSanPham().equalsIgnoreCase(maSanPham))
-        //         return i;
-        // }
-        return -1;
-    }
 
     @Override
     public PhanTu layPhanTuVoi(String thamSo) { // tìm phần tử cụ thể với mã phieu nhap 
@@ -229,7 +241,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         do {
             System.out.println("=== Thong ke ===");
             System.out.println("1. In phieu nhap nhap boi nhan vien ");
-            System.out.println("2. In phieu nhap nhap vao ngay  ");
+            System.out.println("2. In phieu nhap nhap vao ngay ");
             System.out.println("3. In phieu nhap nhap boi nha cung cap");
             System.out.println("0. Quay lai menu truoc");
             System.out.print("Moi chon: ");
