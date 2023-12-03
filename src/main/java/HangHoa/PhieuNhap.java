@@ -164,9 +164,9 @@ public class PhieuNhap extends PhanTu {
         return maSanPham;
     }
     public void setMaSanPham() {
-        System.out.print("Nhap ma san pham: ");
         DanhSachXe ttds = new DanhSachXe();
         ttds.xuatDanhSach();
+        System.out.print("Nhap ma san pham: ");
         boolean check = true;
         do
         {
