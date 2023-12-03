@@ -1,5 +1,4 @@
-5
-admin#123#admin
+4
 NV01#123#nhan vien
 NV02#123#nhan vien
 QL01#123#quan ly

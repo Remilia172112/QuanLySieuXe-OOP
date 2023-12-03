@@ -1,8 +1,11 @@
 package DanhSach;
+
+import java.time.LocalDate;
 import File.FileHandler;
 import HangHoa.DongXe;
 import HangHoa.PhanTu;
 import KiemTra.KiemTra;
+import Nguoi.KhachHang;
 public class DanhSachDongXe implements DanhSachChung { 
     private int soLuong;
     private DongXe[] dsDongXe = getDsDongXe();
@@ -75,6 +78,53 @@ public class DanhSachDongXe implements DanhSachChung {
                 return true;
         }
         return false;
+    }
+    public int Timthangbaohanh(String thamSo) {
+        DongXe[] dsDm = getDsDongXe();
+        for(int i=0;i<soLuong;i++) {
+            if (thamSo.contains(dsDm[i].getMaDanhMuc()))
+                return dsDm[i].getThangbaoHanh();
+        }
+        return -1;
+    }
+    public void Checkbaohanh() {
+        DanhSachKhachHang  ttdss = new DanhSachKhachHang();
+        KhachHang tmp;
+        PhanTu pt;
+        String maKhachHang;
+        int chon;
+        do {
+            System.out.print("Ban co muon xuat ra man hinh danh sach khach hang khong? (1 - in, 0 - khong): ");
+            chon = KiemTra.checkNumber();
+            chon = (chon==0) ? 0 : 1;
+            if (chon == 1) ttdss.xuatDanhSach();
+            System.out.print("Nhap ma khach hang: ");
+            maKhachHang = sc.nextLine();
+            pt = ttdss.layPhanTuVoi(maKhachHang);
+            if (pt == null) {
+                System.out.println("Khong tim thay khach hang!");
+                return;
+            } else tmp = (KhachHang) pt;
+            
+        } while(pt == null);
+        String[] dsmspdm = tmp.getDsmspDamua();
+        if(dsmspdm.length != 0) {
+            LocalDate localDate = LocalDate.now();
+            int namhientai = localDate.getYear();
+            int thanghientai = localDate.getMonthValue();
+            for(String a:dsmspdm) {
+                String dateyearbuy = a.substring(a.length() - 7, 6);
+                int namdathang = Integer.parseInt(dateyearbuy.substring(2, 4));
+                int thangdaqua = thanghientai - Integer.parseInt(dateyearbuy.substring(0, 2));
+                if(namdathang > namhientai) thangdaqua += (namdathang-namhientai)*12;
+                int thangbaohang = Timthangbaohanh(a);
+                if(thangbaohang > thangdaqua) System.out.printf("Ma xe khach hang: " + a + "con thoi han bao hanh");
+                else System.out.printf("Ma xe khach hang: " + a + "het thoi han bao hanh");
+            }
+        }
+        else {
+            System.out.println("Khach hang " + tmp.getHoten() + " chua dat xe nao!!");
+        }
     }
 
     @Override

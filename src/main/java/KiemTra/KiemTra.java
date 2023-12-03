@@ -1,7 +1,9 @@
 package KiemTra;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -157,4 +159,12 @@ public class KiemTra {
             return false;
         }
 	}
+	public static YearMonth parseMonthYear(String monthYear) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMyyyy");
+        return YearMonth.parse(monthYear, formatter);
+    }
+
+    public static long calculateMonthsPassed(YearMonth startMonthYear, LocalDate endDate) {
+        return ChronoUnit.MONTHS.between(startMonthYear.atDay(1), endDate);
+    }
 }

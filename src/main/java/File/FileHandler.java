@@ -106,8 +106,6 @@ public class FileHandler {
             f[5] = new File("dshd.txt");
             f[6] = new File("dsncc.txt");
             f[7] = new File("dspn.txt");
-
-
             String tenFile = "";
             for (int i = 0; i < f.length; i++) {
                 if (f[i].createNewFile()) {
@@ -138,27 +136,26 @@ public class FileHandler {
                         case 1:
                             tenFile = "dsnv.txt";
                             ghiFile("4", tenFile);
-                            themNv("NV1", "Tran Van A", "17/07/2004", "nam", "052204016288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "tranvana@gmail.com", "17/07/2023", 0.5, 0);
-                            themNv("NV2", "Tran Van B", "30/07/2000", "nu", "054524226300", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "tranvanb@gmail.com", "21/09/2023", 1.2, 0);
-                            themNv("QL1", "Tran Thi C", "01/01/1950", "nam", "022201236288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly1@gmail.com", "12/09/2023", 0.4, 1);
-                            themNv("QL2", "Tran Bui D", "02/02/2000", "nu", "054504012328", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly2@gmail.com", "25/12/2023", 2, 1);
+                            themNv("NV01", "Tran Van A", "17/07/2004", "nam", "052204016288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "tranvana@gmail.com", "17/07/2023", 0.5, 0);
+                            themNv("NV02", "Tran Van B", "30/07/2000", "nu", "054524226300", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "tranvanb@gmail.com", "21/09/2023", 1.2, 0);
+                            themNv("QL01", "Tran Thi C", "01/01/1950", "nam", "022201236288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly1@gmail.com", "12/09/2023", 0.4, 1);
+                            themNv("QL02", "Tran Bui D", "02/02/2000", "nu", "054504012328", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly2@gmail.com", "25/12/2023", 2, 1);
                             break;
                         case 2:
                             tenFile = "dskh.txt";
                             String[] rong = new String[0];
                             ghiFile("3", tenFile);
-                            themKH("KH1", "Doan Van A", "20/12/1950", "nu", "320873941", "273 An Duong Vuong, P3, Q5, TP.HCM", "0894172635", "doanvana@gmail.com", rong, 0, 0, null);
-                            themKH("KH2", "Nguyen Van B", "28/11/2002", "nam","320142913", "273 An Duong Vuong, P3, Q5, TP.HCM", "0913716241", "hahah@gmail.com", rong, 0, 0, null);
-                            themKH("KH3", "Tran Van C", "10/10/1969", "nam", "320638711", "273 An Duong Vuong, P3, Q5, TP.HCM", "0907412663", "tranvanc@gmail.com", rong, 0, 0, null);
+                            themKH("KH01", "Doan Van A", "20/12/1950", "nu", "320873941", "273 An Duong Vuong, P3, Q5, TP.HCM", "0894172635", "doanvana@gmail.com", rong, 0, 0, null);
+                            themKH("KH02", "Nguyen Van B", "28/11/2002", "nam","320142913", "273 An Duong Vuong, P3, Q5, TP.HCM", "0913716241", "hahah@gmail.com", rong, 0, 0, null);
+                            themKH("KH03", "Tran Van C", "10/10/1969", "nam", "320638711", "273 An Duong Vuong, P3, Q5, TP.HCM", "0907412663", "tranvanc@gmail.com", rong, 0, 0, null);
                             break;
                         case 3:
                             tenFile = "dstk.txt";
-                            ghiFile("5", tenFile);
-                            themTK("admin", "123", "admin");
-                            themTK("NV1", "123", "nhan vien");
-                            themTK("NV2", "123", "nhan vien");
-                            themTK("QL1", "123", "quan ly");
-                            themTK("QL2", "123", "quan ly");
+                            ghiFile("4", tenFile);
+                            themTK("NV01", "123", "nhan vien");
+                            themTK("NV02", "123", "nhan vien");
+                            themTK("QL01", "123", "quan ly");
+                            themTK("QL02", "123", "quan ly");
                             break;
                         case 4:
                             tenFile = "dsdx.txt";
@@ -174,7 +171,8 @@ public class FileHandler {
                             themDX("VINFAST" , "Xe dien oto" , 5,48, dsMaSp);
                             break;
                         case 5:
-
+                            tenFile = "dshd.txt";
+                            ghiFile("0", tenFile);
                             break;
                         case 6:
                             tenFile = "dsncc.txt";
@@ -186,7 +184,8 @@ public class FileHandler {
                             themNCC("567890123","Selite Cars","55 An Lac Thon, P1, Q7, TP.HCM","0862616311");
                             break;
                         case 7:
-                            
+                            tenFile = "dspn.txt";
+                            ghiFile("0", tenFile);
                             break;
                         default:
                             break;
