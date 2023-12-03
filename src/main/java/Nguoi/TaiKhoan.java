@@ -45,7 +45,7 @@ public class TaiKhoan extends PhanTu {
                 check = dsnv.layPhanTuVoi(username) != null;
                 if (!check) {
                     System.out.print("Ma nhan vien khong ton tai!! Ban co muon them nhan vien moi (1/0): ");
-                    int chon = Integer.parseInt(sc.nextLine());
+                    int chon = KiemTra.checkNumber();
                     if(chon == 1) dsnv.themPhanTuVaoDanhSach();
                 }
             }
@@ -81,7 +81,7 @@ public class TaiKhoan extends PhanTu {
     }
 
     public void setType() {
-        System.out.print("Nhap loai tai khoan (quan ly/nhan vien): ");
+        System.out.print("Nhap loai tai khoan (nhan vien/quan ly): ");
         boolean check = false;
         do {
             check = true;
@@ -104,8 +104,9 @@ public class TaiKhoan extends PhanTu {
     }
 
     public void xuat() {
-        System.out.printf("%s-25 %s-25 %-25s\n", "Tai khoan", "Mat khau", "Loai tai khoan");
-        System.out.printf("%s-25 %s-25 %-25s", getUsername(), getPassword(), getType());
+        System.out.printf("%-25s %-25s %-25s \n", "Ten tai khoan", "Mat khau", "Loai tai khoan");
+        System.out.printf("%-25s %-25s %-25s \n", username, password, type);
+        System.out.println("****************************");
     }
 
     public void suaThongTin() {

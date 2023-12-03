@@ -1,5 +1,6 @@
 package DanhSach;
 import File.FileHandler;
+import KiemTra.KiemTra;
 import HangHoa.*;
 import Nguoi.*;
 
@@ -106,7 +107,7 @@ public class DanhSachHoaDon implements DanhSachChung {
     public void nhapDanhSach() {
         System.out.println("Moi nhap so luong hoa don:");
         
-        soLuong = Integer.parseInt(sc.nextLine());
+        soLuong = KiemTra.checkNumber();
         
         dsHoaDon = new HoaDon[soLuong];
         
@@ -151,7 +152,7 @@ public class DanhSachHoaDon implements DanhSachChung {
     @Override
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong hoa don can them vao danh sach: ");
-        int sl = Integer.parseInt(sc.nextLine());
+        int sl = KiemTra.checkNumber();
         PhanTu pt;
         for(int i=0;i<sl;i++)
         {
@@ -197,7 +198,7 @@ public class DanhSachHoaDon implements DanhSachChung {
     @Override
     public PhanTu timPhanTu() { // tìm hoá đơn theo tên hoặc khoá (tương đối || tuyệt đối)
         System.out.print("Nhap so hoa don can tim: ");
-        int soHoaDonCanTim = Integer.parseInt(sc.nextLine());
+        int soHoaDonCanTim = KiemTra.checkNumber();
         
         HoaDon[] dsHoaDonTmp = getdsHoaDon();
         
@@ -212,7 +213,7 @@ public class DanhSachHoaDon implements DanhSachChung {
     @Override
     public int timViTriPhanTu() {
         System.out.print("Nhap so hoa don can tim: ");
-        int soHoaDonCanTim = Integer.parseInt(sc.nextLine());
+        int soHoaDonCanTim = KiemTra.checkNumber();
         
         HoaDon[] dsHoaDonTmp = getdsHoaDon();
         
@@ -246,12 +247,12 @@ public class DanhSachHoaDon implements DanhSachChung {
             System.out.println("0. Quay lai menu truoc");
             System.out.print("Moi chon: ");
 
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();
 
             switch (chon) {
                 case 1:
                     System.out.print("Nhap so luong don hang can tim: ");
-                    n = Integer.parseInt(sc.nextLine());
+                    n = KiemTra.checkNumber();
                     for (HoaDon hoaDon: dsHoaDon) {
                         if (hoaDon.getTongTien() >= n) hoaDon.xuat();
                     }
@@ -262,7 +263,7 @@ public class DanhSachHoaDon implements DanhSachChung {
                     System.out.println("3. Tai khoan the tin dung");
                     System.out.println("4. Vi dien tu");
                     System.out.print("Chon phuong thuc thanh toan can tim: ");
-                    n = Integer.parseInt(sc.nextLine());
+                    n = KiemTra.checkNumber();
                     switch (n) {
                         case 2:
                             st = "CK_NganHang";

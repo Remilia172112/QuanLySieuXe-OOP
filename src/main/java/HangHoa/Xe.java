@@ -27,8 +27,8 @@ public class Xe extends PhanTu {
     public void setMaSanPham() {
         DanhSachXe ttds = new DanhSachXe();
         DanhSachDongXe dsdx = new DanhSachDongXe();
-        System.out.println("Ban co muon xuat ra man hinh danh sach dong xe khong? (1 - in, 0 - khong)");
-        int chon = Integer.parseInt(sc.nextLine());
+        System.out.println("Ban co muon xuat ra man hinh danh sach dong xe khong? (1 - in, !1 - khong)");
+        int chon = KiemTra.checkNumber();
         if (chon == 1) dsdx.xuatDanhSachDongxe();
         System.out.print("Nhap ma san pham: ");
         boolean check = false;
@@ -77,32 +77,14 @@ public class Xe extends PhanTu {
     }
     public void setSoLuong() {
         System.out.print("Nhap so luong: ");
-        boolean check;
-        do {
-            check = true;
-            try {
-                soLuong = Integer.parseInt(sc.nextLine());
-            } catch (Exception e) {
-                check = false;
-                System.out.print("Vui long nhap mot so: ");
-            }
-        } while (!check);
+        soLuong = KiemTra.checkNumber();
     }
     public void setPrice(int price) {
         this.price = price;
     }
     public void setPrice() {
-        boolean check;
         System.out.print("Vui long nhap gia: ");
-        do {
-            check = true;
-            try {
-                price = Integer.parseInt(sc.nextLine());
-            } catch (Exception e) {
-                check = false;
-                System.out.print("Vui long nhap mot so: ");
-            }
-        } while (!check);
+        price = KiemTra.checkNumber();
     }
     public String getThuongHieu() {
         return thuongHieu;

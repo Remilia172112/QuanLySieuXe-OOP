@@ -1,6 +1,7 @@
 package ThanhToan;
 
 import java.util.Scanner;
+import KiemTra.KiemTra;
 
 public class ThanhToan {
     private String phuongThucThanhToan;
@@ -51,7 +52,7 @@ public class ThanhToan {
         System.out.print("Chon: ");
         int chon;
         do{
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();
             switch (chon) {
                 case 1:
                     phuongThucThanhToan = "TienMat";

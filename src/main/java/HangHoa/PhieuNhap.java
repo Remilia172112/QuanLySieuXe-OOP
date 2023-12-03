@@ -218,7 +218,7 @@ public class PhieuNhap extends PhanTu {
         int chon;
         do {
             System.out.print("Nhap lua chon: ");
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();
             switch (chon) {
                 case 0:
                     break;

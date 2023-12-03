@@ -4,7 +4,7 @@ import KiemTra.KiemTra;
 public class DongXe extends PhanTu {
     private String maDanhMuc;
     private String tenDanhMuc;
-    private int soLuong;
+    private int soLuong = 0;
     private String[] dsMaSanPham;
     private  int thangbaoHanh ;
     public DongXe() {
@@ -55,17 +55,8 @@ public class DongXe extends PhanTu {
     }
 
     public void setSoLuong() {
-        System.out.print("Nhap so luong: ");
-        boolean check;
-        do {
-            check = true;
-            try {
-                soLuong = Integer.parseInt(sc.nextLine());
-            } catch (Exception e) {
-                System.out.println("Vui long nhap mot so!");
-                check = false;
-            }
-        } while(!check);
+        System.out.print("Nhap so luong xe cua dong xe: ");
+        soLuong = KiemTra.checkNumber();
     }
 
     public int getThangbaoHanh() {
@@ -73,16 +64,7 @@ public class DongXe extends PhanTu {
     }
     public void setThangbaohanh(){
         System.out.print("Nhap thoi han bao hanh theo thang: ");
-        boolean check;
-        do {
-            check = true;
-            try {
-                thangbaoHanh = KiemTra.checkNumber();
-            } catch (Exception e) {
-                System.out.println("Vui long nhap mot so!");
-                check = false;
-            }
-        } while(!check);
+        thangbaoHanh = KiemTra.checkNumber();
     }
     public void setThangbaoHanh(int baoHanh) {
         this.thangbaoHanh = baoHanh;
@@ -131,13 +113,20 @@ public class DongXe extends PhanTu {
         String[] dsMaSp = new String[soLuong];
 
         Xe pt;
+        
         for(int i=0;i<soLuong;i++) {
 
-            System.out.println("Them ma xe thu "+i);
+            System.out.println("Them ma xe thu "+(i+1));
             do {
                 pt = (Xe) ttds.timPhanTu();
 
-                if (pt == null) System.out.println("Khong tim thay xe!");
+                if (pt == null) {
+                    System.out.println("Khong tim thay xe!");
+                    System.out.println("Ban co muon them xe moi? (1 - co, 0 - khong): ");
+                    int chon = KiemTra.checkNumber();
+                    if (chon == 1) ttds.themKPhanTuVaoDanhSach();
+
+                }
                 else dsMaSp[i] = pt.getMaSanPham();
 
             } while (pt == null);
@@ -174,18 +163,9 @@ public class DongXe extends PhanTu {
     public void themKMaSPVaoDs() {
         System.out.print("Nhap so ma xe can them vao danh sach: ");
         int k;
-        boolean check;
-        do {
-            check = true;
-            try {
-                k = Integer.parseInt(sc.nextLine());
-                for(int i=0;i<k;i++)
-                    themMaSPVaoDs();
-            } catch (Exception e) {
-                check = false;
-                System.out.println("Vui long nhap mot so!");
-            }
-        } while (!check);
+        k = KiemTra.checkNumber();
+        for(int i=0;i<k;i++)
+            themMaSPVaoDs();
     }
 
     public void xoaMaSPKhoiDs() {
@@ -221,9 +201,14 @@ public class DongXe extends PhanTu {
     public void nhap(){
         setMaDanhMuc();
         setTenDanhMuc();
-        setSoLuong();
         setThangbaohanh();
-        nhapDsMaSanPham();
+        System.out.println("Ban co muon them xe da co vao dong xe moi tao khong? (1 - co, 0 - khong): ");
+        int chon = KiemTra.checkNumber();
+        if (chon == 1) {
+            setSoLuong();
+            nhapDsMaSanPham();
+        }
+        
     }
 
     @Override

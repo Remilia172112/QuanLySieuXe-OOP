@@ -47,8 +47,8 @@ public class HoaDon extends PhanTu {
         String maKhachHang;
         int chon;
         do {
-            System.out.println("Ban co muon xuat ra man hinh danh sach khach hang khong? (1 - in, 0 - khong)");
-            chon = Integer.parseInt(sc.nextLine());
+            System.out.println("Ban co muon xuat ra man hinh danh sach khach hang khong? (1 - in, !1 - khong)");
+            chon = KiemTra.checkNumber();
             chon = (chon==0) ? 0 : 1;
             if (chon == 1) ttdss.xuatDanhSach();
             System.out.print("Nhap ma khach hang: ");
@@ -56,8 +56,8 @@ public class HoaDon extends PhanTu {
             pt = ttdss.layPhanTuVoi(maKhachHang);
             if (pt == null) {
                 System.out.println("Khong tim thay khach hang!");
-                System.out.println("Ban co muon them khach hang moi khong? (1 - them, 0 - khong)");
-                chon = Integer.parseInt(sc.nextLine());
+                System.out.println("Ban co muon them khach hang moi khong? (1 - them, !1 - khong)");
+                chon = KiemTra.checkNumber();
                 chon = (chon==0) ? 0 : 1;
 
                 if (chon == 1) {
@@ -99,8 +99,8 @@ public class HoaDon extends PhanTu {
 
         Xe pt, timThay;
         int vtsp, stt;
-        System.out.println("Ban co muon xuat ra man hinh danh sach xe khong? (1 - in, 0 - khong)");
-        int chon = Integer.parseInt(sc.nextLine());
+        System.out.println("Ban co muon xuat ra man hinh danh sach xe khong? (1 - in, !1 - khong)");
+        int chon = KiemTra.checkNumber();
         if (chon == 1) ttds.xuatDanhSach();
         for(int i=0;i<soLuongSanPham;i++) {
             stt=i+1;
@@ -113,13 +113,13 @@ public class HoaDon extends PhanTu {
                 if (pt == null) 
                     System.out.println("Khong tim thay san pham!");
                 else {
-
-                    if(dsx[i-1].getMaSanPham() == pt.getMaSanPham()) dsx[i-1].setSoLuong(dsx[i-1].getSoLuong()+1);
-                    else {
-                        dsx[i] = pt;
-                        dsx[i].setSoLuong(1);
+                    if(i>0) {
+                        if(dsx[i-1].getMaSanPham() == pt.getMaSanPham()) dsx[i-1].setSoLuong(dsx[i-1].getSoLuong()+1);
+                        else {
+                            dsx[i] = pt;
+                            dsx[i].setSoLuong(1);
+                        }
                     }
-                    
                     if (pt.getSoLuong() == 0) { // nếu sản phẩm đã hết hàng
                         System.out.println("San pham da het hang, vui long chon san pham khac!");
                         pt=null;
@@ -205,15 +205,9 @@ public class HoaDon extends PhanTu {
         do
         {
             check = true;
-            try {
-
-                soHoaDon = Integer.parseInt(sc.nextLine());
-                check = ttds.layPhanTuVoi(soHoaDon+"") == null;
-                if (!check) System.out.print("So hoa don da ton tai, moi nhap lai: ");
-            } catch (Exception e) {
-                check = false;
-                System.out.print("Vui long nhap mot so: ");
-            }
+            soHoaDon = KiemTra.checkNumber();
+            check = ttds.layPhanTuVoi(soHoaDon+"") == null;
+            if (!check) System.out.print("So hoa don da ton tai, moi nhap lai: ");
         } while (!check);
     }
 
@@ -230,18 +224,8 @@ public class HoaDon extends PhanTu {
     }
 
     public void setSoLuongSanPham() {
-        boolean check;
-        do
-        {
-            check = true;
-            try {
-                System.out.print("Nhap so luong san pham: ");
-                soLuongSanPham = Integer.parseInt(sc.nextLine());
-            } catch (Exception e) {
-                check = false;
-                System.out.print("Vui long nhap mot so: ");
-            }
-        } while (!check);
+        System.out.print("Nhap so luong san pham: ");
+        soLuongSanPham = KiemTra.checkNumber();
     }
 
     public int getTongTien() {
@@ -269,8 +253,8 @@ public class HoaDon extends PhanTu {
     }
     
     public void setNgaylapdon() {
-        System.out.print("Sua dung ngay thang nam hien tai? (1/0): ");
-        int chon = Integer.parseInt(sc.nextLine());
+        System.out.print("Sua dung ngay thang nam hien tai de lam ngay lap don? (1/0): ");
+        int chon = KiemTra.checkNumber();
         if(chon == 1) ngaylapdon = ngayhientai + "/" + thanghientai + "/" + namhientai;
         else {
             boolean check;
@@ -297,12 +281,7 @@ public class HoaDon extends PhanTu {
         KhachHang[] dsKhachHang;
 
         do{
-            try {
-                chon = Integer.parseInt(sc.nextLine());
-            } catch (Exception e) {
-                System.out.println("Vui long nhap mot so!");
-                continue;
-            }
+            chon = KiemTra.checkNumber();
             switch (chon) {
                 case 1:
                     phThThanhToan = "TienMat";
@@ -359,7 +338,7 @@ public class HoaDon extends PhanTu {
                 System.out.println("Khach hang chua thiet lap phuong thuc thanh toan nay!");
 
                 System.out.print("Ban co muon thiet lap phuong thuc thanh toan cho khach hang nay khong? (1 - co, 0 - khong): ");
-                chontl = Integer.parseInt(sc.nextLine());
+                chontl = KiemTra.checkNumber();
                 chontl = (chontl == 1) ? 1 : 0;
 
                 if (chontl == 1) { // nếu chọn thiết lập
@@ -368,7 +347,7 @@ public class HoaDon extends PhanTu {
                     System.out.println("2. Tai khoan the tin dung");
                     System.out.println("3. Vi dien tu");
                     System.out.print("Chon: ");
-                    chon = Integer.parseInt(sc.nextLine());
+                    chon = KiemTra.checkNumber();
                     switch (chon) {
                         case 1:
                             CKNganHang cknh = new CKNganHang();
@@ -461,7 +440,7 @@ public class HoaDon extends PhanTu {
         int chon;
         do {
             System.out.print("Nhap lua chon: ");
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();
             switch (chon) {
                 case 0:
                     break;

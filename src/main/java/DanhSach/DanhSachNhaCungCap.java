@@ -76,7 +76,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
         FileHandler.resetFile("dsncc.txt");
         System.out.print("Moi nhap so luong nha cung cap: ");
 
-        soLuong = Integer.parseInt(sc.nextLine());
+        soLuong = KiemTra.checkNumber();
         dsNhaCC = new NhaCungCap[soLuong];
 
         int stt, soLuongTemp=0, soLuongCurrent = soLuong;
@@ -110,7 +110,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
     }
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong nha cung cap can them vao danh sach: ");
-        int sl = Integer.parseInt(sc.nextLine());
+        int sl = KiemTra.checkNumber();
         PhanTu pt;
         for(int i=0;i<sl;i++)
         {
@@ -152,7 +152,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
         int loai;
         System.out.print("Tim nha cc theo ten (1) hay theo khoa (2), vui long chon: ");
 
-        loai = Integer.parseInt(sc.nextLine());
+        loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;
 
         if (loai == 1)
@@ -164,7 +164,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
         int chon;
 
         System.out.print("Tim chinh xac (1)/ tim tuong doi (2), vui long chon: ");
-        chon = Integer.parseInt(sc.nextLine());
+        chon = KiemTra.checkNumber();
         chon = (chon != 2) ? 1 : 2;
 
         NhaCungCap[] dsSanPhamTmp = getdsNhaCC();
@@ -192,7 +192,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
         int loai;
         System.out.print("Tim nha cung cap theo ten (1) hay theo khoa (2), vui long chon: ");
 
-        loai = Integer.parseInt(sc.nextLine());
+        loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;
 
         if (loai == 1)
@@ -204,7 +204,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
         int chon;
 
         System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
-        chon = Integer.parseInt(sc.nextLine());
+        chon = KiemTra.checkNumber();
         chon = (chon != 2) ? 1 : 2;
 
         NhaCungCap[] dsSanPhamTmp = getdsNhaCC();

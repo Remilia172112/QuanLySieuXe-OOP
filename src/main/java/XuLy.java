@@ -375,7 +375,7 @@ public class XuLy {
         inMenu("dong xe");
         int chon;
         do {
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();
             if (dsx.getsoLuong() == 0) {
                 System.out.println("Vui long nhap danh sach xe truoc khi quan ly dong xe!");
                 chon = 0;
@@ -420,7 +420,7 @@ public class XuLy {
         inMenu("hoa don");
         int chon;
         do {
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();
             // chỉ cho phép thao tác nếu đã có danh sách sản phẩm
             if (dsx.getsoLuong() == 0) {
                 System.out.println("Vui long nhap danh sach xe truoc khi quan ly hoa don!");
@@ -507,7 +507,7 @@ public class XuLy {
     }
     public static void quanLyDSNCC() {
         DanhSachNhaCungCap ttds = new DanhSachNhaCungCap();
-        inMenu("Nha cung cap ");
+        inMenu("nha cung cap ");
         int chon;
         do {
             chon = KiemTra.checkNumber();

@@ -33,7 +33,7 @@ public class KiemTra {
 	}
 	
 	public static boolean check_maso(String maso) {
-		String reg = "^[A-Za-z0-9]{2}\\d$";
+		String reg = "^[A-Za-z]{2,}.*\\d{2,}$";
 		Pattern pattern = Pattern.compile(reg);
 		Matcher matcher = pattern.matcher(maso);
 		if (!matcher.matches()) {

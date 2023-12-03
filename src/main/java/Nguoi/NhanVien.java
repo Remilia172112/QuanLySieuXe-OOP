@@ -193,13 +193,7 @@ public class NhanVien extends Nguoi {
     public void setSongaynghitrongthang() {
         System.out.print("Nhap so ngay nghi trong thang: ");
         do {
-
-            try {
-                soNgayNghiTrongThang = KiemTra.checkNumber();;
-            } catch (Exception e) {
-                System.out.print("Vui long nhap mot so: ");
-                continue;
-            }
+            soNgayNghiTrongThang = KiemTra.checkNumber();;
             if (soNgayNghiTrongThang < 0 || soNgayNghiTrongThang > 31)
                 System.out.print("Moi nhap lai: ");
         } while (soNgayNghiTrongThang < 0 || soNgayNghiTrongThang > 31);
