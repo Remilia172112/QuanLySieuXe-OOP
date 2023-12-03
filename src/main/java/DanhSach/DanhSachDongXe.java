@@ -3,7 +3,6 @@ import File.FileHandler;
 import HangHoa.DongXe;
 import HangHoa.PhanTu;
 import KiemTra.KiemTra;
-
 public class DanhSachDongXe implements DanhSachChung { 
     private int soLuong;
     private DongXe[] dsDongXe = getDsDongXe();
@@ -11,21 +10,17 @@ public class DanhSachDongXe implements DanhSachChung {
     public DanhSachDongXe() {
         dsDongXe = getDsDongXe();
     }
-    public DanhSachDongXe(int soLuong, DongXe[] dsDongXe) {
+    public DanhSachDongXe(int soLuong , DongXe[] dsDongXe)
+    {
         this.soLuong = soLuong;
         this.dsDongXe = dsDongXe;
     }
-
     public int getSoLuong() {
         return soLuong;
     }
 
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
-    }
-
-    public void setDsDongXe(DongXe[] dsDongXe) {
-        this.dsDongXe = dsDongXe;
     }
 
     public DongXe[] getDsDongXe() { // đọc từ file
@@ -56,9 +51,7 @@ public class DanhSachDongXe implements DanhSachChung {
             dsMaSP = new String[sldmsp];
             for(int j=0;j<sldmsp;j++)
                 dsMaSP[j] = lArr[m++];
-
             dmsp.setDsMaSanPham(dsMaSP);
-
             dsDongXe[k++] = dmsp;
         }
         return dsDongXe;
@@ -88,10 +81,7 @@ public class DanhSachDongXe implements DanhSachChung {
     public void nhapDanhSach() {
         System.out.println("Nhap so luong danh muc: ");
         soLuong = KiemTra.checkNumber();
-
         dsDongXe = new DongXe[soLuong];
-
-
         int stt, soLuongTemp=0, soLuongCurrent = soLuong;
         for (int i = 0; i < soLuongCurrent; i++){
             dsDongXe[i] = new DongXe();
@@ -101,7 +91,7 @@ public class DanhSachDongXe implements DanhSachChung {
             dsDongXe[i].nhap();
             soLuong = ++soLuongTemp;
             // mỗi lần đọc phần tử từ mảng sẽ ghi trực tiếp vào file kèm số lượng phần tử đã đọc
-            setDsDongXe(dsDongXe);
+            setDsDX(dsDongXe);
         }
     }
     // Chỉ xuất dòng xe
@@ -128,12 +118,12 @@ public class DanhSachDongXe implements DanhSachChung {
             dsDm[i] = getDsDongXe()[i];
         dsDm[soLuong] = (DongXe) pt;
         soLuong++;
-        setDsDongXe(dsDm);
+        setDsDX(dsDm);
     }
 
     @Override
     public void themKPhanTuVaoDanhSach() {
-        System.out.print("Nhap so luong dong xe can them vao danh sach: ");
+        System.out.print("Nhap so luong dong xe can them vao danh sach: \n");
         int sl = KiemTra.checkNumber();
         PhanTu pt;
         for(int i=0;i<sl;i++)
@@ -154,7 +144,7 @@ public class DanhSachDongXe implements DanhSachChung {
 
         if (viTri != -1) {
             dsDmSp[viTri].suaThongTin();
-            setDsDongXe(dsDmSp);
+            setDsDX(dsDmSp);
         } else System.out.println("Khong tim thay!");
     }
 
@@ -174,7 +164,7 @@ public class DanhSachDongXe implements DanhSachChung {
             }
 
             soLuong--;
-            setDsDongXe(dsDm);
+            setDsDX(dsDm);
         } else System.out.println("Khong tim thay dong xe!");
     }
 
@@ -183,7 +173,6 @@ public class DanhSachDongXe implements DanhSachChung {
 
         int loai;
         System.out.print("Tim dong xe theo ten (1) hay theo ma (2), vui long chon: ");
-
         loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;
 

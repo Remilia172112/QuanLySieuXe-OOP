@@ -36,20 +36,20 @@ public class Xe extends PhanTu {
         {
             maSanPham = sc.nextLine();
             check = dsdx.Checkmadongxe(maSanPham) == true;
-            if(!check) System.out.print("Ma san pham phai trung 1 phan voi ma dong xe!! Moi nhap lai: ");
+            if(!check) System.out.print("Ma san pham phai trung 1 phan voi ma dong xe!!\n Moi nhap lai: ");
             if(check) {
                 check = ttds.layPhanTuVoi(maSanPham) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
                 if (!check) System.out.print("Ma san pham da ton tai, moi nhap lai: ");
             }
         } while (!check);
     }
+    public void setMaSanPham(String maSanPham) {
+        this.maSanPham = maSanPham;
+    }
     public String getTenSanPham() {
         return tenSanPham;
     }
 
-    public void setMaSanPham(String maSanPham) {
-        this.maSanPham = maSanPham;
-    }
     public void setTenSanPham() {
         System.out.print("Nhap ten san pham: ");
         tenSanPham = sc.nextLine();
