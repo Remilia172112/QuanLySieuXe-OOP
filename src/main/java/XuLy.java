@@ -5,6 +5,9 @@ import Nguoi.TaiKhoan;
 import KiemTra.KiemTra;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class XuLy {
     private static Scanner sc = new Scanner(System.in);
     public static String username;
@@ -376,7 +379,7 @@ public class XuLy {
         int chon;
         do {
             chon = KiemTra.checkNumber();
-            if (dsx.getsoLuong() == 0) {
+            if (dsx.getsoLuong() == 0 && dsx.getsoLuong() == 1)  {
                 System.out.println("Vui long nhap danh sach xe truoc khi quan ly dong xe!");
                 chon = 0;
             }
@@ -388,6 +391,8 @@ public class XuLy {
                     ttds.xuatDanhSach();
                     break;
                 case 3:
+                    Logger logger = Logger.getLogger("MyLogger");
+                    logger.log(Level.WARNING, "Vui long nhap danh sach xe truoc khi quan ly dong xe!");
                     ttds.themKPhanTuVaoDanhSach();
                     break;
                 case 4:
