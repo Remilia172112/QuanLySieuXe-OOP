@@ -148,7 +148,7 @@ public class KhachHang extends Nguoi {
         super.nhap();
         setPhThThanhToan();
         System.out.println("Cap nhat danh sach da mua cua khach hang? (1/0): ");
-        int chon = Integer.parseInt(sc.nextLine());
+        int chon = KiemTra.checkNumber();
         if(chon == 1) {
             System.out.println("Ma xe da mua bao gom: ma xe + ma khach hang + thang nam mua xe");
             setDsmspDamua();

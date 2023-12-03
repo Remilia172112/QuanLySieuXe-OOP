@@ -116,7 +116,7 @@ public class DanhSachTaiKhoan implements DanhSachChung {
         }
     }
     public void xuatDanhSach(){
-        System.out.println("=== Danh sach tai khoan tai khoan ===");
+        System.out.println("=== Danh sach tai khoan nhan vien ===");
         for (int i = 0; i < soLuong; i++) {
             getDsTaiKhoan()[i].xuat();
         }

@@ -87,7 +87,7 @@ public class DanhSachDongXe implements DanhSachChung {
     @Override
     public void nhapDanhSach() {
         System.out.println("Nhap so luong danh muc: ");
-        soLuong = Integer.parseInt(sc.nextLine());
+        soLuong = KiemTra.checkNumber();
 
         dsDongXe = new DongXe[soLuong];
 
@@ -134,7 +134,7 @@ public class DanhSachDongXe implements DanhSachChung {
     @Override
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong dong xe can them vao danh sach: ");
-        int sl = Integer.parseInt(sc.nextLine());
+        int sl = KiemTra.checkNumber();
         PhanTu pt;
         for(int i=0;i<sl;i++)
         {
@@ -184,7 +184,7 @@ public class DanhSachDongXe implements DanhSachChung {
         int loai;
         System.out.print("Tim dong xe theo ten (1) hay theo ma (2), vui long chon: ");
 
-        loai = Integer.parseInt(sc.nextLine());
+        loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;
 
         if (loai == 1)
@@ -228,7 +228,7 @@ public class DanhSachDongXe implements DanhSachChung {
     public int timViTriPhanTu() { // trả về vị trí phần tử trong mảng
         int loai;
         System.out.print("Tim dong xe theo ten (1) hay theo ma (2), vui long chon: ");
-        loai = Integer.parseInt(sc.nextLine());
+        loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;
         if (loai == 1)
             System.out.print("Nhap ten dong xe can tim: ");
@@ -237,7 +237,7 @@ public class DanhSachDongXe implements DanhSachChung {
         String giaTriCanTim = sc.nextLine();
         int chon;
         System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
-        chon = Integer.parseInt(sc.nextLine());
+        chon = KiemTra.checkNumber();
         chon = (chon != 2) ? 1 : 2;
         DongXe[] dsDm = getDsDongXe();
         for(int i=0;i<soLuong;i++) {
@@ -280,12 +280,12 @@ public class DanhSachDongXe implements DanhSachChung {
             System.out.println("0. Quay lai menu truoc");
             System.out.print("Moi chon: ");
 
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();
 
             switch (chon) {
                 case 1:
                     System.out.print("Nhap so luong can tim: ");
-                    n = Integer.parseInt(sc.nextLine());
+                    n = KiemTra.checkNumber();
                     for (DongXe dmSP: dsDongXe) {
                         if (dmSP.getSoLuong() >= n) dmSP.xuat();
                     }

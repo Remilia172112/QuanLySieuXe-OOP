@@ -1,5 +1,6 @@
 package ThanhToan;
 import static ThanhToan.ThanhToan.sc;
+import KiemTra.KiemTra;
 
 public class CKViDienTu {
     private String tenVi;
@@ -27,7 +28,7 @@ public class CKViDienTu {
             System.out.println("2. Momo");
             System.out.println("3. VNPay");
             System.out.print("Chon loai ví: ");
-            chon = Integer.parseInt(sc.nextLine());
+            chon = KiemTra.checkNumber();
             switch (chon) {
                 case 1:
                     tenVi = "ZaloPay";                
