@@ -142,6 +142,32 @@ public class KhachHang extends Nguoi {
         setDsmspDamua(dsMaSpArr);
     }
 
+    public void xoaMaSPKhoiDs() {
+        String[] dsMaSP = new String[dsmspDamua.length-1];
+
+        System.out.print("Nhap ma san pham khach hang can xoa khoi danh sach: ");
+        String giaTriCanXoa = sc.nextLine();
+
+        boolean check = false;
+        for(int i=0;i<dsmspDamua.length;i++)
+        {
+            check = dsmspDamua[i].equalsIgnoreCase(giaTriCanXoa);
+            if (check) break; // Nếu tìm thấy
+        }
+
+        if (check) {
+            // thủ tục copy từ mảng danh sách cũ
+            for(int i=0, k=0;i<dsmspDamua.length;i++)
+            {
+                if (dsmspDamua[i].equalsIgnoreCase(giaTriCanXoa)) continue; // bỏ qua phần tử
+                dsMaSP[k++] = dsmspDamua[i];
+            }
+            setDsmspDamua(dsMaSP);
+        } else System.out.println("Khong tim thay ma san pham khach hang!");
+    }
+
+    
+
     @Override
     public void nhap() {
         setMaKhachHang();

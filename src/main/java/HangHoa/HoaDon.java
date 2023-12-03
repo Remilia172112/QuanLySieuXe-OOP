@@ -47,7 +47,7 @@ public class HoaDon extends PhanTu {
         String maKhachHang;
         int chon;
         do {
-            System.out.println("Ban co muon xuat ra man hinh danh sach khach hang khong? (1 - in, !1 - khong)");
+            System.out.print("Ban co muon xuat ra man hinh danh sach khach hang khong? (1 - in, 0 - khong): ");
             chon = KiemTra.checkNumber();
             chon = (chon==0) ? 0 : 1;
             if (chon == 1) ttdss.xuatDanhSach();
@@ -56,7 +56,7 @@ public class HoaDon extends PhanTu {
             pt = ttdss.layPhanTuVoi(maKhachHang);
             if (pt == null) {
                 System.out.println("Khong tim thay khach hang!");
-                System.out.println("Ban co muon them khach hang moi khong? (1 - them, !1 - khong)");
+                System.out.print("Ban co muon them khach hang moi khong? (1 - them, 0 - khong)");
                 chon = KiemTra.checkNumber();
                 chon = (chon==0) ? 0 : 1;
 
@@ -72,7 +72,7 @@ public class HoaDon extends PhanTu {
         } while(pt == null);
     }
 
-    public PhanTu[] getDsSanPham() {
+    public Xe[] getDsSanPham() {
         return dsXe;
     }
 
@@ -99,7 +99,7 @@ public class HoaDon extends PhanTu {
 
         Xe pt, timThay;
         int vtsp, stt;
-        System.out.println("Ban co muon xuat ra man hinh danh sach xe khong? (1 - in, !1 - khong)");
+        System.out.print("Ban co muon xuat ra man hinh danh sach xe khong? (1 - in, 0 - khong): ");
         int chon = KiemTra.checkNumber();
         if (chon == 1) ttds.xuatDanhSach();
         for(int i=0;i<soLuongSanPham;i++) {
@@ -119,6 +119,10 @@ public class HoaDon extends PhanTu {
                             dsx[i] = pt;
                             dsx[i].setSoLuong(1);
                         }
+                    }
+                    else {
+                        dsx[i] = pt;
+                        dsx[i].setSoLuong(1);
                     }
                     if (pt.getSoLuong() == 0) { // nếu sản phẩm đã hết hàng
                         System.out.println("San pham da het hang, vui long chon san pham khac!");

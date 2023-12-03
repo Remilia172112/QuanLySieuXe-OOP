@@ -175,11 +175,11 @@ public class FileHandler {
                         case 6:
                             tenFile = "dsncc.txt";
                             ghiFile("5", tenFile);
-                            themNCC("320763982","GiaNguyen","273 An Duong Vuong, P3, Q5, TP.HCM","0924832941");
-                            themNCC("320763982","TheMinh","273 An Duong Vuong, P3, Q5, TP.HCM","0924832941");
-                            themNCC("320763982","DuyTan","273 An Duong Vuong, P3, Q5, TP.HCM","0924832941");
-                            themNCC("320763982","KhoiNguyen","273 An Duong Vuong, P3, Q5, TP.HCM","0924832941");
-                            themNCC("320763982","CaoSang","273 An Duong Vuong, P3, Q5, TP.HCM","0924832941");
+                            themNCC("123456789","Supercar Paradise","123 Hoan Hao, Q8, TP.HCM","0123456789");
+                            themNCC("987654321","Dream Wheels","273 An Duong Vuong, P3, Q5, TP.HCM","0987654321");
+                            themNCC("320763982","Velocity","99 Kinh Duong Vuong, P6, Q10, TP.HCM","0567890123");
+                            themNCC("901234567","Prestige Autos","20 Ben Nghe, P5, Q1, TP.HCM","0901234567");
+                            themNCC("567890123","Selite Cars","55 An Lac Thon, P1, Q7, TP.HCM","0862616311");
                             break;
                         case 7:
                             

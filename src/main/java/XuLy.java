@@ -11,7 +11,7 @@ public class XuLy {
     public static void xuLyTrungTam() {
         int chon;
         DanhSachTaiKhoan dstk = new DanhSachTaiKhoan();
-         System.out.println("************************************************************\n" +
+        System.out.println("************************************************************\n" +
                             "***          Chao mung ban den voi chuong trinh          ***\n" +
                             "***              QUAN LI CUA HANG SIEU XE                ***\n"+
                             "************************************************************");

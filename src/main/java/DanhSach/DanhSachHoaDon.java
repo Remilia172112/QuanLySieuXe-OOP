@@ -81,17 +81,11 @@ public class DanhSachHoaDon implements DanhSachChung {
         String tenFile = "dshd.txt";
         FileHandler.resetFile(tenFile);
         FileHandler.ghiFile(soLuong+"", tenFile);
-        Xe[] dsx;
         
         for(int i=0;i<soLuong;i++) {
             // đọc từng phần tử từ mảng dsHoaDon
             hd = (HoaDon) dsHoaDon[i];
-            // khởi tạo dsx và đọc từng phần tử của danh sách
-            dsx = new Xe[hd.getSoLuongSanPham()];
-            for(int j=0;j<dsx.length;j++) {
-                dsx[j] = (Xe) hd.getDsSanPham()[j];
-            }
-            FileHandler.themHd(hd.getSoHoaDon(),hd.getSoLuongSanPham(), hd.getNgaylapdon(),hd.getTongTien(), hd.getMnv(),hd.getKhachHang().getMaKhachHang(), hd.getPhThThanhToan(), dsx);
+            FileHandler.themHd(hd.getSoHoaDon(),hd.getSoLuongSanPham(), hd.getNgaylapdon(),hd.getTongTien(), hd.getMnv(),hd.getKhachHang().getMaKhachHang(), hd.getPhThThanhToan(), hd.getDsSanPham());
         }
         this.dsHoaDon = (HoaDon[])dsHoaDon;
     }

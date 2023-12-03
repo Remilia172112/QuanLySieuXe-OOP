@@ -169,7 +169,7 @@ public class DongXe extends PhanTu {
     }
 
     public void xoaMaSPKhoiDs() {
-        String[] dsMaSP = new String[soLuong-1];
+        String[] dsMaSP = new String[--soLuong];
 
         System.out.print("Nhap ma xe can xoa khoi danh sach: ");
         String giaTriCanXoa = sc.nextLine();
