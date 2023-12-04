@@ -1,18 +1,9 @@
 package HangHoa;
 
-
-import java.time.LocalDate;
-
 import DanhSach.*;
 import KiemTra.KiemTra;
 //mỗi lần nhập 1 loại sp thoi 
 public class PhieuNhap extends PhanTu {
-    // Tạo tháng năm hiện tại
-    LocalDate localDate = LocalDate.now();
-    private int namhientai = localDate.getYear();
-    private int thanghientai = localDate.getMonthValue();
-    private int ngayhientai = localDate.getDayOfMonth();
-
     private String maPhieuNhap;
     private String maNhaCC;
     private String maNV;
@@ -215,7 +206,6 @@ public class PhieuNhap extends PhanTu {
         setSoluongNhap();
         setDsSanPham();
     }
-
     @Override
     public void nhap(){
         setMaPhieuNhap();
@@ -225,6 +215,7 @@ public class PhieuNhap extends PhanTu {
         setSoluongNhap();
         setDsSanPham();
     }
+    @Override
     public void xuat() {
         System.out.printf("%-20s %-20s %-20s %-20s \n","Ma phieu nhap", "Ma nha cung cap", "Ma nha vien", "Ngay nhap");
         System.out.printf("%-20s %-20s %-20s %-20s  \n", maPhieuNhap, maNhaCC , maNV , ngaynhap);
@@ -233,6 +224,7 @@ public class PhieuNhap extends PhanTu {
         for(int i = 0; i< dsmspNhap.length; i++) dsmspNhap[i].xuat();
         System.out.println("\n**************************");
     }
+    @Override
     public void suaThongTin() {
         System.out.println("=== Sua thong tin phieu nhap ===");
         System.out.println("1. Sua ma phieu nhap");

@@ -8,6 +8,7 @@ public class NhaCungCap extends PhanTu {
     private String tenNhaCC ;
     private String diachi ;
     private String sdt ;
+
     public NhaCungCap(){
     }
 
@@ -80,10 +81,12 @@ public class NhaCungCap extends PhanTu {
         setDiaChi();
         setSdt();
     }
+    @Override
     public void xuat() {
         System.out.printf("%-20s %-20s %-45s %-20s  \n",getMaNhaCC(),getTenNhaCC(),getDiaChi(),getSdt());
 
     }
+    @Override
     public void suaThongTin() {
         System.out.println("=== Sua thong tin nha cung cap ===");
         System.out.println("1. Sua ma nha cung cap");
@@ -122,6 +125,4 @@ public class NhaCungCap extends PhanTu {
             }
         } while(chon!=0);
     }
-
-
 }

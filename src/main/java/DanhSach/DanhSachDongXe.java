@@ -127,7 +127,6 @@ public class DanhSachDongXe implements DanhSachChung {
         }
     }
 
-    @Override
     public void nhapDanhSach() {
         System.out.println("Nhap so luong danh muc: ");
         soLuong = KiemTra.checkNumber();
@@ -152,7 +151,7 @@ public class DanhSachDongXe implements DanhSachChung {
         }
         System.out.println();
     }
-    @Override
+    
     public void xuatDanhSach() {
         System.out.println("=== Danh sach dong xe ===");
         for (int i = 0; i < soLuong; i++){
@@ -161,7 +160,6 @@ public class DanhSachDongXe implements DanhSachChung {
         System.out.println();
     }
 
-    @Override
     public void themVaoDanhSach(PhanTu pt) {
         DongXe[] dsDm = new DongXe[soLuong+1];
         for(int i=0;i<soLuong;i++)
@@ -171,7 +169,6 @@ public class DanhSachDongXe implements DanhSachChung {
         setDsDX(dsDm);
     }
 
-    @Override
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong dong xe can them vao danh sach: \n");
         int sl = KiemTra.checkNumber();
@@ -184,7 +181,6 @@ public class DanhSachDongXe implements DanhSachChung {
         }
     }
 
-    @Override
     public void chinhSuaThongTinPhanTu() {
         System.out.println("Tim dong xe can chinh sua: ");
 
@@ -198,7 +194,6 @@ public class DanhSachDongXe implements DanhSachChung {
         } else System.out.println("Khong tim thay!");
     }
 
-    @Override
     public void xoaPhanTu() {
         System.out.println("Tim dong xe can xoa: ");
 
@@ -218,7 +213,6 @@ public class DanhSachDongXe implements DanhSachChung {
         } else System.out.println("Khong tim thay dong xe!");
     }
 
-    @Override
     public PhanTu timPhanTu() { // tìm danh mục sản phẩm dựa theo tên hoặc khoá (tương đối || tuyệt đối)
 
         int loai;
@@ -263,7 +257,6 @@ public class DanhSachDongXe implements DanhSachChung {
         return null;
     }
 
-    @Override
     public int timViTriPhanTu() { // trả về vị trí phần tử trong mảng
         int loai;
         System.out.print("Tim dong xe theo ten (1) hay theo ma (2), vui long chon: ");
@@ -299,7 +292,6 @@ public class DanhSachDongXe implements DanhSachChung {
         return -1;
     }
 
-    @Override
     public PhanTu layPhanTuVoi(String thamSo) {
         DongXe[] dsDm = getDsDongXe();
         for(int i=0;i<soLuong;i++) {
@@ -309,7 +301,6 @@ public class DanhSachDongXe implements DanhSachChung {
         return null;
     }
 
-    @Override
     public void thongKe() {
         int chon, n;
         dsDongXe = getDsDongXe();

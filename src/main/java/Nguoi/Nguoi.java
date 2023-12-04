@@ -5,7 +5,7 @@ import KiemTra.KiemTra;
 
 import java.time.LocalDate;
 
-public abstract class Nguoi extends PhanTu {
+public class Nguoi extends PhanTu {
     private String hoten;
     // Tuổi xử lý sau
     private int tuoi;
@@ -191,7 +191,7 @@ public abstract class Nguoi extends PhanTu {
         setSdt();
         setEmail();
     }
-
+    @Override
     public void xuat() {
         System.out.printf("%-25s %-15s %-15s %-15s\n", "Ho ten", "Gioi tinh", "Ngay sinh", "CCCD");
         System.out.printf("%-25s %-15s %-15s %-15s\n", getHoten(), getGioitinh(),getNgaythangnamsinh(), getCCCD());
@@ -200,6 +200,56 @@ public abstract class Nguoi extends PhanTu {
         System.out.printf("%-40s %-15s %-15s", getDiachi(), getSdt(), getEmail());
         System.out.println();
     }
-
-    public abstract void suaThongTin();
+    @Override
+    public void suaThongTin() {
+        System.out.println("=== Sua thong tin ca nhan ===");
+        System.out.println("1. Sua ho ten");
+        System.out.println("2. Sua ngay thang nam sinh");
+        System.out.println("3. Sua gioi tinh");
+        System.out.println("4. Sua can cuoc cong dan");
+        System.out.println("5. Sua dia chi");
+        System.out.println("6. Sua so dien thoai");
+        System.out.println("7. Sua email");
+        int chon;
+        do {
+            System.out.print("Nhap lua chon: ");
+            chon = KiemTra.checkNumber();;
+            switch (chon) {
+                case 0:
+                    System.out.println("Thoat sua thong tin!!");
+                    break;
+                case 1:
+                    System.out.println("Thong tin hien tai: " + getHoten());
+                    setHoten();
+                    break;
+                case 2:
+                    System.out.println("Thong tin hien tai: " + getNgaythangnamsinh());
+                    setNgaythangnamsinh();
+                    break;
+                case 3:
+                    System.out.println("Thong tin hien tai: " + getGioitinh());
+                    setGioitinh();
+                    break;
+                case 4:
+                    System.out.println("Thong tin hien tai: " + getCCCD());
+                    setCCCD();
+                    break;
+                case 5:
+                    System.out.println("Thong tin hien tai: " + getDiachi());
+                    setDiachi();
+                    break;
+                case 6:
+                    System.out.println("Thong tin hien tai: " + getSdt());
+                    setSdt();
+                    break;
+                case 7:
+                    System.out.println("Thong tin hien tai: " + getEmail());
+                    setEmail();
+                    break;
+                    default:
+                    System.out.println("Hay nhap so co trong menu");
+                    break;
+            }
+        } while (chon != 0);
+    }
 }

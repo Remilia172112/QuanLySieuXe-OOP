@@ -114,7 +114,7 @@ public class DanhSachKhachHang implements DanhSachChung {
         }
         this.dsKhachHang = (KhachHang[]) dsKhachhang;
     }
-    @Override
+    
     public void nhapDanhSach(){
         System.out.print("Nhap so luong khach hang: ");
         

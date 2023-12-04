@@ -71,7 +71,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
 
 
 
-    @Override
+    
     public void nhapDanhSach() {
         FileHandler.resetFile("dsncc.txt");
         System.out.print("Moi nhap so luong nha cung cap: ");

@@ -102,13 +102,13 @@ public class TaiKhoan extends PhanTu {
         setPassword();
         setType();
     }
-
+    @Override
     public void xuat() {
         System.out.printf("%-25s %-25s %-25s \n", "Ten tai khoan", "Mat khau", "Loai tai khoan");
         System.out.printf("%-25s %-25s %-25s \n", username, password, type);
         System.out.println("****************************");
     }
-
+    @Override
     public void suaThongTin() {
         System.out.println("=== Sua thong tin nhan vien ===");
         System.out.println("1. Sua tai khoan");
@@ -140,7 +140,6 @@ public class TaiKhoan extends PhanTu {
                     System.out.println("Hay nhap so co trong menu");
                     break;
             }
-
         } while (chon != 0);
     }
 }

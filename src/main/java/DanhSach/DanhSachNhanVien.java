@@ -102,7 +102,7 @@ public class DanhSachNhanVien implements DanhSachChung {
     }
 
 
-    @Override
+    
     public void nhapDanhSach() {
         FileHandler.resetFile("dsnv.txt");
         System.out.println("Nhap so luong nhan vien: ");

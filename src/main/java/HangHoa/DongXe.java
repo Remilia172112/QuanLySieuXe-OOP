@@ -8,8 +8,10 @@ public class DongXe extends PhanTu {
     private int soLuong = 0;
     private String[] dsMaSanPham;
     private  int thangbaoHanh ;
+
     public DongXe() {
     }
+    
     public DongXe(String maDanhMuc, String tenDanhMuc, int soLuong, String[] dsMaSanPham ,int thangbaoHanh) {
         this.maDanhMuc = maDanhMuc;
         this.tenDanhMuc = tenDanhMuc;
@@ -198,7 +200,6 @@ public class DongXe extends PhanTu {
         setSoLuong();
         nhapDsMaSanPham();
     }
-
     @Override
     public void xuat() {
         System.out.printf("%-20s %-20s %-10s %10s \n", "Ma Dong xe", "Ten Dong xe", "So luong", "Thang bao hanh");
@@ -217,7 +218,6 @@ public class DongXe extends PhanTu {
         }
         System.out.println("****************************");
     }
-
     @Override
     public void suaThongTin() {
         System.out.println("=== Sua thong tin dong xe ===");

@@ -245,6 +245,7 @@ public class KhachHang extends Nguoi {
             setDsmspDamua(tmp);
         }
     }
+    @Override
     public void xuat() {
         System.out.println("Ma nhan vien: " + getMaKhachHang());        
         super.xuat();
@@ -269,6 +270,7 @@ public class KhachHang extends Nguoi {
     public static void xuat(KhachHang kh) {
         kh.xuat();
     }
+    @Override
     public void suaThongTin() {
         System.out.println("=== Sua thong tin khach hang ===");
         System.out.println("1. Sua ho ten");

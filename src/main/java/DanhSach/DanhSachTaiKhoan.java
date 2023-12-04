@@ -95,7 +95,7 @@ public class DanhSachTaiKhoan implements DanhSachChung {
         themVaoDanhSach(pt);
     }
 
-    @Override
+    
     public void nhapDanhSach(){
         FileHandler.resetFile("dstk.txt");
         System.out.println("Nhap so luong tai khoan: ");

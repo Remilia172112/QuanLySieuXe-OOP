@@ -227,6 +227,7 @@ public class NhanVien extends Nguoi {
         setSongaynghitrongthang();
         super.nhap();
     }
+    @Override
     public void xuat() {
         System.out.println("Ma nhan vien: " + getManhanvien());
         super.xuat();
@@ -236,10 +237,11 @@ public class NhanVien extends Nguoi {
                 getSongaynghitrongthang(), getLuong(), getThuong(), getHang());
         System.out.println("****************************");
     }
-
+    
     public static void xuat(NhanVien nv) {
         nv.xuat();
     }
+    @Override
     public void suaThongTin() {
         System.out.println("=== Sua thong tin nhan vien ===");
         System.out.println("1. Sua ho ten");

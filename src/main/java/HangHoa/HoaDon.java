@@ -1,18 +1,10 @@
 package HangHoa;
-import java.time.LocalDate;
-import java.util.Scanner ;
 import DanhSach.*;
 import Nguoi.*;
 import KiemTra.KiemTra;
 import ThanhToan.*;
 
 public class HoaDon extends PhanTu {
-    // Tạo tháng năm hiện tại
-    LocalDate localDate = LocalDate.now();
-    private int namhientai = localDate.getYear();
-    private int thanghientai = localDate.getMonthValue();
-    private int ngayhientai = localDate.getDayOfMonth();
-
     private String ngaylapdon;
     private int soHoaDon;
     private int soLuongSanPham;
@@ -21,7 +13,7 @@ public class HoaDon extends PhanTu {
     private KhachHang khachHang;
     private String mnv;
     private Xe[] dsXe;
-    public static Scanner sc = new Scanner(System.in);
+
     public HoaDon() {
     }
 
@@ -421,7 +413,6 @@ public class HoaDon extends PhanTu {
         setDsSanPham();
         setPhThThanhToan();
     }
-
     @Override
     public void xuat() {
         System.out.printf("%-20s %-20s %-20s %-25s %-30s\n", "So hoa don", "So luong san pham", "Tong tien", "Ten khach hang", "Phuong thuc thanh toan");
@@ -432,7 +423,6 @@ public class HoaDon extends PhanTu {
         dsXe[i].xuat();
         System.out.println("\n**************************");
     }
-
     @Override
     public void suaThongTin() {
         System.out.println("=== Sua thong tin hoa don ===");

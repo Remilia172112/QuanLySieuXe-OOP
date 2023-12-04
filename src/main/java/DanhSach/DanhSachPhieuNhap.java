@@ -92,7 +92,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         System.out.println("Tao phieu nhap thanh cong!!");
     }
 
-    @Override
+    
     public void nhapDanhSach() {
         FileHandler.resetFile("dspn.txt");
         System.out.print("Moi nhap so luong phieu nhap can nhap: ");
@@ -112,7 +112,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         }
     }
 
-    @Override
+    
     public void xuatDanhSach() {
         if(soLuong == 0) {
             System.out.println("Chua co hoa don nao!!");
@@ -125,7 +125,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         System.out.println();
     }
 
-    @Override
+    
     public void themVaoDanhSach(PhanTu pt) {
         PhieuNhap[] dsSanPhamTemp = new PhieuNhap[soLuong+1];
         for(int i=0;i<soLuong;i++)
@@ -135,7 +135,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         setdsSanPham(dsSanPhamTemp);
     }
 
-    @Override
+    
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong phieu nhap can them vao danh sach: ");
         int sl = KiemTra.checkNumber();
@@ -148,7 +148,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         }
     }
 
-    @Override
+    
     public void chinhSuaThongTinPhanTu() {
         System.out.println("Tim phieu nhap can chinh sua: ");
         int viTri = timViTriPhanTu();
@@ -162,7 +162,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         else System.out.println("Khong tim thay phieu nhap!");
     }
 
-    @Override
+    
     public void xoaPhanTu() {
         // Tìm sản phẩm trước
         System.out.println("Tim phieu nhap can xoa: ");
@@ -181,7 +181,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         } else System.out.println("Khong tim thay san pham!");
     }
 
-    @Override
+    
     public PhanTu timPhanTu() { // tìm sản phẩm theo tên hoặc khoá (tương đối || tuyệt đối)
         System.out.print("Nhap ma phieu nhap can tim:");
         String giaTriCanTim = sc.nextLine();
@@ -204,7 +204,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         return null;
     }
 
-    @Override
+    
     public int timViTriPhanTu() {
         System.out.print("Nhap ma phieu nhap can tim vi tri :");
         String giaTriCanTim = sc.nextLine();
@@ -228,7 +228,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
     }
 
 
-    @Override
+    
     public PhanTu layPhanTuVoi(String thamSo) { // tìm phần tử cụ thể với mã phieu nhap 
         PhieuNhap[] dspn = getdsPhieuNhap();
         for(int i=0;i<soLuong;i++) {
@@ -238,7 +238,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         return null;
     }
 
-    @Override
+    
     public void thongKe() { // thong kê theo ngày, theo nha cung cap 
         int chon;
         do {

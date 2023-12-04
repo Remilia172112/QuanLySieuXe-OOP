@@ -79,7 +79,7 @@ public class DanhSachXe implements DanhSachChung {
         }
         return -1;
     }
-    @Override
+    
     public void nhapDanhSach() {
         FileHandler.resetFile("dsx.txt");
         System.out.print("Moi nhap so luong san pham: ");
@@ -99,7 +99,7 @@ public class DanhSachXe implements DanhSachChung {
         }
     }
 
-    @Override
+    
     public void xuatDanhSach() {
         System.out.println();
         System.out.println("=== Danh sach san pham ===");
@@ -110,7 +110,7 @@ public class DanhSachXe implements DanhSachChung {
         System.out.println();
     }
 
-    @Override
+    
     public void themVaoDanhSach(PhanTu pt) {
         Xe[] dsXeTemp = new Xe[soLuong+1];
         for(int i=0;i<soLuong;i++){
@@ -121,7 +121,7 @@ public class DanhSachXe implements DanhSachChung {
         setdsSanPham(dsXeTemp);
     }
 
-    @Override
+    
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong san pham can them vao danh sach: ");
         int sl = KiemTra.checkNumber();
@@ -133,7 +133,7 @@ public class DanhSachXe implements DanhSachChung {
             themVaoDanhSach(pt);
         }
     }
-    @Override
+    
     public void chinhSuaThongTinPhanTu() {
         System.out.println("Tim san pham can chinh sua: ");
         int viTri = timViTriPhanTu();
@@ -145,7 +145,7 @@ public class DanhSachXe implements DanhSachChung {
         else System.out.println("Khong tim thay san pham!");
     }
 
-    @Override
+    
     public void xoaPhanTu() {
         // Tìm sản phẩm trước
         System.out.println("Tim san pham can xoa: ");
@@ -164,7 +164,7 @@ public class DanhSachXe implements DanhSachChung {
         } else System.out.println("Khong tim thay san pham!");
     }
 
-    @Override
+    
     public PhanTu timPhanTu() { // tìm sản phẩm theo tên hoặc khoá (tương đối || tuyệt đối)
         int loai;
         System.out.print("Tim san pham theo ten (1) hay theo khoa (2), vui long chon: ");
@@ -206,7 +206,7 @@ public class DanhSachXe implements DanhSachChung {
         return null;
     }
 
-    @Override
+    
     public int timViTriPhanTu() {
         int loai;
         System.out.print("Tim san pham theo ten (1) hay theo khoa (2), vui long chon: ");
@@ -256,7 +256,7 @@ public class DanhSachXe implements DanhSachChung {
         return -1;
     }
 
-    @Override
+    
     public PhanTu layPhanTuVoi(String thamSo) { // tìm phần tử cụ thể với mã sản phẩm
         Xe[] dsx = getdsSanPham();
         for(int i=0;i<soLuong;i++) {
@@ -266,7 +266,7 @@ public class DanhSachXe implements DanhSachChung {
         return null;
     }
 
-    @Override
+    
     public void thongKe() {
         int chon,n;
         dsXe = getdsSanPham();

@@ -1,4 +1,5 @@
 package HangHoa;
+
 import DanhSach.DanhSachDongXe;
 import DanhSach.DanhSachXe;
 import KiemTra.KiemTra;
@@ -110,12 +111,10 @@ public class Xe extends PhanTu {
         setSoLuong();
         setPrice();
     }
-
     @Override
     public void xuat() {
         System.out.printf("%-20s %-25s %-20s %-20s %-15s %-20s \n",maSanPham,tenSanPham,thuongHieu,noiSanXuat,soLuong,price);
     }
-
     @Override
     public void suaThongTin() {
         System.out.println("=== Sua thong tin san pham ===");

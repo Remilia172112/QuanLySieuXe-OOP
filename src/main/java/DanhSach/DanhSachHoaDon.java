@@ -98,7 +98,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         System.out.println("Tao hoa don thanh cong!!");
     }
 
-    @Override
+    
     public void nhapDanhSach() {
         System.out.println("Moi nhap so luong hoa don:");
         
@@ -119,7 +119,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         }
     }
 
-    @Override
+    
     public void xuatDanhSach() {
         if(soLuong == 0) {
             System.out.println("Chua co hoa don nao!!");
@@ -132,7 +132,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         System.out.println();
     }
 
-    @Override
+    
     public void themVaoDanhSach(PhanTu pt) {
         HoaDon[] dsHoaDonTemp = new HoaDon[soLuong+1];
         
@@ -144,7 +144,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         setdsHoaDon(dsHoaDonTemp);
     }
 
-    @Override
+    
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong hoa don can them vao danh sach: ");
         int sl = KiemTra.checkNumber();
@@ -157,7 +157,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         }
     }
 
-    @Override
+    
     public void chinhSuaThongTinPhanTu() {
         System.out.println("Tim hoa don can chinh sua: ");
         int viTri = timViTriPhanTu();
@@ -170,7 +170,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         } else System.out.println("Khong tim thay!");
     }
 
-    @Override
+    
     public void xoaPhanTu() {
         System.out.println("Tim hoa don can xoa: ");
         
@@ -190,7 +190,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         } else System.out.println("Khong tim thay san pham!");
     }
 
-    @Override
+    
     public PhanTu timPhanTu() { // tìm hoá đơn theo tên hoặc khoá (tương đối || tuyệt đối)
         System.out.print("Nhap so hoa don can tim: ");
         int soHoaDonCanTim = KiemTra.checkNumber();
@@ -205,7 +205,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         return null;
     }
     
-    @Override
+    
     public int timViTriPhanTu() {
         System.out.print("Nhap so hoa don can tim: ");
         int soHoaDonCanTim = KiemTra.checkNumber();
@@ -219,7 +219,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         return -1;
     }
     
-    @Override
+    
     public PhanTu layPhanTuVoi(String thamSo) {
         HoaDon[] dsHoaDonTmp = getdsHoaDon();
         
@@ -230,7 +230,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         return null;
     }
 
-    @Override
+    
     public void thongKe() {
         int chon, n;
         String st;
