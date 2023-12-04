@@ -1,5 +1,4 @@
 package HangHoa;
-
 import DanhSach.DanhSachXe;
 import KiemTra.KiemTra;
 public class DongXe extends PhanTu {
@@ -29,8 +28,17 @@ public class DongXe extends PhanTu {
 
     public void setMaDanhMuc() {
         System.out.print("Nhap ma dong xe: ");
-        maDongxe = sc.nextLine() ;
-    }
+        DanhSachXe dsxe = new DanhSachXe();
+        boolean check = false;
+        do{
+            maDongxe = sc.nextLine();
+            //kiem tra ma danh dong xe co tonn` tai hay chua //
+            check = dsxe.layPhanTuVoi(maDongxe) == null ;
+            if (!check)
+                System.out.println("Ma danh muc da ton tai! \nMoi ban nhap lai: ");
+        }while(!check) ;
+
+     }
 
     public String getTenDanhMuc() {
         return tenDongxe;
