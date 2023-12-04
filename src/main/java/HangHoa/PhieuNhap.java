@@ -2,7 +2,6 @@ package HangHoa;
 
 import DanhSach.*;
 import KiemTra.KiemTra;
-//mỗi lần nhập 1 loại sp thoi 
 public class PhieuNhap extends PhanTu {
     private String maPhieuNhap;
     private String maNhaCC;
