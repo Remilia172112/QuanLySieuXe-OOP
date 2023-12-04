@@ -3,8 +3,8 @@ package HangHoa;
 import DanhSach.DanhSachXe;
 import KiemTra.KiemTra;
 public class DongXe extends PhanTu {
-    private String maDanhMuc;
-    private String tenDanhMuc;
+    private String maDongxe;
+    private String tenDongxe;
     private int soLuong = 0;
     private String[] dsMaSanPham;
     private  int thangbaoHanh ;
@@ -12,37 +12,37 @@ public class DongXe extends PhanTu {
     public DongXe() {
     }
     
-    public DongXe(String maDanhMuc, String tenDanhMuc, int soLuong, String[] dsMaSanPham ,int thangbaoHanh) {
-        this.maDanhMuc = maDanhMuc;
-        this.tenDanhMuc = tenDanhMuc;
+    public DongXe(String maDongxe, String tenDongxe, int soLuong, String[] dsMaSanPham ,int thangbaoHanh) {
+        this.maDongxe = maDongxe;
+        this.tenDongxe = tenDongxe;
         this.soLuong = soLuong;
         this.dsMaSanPham = dsMaSanPham;
         this.thangbaoHanh = thangbaoHanh;
     }
     public String getMaDanhMuc() {
-        return maDanhMuc;
+        return maDongxe;
     }
 
-    public void setMaDanhMuc(String maDanhMuc) {
-        this.maDanhMuc = maDanhMuc;
+    public void setMaDanhMuc(String maDongxe) {
+        this.maDongxe = maDongxe;
     }
 
     public void setMaDanhMuc() {
         System.out.print("Nhap ma dong xe: ");
-        maDanhMuc = sc.nextLine() ;
+        maDongxe = sc.nextLine() ;
     }
 
     public String getTenDanhMuc() {
-        return tenDanhMuc;
+        return tenDongxe;
     }
 
-    public void setTenDanhMuc(String tenDanhMuc) {
-        this.tenDanhMuc = tenDanhMuc;
+    public void setTenDanhMuc(String tenDongxe) {
+        this.tenDongxe = tenDongxe;
     }
 
     public void setTenDanhMuc() {
         System.out.print("Nhap ten dong xe: ");
-        tenDanhMuc = sc.nextLine();
+        tenDongxe = sc.nextLine();
     }
 
     public int getSoLuong() {
@@ -188,7 +188,7 @@ public class DongXe extends PhanTu {
     }
     public void xuatDongxe() {
         System.out.printf("%-20s %-20s %-10s %10s \n", "Ma Dong xe", "Ten Dong xe", "So luong", "Thang bao hanh");
-        System.out.printf("%-20s %-20s %-10s %10s \n", maDanhMuc, tenDanhMuc, soLuong ,thangbaoHanh);
+        System.out.printf("%-20s %-20s %-10s %10s \n", maDongxe, tenDongxe, soLuong ,thangbaoHanh);
         System.out.println("****************************");
     }
 
@@ -203,7 +203,7 @@ public class DongXe extends PhanTu {
     @Override
     public void xuat() {
         System.out.printf("%-20s %-20s %-10s %10s \n", "Ma Dong xe", "Ten Dong xe", "So luong", "Thang bao hanh");
-        System.out.printf("%-20s %-20s %-10s %10s \n", maDanhMuc, tenDanhMuc, soLuong ,thangbaoHanh);
+        System.out.printf("%-20s %-20s %-10s %10s \n", maDongxe, tenDongxe, soLuong ,thangbaoHanh);
 
         System.out.println("Danh sach xe cung dong xe: ");
         System.out.printf("%-20s %-25s %-20s %-20s %-15s %-20s \n","Ma xe", "Ten xe", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
