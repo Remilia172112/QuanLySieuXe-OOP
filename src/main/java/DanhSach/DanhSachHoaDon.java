@@ -48,20 +48,20 @@ public class DanhSachHoaDon implements DanhSachChung {
 
             hd.setSoHoaDon(Integer.parseInt(lArr[m++]));
             
-            slsp = Integer.parseInt(lArr[m++]);
-            
-            hd.setSoLuongSanPham(slsp);
-
             hd.setNgaylapdon(lArr[m++]);
-            
-            hd.setTongTien(Integer.parseInt(lArr[m++]));
 
             hd.setMnv(lArr[m++]);
             
             hd.setKhachHang((KhachHang) ttdskh.layPhanTuVoi(lArr[m++]));
             
             hd.setPhThThanhToan(lArr[m++]);
+
+            hd.setTongTien(Integer.parseInt(lArr[m++]));
+
+            slsp = Integer.parseInt(lArr[m++]);
             
+            hd.setSoLuongSanPham(slsp);
+
             // đọc danh sách sản phẩm
             dsx = new Xe[slsp];
             for(int j=0;j<slsp;j++) {
@@ -85,7 +85,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         for(int i=0;i<soLuong;i++) {
             // đọc từng phần tử từ mảng dsHoaDon
             hd = (HoaDon) dsHoaDon[i];
-            FileHandler.themHd(hd.getSoHoaDon(),hd.getSoLuongSanPham(), hd.getNgaylapdon(),hd.getTongTien(), hd.getMnv(),hd.getKhachHang().getMaKhachHang(), hd.getPhThThanhToan(), hd.getDsSanPham());
+            FileHandler.themHd(hd.getSoHoaDon(), hd.getNgaylapdon(), hd.getMnv(),hd.getKhachHang().getMaKhachHang(), hd.getPhThThanhToan(), hd.getTongTien(),hd.getSoLuongSanPham(), hd.getDsSanPham());
         }
         this.dsHoaDon = (HoaDon[])dsHoaDon;
     }

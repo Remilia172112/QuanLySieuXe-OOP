@@ -35,8 +35,8 @@ public class FileHandler {
     }
 
     //Thêm phieu nhap vào file dspn.txt
-    public static void themPN(String maPhieuNhap , String maNhaCC , String maNV, String ngaynhap , int SoluongNhap, Xe[] dsmspNhap) {
-        String tmp = maPhieuNhap + "#" + maNhaCC + "#" + maNV + "#" + ngaynhap + "#" + SoluongNhap;
+    public static void themPN(String maPhieuNhap, String ngaynhap, String maNhaCC , String maNV, int tongTien, int SoluongNhap, Xe[] dsmspNhap) {
+        String tmp = maPhieuNhap + "#" + ngaynhap + "#" + maNhaCC + "#" + maNV + "#" + tongTien + "#" + SoluongNhap;
         for(int i=0;i<dsmspNhap.length;i++)
         {
             tmp+="#" + dsmspNhap[i].getMaSanPham() + "#" + dsmspNhap[i].getSoLuong();
@@ -86,8 +86,8 @@ public class FileHandler {
         ghiFile(tmp, "dstk.txt");
     }
     // thêm hoá đơn vào file dshd.txt
-    public static void themHd(int soHoaDon, int soLuongSanPham, String ngaylapdon, int tongTien, String manhanvien, String maKhachHang, String phThThanhToan, Xe[] dsx) {
-        String tmp = soHoaDon+"#"+soLuongSanPham+"#"+ngaylapdon+"#"+tongTien+"#"+manhanvien+"#"+maKhachHang+"#"+phThThanhToan;    
+    public static void themHd(int soHoaDon, String ngaylapdon, String manhanvien, String maKhachHang, String phThThanhToan, int tongTien, int soLuongSanPham, Xe[] dsx) {
+        String tmp = soHoaDon+"#"+ngaylapdon+"#"+manhanvien+"#"+maKhachHang+"#"+phThThanhToan+"#"+tongTien+"#"+soLuongSanPham;    
         for(int i=0;i<dsx.length;i++)
         {
             tmp+="#" + dsx[i].getMaSanPham() + "#" + dsx[i].getSoLuong();

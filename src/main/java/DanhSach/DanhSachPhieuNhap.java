@@ -46,11 +46,13 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
             pn.setMaPhieuNhap(lArr[m++]);
 
+            pn.setNgaynhap(lArr[m++]);
+
             pn.setMaNhaCC(lArr[m++]);
 
             pn.setMaNV(lArr[m++]);
 
-            pn.setNgaynhap(lArr[m++]);
+            pn.setTongTien(Integer.parseInt(lArr[m++]));
 
             sl = Integer.parseInt(lArr[m++]);
             pn.setSoluongNhap(sl);
@@ -76,7 +78,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
         for(int i=0;i<soLuong;i++) {
             pn = (PhieuNhap) dsPhieuNhap[i];
-            FileHandler.themPN(pn.getMaPhieuNhap() , pn.getMaNhaCC() , pn.getMaNV(), pn.getNgaynhap() , pn.getSoluongNhap(), pn.getDsSanPham());
+            FileHandler.themPN(pn.getMaPhieuNhap(), pn.getNgaynhap(), pn.getMaNhaCC(), pn.getMaNV(), pn.getTongTien(), pn.getSoluongNhap(), pn.getDsSanPham());
         }
 
         this.dsPhieuNhap = (PhieuNhap[]) dsPhieuNhap;
@@ -117,7 +119,6 @@ public class DanhSachPhieuNhap implements DanhSachChung {
             return;
         }
         System.out.println("=== Danh sach phieu nhap ===");
-        System.out.printf("%-20s %-20s %-20s %-20s \n","Ma phieu nhap", "Ma nha cung cap", "Ma nha vien", "Ngay nhap");
         for(int i=0;i<soLuong;i++) {
             getdsPhieuNhap()[i].xuat();
         }

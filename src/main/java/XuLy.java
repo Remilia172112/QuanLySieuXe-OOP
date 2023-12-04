@@ -520,7 +520,6 @@ public class XuLy {
                     PhanTu pt = ttds.timPhanTu();
                     if (pt != null) {
                         System.out.println("** Thong tin tim thay **");
-                        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s  \n","Ma phieu nhap", "Ma nha cung cap", "Ma nha vien", "Ngay nhap", "ma sanpham","Tong nhap");
                         pt.xuat();
                     } else System.out.println("Khong tim thay!");
                     break;
