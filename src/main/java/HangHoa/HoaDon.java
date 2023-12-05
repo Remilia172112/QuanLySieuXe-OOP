@@ -98,14 +98,14 @@ public class HoaDon extends PhanTu {
         if (chon == 1) ttds.xuatDanhSach();
         for(int i=0;i<soLuongSanPham;i++) {
             stt=i+1;
-            System.out.println("Them san pham thu "+stt);
+            System.out.println("Them xe thu "+stt);
             
             do {
-                System.out.print("Nhap ma san pham:");
+                System.out.print("Nhap ma xe:");
                 pt = (Xe) ttds.layPhanTuVoi(sc.nextLine());
                 
                 if (pt == null) 
-                    System.out.println("Khong tim thay san pham!");
+                    System.out.println("Khong tim thay xe!");
                 else {
                     if(i>0) {
                         if(dsx[i-1].getMaSanPham() == pt.getMaSanPham()) dsx[i-1].setSoLuong(dsx[i-1].getSoLuong()+1);
@@ -119,7 +119,7 @@ public class HoaDon extends PhanTu {
                         dsx[i].setSoLuong(1);
                     }
                     if (pt.getSoLuong() == 0) { // nếu sản phẩm đã hết hàng
-                        System.out.println("San pham da het hang, vui long chon san pham khac!");
+                        System.out.println("San pham da het hang, vui long chon xe khac!");
                         pt=null;
                         continue;
                     }
@@ -222,7 +222,7 @@ public class HoaDon extends PhanTu {
     }
 
     public void setSoLuongSanPham() {
-        System.out.print("Nhap so luong san pham: ");
+        System.out.print("Nhap so luong xe: ");
         soLuongSanPham = KiemTra.checkNumber();
     }
 
@@ -261,8 +261,11 @@ public class HoaDon extends PhanTu {
             {
                 check = true;
                 ngaylapdon = sc.nextLine();
-                check = KiemTra.isValidDate(ngaylapdon);
-                if(!check) System.out.print("Nhap sai dinh dang ngay!! Moi nhap lai: ");
+                check = KiemTra.check_date(ngaylapdon);
+                if(check) {
+                    check = KiemTra.CheckDate(ngaylapdon);
+                    if(!check) System.out.print("Moi nhap lai: ");
+                }
             } while (!check);
         }
     }
@@ -416,10 +419,10 @@ public class HoaDon extends PhanTu {
     }
     @Override
     public void xuat() {
-        System.out.printf("%-20s %-20s %-20s %-25s %-30s\n", "So hoa don", "So luong san pham", "Tong tien", "Ten khach hang", "Phuong thuc thanh toan");
+        System.out.printf("%-20s %-20s %-20s %-25s %-30s\n", "So hoa don", "So luong xe", "Tong tien", "Ten khach hang", "Phuong thuc thanh toan");
         System.out.printf("%-20s %-20s %-20s %-25s %-30s \n", soHoaDon, soLuongSanPham, tongTien, khachHang.getHoten(), phThThanhToan);
-        System.out.println("\nDanh sach san pham: \n");
-        System.out.printf("%-20s %-25s %-20s %-20s %-15s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
+        System.out.println("\nDanh sach xe: \n");
+        System.out.printf("%-20s %-25s %-20s %-20s %-15s %-20s \n","Ma xe", "Ten xe", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
         for(int i = 0; i< dsXe.length; i++)
         dsXe[i].xuat();
         System.out.println("\n**************************");
@@ -429,9 +432,9 @@ public class HoaDon extends PhanTu {
         System.out.println("=== Sua thong tin hoa don ===");
         System.out.println("1. Sua so hoa don");
         System.out.println("2. Sua ma khach hang");
-        System.out.println("3. Sua danh sach san pham");
+        System.out.println("3. Sua danh sach xe");
         System.out.println("4. Sua phuong thuc thanh toan");
-        System.out.println("0. Quay ve menu quan ly san pham");
+        System.out.println("0. Quay ve menu quan ly xe");
         System.out.println("===============================");
         int chon;
         do {
@@ -455,7 +458,7 @@ public class HoaDon extends PhanTu {
                     for(int i=0;i<dsx.length;i++)
                         dsx[i].xuat();
                     
-                    System.out.println("Nhap moi danh sach san pham: ");
+                    System.out.println("Nhap moi danh sach xe: ");
                     setSoLuongSanPham();
                     setDsSanPham();
                     break;

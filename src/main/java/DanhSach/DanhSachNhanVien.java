@@ -47,6 +47,7 @@ public class DanhSachNhanVien implements DanhSachChung {
             nv = new NhanVien();
             nv.setManhanvien(lArr[m++]);
             nv.setHoten(lArr[m++]);
+            nv.setChucvu(lArr[m++]);
             nv.setNgaythangnamsinh(lArr[m++]);
             nv.setGioitinh(lArr[m++]);            
             nv.setCCCD(lArr[m++]);
@@ -70,7 +71,7 @@ public class DanhSachNhanVien implements DanhSachChung {
 
         for (int i = 0; i < soLuong; i++) {
             nv = (NhanVien) dsSanPham[i];
-            FileHandler.themNv(nv.getManhanvien(), nv.getHoten(), nv.getNgaythangnamsinh(), nv.getGioitinh(), nv.getCCCD(), nv.getDiachi(), nv.getSdt(), nv.getEmail(),
+            FileHandler.themNv(nv.getManhanvien(), nv.getHoten(), nv.getChucvu(), nv.getNgaythangnamsinh(), nv.getGioitinh(), nv.getCCCD(), nv.getDiachi(), nv.getSdt(), nv.getEmail(),
                     nv.getNgayvaolam(), nv.getHesoluong(), nv.getSongaynghitrongthang());
         }
         this.dsNhanVien = (NhanVien[]) dsNhanVien;
@@ -123,6 +124,10 @@ public class DanhSachNhanVien implements DanhSachChung {
         }
     }
     public void xuatDanhSach() {
+        if(soLuong == 0) {
+            System.out.println("Chua co nhan vien nao!!");
+            return;
+        }
         System.out.println("=== Danh sach nhan vien ===");
         for (int i = 0; i < soLuong; i++) {
             getDsNhanVien()[i].xuat();

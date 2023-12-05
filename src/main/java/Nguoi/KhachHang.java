@@ -151,7 +151,7 @@ public class KhachHang extends Nguoi {
     public void xoaMaSPKhoiDs() {
         String[] dsMaSP = new String[dsmspDamua.length-1];
 
-        System.out.print("Nhap ma san pham khach hang can xoa khoi danh sach: ");
+        System.out.print("Nhap ma xe khach hang can xoa khoi danh sach: ");
         String giaTriCanXoa = sc.nextLine();
 
         boolean check = false;
@@ -169,7 +169,7 @@ public class KhachHang extends Nguoi {
                 dsMaSP[k++] = dsmspDamua[i];
             }
             setDsmspDamua(dsMaSP);
-        } else System.out.println("Khong tim thay ma san pham khach hang!");
+        } else System.out.println("Khong tim thay ma xe khach hang!");
     }
 
     public void themMaSPVaoDs() {
@@ -272,62 +272,32 @@ public class KhachHang extends Nguoi {
     }
     @Override
     public void suaThongTin() {
-        System.out.println("=== Sua thong tin khach hang ===");
-        System.out.println("1. Sua ho ten");
-        System.out.println("2. Sua ngay thang nam sinh");
-        System.out.println("3. Sua gioi tinh");
-        System.out.println("4. Sua can cuoc cong dan");
-        System.out.println("5. Sua dia chi");
-        System.out.println("6. Sua so dien thoai");
-        System.out.println("7. Sua email");
-        System.out.println("8. Sua phuong thuc thanh toan");
-        System.out.println("9. Them ma xe khach hang vao danh sach ma xe khach hang");
-        System.out.println("10. Xoa ma xe khach hang khoi danh sach ma xe khach hang");
-        System.out.println("11. Nhap moi danh sach ma xe khach hang");
-        System.out.println("12. Them ma xe khach hang vao danh sach ma xe khach hang");
-        System.out.println("13. Xoa ma xe khach hang khoi danh sach ma xe khach hang");
-        System.out.println("===============================");
         int chon;
         do {
+            System.out.println("=== Sua thong tin khach hang ===");
+            System.out.println("1. Sua thong tin ca nhan");
+            System.out.println("2. Sua phuong thuc thanh toan");
+            System.out.println("3. Them ma xe khach hang vao danh sach ma xe khach hang");
+            System.out.println("4. Xoa ma xe khach hang khoi danh sach ma xe khach hang");
+            System.out.println("5. Nhap moi danh sach ma xe khach hang");
+            System.out.println("6. Them ma xe khach hang vao danh sach ma xe khach hang");
+            System.out.println("7. Xoa ma xe khach hang khoi danh sach ma xe khach hang");
+            System.out.println("0. Thoat");
+            System.out.println("===============================");
             System.out.print("Nhap lua chon: ");
             chon = KiemTra.checkNumber();
             switch (chon) {
                 case 0:
-                    System.out.println("Thoat sua thong tin!!");
+                    System.out.println("Thoat sua thong tin khach hang!!");
                     break;
                 case 1:
-                    System.out.println("Thong tin hien tai: " + getHoten());
-                    setHoten();
+                    super.suaThongTin();
                     break;
                 case 2:
-                    System.out.println("Thong tin hien tai: " + getNgaythangnamsinh());
-                    setNgaythangnamsinh();
-                    break;
-                case 3:
-                    System.out.println("Thong tin hien tai: " + getGioitinh());
-                    setGioitinh();
-                    break;
-                case 4:
-                    System.out.println("Thong tin hien tai: " + getCCCD());
-                    setCCCD();
-                    break;
-                case 5:
-                    System.out.println("Thong tin hien tai: " + getDiachi());
-                    setDiachi();
-                    break;
-                case 6:
-                    System.out.println("Thong tin hien tai: " + getSdt());
-                    setSdt();
-                    break;
-                case 7:
-                    System.out.println("Thong tin hien tai: " + getEmail());
-                    setEmail();
-                    break;
-                case 8:
                     System.out.println("Thong tin hien tai: "+getPhThThanhToan().getPhuongThucThanhToan());
                     setPhThThanhToan();
                     break;
-                case 9:
+                case 3:
                     System.out.println("Thong tin hien tai: ");
 
                     for (String x : getDsmspDamua())
@@ -335,7 +305,7 @@ public class KhachHang extends Nguoi {
 
                     themKMaSPVaoDs();
                     break;
-                case 10:
+                case 4:
                     System.out.println("Thong tin hien tai: ");
 
                     for (String x : getDsmspDamua())
@@ -343,7 +313,7 @@ public class KhachHang extends Nguoi {
 
                     xoaMaSPKhoiDs();
                     break;
-                case 11:
+                case 5:
                     System.out.println("Thong tin hien tai: ");
 
                     for (String x : getDsmspDamua())
@@ -351,13 +321,13 @@ public class KhachHang extends Nguoi {
 
                     setDsmspDamua();
                     break;
-                case 12:
+                case 6:
                     System.out.println("Thong tin hien tai: ");
                     for (String x : getDsmspDamua())
                         System.out.print(x + " ");
                     themKMaSPVaoDs();
                     break;
-                case 13:
+                case 7:
                     System.out.println("Thong tin hien tai: ");
 
                     for (String x : getDsmspDamua())

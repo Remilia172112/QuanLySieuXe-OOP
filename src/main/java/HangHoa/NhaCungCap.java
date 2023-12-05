@@ -88,15 +88,15 @@ public class NhaCungCap extends PhanTu {
     }
     @Override
     public void suaThongTin() {
-        System.out.println("=== Sua thong tin nha cung cap ===");
-        System.out.println("1. Sua ma nha cung cap");
-        System.out.println("2. Sua ten nha cung cap");
-        System.out.println("3. Sua dia chi nha cung cap");
-        System.out.println("4. Sua so dien thoai nha cung cap");
-        System.out.println("0. Quay ve menu quan ly san pham");
-        System.out.println("===============================");
         int chon;
         do {
+            System.out.println("=== Sua thong tin nha cung cap ===");
+            System.out.println("1. Sua ma nha cung cap");
+            System.out.println("2. Sua ten nha cung cap");
+            System.out.println("3. Sua dia chi nha cung cap");
+            System.out.println("4. Sua so dien thoai nha cung cap");
+            System.out.println("0. Quay ve menu quan ly xe");
+            System.out.println("===============================");
             System.out.print("Nhap lua chon: ");
             chon = KiemTra.checkNumber();
             switch (chon) {

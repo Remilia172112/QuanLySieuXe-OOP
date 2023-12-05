@@ -38,7 +38,7 @@ public class DongXe extends PhanTu {
                 System.out.println("Ma danh muc da ton tai! \nMoi ban nhap lai: ");
         }while(!check) ;
 
-     }
+    }
 
     public String getTenDanhMuc() {
         return tenDongxe;
@@ -228,18 +228,18 @@ public class DongXe extends PhanTu {
     }
     @Override
     public void suaThongTin() {
-        System.out.println("=== Sua thong tin dong xe ===");
-        System.out.println("1. Sua ma dong xe");
-        System.out.println("2. Sua ten dong xe");
-        System.out.println("3. Them ma xe vao danh sach ma xe");
-        System.out.println("4. Xoa ma xe khoi danh sach ma xe");
-        System.out.println("5. Nhap moi danh sach ma xe");
-        System.out.println("6. Them ma xe vao danh sach ma xe");
-        System.out.println("7. Xoa ma xe khoi danh sach ma xe");
-        System.out.println("0. Thoat");
-        System.out.println("===============================");
         int chon;
         do {
+            System.out.println("=== Sua thong tin dong xe ===");
+            System.out.println("1. Sua ma dong xe");
+            System.out.println("2. Sua ten dong xe");
+            System.out.println("3. Them ma xe vao danh sach ma xe");
+            System.out.println("4. Xoa ma xe khoi danh sach ma xe");
+            System.out.println("5. Nhap moi danh sach ma xe");
+            System.out.println("6. Them ma xe vao danh sach ma xe");
+            System.out.println("7. Xoa ma xe khoi danh sach ma xe");
+            System.out.println("0. Thoat");
+            System.out.println("===============================");
             System.out.print("Nhap lua chon: ");
             chon = KiemTra.checkNumber();
             switch (chon) {

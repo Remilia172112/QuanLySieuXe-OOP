@@ -31,16 +31,16 @@ public class Xe extends PhanTu {
         System.out.println("Ban co muon xuat ra man hinh danh sach dong xe khong? (1 - in, !1 - khong)");
         int chon = KiemTra.checkNumber();
         if (chon == 1) dsdx.xuatDanhSachDongxe();
-        System.out.print("Nhap ma san pham: ");
+        System.out.print("Nhap ma xe: ");
         boolean check = false;
         do
         {
             maSanPham = sc.nextLine();
             check = dsdx.Checkmadongxe(maSanPham) == true;
-            if(!check) System.out.print("Ma san pham phai trung 1 phan voi ma dong xe!!\n Moi nhap lai: ");
+            if(!check) System.out.print("Ma xe phai trung 1 phan voi ma dong xe!!\n Moi nhap lai: ");
             if(check) {
                 check = ttds.layPhanTuVoi(maSanPham) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
-                if (!check) System.out.print("Ma san pham da ton tai, moi nhap lai: ");
+                if (!check) System.out.print("Ma xe da ton tai, moi nhap lai: ");
             }
         } while (!check);
     }
@@ -52,7 +52,7 @@ public class Xe extends PhanTu {
     }
 
     public void setTenSanPham() {
-        System.out.print("Nhap ten san pham: ");
+        System.out.print("Nhap ten xe: ");
         tenSanPham = sc.nextLine();
     }
     public void setTenSanPham(String tenSanPham) {
@@ -117,17 +117,17 @@ public class Xe extends PhanTu {
     }
     @Override
     public void suaThongTin() {
-        System.out.println("=== Sua thong tin san pham ===");
-        System.out.println("1. Sua ma san pham");
-        System.out.println("2. Sua ten san pham");
-        System.out.println("3. Sua thuong hieu");
-        System.out.println("4. Sua noi san xuat");
-        System.out.println("5. Sua so luong");
-        System.out.println("6. Sua gia");
-        System.out.println("0. Quay ve menu quan ly san pham");
-        System.out.println("===============================");
         int chon;
         do {
+            System.out.println("=== Sua thong tin xe ===");
+            System.out.println("1. Sua ma xe");
+            System.out.println("2. Sua ten xe");
+            System.out.println("3. Sua thuong hieu");
+            System.out.println("4. Sua noi san xuat");
+            System.out.println("5. Sua so luong");
+            System.out.println("6. Sua gia");
+            System.out.println("0. Quay ve menu quan ly xe");
+            System.out.println("===============================");
             System.out.print("Nhap lua chon: ");
             chon = KiemTra.checkNumber();;
             switch (chon) {

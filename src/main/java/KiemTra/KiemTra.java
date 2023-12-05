@@ -172,4 +172,46 @@ public class KiemTra {
         }
 	}
 
+	public static boolean CheckDate(String date) {
+        boolean check = true;
+		String dateStr[] = date.split("/");
+        int ngay = Integer.parseInt(dateStr[0]), thang = Integer.parseInt(dateStr[1]), nam = Integer.parseInt(dateStr[3]);
+        if (ngay <= 0 | ngay > 31) {
+            check = false;
+            System.out.println("Ngay khong hop le!");
+        }
+        if (thang <= 0 || thang > 12) {
+            check = false;
+            System.out.println("Thang khong hop le!");
+        }
+        if (nam <= 1920 || nam > 2022) {
+            check = false;
+            System.out.println("Nam khong hop le!");
+        }
+        if (nam % 400 == 0 || (nam % 4 == 0 && nam % 100 != 0)) { // năm nhuận
+            if (thang == 2) {
+                if (ngay > 29) {
+                    check = false;
+                    System.out.println("Thang 2 nam da nhap chi co 29 ngay!");
+                }
+            }
+        } else { // không nhuận
+            if (thang == 2) {
+                if (ngay > 28) {
+                    check = false;
+                    System.out.println("Thang 2 nam da nhap chi co 28 ngay!");
+                }
+            }
+        }
+        switch (thang) { // các trường hợp còn lại
+            case 4, 6, 9, 11:
+                if (ngay > 30) {
+                    check = false;
+                    System.out.println("Thang da nhap chi co 30 ngay!");
+                }
+                break;
+        }
+		return check;
+	}
+
 }

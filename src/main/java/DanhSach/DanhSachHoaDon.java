@@ -187,7 +187,7 @@ public class DanhSachHoaDon implements DanhSachChung {
             
             soLuong--;
             setdsHoaDon(dsHoaDonTemp);
-        } else System.out.println("Khong tim thay san pham!");
+        } else System.out.println("Khong tim thay hoa don!");
     }
 
     

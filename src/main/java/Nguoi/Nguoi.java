@@ -85,6 +85,10 @@ public class Nguoi extends PhanTu {
             check = true;
             ngaythangnamsinh = sc.nextLine();
             check = KiemTra.check_date(ngaythangnamsinh);
+            if(check) {
+                check = KiemTra.CheckDate(ngaythangnamsinh);
+                if(!check) System.out.print("Moi nhap lai: ");
+            }
         } while (!check);
         xulytuoinamsinh(ngaythangnamsinh);
     }
@@ -202,21 +206,23 @@ public class Nguoi extends PhanTu {
     }
     @Override
     public void suaThongTin() {
-        System.out.println("=== Sua thong tin ca nhan ===");
-        System.out.println("1. Sua ho ten");
-        System.out.println("2. Sua ngay thang nam sinh");
-        System.out.println("3. Sua gioi tinh");
-        System.out.println("4. Sua can cuoc cong dan");
-        System.out.println("5. Sua dia chi");
-        System.out.println("6. Sua so dien thoai");
-        System.out.println("7. Sua email");
         int chon;
         do {
+            System.out.println("=== Sua thong tin ca nhan ===");
+            System.out.println("1. Sua ho ten");
+            System.out.println("2. Sua ngay thang nam sinh");
+            System.out.println("3. Sua gioi tinh");
+            System.out.println("4. Sua can cuoc cong dan");
+            System.out.println("5. Sua dia chi");
+            System.out.println("6. Sua so dien thoai");
+            System.out.println("7. Sua email");
+            System.out.println("0. Thoat");
+            System.out.println("===============================");
             System.out.print("Nhap lua chon: ");
-            chon = KiemTra.checkNumber();;
+            chon = KiemTra.checkNumber();
             switch (chon) {
                 case 0:
-                    System.out.println("Thoat sua thong tin!!");
+                    System.out.println("Thoat sua thong tin ca nhan!!");
                     break;
                 case 1:
                     System.out.println("Thong tin hien tai: " + getHoten());
@@ -246,7 +252,7 @@ public class Nguoi extends PhanTu {
                     System.out.println("Thong tin hien tai: " + getEmail());
                     setEmail();
                     break;
-                    default:
+                default:
                     System.out.println("Hay nhap so co trong menu");
                     break;
             }

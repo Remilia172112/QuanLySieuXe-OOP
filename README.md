@@ -2,7 +2,7 @@
 
 ## Đồ án Java - Quản lý cửa hàng bán xe - NHÓM 11
 
-## Thành viên nhóm :
+## Thành viên nhóm:
 
 | STT |    MSSV    | Họ và tên                                                                   |
 | :-: | :--------: | --------------------------------------------------------------------------- |
@@ -13,10 +13,17 @@
 |  5  | 3122410239 | [LÊ THẾ MINH ](https://www.facebook.com/minh.lethe.186590)                  |
 
 -   Menu Chính
+
     ![alt text](./images/Menu-Đăng-nhập.png)
+
 -   Menu Quản Lý
+
     ![alt text](./images/Menu-Quản-lý.png)
+
 -   Menu Nhân viên
+
     ![alt text](./images/Menu-Nhân-viên.png)
+
 -   Mô hình
+
     ![alt text](./images/Mô-hình.png)

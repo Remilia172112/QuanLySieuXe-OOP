@@ -1,24 +1,27 @@
 package Nguoi;
 
 import DanhSach.DanhSachNhanVien;
+import DanhSach.DanhSachTaiKhoan;
 import KiemTra.KiemTra;
 
 public class NhanVien extends Nguoi {
     private String manhanvien;
+    private String chucvu;
     private String ngayvaolam;
     private static int luongcoban = 4500000;
-    private double hesoluong;
+    private double hesoluong = 1;
     private double luong;
     private double thuong;
     private char hang;
-    private int soNgayNghiTrongThang;
+    private int soNgayNghiTrongThang = 0;
 
     public NhanVien() {
     }
 
-    public NhanVien(String maNhanVien, String ngayVaoLam, int LuongCoBan, double heSoLuong, double luong, double thuong,
+    public NhanVien(String maNhanVien, String chucvu, String ngayVaoLam, int LuongCoBan, double heSoLuong, double luong, double thuong,
             char hang, int soNgayNghiTrongThang) {
         this.manhanvien = maNhanVien;
+        this.chucvu = chucvu;
         this.ngayvaolam = ngayVaoLam;
         NhanVien.luongcoban = LuongCoBan;
         this.hesoluong = heSoLuong;
@@ -73,55 +76,22 @@ public class NhanVien extends Nguoi {
     }
 
     public void setNgayvaolam() {
-        System.out.println("Nhap ngay vao lam: ");
-        boolean check;
-        int ngay = 1, thang = 1, nam = 1;
-        // kiểm tra điều kiện ngày/tháng/năm
-        do {
-            check = true;
-            System.out.print("Nhap ngay: ");
-            ngay = KiemTra.checkNumber();
-            System.out.print("Nhap thang: ");
-            thang = KiemTra.checkNumber();
-            System.out.print("Nhap nam: ");
-            nam = KiemTra.checkNumber();
-            if (ngay <= 0 | ngay > 31) {
-                check = false;
-                System.out.println("Ngay khong hop le!");
-            }
-            if (thang <= 0 || thang > 12) {
-                check = false;
-                System.out.println("Thang khong hop le!");
-            }
-            if (nam <= 1920 || nam > 2022) {
-                check = false;
-                System.out.println("Nam khong hop le!");
-            }
-            if (nam % 400 == 0 || (nam % 4 == 0 && nam % 100 != 0)) { // năm nhuận
-                if (thang == 2) {
-                    if (ngay > 29) {
-                        check = false;
-                        System.out.println("Thang 2 nam da nhap chi co 29 ngay!");
-                    }
+        System.out.print("Sua dung ngay thang nam hien tai de lam ngay vao lam? (1/0): ");
+        int chon = KiemTra.checkNumber();
+        if(chon == 1) ngayvaolam = ngayhientai + "/" + thanghientai + "/" + namhientai;
+        else {
+            System.out.println("Nhap ngay vao lam (dd/mm/yyyy): ");
+            boolean check;
+            do {
+                check = true;
+                ngayvaolam = sc.nextLine();
+                check = KiemTra.check_date(ngayvaolam);
+                if(check) {
+                    check = KiemTra.CheckDate(ngayvaolam);
+                    if(!check) System.out.print("Moi nhap lai: ");
                 }
-            } else { // không nhuận
-                if (thang == 2) {
-                    if (ngay > 28) {
-                        check = false;
-                        System.out.println("Thang 2 nam da nhap chi co 28 ngay!");
-                    }
-                }
-            }
-            switch (thang) { // các trường hợp còn lại
-                case 4, 6, 9, 11:
-                    if (ngay > 30) {
-                        check = false;
-                        System.out.println("Thang da nhap chi co 30 ngay!");
-                    }
-                    break;
-            }
-        } while (!check);
-        this.ngayvaolam = ngay + "/" + thang + "/" + nam;
+            } while (!check);
+        }
     }
 
     public double getHesoluong() {
@@ -219,21 +189,58 @@ public class NhanVien extends Nguoi {
         setLuong();
     }
 
+    public void setTaikhoan() {
+        DanhSachTaiKhoan dstk = new DanhSachTaiKhoan();
+        dstk.themPhanTuVaoDanhSach(manhanvien, chucvu);
+    }
+
+    public String getChucvu() {
+        return chucvu;
+    }
+
+    public void setChucvu(String chucvu) {
+        this.chucvu = chucvu;
+    }
+
+    public void setChucvu() {
+        System.out.print("Nhap chuc vu nhan vien (nhan vien/quan ly): ");
+        boolean checkchucvu = false;
+        if(chucvu!=null) {
+            checkchucvu = true;
+        }
+        boolean check = false;
+        do {
+            check = true;
+            chucvu = sc.nextLine();
+            if(chucvu.equals("quan ly") || chucvu.equals("nhan vien")) check = true;
+            else check = false;
+        }
+        while (!check);
+        if(chucvu.equals("quan ly")) setHesoluong(2.0);
+        if(checkchucvu) {
+            DanhSachTaiKhoan dstk = new DanhSachTaiKhoan();
+            dstk.chinhSuaThongTinPhanTu(manhanvien, chucvu);
+        }
+    }
+
     @Override
     public void nhap() {
         setManhanvien();
+        setChucvu();
         setNgayvaolam();
-        setHesoluong();
-        setSongaynghitrongthang();
-        super.nhap();
+        super.nhap();   
+        System.out.print("Ban co muon tao tai khoan cho nhan vien nay khong? (1 - co, 0 - khong)");
+        int chon = KiemTra.checkNumber();
+        chon = (chon==0) ? 0 : 1;
+        if (chon == 1) setTaikhoan();
     }
     @Override
     public void xuat() {
         System.out.println("Ma nhan vien: " + getManhanvien());
         super.xuat();
-        System.out.printf("\n%-25s %-25s %-30s %-10s %-10s %-10s\n", "Ngay vao lam", "He so luong",
+        System.out.printf("\n%-15s %-25s %-25s %-30s %-10s %-10s %-10s\n", "Chuc vu","Ngay vao lam", "He so luong",
                 "So ngay nghi trong thang", "Luong", "Thuong", "Hang");
-        System.out.printf("%-25s %-25s %-30s %-10s %-10s %-10s\n", getNgayvaolam(), getHesoluong(),
+        System.out.printf("%-15s %-25s %-25s %-30s %-10s %-10s %-10s\n", getChucvu(),getNgayvaolam(), getHesoluong(),
                 getSongaynghitrongthang(), getLuong(), getThuong(), getHang());
         System.out.println("****************************");
     }
@@ -243,65 +250,39 @@ public class NhanVien extends Nguoi {
     }
     @Override
     public void suaThongTin() {
-        System.out.println("=== Sua thong tin nhan vien ===");
-        System.out.println("1. Sua ho ten");
-        System.out.println("2. Sua ngay thang nam sinh");
-        System.out.println("3. Sua gioi tinh");
-        System.out.println("4. Sua can cuoc cong dan");
-        System.out.println("5. Sua dia chi");
-        System.out.println("6. Sua so dien thoai");
-        System.out.println("7. Sua email");
-        System.out.println("8. Sua ngay vao lam");
-        System.out.println("9. Sua he so luong");
-        System.out.println("10. Sua so ngay nghi trong thang");
-        System.out.println("0. Thoat");
-        System.out.println("===============================");
         int chon;
         do {
+            System.out.println("=== Sua thong tin nhan vien ===");
+            System.out.println("1. Sua thong tin ca nhan");
+            System.out.println("2. Sua chuc vu");
+            System.out.println("3. Sua ngay vao lam");
+            System.out.println("4. Sua he so luong");
+            System.out.println("5. Sua so ngay nghi trong thang");
+            System.out.println("0. Thoat");
+            System.out.println("===============================");
             System.out.print("Nhap lua chon: ");
             chon = KiemTra.checkNumber();;
             switch (chon) {
                 case 0:
-                    System.out.println("Thoat sua thong tin!!");
+                    System.out.println("Thoat sua thong tin nhan vien!!");
                     break;
                 case 1:
-                    System.out.println("Thong tin hien tai: " + getHoten());
-                    setHoten();
+                    super.suaThongTin();
                     break;
                 case 2:
-                    System.out.println("Thong tin hien tai: " + getNgaythangnamsinh());
-                    setNgaythangnamsinh();
+                    System.out.println("Thong tin hien tai: " + getChucvu());
+                    setChucvu();
                     break;
                 case 3:
-                    System.out.println("Thong tin hien tai: " + getGioitinh());
-                    setGioitinh();
-                    break;
-                case 4:
-                    System.out.println("Thong tin hien tai: " + getCCCD());
-                    setCCCD();
-                    break;
-                case 5:
-                    System.out.println("Thong tin hien tai: " + getDiachi());
-                    setDiachi();
-                    break;
-                case 6:
-                    System.out.println("Thong tin hien tai: " + getSdt());
-                    setSdt();
-                    break;
-                case 7:
-                    System.out.println("Thong tin hien tai: " + getEmail());
-                    setEmail();
-                    break;
-                case 8:
                     System.out.println("Thong tin hien tai: " + getNgayvaolam());
                     setNgayvaolam();
                     break;
-                case 9:
+                case 4:
                     System.out.println("Thong tin hien tai: " + getHesoluong());
                     System.out.print("Nhap noi dung: ");
                     setHesoluong();
                     break;
-                case 10:
+                case 5:
                     System.out.println("Thong tin hien tai: " + getSongaynghitrongthang());
                     setSongaynghitrongthang();
                     break;

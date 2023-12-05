@@ -115,7 +115,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
     
     public void xuatDanhSach() {
         if(soLuong == 0) {
-            System.out.println("Chua co hoa don nao!!");
+            System.out.println("Chua co phieu nhap nao!!");
             return;
         }
         System.out.println("=== Danh sach phieu nhap ===");
@@ -178,7 +178,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
             soLuong--;
             setdsSanPham(dsSanPhamTemp);
-        } else System.out.println("Khong tim thay san pham!");
+        } else System.out.println("Khong tim thay phieu nhap!");
     }
 
     

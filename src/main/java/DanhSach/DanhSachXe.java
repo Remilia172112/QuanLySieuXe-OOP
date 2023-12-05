@@ -82,7 +82,7 @@ public class DanhSachXe implements DanhSachChung {
     
     public void nhapDanhSach() {
         FileHandler.resetFile("dsx.txt");
-        System.out.print("Moi nhap so luong san pham: ");
+        System.out.print("Moi nhap so luong xe: ");
 
         soLuong = KiemTra.checkNumber();
         dsXe = new Xe[soLuong];
@@ -101,9 +101,12 @@ public class DanhSachXe implements DanhSachChung {
 
     
     public void xuatDanhSach() {
-        System.out.println();
-        System.out.println("=== Danh sach san pham ===");
-        System.out.printf("%-20s %-30s %-20s %-20s %-20s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
+        if(soLuong == 0) {
+            System.out.println("Chua co xe nao!!");
+            return;
+        }
+        System.out.println("=== Danh sach xe ===");
+        System.out.printf("%-20s %-30s %-20s %-20s %-20s %-20s \n","Ma xe", "Ten xe", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
         for(int i=0;i<soLuong;i++) {
             dsXe[i].xuat();
         }
@@ -123,7 +126,7 @@ public class DanhSachXe implements DanhSachChung {
 
     
     public void themKPhanTuVaoDanhSach() {
-        System.out.print("Nhap so luong san pham can them vao danh sach: ");
+        System.out.print("Nhap so luong xe can them vao danh sach: ");
         int sl = KiemTra.checkNumber();
         PhanTu pt;
         for(int i=0;i<sl;i++)
@@ -135,20 +138,20 @@ public class DanhSachXe implements DanhSachChung {
     }
     
     public void chinhSuaThongTinPhanTu() {
-        System.out.println("Tim san pham can chinh sua: ");
+        System.out.println("Tim xe can chinh sua: ");
         int viTri = timViTriPhanTu();
         Xe[] dsx = getdsSanPham();
         if (viTri != -1) {
             dsx[viTri].suaThongTin();
             setdsSanPham(dsx);
         }
-        else System.out.println("Khong tim thay san pham!");
+        else System.out.println("Khong tim thay xe!");
     }
 
     
     public void xoaPhanTu() {
         // Tìm sản phẩm trước
-        System.out.println("Tim san pham can xoa: ");
+        System.out.println("Tim xe can xoa: ");
         int viTri = timViTriPhanTu();
         // Nếu tìm thấy
         if (viTri != -1) {
@@ -161,21 +164,21 @@ public class DanhSachXe implements DanhSachChung {
 
             soLuong--;
             setdsSanPham(dsXeTemp);
-        } else System.out.println("Khong tim thay san pham!");
+        } else System.out.println("Khong tim thay xe!");
     }
 
     
     public PhanTu timPhanTu() { // tìm sản phẩm theo tên hoặc khoá (tương đối || tuyệt đối)
         int loai;
-        System.out.print("Tim san pham theo ten (1) hay theo khoa (2), vui long chon: ");
+        System.out.print("Tim xe theo ten (1) hay theo khoa (2), vui long chon: ");
 
         loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;
 
         if (loai == 1)
-            System.out.print("Nhap ten san pham can tim: ");
+            System.out.print("Nhap ten xe can tim: ");
         if (loai == 2)
-            System.out.print("Nhap ma san pham can tim: ");
+            System.out.print("Nhap ma xe can tim: ");
 
         String giaTriCanTim = sc.nextLine();
         int chon;
@@ -209,14 +212,14 @@ public class DanhSachXe implements DanhSachChung {
     
     public int timViTriPhanTu() {
         int loai;
-        System.out.print("Tim san pham theo ten (1) hay theo khoa (2), vui long chon: ");
+        System.out.print("Tim xe theo ten (1) hay theo khoa (2), vui long chon: ");
 
         loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;
         if (loai == 1)
-            System.out.print("Nhap ten san pham can tim: ");
+            System.out.print("Nhap ten xe can tim: ");
         if (loai == 2)
-            System.out.print("Nhap ma san pham can tim: ");
+            System.out.print("Nhap ma xe can tim: ");
 
         String giaTriCanTim = sc.nextLine();
         int chon;
@@ -272,8 +275,8 @@ public class DanhSachXe implements DanhSachChung {
         dsXe = getdsSanPham();
         do {
             System.out.println("=== Thong ke ===");
-            System.out.println("1. In san pham co so luong lon hon n");
-            System.out.println("2. In san pham co gia ban lon hon n");
+            System.out.println("1. In xe co so luong lon hon n");
+            System.out.println("2. In xe co gia ban lon hon n");
             System.out.println("0. Quay lai menu truoc");
             System.out.print("Moi chon: ");
             chon = KiemTra.checkNumber();

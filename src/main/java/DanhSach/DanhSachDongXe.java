@@ -128,14 +128,14 @@ public class DanhSachDongXe implements DanhSachChung {
     }
 
     public void nhapDanhSach() {
-        System.out.println("Nhap so luong danh muc: ");
+        System.out.println("Nhap so luong dong xe: ");
         soLuong = KiemTra.checkNumber();
         dsDongXe = new DongXe[soLuong];
         int stt, soLuongTemp=0, soLuongCurrent = soLuong;
         for (int i = 0; i < soLuongCurrent; i++){
             dsDongXe[i] = new DongXe();
             stt = i+1;
-            System.out.println("** Danh muc san pham thu "+stt+" **");
+            System.out.println("** Dong xe thu "+stt+" **");
 
             dsDongXe[i].nhap();
             soLuong = ++soLuongTemp;
@@ -153,6 +153,10 @@ public class DanhSachDongXe implements DanhSachChung {
     }
     
     public void xuatDanhSach() {
+        if(soLuong == 0) {
+            System.out.println("Chua co dong xe nao!!");
+            return;
+        }
         System.out.println("=== Danh sach dong xe ===");
         for (int i = 0; i < soLuong; i++){
             dsDongXe[i].xuat();

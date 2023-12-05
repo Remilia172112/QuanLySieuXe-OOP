@@ -91,7 +91,10 @@ public class DanhSachNhaCungCap implements DanhSachChung {
         }
     }
     public void xuatDanhSach() {
-        System.out.println();
+        if(soLuong == 0) {
+            System.out.println("Chua co nha cung cap nao!!");
+            return;
+        }
         System.out.println("=== Danh sach nha cung cap ===");
         System.out.printf("%-20s %-20s %-45s %-20s \n","Ma nha cung cap", "Ten nha cung cap", "Dia chi", "So dien thoai");
         for(int i=0;i<soLuong;i++) {

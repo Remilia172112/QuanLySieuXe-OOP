@@ -63,13 +63,26 @@ public class TaiKhoan extends PhanTu {
 
     public void setPassword() {
         System.out.print("Nhap mat khau: ");
-        boolean check = false;
-        do {
-            check = true;
-            password = sc.nextLine();
-            check = KiemTra.check_maso(password);
+        password = sc.nextLine();
+    }
+
+    public void changePassword(String username) {
+        System.out.print("Nhap mat khau cu: ");
+        var password_old = sc.nextLine();
+        if(!password_old.equals(password)) {
+            System.out.print("Nhap sai mat khau cu!!!");
+            return;
         }
-        while (!check);
+        System.out.print("Nhap mat khau moi: ");
+        var password_new = sc.nextLine();
+        System.out.print("Nhap lai mat khau: ");
+        var password_new_again = sc.nextLine();
+        if(!password_new.equals(password_new_again)) {
+            System.out.print("Nhap khong trung nhau!!!");
+            return;
+        }
+        System.out.print("Thay doi mat khau thanh cong!!!");
+        password = password_new;
     }
 
     public String getType() {
@@ -86,7 +99,7 @@ public class TaiKhoan extends PhanTu {
         do {
             check = true;
             type = sc.nextLine();
-            if(type == "quan ly" || type == "nhan vien") check = true;
+            if(type.equals("quan ly") || type.equals("nhan vien")) check = true;
             else check = false;
         }
         while (!check);
@@ -96,6 +109,12 @@ public class TaiKhoan extends PhanTu {
         return username + "-" + type;
     }
     
+    public void nhap(String username, String type) {
+        setUsername(username);
+        setPassword();
+        setType(type);
+    }
+
     @Override
     public void nhap() {
         setUsername();
@@ -110,14 +129,14 @@ public class TaiKhoan extends PhanTu {
     }
     @Override
     public void suaThongTin() {
-        System.out.println("=== Sua thong tin nhan vien ===");
-        System.out.println("1. Sua tai khoan");
-        System.out.println("2. Sua mat khau");
-        System.out.println("3. Sua loai tai khoan");
-        System.out.println("0. Thoat");
-        System.out.println("===============================");
         int chon;
         do {
+            System.out.println("=== Sua thong tin nhan vien ===");
+            System.out.println("1. Sua tai khoan");
+            System.out.println("2. Sua mat khau");
+            System.out.println("3. Sua loai tai khoan");
+            System.out.println("0. Thoat");
+            System.out.println("===============================");
             System.out.print("Nhap lua chon: ");
             chon = KiemTra.checkNumber();;
             switch (chon) {

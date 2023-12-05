@@ -95,6 +95,26 @@ public class DanhSachTaiKhoan implements DanhSachChung {
         themVaoDanhSach(pt);
     }
 
+    public void themPhanTuVaoDanhSach(String username, String type) {    
+        TaiKhoan pt;
+        pt = new TaiKhoan();
+        pt.nhap(username, type);
+        themVaoDanhSach((PhanTu) pt);
+    }
+
+    public void changePasswordds(String username) {
+        TaiKhoan[] dsnv = getDsTaiKhoan();
+        int vitri = -1;
+        for (int i = 0; i < soLuong; i++) {
+            if (dsnv[i].getUsername().equals(username)) {
+                vitri = i;
+                break;
+            }
+        }
+        if(vitri != -1) dsnv[vitri].changePassword(username);
+        setDsTaiKhoan(dsnv);
+    }
+
     
     public void nhapDanhSach(){
         FileHandler.resetFile("dstk.txt");
@@ -116,6 +136,10 @@ public class DanhSachTaiKhoan implements DanhSachChung {
         }
     }
     public void xuatDanhSach(){
+        if(soLuong == 0) {
+            System.out.println("Chua co tai khoan nao!!");
+            return;
+        }
         System.out.println("=== Danh sach tai khoan nhan vien ===");
         for (int i = 0; i < soLuong; i++) {
             getDsTaiKhoan()[i].xuat();
@@ -151,6 +175,22 @@ public class DanhSachTaiKhoan implements DanhSachChung {
             setDsTaiKhoan(dsnv);
         } else
             System.out.println("Khong tim thay!");
+    }
+    public void chinhSuaThongTinPhanTu(String username, String type) {
+        TaiKhoan[] dsnv = getDsTaiKhoan();
+        int viTri = -1;
+        for (int i = 0; i < soLuong; i++) {
+            if (dsnv[i].getUsername().equals(username)) {
+                viTri = i;
+                break;
+            }
+        }
+        // tìm thấy
+        if (viTri != -1) {
+            dsnv[viTri].setUsername(username);
+            dsnv[viTri].setType(type);
+            setDsTaiKhoan(dsnv);
+        }
     }
     public void xoaPhanTu() {
         // Tìm tài khoản trước

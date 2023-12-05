@@ -73,6 +73,7 @@ public class XuLy {
         DanhSachHoaDon dshd = new DanhSachHoaDon() ;
         DanhSachPhieuNhap dspn = new DanhSachPhieuNhap();
         DanhSachNhanVien dsnv = new DanhSachNhanVien();
+        DanhSachTaiKhoan dstk = new DanhSachTaiKhoan();
         DanhSachDongXe dsdx = new DanhSachDongXe();
         NhanVien nv = (NhanVien) dsnv.layPhanTuVoi(username);
         int chon;
@@ -80,8 +81,8 @@ public class XuLy {
         do {
             System.out.println("==============================");
             System.out.println("Xin chao " + nv.getHoten());
-            System.out.println("1.  Xem thong tin tai khoan");
-            System.out.println("2.  Sua thong tin tai khoan");
+            System.out.println("1.  Xem thong tin ca nhan");
+            System.out.println("2.  Sua thong tin ca nhan");
             System.out.println("3.  Tao hoa don moi");
             System.out.println("4.  In danh sach hoa don");
             System.out.println("5.  Tao phieu nhap moi");
@@ -90,6 +91,7 @@ public class XuLy {
             System.out.println("8.  In danh sach khach hang");
             System.out.println("9.  In danh sach xe");
             System.out.println("10. Xem bao hanh voi ma khach hang");
+            System.out.println("11. Thay doi mat khau tai khoan");
             System.out.println("0.  Thoat chuong trinh");
             System.out.println("==============================");
             System.out.print("Moi chon: ");
@@ -129,6 +131,9 @@ public class XuLy {
                 case 10:
                     dsdx.Checkbaohanh();
                     break;
+                case 11:
+                    dstk.changePasswordds(username);
+                    break;
                 default:
                     System.out.println("Hay nhap so co trong menu!!!");
                     break;
@@ -139,6 +144,7 @@ public class XuLy {
         DanhSachNhanVien dsnv = new DanhSachNhanVien();
         NhanVien nv = (NhanVien) dsnv.layPhanTuVoi(username);
         DanhSachDongXe dsdx = new DanhSachDongXe();
+        DanhSachTaiKhoan dstk = new DanhSachTaiKhoan();
         int chon;
         System.out.println("***** Chuong Trinh Quan Ly Cua Hang Sieu Xe Version Quan ly *****");
         do {
@@ -155,6 +161,7 @@ public class XuLy {
             System.out.println("9.  Quan ly danh sach hoa don");
             System.out.println("10. Quan ly danh sach phieu nhap");
             System.out.println("11. Xem thoi han bao hanh voi ma khach hang");
+            System.out.println("12. Thay doi mat khau tai khoan");
             System.out.println("0. Thoat chuong trinh");
             System.out.println("==============================");
             System.out.print("Moi chon: ");
@@ -200,6 +207,9 @@ public class XuLy {
                     break;
                 case 11:
                     dsdx.Checkbaohanh();
+                    break;
+                case 12:
+                    dstk.changePasswordds(username);
                     break;
                 default:
                     System.out.println("Hay nhap so co trong menu!!!");

@@ -225,17 +225,17 @@ public class PhieuNhap extends PhanTu {
     }
     @Override
     public void suaThongTin() {
-        System.out.println("=== Sua thong tin phieu nhap ===");
-        System.out.println("1. Sua ma phieu nhap");
-        System.out.println("2. Sua ma nha cung cap");
-        System.out.println("3. Sua ma nhan vien lap phieu nhap");
-        System.out.println("4. Sua ngay lap phieu nhap");
-        System.out.println("5. Sua danh sach ma xe");
-        System.out.println("6. Sua so luong xe nhap");
-        System.out.println("0. Quay ve menu quan ly xe");
-        System.out.println("===============================");
         int chon;
         do {
+            System.out.println("=== Sua thong tin phieu nhap ===");
+            System.out.println("1. Sua ma phieu nhap");
+            System.out.println("2. Sua ma nha cung cap");
+            System.out.println("3. Sua ma nhan vien lap phieu nhap");
+            System.out.println("4. Sua ngay lap phieu nhap");
+            System.out.println("5. Sua danh sach ma xe");
+            System.out.println("6. Sua so luong xe nhap");
+            System.out.println("0. Quay ve menu quan ly xe");
+            System.out.println("===============================");
             System.out.print("Nhap lua chon: ");
             chon = KiemTra.checkNumber();
             switch (chon) {
@@ -264,7 +264,7 @@ public class PhieuNhap extends PhanTu {
                     for(int i=0;i<dsx.length;i++)
                         dsx[i].xuat();
                     
-                    System.out.println("Nhap moi danh sach san pham: ");
+                    System.out.println("Nhap moi danh sach xe: ");
                     setSoluongNhap();
                     setDsSanPham();
                     break;

@@ -13,8 +13,8 @@ public class FileHandler {
     private static Scanner fr;
 
     // Thêm nhân viên vào file dsnv.txt
-    public static void themNv(String manv, String hoten, String ntns, String gioitinh, String cccd, String diachi, String sdt, String email, String ngayVaoLam, double heSoLuong, int soNgaynghitrongthang) {
-        String tmp = manv+"#"+hoten+"#"+ntns+"#"+gioitinh+"#"+cccd+"#"+diachi+"#"+sdt+"#"+email+"#"+ngayVaoLam+"#"+heSoLuong+"#"+soNgaynghitrongthang;
+    public static void themNv(String manv, String hoten, String chucvu, String ntns, String gioitinh, String cccd, String diachi, String sdt, String email, String ngayVaoLam, double heSoLuong, int soNgaynghitrongthang) {
+        String tmp = manv+"#"+hoten+"#"+chucvu+"#"+ntns+"#"+gioitinh+"#"+cccd+"#"+diachi+"#"+sdt+"#"+email+"#"+ngayVaoLam+"#"+heSoLuong+"#"+soNgaynghitrongthang;
         ghiFile(tmp, "dsnv.txt");
     }
     //Thêm sản phẩm vào file dsx.txt
@@ -136,10 +136,10 @@ public class FileHandler {
                         case 1:
                             tenFile = "dsnv.txt";
                             ghiFile("4", tenFile);
-                            themNv("NV01", "Tran Van A", "17/07/2004", "nam", "052204016288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "tranvana@gmail.com", "17/07/2023", 0.5, 0);
-                            themNv("NV02", "Tran Van B", "30/07/2000", "nu", "054524226300", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "tranvanb@gmail.com", "21/09/2023", 1.2, 0);
-                            themNv("QL01", "Tran Thi C", "01/01/1950", "nam", "022201236288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly1@gmail.com", "12/09/2023", 0.4, 1);
-                            themNv("QL02", "Tran Bui D", "02/02/2000", "nu", "054504012328", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly2@gmail.com", "25/12/2023", 2, 1);
+                            themNv("NV01", "Tran Van A", "nhan vien", "17/07/2004", "nam", "052204016288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "tranvana@gmail.com", "17/07/2023", 0.5, 0);
+                            themNv("NV02", "Tran Van B", "nhan vien","30/07/2000", "nu", "054524226300", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "tranvanb@gmail.com", "21/09/2023", 1.2, 0);
+                            themNv("QL01", "Tran Thi C", "quan ly","01/01/1950", "nam", "022201236288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly1@gmail.com", "12/09/2023", 0.4, 1);
+                            themNv("QL02", "Tran Bui D", "quan ly","02/02/2000", "nu", "054504012328", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly2@gmail.com", "25/12/2023", 2, 1);
                             break;
                         case 2:
                             tenFile = "dskh.txt";

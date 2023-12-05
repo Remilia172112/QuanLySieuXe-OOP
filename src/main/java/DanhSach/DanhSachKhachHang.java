@@ -137,6 +137,10 @@ public class DanhSachKhachHang implements DanhSachChung {
         }
     }   
     public void xuatDanhSach(){
+        if(soLuong == 0) {
+            System.out.println("Chua co khach hang nao!!");
+            return;
+        }
         System.out.println("=== Danh sach khach hang ===");
         for (int i = 0; i<soLuong; i++){
             getDsKhachHang()[i].xuat();
