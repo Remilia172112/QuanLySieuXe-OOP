@@ -2,15 +2,19 @@ package DanhSach;
 
 import File.FileHandler;
 import KiemTra.KiemTra;
-import HangHoa.Xe;
-import HangHoa.PhanTu;
+import SanPham.DongXe;
+import SanPham.PhanTu;
+import SanPham.Xe;
+import SanPham.XeMuiTran;
+import SanPham.XeTheThao;
+import SanPham.XeDien;
 
 public class DanhSachXe implements DanhSachChung {
     private int soLuong;
     private Xe[] dsXe;
 
     public DanhSachXe() {
-        dsXe = getdsSanPham();
+        dsXe = getdsXe();
     }
 
     public int getsoLuong(){
@@ -21,7 +25,7 @@ public class DanhSachXe implements DanhSachChung {
         this.soLuong = soLuong;
     }
 
-    public Xe[] getdsSanPham() { // đọc từ file
+    public Xe[] getdsXe() { // đọc từ file
         String data = FileHandler.docFile("dsx.txt");
         String[] dArr = data.split("\n"); // tạo mảng từ file
 
@@ -31,33 +35,51 @@ public class DanhSachXe implements DanhSachChung {
         else
             setSoLuong(Integer.parseInt(dArr[0]));
         dsXe = new Xe[soLuong];
-        Xe sp;
+        Xe sp = new Xe();
         int k = 0, m;
         String [] lArr;
         for (int i = 1; i < dArr.length; i++) {
             lArr = dArr[i].split("#");
-
             m = 0;
-
-            sp = new Xe();
-
-            sp.setMaSanPham(lArr[m++]);
-
-            sp.setTenSanPham(lArr[m++]);
-
+            if(lArr[3].equals("Xe the thao")) {
+                sp = new XeTheThao();
+            }
+            else if(lArr[3].equals("Xe mui tran")) {
+                sp = new XeMuiTran();
+            }
+            else if(lArr[3].equals("Xe dien")) {
+                sp = new XeDien();
+            }
+            sp.setMaXe(lArr[m++]);
+    
+            sp.setTenXe(lArr[m++]);
+    
             sp.setThuongHieu(lArr[m++]);
 
+            sp.setLoaiXe(lArr[m++]);
+    
             sp.setNoiSanXuat(lArr[m++]);
-
+    
             sp.setSoLuong(Integer.parseInt(lArr[m++]));
-
+    
             sp.setPrice(Integer.parseInt(lArr[m++]));
-
+            
+            if(lArr[3].equals("Xe the thao")) {
+                ((XeTheThao) sp).setHangxe(lArr[m++]);
+            }
+            else if(lArr[3].equals("Xe mui tran")) {
+                ((XeMuiTran) sp).setLoaimui(lArr[m++]);
+            }
+            else if(lArr[3].equals("Xe dien")) {
+                ((XeDien) sp).setDungluongpin(lArr[m++]);
+            }
             dsXe[k++] = sp;
+            
+
         }
         return dsXe;
     }
-    public void setdsSanPham( Xe[] dsXe){ // ghi file
+    public void setdsXe( Xe[] dsXe){ // ghi file
         Xe sp;
         String tenFile = "dsx.txt";
         FileHandler.resetFile(tenFile);
@@ -65,16 +87,17 @@ public class DanhSachXe implements DanhSachChung {
 
         for(int i=0;i<soLuong;i++) {
             sp = (Xe) dsXe[i];
-            FileHandler.themSP(sp.getMaSanPham(), sp.getTenSanPham(), sp.getThuongHieu(), sp.getNoiSanXuat(),
-                    sp.getSoLuong(), sp.getPrice());
-        }
+            if(sp instanceof XeTheThao) FileHandler.themXe(sp.getMaXe(), sp.getTenXe(), sp.getThuongHieu(), sp.getLoaiXe(), sp.getNoiSanXuat(), sp.getSoLuong(), sp.getPrice(), ((XeTheThao) sp).getHangxe());
+            else if(sp instanceof XeMuiTran) FileHandler.themXe(sp.getMaXe(), sp.getTenXe(), sp.getThuongHieu(), sp.getLoaiXe(), sp.getNoiSanXuat(), sp.getSoLuong(), sp.getPrice(), ((XeMuiTran) sp).getLoaimui());
+            else if(sp instanceof XeDien) FileHandler.themXe(sp.getMaXe(), sp.getTenXe(), sp.getThuongHieu(), sp.getLoaiXe(), sp.getNoiSanXuat(), sp.getSoLuong(), sp.getPrice(), ((XeDien) sp).getDungluongpin());
+        }   
         this.dsXe = (Xe[]) dsXe;
     }
 
-    public int kiemtraChuoidonhang(String maSanPham) { // tìm vị trí sản phẩm với mã sản phẩm
-        Xe[] dsXeTmp = getdsSanPham();
+    public int kiemtraChuoidonhang(String maXe) { // tìm vị trí sản phẩm với mã sản phẩm
+        Xe[] dsXeTmp = getdsXe();
         for(int i=0;i<soLuong;i++) {
-            if (maSanPham.contains(dsXeTmp[i].getMaSanPham()))
+            if (maXe.contains(dsXeTmp[i].getMaXe()))
                 return i;
         }
         return -1;
@@ -87,15 +110,27 @@ public class DanhSachXe implements DanhSachChung {
         soLuong = KiemTra.checkNumber();
         dsXe = new Xe[soLuong];
 
-        int stt, soLuongTemp=0, soLuongCurrent = soLuong;
+        int soLuongTemp=0, soLuongCurrent = soLuong;
+        String tmp;
 
         for(int i=0;i<soLuongCurrent;i++){
-            dsXe[i] = new Xe();
-            stt = i+1;
-            System.out.println("San pham thu "+stt+": ");
-            dsXe[i].nhap();
+            System.out.println("Them xe thu " + (i+1) + ": ");
+            System.out.print("Chon loai xe (Xe the thao/Xe mui tran/Xe dien): ");
+            tmp = KiemTra.checkLoaixe();
+            if(tmp.equals("Xe the thao")) {
+                dsXe[i] = new XeTheThao();
+                dsXe[i].nhap();
+            }
+            else if(tmp.equals("Xe mui tran")) {
+                dsXe[i] = new XeMuiTran();
+                dsXe[i].nhap();
+            }
+            else if(tmp.equals("Xe dien")) {
+                dsXe[i] = new XeDien();
+                dsXe[i].nhap();
+            }
             soLuong = ++soLuongTemp;
-            setdsSanPham(dsXe);
+            setdsXe(dsXe);
         }
     }
 
@@ -106,7 +141,7 @@ public class DanhSachXe implements DanhSachChung {
             return;
         }
         System.out.println("=== Danh sach xe ===");
-        System.out.printf("%-20s %-30s %-20s %-20s %-20s %-20s \n","Ma xe", "Ten xe", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
+        System.out.printf("%-20s %-25s %-20s %-20s %-20s %-20s %-20s \n","Ma xe", "Ten xe", "Thuong hieu", "Loai xe", "Noi san xuat", "So luong", "Gia");
         for(int i=0;i<soLuong;i++) {
             dsXe[i].xuat();
         }
@@ -121,7 +156,7 @@ public class DanhSachXe implements DanhSachChung {
         }
         dsXeTemp[soLuong] = (Xe) pt;
         soLuong++;
-        setdsSanPham(dsXeTemp);
+        setdsXe(dsXeTemp);
     }
 
     
@@ -129,21 +164,59 @@ public class DanhSachXe implements DanhSachChung {
         System.out.print("Nhap so luong xe can them vao danh sach: ");
         int sl = KiemTra.checkNumber();
         PhanTu pt;
+        String tmp;
         for(int i=0;i<sl;i++)
         {
-            pt = new Xe();
+            System.out.println("Them xe thu " + (i+1) + ": ");
+            System.out.print("Chon loai xe (Xe the thao/Xe mui tran/Xe dien): ");
+            tmp = KiemTra.checkLoaixe();
+            if(tmp.equals("Xe the thao")) {
+                pt = new XeTheThao();
+                pt.nhap();
+                themVaoDanhSach(pt);
+            }
+            else if(tmp.equals("Xe mui tran")) {
+                pt = new XeMuiTran();
+                pt.nhap();
+                themVaoDanhSach(pt);
+            }
+            else if(tmp.equals("Xe dien")) {
+                pt = new XeDien();
+                pt.nhap();
+                themVaoDanhSach(pt);
+            }
+        }
+    }
+    
+    public void themPhanTuVaoDanhSach() {
+        PhanTu pt;
+        String tmp;
+        System.out.print("Chon loai xe (Xe the thao/Xe mui tran/Xe dien): ");
+        tmp = KiemTra.checkLoaixe();
+        if(tmp.equals("Xe the thao")) {
+            pt = new XeTheThao();
+            pt.nhap();
+            themVaoDanhSach(pt);
+        }
+        else if(tmp.equals("Xe mui tran")) {
+            pt = new XeMuiTran();
+            pt.nhap();
+            themVaoDanhSach(pt);
+        }
+        else if(tmp.equals("Xe dien")) {
+            pt = new XeDien();
             pt.nhap();
             themVaoDanhSach(pt);
         }
     }
-    
+
     public void chinhSuaThongTinPhanTu() {
         System.out.println("Tim xe can chinh sua: ");
         int viTri = timViTriPhanTu();
-        Xe[] dsx = getdsSanPham();
+        Xe[] dsx = getdsXe();
         if (viTri != -1) {
             dsx[viTri].suaThongTin();
-            setdsSanPham(dsx);
+            setdsXe(dsx);
         }
         else System.out.println("Khong tim thay xe!");
     }
@@ -156,17 +229,36 @@ public class DanhSachXe implements DanhSachChung {
         // Nếu tìm thấy
         if (viTri != -1) {
             Xe[] dsXeTemp = new Xe[soLuong-1];
-
+            DanhSachDongXe dsdx = new DanhSachDongXe();
+            DongXe[] dsdxtmp = dsdx.getDsDongXe(); 
+            // Xóa mã xe bên danh sách dòng xe
+            for(int i=0;i<dsdxtmp.length;i++) {
+                if(dsdxtmp[i].getTenDongXe().equals(getdsXe()[viTri].getLoaiXe())) {
+                    dsdxtmp[i].xoaMaSPKhoiDs(getdsXe()[viTri].getMaXe());
+                    break;
+                }
+            }
+            dsdx.setDsDX(dsdxtmp);
+            // Xóa xe ra khỏi danh sách xe
             for(int i=0, k=0;i<soLuong;i++) {
                 if (i==viTri) continue;// bỏ phần tử
-                dsXeTemp[k++] = getdsSanPham()[i];
+                dsXeTemp[k++] = getdsXe()[i];
             }
-
             soLuong--;
-            setdsSanPham(dsXeTemp);
+            setdsXe(dsXeTemp);
         } else System.out.println("Khong tim thay xe!");
     }
 
+    public void xoaPhanTu(String mxe) {
+        Xe[] dsXeTemp = new Xe[soLuong-1];
+        // Xóa xe ra khỏi danh sách xe
+        for(int i=0, k=0;i<soLuong;i++) {
+            if (getdsXe()[i].getMaXe().equals(mxe)) continue;// bỏ phần tử
+            dsXeTemp[k++] = getdsXe()[i];
+        }
+        soLuong--;
+        setdsXe(dsXeTemp);
+    }
     
     public PhanTu timPhanTu() { // tìm sản phẩm theo tên hoặc khoá (tương đối || tuyệt đối)
         int loai;
@@ -187,22 +279,22 @@ public class DanhSachXe implements DanhSachChung {
         chon = KiemTra.checkNumber();
         chon = (chon != 2) ? 1 : 2;
 
-        Xe[] dsXeTmp = getdsSanPham();
+        Xe[] dsXeTmp = getdsXe();
 
         for(int i=0;i<soLuong;i++) {
             if (chon == 1) { // tìm chính xác
                 if (loai == 1)
-                    if (dsXeTmp[i].getTenSanPham().equalsIgnoreCase(giaTriCanTim))
+                    if (dsXeTmp[i].getTenXe().equalsIgnoreCase(giaTriCanTim))
                         return dsXeTmp[i];
                 if (loai == 2)
-                    if (dsXeTmp[i].getMaSanPham().equalsIgnoreCase(giaTriCanTim))
+                    if (dsXeTmp[i].getMaXe().equalsIgnoreCase(giaTriCanTim))
                         return dsXeTmp[i];
             } else {
                 if (loai == 1)
-                    if (dsXeTmp[i].getTenSanPham().contains(giaTriCanTim))
+                    if (dsXeTmp[i].getTenXe().contains(giaTriCanTim))
                         return dsXeTmp[i];
                 if (loai == 2)
-                    if (dsXeTmp[i].getMaSanPham().contains(giaTriCanTim))
+                    if (dsXeTmp[i].getMaXe().contains(giaTriCanTim))
                         return dsXeTmp[i];
             }
         }
@@ -228,32 +320,32 @@ public class DanhSachXe implements DanhSachChung {
         chon = KiemTra.checkNumber();
         chon = (chon != 2) ? 1 : 2;
 
-        Xe[] dsXeTmp = getdsSanPham();
+        Xe[] dsXeTmp = getdsXe();
 
         for(int i=0;i<soLuong;i++) {
             if (chon == 1) { // tìm chính xác
                 if (loai == 1)
-                    if (dsXeTmp[i].getTenSanPham().equalsIgnoreCase(giaTriCanTim))
+                    if (dsXeTmp[i].getTenXe().equalsIgnoreCase(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsXeTmp[i].getMaSanPham().equalsIgnoreCase(giaTriCanTim))
+                    if (dsXeTmp[i].getMaXe().equalsIgnoreCase(giaTriCanTim))
                         return i;
             } else {
                 if (loai == 1)
-                    if (dsXeTmp[i].getTenSanPham().contains(giaTriCanTim))
+                    if (dsXeTmp[i].getTenXe().contains(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsXeTmp[i].getMaSanPham().contains(giaTriCanTim))
+                    if (dsXeTmp[i].getMaXe().contains(giaTriCanTim))
                         return i;
             }
         }
         return -1;
     }
 
-    public int timViTriSanPham(String maSanPham) { // tìm vị trí sản phẩm với mã sản phẩm
-        Xe[] dsXeTmp = getdsSanPham();
+    public int timViTriXe(String maXe) { // tìm vị trí sản phẩm với mã sản phẩm
+        Xe[] dsXeTmp = getdsXe();
         for(int i=0;i<soLuong;i++) {
-            if (dsXeTmp[i].getMaSanPham().equalsIgnoreCase(maSanPham))
+            if (dsXeTmp[i].getMaXe().equalsIgnoreCase(maXe))
                 return i;
         }
         return -1;
@@ -261,9 +353,9 @@ public class DanhSachXe implements DanhSachChung {
 
     
     public PhanTu layPhanTuVoi(String thamSo) { // tìm phần tử cụ thể với mã sản phẩm
-        Xe[] dsx = getdsSanPham();
+        Xe[] dsx = getdsXe();
         for(int i=0;i<soLuong;i++) {
-            if (dsx[i].getMaSanPham().equalsIgnoreCase(thamSo))
+            if (dsx[i].getMaXe().equalsIgnoreCase(thamSo))
                 return dsx[i];
         }
         return null;
@@ -272,7 +364,7 @@ public class DanhSachXe implements DanhSachChung {
     
     public void thongKe() {
         int chon,n;
-        dsXe = getdsSanPham();
+        dsXe = getdsXe();
         do {
             System.out.println("=== Thong ke ===");
             System.out.println("1. In xe co so luong lon hon n");

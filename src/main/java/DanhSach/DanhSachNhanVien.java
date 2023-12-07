@@ -2,9 +2,9 @@ package DanhSach;
 
 import File.FileHandler;
 import KiemTra.KiemTra;
-import HangHoa.PhanTu;
 import Nguoi.NhanVien;
 import Nguoi.TaiKhoan;
+import SanPham.PhanTu;
 
 public class DanhSachNhanVien implements DanhSachChung {
     private int soLuong;

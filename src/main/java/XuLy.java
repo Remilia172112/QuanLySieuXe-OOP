@@ -1,7 +1,7 @@
 import DanhSach.*;
-import HangHoa.PhanTu;
 import Nguoi.NhanVien;
 import Nguoi.TaiKhoan;
+import SanPham.PhanTu;
 import KiemTra.KiemTra;
 
 import java.util.Scanner;

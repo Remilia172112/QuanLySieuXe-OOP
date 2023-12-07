@@ -1,8 +1,9 @@
 package DanhSach;
 
 import File.FileHandler;
-import HangHoa.*;
 import KiemTra.KiemTra;
+import SanPham.*;
+import SanPham.Xe;
 
 public class DanhSachPhieuNhap implements DanhSachChung {
     private int soLuong;
@@ -63,14 +64,14 @@ public class DanhSachPhieuNhap implements DanhSachChung {
                 sp.setSoLuong(Integer.parseInt(lArr[m++]));
                 dsx[j] = sp;
             }
-            pn.setDsSanPham(dsx);
+            pn.setDsXe(dsx);
             
             dsPhieuNhap[k++] = pn;
         }
 
         return dsPhieuNhap;
     }
-    public void setdsSanPham( PhieuNhap[] dsPhieuNhap){ // ghi file
+    public void setdsXe( PhieuNhap[] dsPhieuNhap){ // ghi file
         PhieuNhap pn;
         String tenFile = "dspn.txt";
         FileHandler.resetFile(tenFile);
@@ -78,7 +79,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
         for(int i=0;i<soLuong;i++) {
             pn = (PhieuNhap) dsPhieuNhap[i];
-            FileHandler.themPN(pn.getMaPhieuNhap(), pn.getNgaynhap(), pn.getMaNhaCC(), pn.getMaNV(), pn.getTongTien(), pn.getSoluongNhap(), pn.getDsSanPham());
+            FileHandler.themPN(pn.getMaPhieuNhap(), pn.getNgaynhap(), pn.getMaNhaCC(), pn.getMaNV(), pn.getTongTien(), pn.getSoluongNhap(), pn.getDsXe());
         }
 
         this.dsPhieuNhap = (PhieuNhap[]) dsPhieuNhap;
@@ -108,7 +109,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
             System.out.println("Phieu nhap thu "+stt+": ");
             dsPhieuNhap[i].nhap();
             soLuong = ++soLuongTemp;
-            setdsSanPham(dsPhieuNhap);
+            setdsXe(dsPhieuNhap);
         }
     }
 
@@ -127,12 +128,12 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
     
     public void themVaoDanhSach(PhanTu pt) {
-        PhieuNhap[] dsSanPhamTemp = new PhieuNhap[soLuong+1];
+        PhieuNhap[] dsXeTemp = new PhieuNhap[soLuong+1];
         for(int i=0;i<soLuong;i++)
-            dsSanPhamTemp[i] = dsPhieuNhap[i];
-        dsSanPhamTemp[soLuong] = (PhieuNhap) pt;
+            dsXeTemp[i] = dsPhieuNhap[i];
+        dsXeTemp[soLuong] = (PhieuNhap) pt;
         soLuong++;
-        setdsSanPham(dsSanPhamTemp);
+        setdsXe(dsXeTemp);
     }
 
     
@@ -157,7 +158,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
         if (viTri != -1) {
             dspn[viTri].suaThongTin();
-            setdsSanPham(dspn);
+            setdsXe(dspn);
         }
         else System.out.println("Khong tim thay phieu nhap!");
     }
@@ -169,15 +170,15 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         int viTri = timViTriPhanTu();
         // Nếu tìm thấy
         if (viTri != -1) {
-            PhieuNhap[] dsSanPhamTemp = new PhieuNhap[soLuong-1];
+            PhieuNhap[] dsXeTemp = new PhieuNhap[soLuong-1];
 
             for(int i=0, k=0;i<soLuong;i++) {
                 if (i==viTri) continue;// bỏ phần tử
-                dsSanPhamTemp[k++] = getdsPhieuNhap()[i];
+                dsXeTemp[k++] = getdsPhieuNhap()[i];
             }
 
             soLuong--;
-            setdsSanPham(dsSanPhamTemp);
+            setdsXe(dsXeTemp);
         } else System.out.println("Khong tim thay phieu nhap!");
     }
 

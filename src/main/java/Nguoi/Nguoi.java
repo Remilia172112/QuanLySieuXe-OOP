@@ -1,7 +1,7 @@
 package Nguoi;
 
-import HangHoa.PhanTu;
 import KiemTra.KiemTra;
+import SanPham.PhanTu;
 
 import java.time.LocalDate;
 

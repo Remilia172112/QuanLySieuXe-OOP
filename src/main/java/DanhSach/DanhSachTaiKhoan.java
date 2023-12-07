@@ -2,8 +2,8 @@ package DanhSach;
 
 import File.FileHandler;
 import KiemTra.KiemTra;
-import HangHoa.PhanTu;
 import Nguoi.*;
+import SanPham.PhanTu;
 
 public class DanhSachTaiKhoan implements DanhSachChung {
     private int soLuong;

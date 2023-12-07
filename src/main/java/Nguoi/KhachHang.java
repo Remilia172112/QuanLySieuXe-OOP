@@ -3,8 +3,8 @@ import java.time.LocalDate;
 
 import DanhSach.DanhSachKhachHang;
 import DanhSach.DanhSachXe;
-import HangHoa.Xe;
 import KiemTra.KiemTra;
+import SanPham.Xe;
 import ThanhToan.ThanhToan;
 
 public class KhachHang extends Nguoi {
@@ -262,7 +262,7 @@ public class KhachHang extends Nguoi {
 
                 pt = (Xe) ttds.layPhanTuVoi(dsmspDamua[i].substring(0, dsmspDamua[i].length()-6-maKhachHang.length()));
 
-                if (pt != null) System.out.printf("%-20s %-30s %-20s %-20s %-20s \n", dsmspDamua[i], pt.getTenSanPham(), pt.getThuongHieu(), pt.getNoiSanXuat(), pt.getPrice());
+                if (pt != null) System.out.printf("%-20s %-30s %-20s %-20s %-20s \n", dsmspDamua[i], pt.getTenXe(), pt.getThuongHieu(), pt.getNoiSanXuat(), pt.getPrice());
             }
         }
         System.out.println("****************************");

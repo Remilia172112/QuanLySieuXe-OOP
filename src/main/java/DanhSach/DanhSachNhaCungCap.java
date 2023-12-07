@@ -1,9 +1,9 @@
 package DanhSach;
 
 import File.FileHandler;
-import HangHoa.PhanTu;
 import KiemTra.KiemTra;
-import HangHoa.NhaCungCap;
+import SanPham.NhaCungCap;
+import SanPham.PhanTu;
 
 public class DanhSachNhaCungCap implements DanhSachChung {
     private int soLuong;

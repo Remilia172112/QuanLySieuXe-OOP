@@ -1,8 +1,9 @@
 package DanhSach;
 import File.FileHandler;
 import KiemTra.KiemTra;
-import HangHoa.*;
 import Nguoi.*;
+import SanPham.*;
+import SanPham.Xe;
 
 public class DanhSachHoaDon implements DanhSachChung {
     private int soLuong;
@@ -60,7 +61,7 @@ public class DanhSachHoaDon implements DanhSachChung {
 
             slsp = Integer.parseInt(lArr[m++]);
             
-            hd.setSoLuongSanPham(slsp);
+            hd.setSoLuongXe(slsp);
 
             // đọc danh sách sản phẩm
             dsx = new Xe[slsp];
@@ -70,7 +71,7 @@ public class DanhSachHoaDon implements DanhSachChung {
                 dsx[j] = sp;
             }
             
-            hd.setDsSanPham(dsx);
+            hd.setDsXe(dsx);
             dsHoaDon[k++] = hd;
         }
         return dsHoaDon;
@@ -85,7 +86,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         for(int i=0;i<soLuong;i++) {
             // đọc từng phần tử từ mảng dsHoaDon
             hd = (HoaDon) dsHoaDon[i];
-            FileHandler.themHd(hd.getSoHoaDon(), hd.getNgaylapdon(), hd.getMnv(),hd.getKhachHang().getMaKhachHang(), hd.getPhThThanhToan(), hd.getTongTien(),hd.getSoLuongSanPham(), hd.getDsSanPham());
+            FileHandler.themHd(hd.getSoHoaDon(), hd.getNgaylapdon(), hd.getMnv(),hd.getKhachHang().getMaKhachHang(), hd.getPhThThanhToan(), hd.getTongTien(),hd.getSoLuongXe(), hd.getDsXe());
         }
         this.dsHoaDon = (HoaDon[])dsHoaDon;
     }

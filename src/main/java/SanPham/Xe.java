@@ -1,31 +1,33 @@
-package HangHoa;
+package SanPham;
 
 import DanhSach.DanhSachDongXe;
 import DanhSach.DanhSachXe;
 import KiemTra.KiemTra;
 public class Xe extends PhanTu {
-    private String maSanPham ;
-    private String tenSanPham ;
+    private String maXe ;
+    private String tenXe ;
     private String thuongHieu ;
+    private String loaiXe;
     private  String noiSanXuat ;
     private int soLuong ;
     private int price ;
     public Xe(){
     }
 
-    public Xe(String maSanPham , String tenSanPham , String thuongHieu , String noiSanXuat , int soLuong , int price){
-        this.maSanPham = maSanPham ;
-        this.tenSanPham = tenSanPham ;
+    public Xe(String maXe , String tenXe , String thuongHieu , String loaiXe, String noiSanXuat , int soLuong , int price){
+        this.maXe = maXe ;
+        this.tenXe = tenXe ;
         this.thuongHieu = thuongHieu ;
+        this.loaiXe = loaiXe ;
         this.noiSanXuat = noiSanXuat ;
         this.soLuong = soLuong ;
         this.price = price ;
     }
 
-    public String getMaSanPham() {
-        return maSanPham;
+    public String getMaXe() {
+        return maXe;
     }
-    public void setMaSanPham() {
+    public void setMaXe() {
         DanhSachXe ttds = new DanhSachXe();
         DanhSachDongXe dsdx = new DanhSachDongXe();
         System.out.println("Ban co muon xuat ra man hinh danh sach dong xe khong? (1 - in, !1 - khong)");
@@ -35,28 +37,31 @@ public class Xe extends PhanTu {
         boolean check = false;
         do
         {
-            maSanPham = sc.nextLine();
-            check = dsdx.Checkmadongxe(maSanPham) == true;
-            if(!check) System.out.print("Ma xe phai trung 1 phan voi ma dong xe!!\n Moi nhap lai: ");
+            maXe = sc.nextLine();
+
+            check = ttds.layPhanTuVoi(maXe) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
+            if (!check) System.out.print("Ma xe da ton tai, moi nhap lai: ");
+
             if(check) {
-                check = ttds.layPhanTuVoi(maSanPham) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
-                if (!check) System.out.print("Ma xe da ton tai, moi nhap lai: ");
+                check = dsdx.Checkmadongxe(maXe) == true;
+                if(!check) System.out.print("Ma xe phai trung 1 phan voi ma dong xe!!\n Moi nhap lai: ");    
             }
         } while (!check);
+        dsdx.resetDsdx();
     }
-    public void setMaSanPham(String maSanPham) {
-        this.maSanPham = maSanPham;
+    public void setMaXe(String maXe) {
+        this.maXe = maXe;
     }
-    public String getTenSanPham() {
-        return tenSanPham;
+    public String getTenXe() {
+        return tenXe;
     }
 
-    public void setTenSanPham() {
+    public void setTenXe() {
         System.out.print("Nhap ten xe: ");
-        tenSanPham = sc.nextLine();
+        tenXe = sc.nextLine();
     }
-    public void setTenSanPham(String tenSanPham) {
-        this.tenSanPham = tenSanPham;
+    public void setTenXe(String tenXe) {
+        this.tenXe = tenXe;
     }
 
     public void setThuongHieu(String thuongHieu) {
@@ -102,18 +107,33 @@ public class Xe extends PhanTu {
     public int getPrice() {
         return price;
     }
+    
+    public String getLoaiXe() {
+        return loaiXe;
+    }
+
+    public void setLoaiXe(String loaiXe) {
+        this.loaiXe = loaiXe;
+    }
+
+    public void setLoaiXe() {
+        DanhSachDongXe dsdx = new DanhSachDongXe();
+        loaiXe = dsdx.getLoaixe(maXe);
+    }
+
     @Override
     public void nhap(){
-        setMaSanPham();
-        setTenSanPham();
+        setMaXe();
+        setTenXe();
         setThuongHieu();
+        setLoaiXe();
         setNoiSanXuat();
         setSoLuong();
         setPrice();
     }
     @Override
     public void xuat() {
-        System.out.printf("%-20s %-25s %-20s %-20s %-15s %-20s \n",maSanPham,tenSanPham,thuongHieu,noiSanXuat,soLuong,price);
+        System.out.printf("%-20s %-25s %-20s %-20s %-20s %-15s %-20s \n",maXe,tenXe,thuongHieu,loaiXe,noiSanXuat,soLuong,price);
     }
     @Override
     public void suaThongTin() {
@@ -126,20 +146,21 @@ public class Xe extends PhanTu {
             System.out.println("4. Sua noi san xuat");
             System.out.println("5. Sua so luong");
             System.out.println("6. Sua gia");
-            System.out.println("0. Quay ve menu quan ly xe");
+            System.out.println("0. Quay ve menu truoc");
             System.out.println("===============================");
             System.out.print("Nhap lua chon: ");
-            chon = KiemTra.checkNumber();;
+            chon = KiemTra.checkNumber();
             switch (chon) {
                 case 0:
+                    System.out.println("Thoat sua thong tin xe!!");
                     break;
                 case 1:
-                    System.out.println("Thong tin hien tai: "+getMaSanPham());
-                    setMaSanPham();
+                    System.out.println("Thong tin hien tai: "+getMaXe());
+                    setMaXe();
                     break;
                 case 2:
-                    System.out.println("Thong tin hien tai: "+getTenSanPham());
-                    setTenSanPham();
+                    System.out.println("Thong tin hien tai: "+getTenXe());
+                    setTenXe();
                     break;
                 case 3:
                     System.out.println("Thong tin hien tai: "+getThuongHieu());

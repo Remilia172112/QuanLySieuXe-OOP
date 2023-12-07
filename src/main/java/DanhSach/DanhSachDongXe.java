@@ -2,10 +2,10 @@ package DanhSach;
 
 import java.time.LocalDate;
 import File.FileHandler;
-import HangHoa.DongXe;
-import HangHoa.PhanTu;
 import KiemTra.KiemTra;
 import Nguoi.KhachHang;
+import SanPham.DongXe;
+import SanPham.PhanTu;
 public class DanhSachDongXe implements DanhSachChung { 
     private int soLuong;
     private DongXe[] dsDongXe = getDsDongXe();
@@ -45,8 +45,8 @@ public class DanhSachDongXe implements DanhSachChung {
 
             dmsp = new DongXe();
 
-            dmsp.setMaDanhMuc(lArr[m++]);
-            dmsp.setTenDanhMuc(lArr[m++]);
+            dmsp.setMaDongXe(lArr[m++]);
+            dmsp.setTenDongXe(lArr[m++]);
             thangBaoHanh = Integer.parseInt(lArr[m++]);
             dmsp.setThangbaoHanh(thangBaoHanh);
             sldmsp = Integer.parseInt(lArr[m++]);
@@ -54,7 +54,7 @@ public class DanhSachDongXe implements DanhSachChung {
             dsMaSP = new String[sldmsp];
             for(int j=0;j<sldmsp;j++)
                 dsMaSP[j] = lArr[m++];
-            dmsp.setDsMaSanPham(dsMaSP);
+            dmsp.setDsMaXe(dsMaSP);
             dsDongXe[k++] = dmsp;
         }
         return dsDongXe;
@@ -66,7 +66,7 @@ public class DanhSachDongXe implements DanhSachChung {
         FileHandler.ghiFile(soLuong+"\n", tenFile);
         for(int i=0;i<soLuong;i++) {
             dmsp = (DongXe) dsDongXe[i];
-            FileHandler.themDX(dmsp.getMaDanhMuc(), dmsp.getTenDanhMuc(), dmsp.getSoLuong(), dmsp.getThangbaoHanh(), dmsp.getDsMaSanPham());
+            FileHandler.themDX(dmsp.getMaDongXe(), dmsp.getTenDongXe(), dmsp.getSoLuong(), dmsp.getThangbaoHanh(), dmsp.getDsMaXe());
         }
         this.dsDongXe = (DongXe[]) dsDongXe;
     }
@@ -74,7 +74,7 @@ public class DanhSachDongXe implements DanhSachChung {
     public boolean Checkmadongxe(String thamSo) {
         DongXe[] dsDm = getDsDongXe();
         for(int i=0;i<soLuong;i++) {
-            if (thamSo.contains(dsDm[i].getMaDanhMuc()))
+            if (thamSo.contains(dsDm[i].getMaDongXe()))
                 return true;
         }
         return false;
@@ -82,7 +82,7 @@ public class DanhSachDongXe implements DanhSachChung {
     public int Timthangbaohanh(String thamSo) {
         DongXe[] dsDm = getDsDongXe();
         for(int i=0;i<soLuong;i++) {
-            if (thamSo.contains(dsDm[i].getMaDanhMuc()))
+            if (thamSo.contains(dsDm[i].getMaDongXe()))
                 return dsDm[i].getThangbaoHanh();
         }
         return -1;
@@ -126,7 +126,36 @@ public class DanhSachDongXe implements DanhSachChung {
             System.out.println("Khach hang " + tmp.getHoten() + " chua dat xe nao!!");
         }
     }
-
+    public void Themxevaodongxe(String maxe) {
+        DongXe[] dsdx = getDsDongXe();
+        int vitri = -1;
+        for(int i = 0; i < dsdx.length; i++) {
+            if(dsdx[i].getMaDongXe().contains(maxe)) {
+                vitri = i;
+                break;
+            }
+        }
+        dsdx[vitri].themMaSPVaoDs(maxe);
+        setDsDX(dsdx);
+    }
+    public String getLoaixe(String maxe) {
+        DongXe[] dsdx = getDsDongXe();
+        int vitri = -1;
+        for(int i = 0; i < dsdx.length; i++) {
+            if(dsdx[i].getMaDongXe().contains(maxe)) {
+                vitri = i;
+                break;
+            }
+        }
+        return dsdx[vitri].getTenDongXe();
+    }
+    public void resetDsdx() {
+        DongXe[] dsdx = getDsDongXe();
+        for(int i = 0; i < dsdx.length; i++) {
+            dsdx[i].setDsMaXe();
+        }
+        setDsDX(dsdx);
+    }
     public void nhapDanhSach() {
         System.out.println("Nhap so luong dong xe: ");
         soLuong = KiemTra.checkNumber();
@@ -241,19 +270,19 @@ public class DanhSachDongXe implements DanhSachChung {
             if (chon == 1) { // tìm chính xác
 
                 if (loai == 1)
-                    if (dsDm[i].getTenDanhMuc().equalsIgnoreCase(giaTriCanTim))
+                    if (dsDm[i].getTenDongXe().equalsIgnoreCase(giaTriCanTim))
                         return dsDm[i];
                 if (loai == 2)
-                    if (dsDm[i].getMaDanhMuc().equalsIgnoreCase(giaTriCanTim))
+                    if (dsDm[i].getMaDongXe().equalsIgnoreCase(giaTriCanTim))
                         return dsDm[i];
 
             } else {
 
                 if (loai == 1)
-                    if (dsDm[i].getTenDanhMuc().contains(giaTriCanTim))
+                    if (dsDm[i].getTenDongXe().contains(giaTriCanTim))
                         return dsDm[i];
                 if (loai == 2)
-                    if (dsDm[i].getMaDanhMuc().contains(giaTriCanTim))
+                    if (dsDm[i].getMaDongXe().contains(giaTriCanTim))
                         return dsDm[i];
 
             }
@@ -279,17 +308,17 @@ public class DanhSachDongXe implements DanhSachChung {
         for(int i=0;i<soLuong;i++) {
             if (chon == 1) {
                 if (loai == 1)
-                    if (dsDm[i].getTenDanhMuc().equalsIgnoreCase(giaTriCanTim))
+                    if (dsDm[i].getTenDongXe().equalsIgnoreCase(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsDm[i].getMaDanhMuc().equalsIgnoreCase(giaTriCanTim))
+                    if (dsDm[i].getMaDongXe().equalsIgnoreCase(giaTriCanTim))
                         return i;
             } else {
                 if (loai == 1)
-                    if (dsDm[i].getTenDanhMuc().contains(giaTriCanTim))
+                    if (dsDm[i].getTenDongXe().contains(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsDm[i].getMaDanhMuc().contains(giaTriCanTim))
+                    if (dsDm[i].getMaDongXe().contains(giaTriCanTim))
                         return i;
             }
         }
@@ -299,7 +328,7 @@ public class DanhSachDongXe implements DanhSachChung {
     public PhanTu layPhanTuVoi(String thamSo) {
         DongXe[] dsDm = getDsDongXe();
         for(int i=0;i<soLuong;i++) {
-            if (dsDm[i].getMaDanhMuc().equalsIgnoreCase(thamSo))
+            if (dsDm[i].getMaDongXe().equalsIgnoreCase(thamSo))
                 return dsDm[i];
         }
         return null;

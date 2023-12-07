@@ -6,8 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-
-import HangHoa.Xe;
+import SanPham.Xe;
 
 public class FileHandler {
     private static Scanner fr;
@@ -18,8 +17,8 @@ public class FileHandler {
         ghiFile(tmp, "dsnv.txt");
     }
     //Thêm sản phẩm vào file dsx.txt
-    public static void themSP(String masp, String tensp, String thuongHieu, String noiSx, int sl, int gia) {
-        String tmp = masp + "#" + tensp + "#" + thuongHieu + "#" + noiSx + "#" + sl + "#" + gia;
+    public static void themXe(String masp, String tensp, String thuongHieu, String loaixe, String noiSx, int sl, int gia, String dactrungxe) {
+        String tmp = masp + "#" + tensp + "#" + thuongHieu + "#" + loaixe + "#" + noiSx + "#" + sl + "#" + gia + "#" + dactrungxe;
         ghiFile(tmp, "dsx.txt");
     }
     //them danh sach dong` xe vao` file dsdx.txt
@@ -39,7 +38,7 @@ public class FileHandler {
         String tmp = maPhieuNhap + "#" + ngaynhap + "#" + maNhaCC + "#" + maNV + "#" + tongTien + "#" + SoluongNhap;
         for(int i=0;i<dsmspNhap.length;i++)
         {
-            tmp+="#" + dsmspNhap[i].getMaSanPham() + "#" + dsmspNhap[i].getSoLuong();
+            tmp+="#" + dsmspNhap[i].getMaXe() + "#" + dsmspNhap[i].getSoLuong();
         }
         ghiFile(tmp, "dspn.txt");
     }
@@ -90,7 +89,7 @@ public class FileHandler {
         String tmp = soHoaDon+"#"+ngaylapdon+"#"+manhanvien+"#"+maKhachHang+"#"+phThThanhToan+"#"+tongTien+"#"+soLuongSanPham;    
         for(int i=0;i<dsx.length;i++)
         {
-            tmp+="#" + dsx[i].getMaSanPham() + "#" + dsx[i].getSoLuong();
+            tmp+="#" + dsx[i].getMaXe() + "#" + dsx[i].getSoLuong();
         }
         ghiFile(tmp, "dshd.txt");
     }
@@ -114,23 +113,23 @@ public class FileHandler {
                             tenFile = "dsx.txt";
                             ghiFile("15", tenFile);
                             //XE THE THAO
-                            themSP("SPORT01", "McLaren P1", "McLaren ", "Italy", 10, 40000);
-                            themSP("SPORT02", "Ferrari Roma", "Ferrari", "ITALY", 10, 60000);
-                            themSP("SPORT03", "Ford GT", "Ford", "ITALY", 10, 50000);
-                            themSP("SPORT04" ,"Tesla Roadster" ,"Tesla" ,"USA" , 20 ,  90000 );
-                            themSP("SPORT05" ,"Lamborghini Huracan" ,"Lamborghini" ,"ITALY" , 10 ,  150000 );
+                            themXe("SPORT01", "McLaren P1", "McLaren ", "Xe the thao", "Italy", 10, 40000, "A");
+                            themXe("SPORT02", "Ferrari Roma", "Ferrari", "Xe the thao", "ITALY", 10, 60000, "S");
+                            themXe("SPORT03", "Ford GT", "Ford", "Xe the thao", "ITALY", 10, 50000, "B");
+                            themXe("SPORT04" ,"Tesla Roadster" ,"Tesla", "Xe the thao" ,"USA" , 20 ,  90000, "A");
+                            themXe("SPORT05" ,"Lamborghini Huracan" ,"Lamborghini", "Xe the thao" ,"ITALY" , 10 ,  150000, "S" );
                             //XE MUI TRAN
-                            themSP("ROADSTER01", "BMW 430i", "BMW", "Duc", 5, 80000);
-                            themSP("ROADSTER02", "Porsche 718 Boxster", "Porsche", "Italy", 5, 70000);
-                            themSP("ROADSTER03", "Jaguar F-Type Convertible", "Jaguar", "Duc", 5, 120000);
-                            themSP("ROADSTER04", "Mini Cooper Convertible", "Mini", "Anh", 5, 250000);
-                            themSP("ROADSTER05", "Porsche 911 Targa", "Porsche", "Italy", 5, 500000);
+                            themXe("ROADSTER01", "BMW 430i", "BMW", "Xe mui tran", "Duc", 5, 80000, "Mem");
+                            themXe("ROADSTER02", "Porsche 718 Boxster", "Porsche", "Xe mui tran", "Italy", 5, 70000, "Tu dong");
+                            themXe("ROADSTER03", "Jaguar F-Type Convertible", "Jaguar", "Xe mui tran", "Duc", 5, 120000, "Tu dong");
+                            themXe("ROADSTER04", "Mini Cooper Convertible", "Mini", "Xe mui tran", "Anh", 5, 250000, "Mem");
+                            themXe("ROADSTER05", "Porsche 911 Targa", "Porsche", "Xe mui tran", "Italy", 5, 500000, "Tu dong");
                             //XE DIEN
-                            themSP("VINFAST01", "VinFast VF e34" , "VINFAST" , "VIETNAM" , 2, 30000);
-                            themSP("VINFAST02", "VinFast VF 8" , "VINFAST" , "VIETNAM" , 5, 50000);
-                            themSP("VINFAST03", "VinFast VF 9" , "VINFAST" , "VIETNAM" , 3, 60000);
-                            themSP("VINFAST04", "VinFast VF 5" , "VINFAST" , "VIETNAM" , 6, 90000);
-                            themSP("VINFAST05", "VinFast VF 6" , "VINFAST" , "VIETNAM" , 4, 120000);
+                            themXe("VINFAST01", "VinFast VF e34" , "VINFAST", "Xe dien" , "VIETNAM" , 2, 30000, "200 kWh");
+                            themXe("VINFAST02", "VinFast VF 8" , "VINFAST", "Xe dien"  , "VIETNAM" , 5, 50000, "220 kWh");
+                            themXe("VINFAST03", "VinFast VF 9" , "VINFAST", "Xe dien"  , "VIETNAM" , 3, 60000, "170 kWh");
+                            themXe("VINFAST04", "VinFast VF 5" , "VINFAST", "Xe dien"  , "VIETNAM" , 6, 90000, "250 kWh");
+                            themXe("VINFAST05", "VinFast VF 6" , "VINFAST", "Xe dien"  , "VIETNAM" , 4, 120000, "230 kWh");
 
                             break;
                         case 1:
@@ -165,10 +164,10 @@ public class FileHandler {
                             themDX("SPORT", "Xe the thao", 5,12 , dsMaSp);
                             // 2
                             dsMaSp = new String[]{"ROADSTER01","ROADSTER02","ROADSTER03","ROADSTER04" , "ROADSTER05"};
-                            themDX("ROADSTER", "Xe Mui tran", 5, 32,dsMaSp);
+                            themDX("ROADSTER", "Xe mui tran", 5, 32,dsMaSp);
                             // 3
                             dsMaSp = new String[]{"VINFAST01", "VINFAST02", "VINFAST03", "VINFAST04", "VINFAST05"};
-                            themDX("VINFAST" , "Xe dien oto" , 5,48, dsMaSp);
+                            themDX("VINFAST" , "Xe dien" , 5,48, dsMaSp);
                             break;
                         case 5:
                             tenFile = "dshd.txt";

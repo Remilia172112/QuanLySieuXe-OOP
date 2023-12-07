@@ -1,4 +1,4 @@
-package HangHoa;
+package SanPham;
 import DanhSach.*;
 import Nguoi.*;
 import KiemTra.KiemTra;
@@ -7,7 +7,7 @@ import ThanhToan.*;
 public class HoaDon extends PhanTu {
     private String ngaylapdon;
     private int soHoaDon;
-    private int soLuongSanPham;
+    private int soLuongXe;
     private int tongTien = 0;
     private String phThThanhToan;
     private KhachHang khachHang;
@@ -17,9 +17,9 @@ public class HoaDon extends PhanTu {
     public HoaDon() {
     }
 
-    public HoaDon(int soHoaDon, int soLuongSanPham, int tongTien,String ngaylapdon, String mnv,KhachHang khachHang, Xe[] dsXe) {
+    public HoaDon(int soHoaDon, int soLuongXe, int tongTien,String ngaylapdon, String mnv,KhachHang khachHang, Xe[] dsXe) {
         this.soHoaDon = soHoaDon;
-        this.soLuongSanPham = soLuongSanPham;
+        this.soLuongXe = soLuongXe;
         this.tongTien = tongTien;
         this.ngaylapdon = ngaylapdon;
         this.mnv = mnv;
@@ -66,21 +66,21 @@ public class HoaDon extends PhanTu {
         } while(pt == null);
     }
 
-    public Xe[] getDsSanPham() {
+    public Xe[] getDsXe() {
         return dsXe;
     }
 
-    public void setDsSanPham(Xe[] dsXe) {
+    public void setDsXe(Xe[] dsXe) {
         this.dsXe = dsXe;
     }
 
-    public void setDsSanPham() {
+    public void setDsXe() {
         // Khai báo
         DanhSachXe ttds = new DanhSachXe();
         DanhSachKhachHang dskh = new DanhSachKhachHang();
         
-        Xe[] dsxFile = ttds.getdsSanPham();
-        Xe[] dsx = new Xe[soLuongSanPham];
+        Xe[] dsxFile = ttds.getdsXe();
+        Xe[] dsx = new Xe[soLuongXe];
 
         // Tìm khách hàng trong danh sách
         KhachHang[] dsKhTemp = dskh.getDsKhachHang();
@@ -88,7 +88,7 @@ public class HoaDon extends PhanTu {
 
         // Lấy mảng sản phẩm đã mua
         int slspDamua = dsKhTemp[vtkh].getDsmspDamua().length;
-        String[] dsmspDamua = new String[slspDamua+soLuongSanPham];
+        String[] dsmspDamua = new String[slspDamua+soLuongXe];
         System.arraycopy(dsKhTemp[vtkh].getDsmspDamua(), 0, dsmspDamua, 0, slspDamua);
 
         Xe pt, timThay;
@@ -96,7 +96,7 @@ public class HoaDon extends PhanTu {
         System.out.print("Ban co muon xuat ra man hinh danh sach xe khong? (1 - in, 0 - khong): ");
         int chon = KiemTra.checkNumber();
         if (chon == 1) ttds.xuatDanhSach();
-        for(int i=0;i<soLuongSanPham;i++) {
+        for(int i=0;i<soLuongXe;i++) {
             stt=i+1;
             System.out.println("Them xe thu "+stt);
             
@@ -108,7 +108,7 @@ public class HoaDon extends PhanTu {
                     System.out.println("Khong tim thay xe!");
                 else {
                     if(i>0) {
-                        if(dsx[i-1].getMaSanPham() == pt.getMaSanPham()) dsx[i-1].setSoLuong(dsx[i-1].getSoLuong()+1);
+                        if(dsx[i-1].getMaXe() == pt.getMaXe()) dsx[i-1].setSoLuong(dsx[i-1].getSoLuong()+1);
                         else {
                             dsx[i] = pt;
                             dsx[i].setSoLuong(1);
@@ -125,21 +125,21 @@ public class HoaDon extends PhanTu {
                     }
                     else {
                         // Lưu mã sản phẩm riêng của người mua vào
-                        String tmp = pt.getMaSanPham() + dsKhTemp[vtkh].getMaKhachHang() + thanghientai + namhientai + slspDamua;
+                        String tmp = pt.getMaXe() + dsKhTemp[vtkh].getMaKhachHang() + thanghientai + namhientai + slspDamua;
                         dsmspDamua[slspDamua++] = tmp;
 
                         // tìm sản phẩm trong danh sách sp với mã sản phẩm
-                        timThay = (Xe) ttds.layPhanTuVoi(pt.getMaSanPham());
+                        timThay = (Xe) ttds.layPhanTuVoi(pt.getMaXe());
                         
                         // giảm số lượng sản phẩm trong danh sách vì đã thêm sản phẩm vào hoá đơn.
                         timThay.setSoLuong(timThay.getSoLuong()-1);
                         
                         // tìm vị trí sản phẩm đã nhập trong danh sách
-                        vtsp = ttds.timViTriSanPham(pt.getMaSanPham());
+                        vtsp = ttds.timViTriXe(pt.getMaXe());
                         
                         // cập nhật lại số lượng sản phẩm
                         dsxFile[vtsp] = timThay;
-                        ttds.setdsSanPham(dsxFile);
+                        ttds.setdsXe(dsxFile);
                         
                         // cập nhật tổng tiền
                         tongTien += pt.getPrice() * pt.getSoLuong();
@@ -163,17 +163,17 @@ public class HoaDon extends PhanTu {
                 for(Xe x: dsXe) // ứng với từng phần tử
                 {
                     // tìm sản phẩm trong danh sách với mã sản phẩm
-                    timThay = (Xe) ttds.layPhanTuVoi(x.getMaSanPham());
+                    timThay = (Xe) ttds.layPhanTuVoi(x.getMaXe());
                     
                     // tăng số lượng sản phẩm trong danh sách vì xoá sản phẩm khỏi hoá đơn
                     timThay.setSoLuong(timThay.getSoLuong()+x.getSoLuong());
                     
                     // tìm vị trí sản phẩm cần chỉnh sửa trong danh sách
-                    viTriCanChinhSua = ttds.timViTriSanPham(x.getMaSanPham());
+                    viTriCanChinhSua = ttds.timViTriXe(x.getMaXe());
                     dsXe[viTriCanChinhSua] = timThay;
                     
                     // cập nhật lại danh sách
-                    ttds.setdsSanPham(dsXe);
+                    ttds.setdsXe(dsXe);
                     
                     // tìm tổng tiền cần trả lại cho khách
                     tongTienTraLai += x.getPrice() * x.getSoLuong();
@@ -213,17 +213,17 @@ public class HoaDon extends PhanTu {
         this.soHoaDon = soHoaDon;
     }
 
-    public int getSoLuongSanPham() {
-        return soLuongSanPham;
+    public int getSoLuongXe() {
+        return soLuongXe;
     }
 
-    public void setSoLuongSanPham(int soLuongSanPham) {
-        this.soLuongSanPham = soLuongSanPham;
+    public void setSoLuongXe(int soLuongXe) {
+        this.soLuongXe = soLuongXe;
     }
 
-    public void setSoLuongSanPham() {
+    public void setSoLuongXe() {
         System.out.print("Nhap so luong xe: ");
-        soLuongSanPham = KiemTra.checkNumber();
+        soLuongXe = KiemTra.checkNumber();
     }
 
     public int getTongTien() {
@@ -400,27 +400,27 @@ public class HoaDon extends PhanTu {
     // Nhập version đã đăng nhập
     public void nhap(String username){
         setSoHoaDon();
-        setSoLuongSanPham();
+        setSoLuongXe();
         setNgaylapdon();
         setMnv(username);
         setKhachHang();
-        setDsSanPham();
+        setDsXe();
         setPhThThanhToan();
     }
     @Override
     public void nhap(){
         setSoHoaDon();
-        setSoLuongSanPham();
+        setSoLuongXe();
         setNgaylapdon();
         setMnv();
         setKhachHang();
-        setDsSanPham();
+        setDsXe();
         setPhThThanhToan();
     }
     @Override
     public void xuat() {
         System.out.printf("%-20s %-20s %-20s %-25s %-30s\n", "So hoa don", "So luong xe", "Tong tien", "Ten khach hang", "Phuong thuc thanh toan");
-        System.out.printf("%-20s %-20s %-20s %-25s %-30s \n", soHoaDon, soLuongSanPham, tongTien, khachHang.getHoten(), phThThanhToan);
+        System.out.printf("%-20s %-20s %-20s %-25s %-30s \n", soHoaDon, soLuongXe, tongTien, khachHang.getHoten(), phThThanhToan);
         System.out.println("\nDanh sach xe: \n");
         System.out.printf("%-20s %-25s %-20s %-20s %-15s %-20s \n","Ma xe", "Ten xe", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
         for(int i = 0; i< dsXe.length; i++)
@@ -442,6 +442,7 @@ public class HoaDon extends PhanTu {
             chon = KiemTra.checkNumber();
             switch (chon) {
                 case 0:
+                    System.out.println("Thoat sua thong tin hoa don!!");
                     break;
                 case 1:
                     System.out.println("Thong tin hien tai: "+getSoHoaDon());
@@ -454,13 +455,13 @@ public class HoaDon extends PhanTu {
                 case 3:
                     System.out.println("Thong tin hien tai: ");
                     // xuất danh sách sản phẩm
-                    Xe[] dsx = (Xe[]) getDsSanPham();
+                    Xe[] dsx = (Xe[]) getDsXe();
                     for(int i=0;i<dsx.length;i++)
                         dsx[i].xuat();
                     
                     System.out.println("Nhap moi danh sach xe: ");
-                    setSoLuongSanPham();
-                    setDsSanPham();
+                    setSoLuongXe();
+                    setDsXe();
                     break;
                 case 4:
                     System.out.println("Thong tin hien tai: "+getPhThThanhToan());

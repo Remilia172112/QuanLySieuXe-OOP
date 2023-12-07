@@ -2,8 +2,8 @@ package Nguoi;
 
 import DanhSach.DanhSachNhanVien;
 import DanhSach.DanhSachTaiKhoan;
-import HangHoa.PhanTu;
 import KiemTra.KiemTra;
+import SanPham.PhanTu;
 public class TaiKhoan extends PhanTu {
     private String username, password, type;
 

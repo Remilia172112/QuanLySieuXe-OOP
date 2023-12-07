@@ -1,4 +1,4 @@
-package HangHoa;
+package SanPham;
 
 import DanhSach.DanhSachNhaCungCap;
 import KiemTra.KiemTra;
@@ -101,6 +101,7 @@ public class NhaCungCap extends PhanTu {
             chon = KiemTra.checkNumber();
             switch (chon) {
                 case 0:
+                    System.out.println("Thoat sua thong tin nha cung cap!!");
                     break;
                 case 1:
                     System.out.println("Thong tin hien tai: "+getMaNhaCC());

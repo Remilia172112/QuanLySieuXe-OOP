@@ -213,5 +213,33 @@ public class KiemTra {
         }
 		return check;
 	}
-
+	public static boolean checkLoaimui(String text)
+	{
+		if(text.equals("Mem") || text.equals("Tu dong") ||text.equals("Tron") || text.equals("Vuot") || text.equals("Goc canh") || text.equals("Rong") || text.equals("Cat dut") || text.equals("Chia") || text.equals("Doi xung") || text.equals("Co dien"))
+		{
+			return true;
+		}
+		return false;
+	}
+	public static boolean checkHangxe(String text)
+	{
+		if(text.equals("A") || text.equals("B") || text.equals("C") || text.equals("D") || text.equals("S"))
+		{
+			return true;
+		}
+		return false;
+	}
+	public static String checkLoaixe() {
+		boolean check = false;
+		String str;
+		do {
+			str = sc.nextLine();
+			check = true;
+			if(!(str.equals("Xe the thao")||str.equals("Xe mui tran")||str.equals("Xe dien"))) {
+                System.out.print("Hay nhap dung loai xe: ");
+				check = false;
+            }
+		} while (!check);
+		return str;
+	}
 }

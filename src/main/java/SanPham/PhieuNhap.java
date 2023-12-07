@@ -1,7 +1,8 @@
-package HangHoa;
+package SanPham;
 
 import DanhSach.*;
 import KiemTra.KiemTra;
+
 public class PhieuNhap extends PhanTu {
     private String maPhieuNhap;
     private String maNhaCC;
@@ -117,20 +118,20 @@ public class PhieuNhap extends PhanTu {
         }
     }
 
-    public Xe[] getDsSanPham() {
+    public Xe[] getDsXe() {
         return dsmspNhap;
     }
 
-    public void setDsSanPham(Xe[] dsmspNhap) {
+    public void setDsXe(Xe[] dsmspNhap) {
         this.dsmspNhap = dsmspNhap;
     }
 
-    public void setDsSanPham() {
+    public void setDsXe() {
         // Khai báo
         DanhSachXe ttds = new DanhSachXe();
         DanhSachDongXe dsdx = new DanhSachDongXe();
         
-        Xe[] dsspFile = ttds.getdsSanPham();
+        Xe[] dsspFile = ttds.getdsXe();
         Xe[] dssp = new Xe[SoluongNhap];
         
         Xe pt, timThay;
@@ -154,7 +155,7 @@ public class PhieuNhap extends PhanTu {
                     dssp[i] = pt;
                     
                     // tìm sản phẩm trong danh sách sp với mã sản phẩm
-                    timThay = (Xe) ttds.layPhanTuVoi(pt.getMaSanPham());
+                    timThay = (Xe) ttds.layPhanTuVoi(pt.getMaXe());
                     
                     pt.setSoLuong();
                     
@@ -162,11 +163,11 @@ public class PhieuNhap extends PhanTu {
                     timThay.setSoLuong(timThay.getSoLuong()+pt.getSoLuong());
                     
                     // tìm vị trí sản phẩm đã nhập trong danh sách
-                    vtsp = ttds.timViTriSanPham(pt.getMaSanPham());
+                    vtsp = ttds.timViTriXe(pt.getMaXe());
                     
                     // cập nhật lại số lượng sản phẩm
                     dsspFile[vtsp] = timThay;
-                    ttds.setdsSanPham(dsspFile);
+                    ttds.setdsXe(dsspFile);
                     
                     // cập nhật tổng tiền
                     tongTien += pt.getPrice() * pt.getSoLuong();
@@ -203,7 +204,7 @@ public class PhieuNhap extends PhanTu {
         setMaNV(username);
         setNgaynhap();
         setSoluongNhap();
-        setDsSanPham();
+        setDsXe();
     }
     @Override
     public void nhap(){
@@ -212,7 +213,7 @@ public class PhieuNhap extends PhanTu {
         setMaNV();
         setNgaynhap();
         setSoluongNhap();
-        setDsSanPham();
+        setDsXe();
     }
     @Override
     public void xuat() {
@@ -240,6 +241,7 @@ public class PhieuNhap extends PhanTu {
             chon = KiemTra.checkNumber();
             switch (chon) {
                 case 0:
+                    System.out.println("Thoat sua thong tin phieu nhap!!");
                     break;
                 case 1:
                     System.out.println("Thong tin hien tai: "+getMaPhieuNhap());
@@ -260,13 +262,13 @@ public class PhieuNhap extends PhanTu {
                 case 5:
                     System.out.println("Thong tin hien tai: ");
                     // xuất danh sách sản phẩm
-                    Xe[] dsx = (Xe[]) getDsSanPham();
+                    Xe[] dsx = (Xe[]) getDsXe();
                     for(int i=0;i<dsx.length;i++)
                         dsx[i].xuat();
                     
                     System.out.println("Nhap moi danh sach xe: ");
                     setSoluongNhap();
-                    setDsSanPham();
+                    setDsXe();
                     break;
                 case 6:
                     System.out.println("Thong tin hien tai: "+getSoluongNhap());

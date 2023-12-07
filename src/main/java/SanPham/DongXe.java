@@ -1,32 +1,32 @@
-package HangHoa;
+package SanPham;
 import DanhSach.DanhSachXe;
 import KiemTra.KiemTra;
 public class DongXe extends PhanTu {
     private String maDongxe;
     private String tenDongxe;
     private int soLuong = 0;
-    private String[] dsMaSanPham;
+    private String[] dsMaXe;
     private  int thangbaoHanh ;
 
     public DongXe() {
     }
     
-    public DongXe(String maDongxe, String tenDongxe, int soLuong, String[] dsMaSanPham ,int thangbaoHanh) {
+    public DongXe(String maDongxe, String tenDongxe, int soLuong, String[] dsMaXe ,int thangbaoHanh) {
         this.maDongxe = maDongxe;
         this.tenDongxe = tenDongxe;
         this.soLuong = soLuong;
-        this.dsMaSanPham = dsMaSanPham;
+        this.dsMaXe = dsMaXe;
         this.thangbaoHanh = thangbaoHanh;
     }
-    public String getMaDanhMuc() {
+    public String getMaDongXe() {
         return maDongxe;
     }
 
-    public void setMaDanhMuc(String maDongxe) {
+    public void setMaDongXe(String maDongxe) {
         this.maDongxe = maDongxe;
     }
 
-    public void setMaDanhMuc() {
+    public void setMaDongXe() {
         System.out.print("Nhap ma dong xe: ");
         DanhSachXe dsxe = new DanhSachXe();
         boolean check = false;
@@ -40,15 +40,15 @@ public class DongXe extends PhanTu {
 
     }
 
-    public String getTenDanhMuc() {
+    public String getTenDongXe() {
         return tenDongxe;
     }
 
-    public void setTenDanhMuc(String tenDongxe) {
+    public void setTenDongXe(String tenDongxe) {
         this.tenDongxe = tenDongxe;
     }
 
-    public void setTenDanhMuc() {
+    public void setTenDongXe() {
         System.out.print("Nhap ten dong xe: ");
         tenDongxe = sc.nextLine();
     }
@@ -58,8 +58,13 @@ public class DongXe extends PhanTu {
     }
 
     public void setSoLuong() {
-        System.out.print("Nhap so luong xe cua dong xe: ");
-        soLuong = KiemTra.checkNumber();
+        DanhSachXe dsx = new DanhSachXe();
+        Xe[] dsxtmp = dsx.getdsXe();
+        for(int i = 0; i < dsxtmp.length; i++) {
+            if(dsxtmp[i].getLoaiXe().equals(tenDongxe)) {
+                soLuong++;
+            }
+        }
     }
 
     public int getThangbaoHanh() {
@@ -77,41 +82,28 @@ public class DongXe extends PhanTu {
         this.soLuong = soLuong;
     }
 
-    public String[] getDsMaSanPham() {
-        return dsMaSanPham;
+    public String[] getDsMaXe() {
+        return dsMaXe;
     }
 
-    public void setDsMaSanPham(String[] dsMaSanPham) {
-        this.dsMaSanPham = dsMaSanPham;
+    public void setDsMaXe(String[] dsMaXe) {
+        this.dsMaXe = dsMaXe;
     }
 
-    public void setDsMaSanPham() {
-        System.out.println("Nhap day cac ma xe, phan cach boi dau cham phay (;):");
-
-        String dsMaSP;
-
-        String[] dsMaSpArr;
-
-        DanhSachXe ttds = new DanhSachXe(); // tạo đối tượng DanhSachSanPham
-
-        boolean check;
-        do {
-            check = true;
-            dsMaSP = sc.nextLine(); // đọc từ input
-            dsMaSpArr = dsMaSP.split(";"); // tách thành mảng bởi dấu ;
-
-            for(int i=0;i<dsMaSpArr.length;i++) // ứng với từng phần tử mảng
-                if (ttds.layPhanTuVoi(dsMaSpArr[i]) == null){ // nếu không tìm thấy
-                    check = false;
-                    System.out.println("Khong tim thay ma xe tai vi tri thu "+i);
-                    break;
-                }
-            if (!check) System.out.println("Day cac ma xe khong hop le, hay nhap lai!");
-        } while (!check);
-        setDsMaSanPham(dsMaSpArr);
+    public void setDsMaXe() {
+        DanhSachXe dsx = new DanhSachXe();
+        Xe[] dsxtmp = dsx.getdsXe();
+        String[] dsMaSpArr = new String[soLuong];
+        int m =  0;
+        for(int i = 0; i < dsxtmp.length; i++) {
+            if(dsxtmp[i].getLoaiXe().equals(tenDongxe)) {
+                dsMaSpArr[m++] = dsxtmp[i].getMaXe();
+            }
+        }
+        setDsMaXe(dsMaSpArr);
     }
 
-    public void nhapDsMaSanPham() {
+    public void nhapDsMaXe() {
         DanhSachXe ttds = new DanhSachXe();
         String[] dsMaSp = new String[soLuong];
 
@@ -130,37 +122,32 @@ public class DongXe extends PhanTu {
                     if (chon == 1) ttds.themKPhanTuVaoDanhSach();
 
                 }
-                else dsMaSp[i] = pt.getMaSanPham();
+                else dsMaSp[i] = pt.getMaXe();
 
             } while (pt == null);
         }
-        dsMaSanPham = dsMaSp;
+        dsMaXe = dsMaSp;
     }
 
     public void themMaSPVaoDs() {
         // thêm mã sản phẩm vào danh sách
         String[] dsMaSP = new String[soLuong+1]; // tạo mảng tạm
-
         // thủ tục copy từ mảng danh sách cũ
         for(int i=0;i<soLuong;i++)
-            dsMaSP[i] = dsMaSanPham[i];
-
-        Xe pt;
-        String maSP;
+            dsMaSP[i] = dsMaXe[i];
         DanhSachXe ttds = new DanhSachXe();
+        ttds.themPhanTuVaoDanhSach();
+        dsMaSP[soLuong-1] = ttds.getdsXe()[soLuong-1].getMaXe();
+        setDsMaXe(dsMaSP);
+    }
 
-        do {
-            System.out.print("Nhap ma xe: ");
-            maSP = sc.nextLine();
-
-            pt = (Xe) ttds.layPhanTuVoi(maSP); // tìm sản phẩm
-
-            if (pt == null)  // nếu không tìm thấy
-                System.out.println("Khong ton tai ma xe!");
-            else dsMaSP[soLuong] = pt.getMaSanPham();
-
-        } while (pt == null);
-        setDsMaSanPham(dsMaSP);
+    public void themMaSPVaoDs(String maxe) {
+        // thêm mã sản phẩm vào danh sách
+        String[] dsMaSP = new String[soLuong+1]; // tạo mảng tạm
+        // thủ tục copy từ mảng danh sách cũ
+        for(int i=0;i<soLuong;i++) dsMaSP[i] = dsMaXe[i];
+        dsMaSP[soLuong] = maxe;
+        setDsMaXe(dsMaSP);
     }
 
     public void themKMaSPVaoDs() {
@@ -172,28 +159,21 @@ public class DongXe extends PhanTu {
     }
 
     public void xoaMaSPKhoiDs() {
-        String[] dsMaSP = new String[--soLuong];
-
-        System.out.print("Nhap ma xe can xoa khoi danh sach: ");
-        String giaTriCanXoa = sc.nextLine();
-
-        boolean check = false;
-        for(int i=0;i<soLuong;i++)
-        {
-            check = dsMaSanPham[i].equalsIgnoreCase(giaTriCanXoa);
-            if (check) break; // Nếu tìm thấy
-        }
-
-        if (check) {
-            // thủ tục copy từ mảng danh sách cũ
-            for(int i=0, k=0;i<soLuong;i++)
-            {
-                if (dsMaSanPham[i].equalsIgnoreCase(giaTriCanXoa)) continue; // bỏ qua phần tử
-                dsMaSP[k++] = dsMaSanPham[i];
-            }
-            setDsMaSanPham(dsMaSP);
-        } else System.out.println("Khong tim thay ma xe!");
+        DanhSachXe dsx = new DanhSachXe();
+        dsx.xoaPhanTu();
     }
+
+    public void xoaMaSPKhoiDs(String mxe) {
+        String[] dsMaSP = new String[--soLuong];
+        // thủ tục copy từ mảng danh sách cũ
+        for(int i=0, k=0;i<soLuong;i++)
+        {
+            if (dsMaXe[i].equalsIgnoreCase(mxe)) continue; // bỏ qua phần tử
+            dsMaSP[k++] = dsMaXe[i];
+        }
+        setDsMaXe(dsMaSP);
+    }
+
     public void xuatDongxe() {
         System.out.printf("%-20s %-20s %-10s %10s \n", "Ma Dong xe", "Ten Dong xe", "So luong", "Thang bao hanh");
         System.out.printf("%-20s %-20s %-10s %10s \n", maDongxe, tenDongxe, soLuong ,thangbaoHanh);
@@ -202,11 +182,11 @@ public class DongXe extends PhanTu {
 
     @Override
     public void nhap(){
-        setMaDanhMuc();
-        setTenDanhMuc();
+        setMaDongXe();
+        setTenDongXe();
         setThangbaohanh();
         setSoLuong();
-        nhapDsMaSanPham();
+        setDsMaXe();
     }
     @Override
     public void xuat() {
@@ -218,9 +198,9 @@ public class DongXe extends PhanTu {
         PhanTu pt;
         DanhSachXe ttds = new DanhSachXe();
 
-        for(int i=0;i<dsMaSanPham.length;i++) {
+        for(int i=0;i<dsMaXe.length;i++) {
 
-            pt = ttds.layPhanTuVoi(dsMaSanPham[i]);
+            pt = ttds.layPhanTuVoi(dsMaXe[i]);
 
             if (pt != null) pt.xuat(); // tìm thấy
         }
@@ -231,65 +211,38 @@ public class DongXe extends PhanTu {
         int chon;
         do {
             System.out.println("=== Sua thong tin dong xe ===");
-            System.out.println("1. Sua ma dong xe");
-            System.out.println("2. Sua ten dong xe");
-            System.out.println("3. Them ma xe vao danh sach ma xe");
-            System.out.println("4. Xoa ma xe khoi danh sach ma xe");
-            System.out.println("5. Nhap moi danh sach ma xe");
-            System.out.println("6. Them ma xe vao danh sach ma xe");
-            System.out.println("7. Xoa ma xe khoi danh sach ma xe");
+            System.out.println("1. Them ma xe vao danh sach ma xe");
+            System.out.println("2. Xoa ma xe khoi danh sach ma xe");
+            System.out.println("3. Nhap moi danh sach ma xe");
             System.out.println("0. Thoat");
             System.out.println("===============================");
             System.out.print("Nhap lua chon: ");
             chon = KiemTra.checkNumber();
             switch (chon) {
                 case 0:
+                    System.out.println("Thoat sua thong tin dong xe!!");
                     break;
                 case 1:
-                    System.out.println("Thong tin hien tai: " + getMaDanhMuc());
-                    setMaDanhMuc();
+                    System.out.println("Thong tin hien tai: ");
+                    for (String x : getDsMaXe())
+                        System.out.print(x + " ");
+                    themKMaSPVaoDs();
                     break;
                 case 2:
-                    System.out.println("Thong tin hien tai: " + getTenDanhMuc());
-                    setTenDanhMuc();
+                    System.out.println("Thong tin hien tai: ");
+
+                    for (String x : getDsMaXe())
+                        System.out.print(x + " ");
+
+                    xoaMaSPKhoiDs();
                     break;
                 case 3:
                     System.out.println("Thong tin hien tai: ");
 
-                    for (String x : getDsMaSanPham())
+                    for (String x : getDsMaXe())
                         System.out.print(x + " ");
 
-                    themKMaSPVaoDs();
-                    break;
-                case 4:
-                    System.out.println("Thong tin hien tai: ");
-
-                    for (String x : getDsMaSanPham())
-                        System.out.print(x + " ");
-
-                    xoaMaSPKhoiDs();
-                    break;
-                case 5:
-                    System.out.println("Thong tin hien tai: ");
-
-                    for (String x : getDsMaSanPham())
-                        System.out.print(x + " ");
-
-                    setDsMaSanPham();
-                    break;
-                case 6:
-                    System.out.println("Thong tin hien tai: ");
-                    for (String x : getDsMaSanPham())
-                        System.out.print(x + " ");
-                    themKMaSPVaoDs();
-                    break;
-                case 7:
-                    System.out.println("Thong tin hien tai: ");
-
-                    for (String x : getDsMaSanPham())
-                        System.out.print(x + " ");
-
-                    xoaMaSPKhoiDs();
+                    setDsMaXe();
                     break;
                 default:
                     System.out.println("Hay chon lai!");
