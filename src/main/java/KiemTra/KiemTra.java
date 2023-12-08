@@ -175,7 +175,7 @@ public class KiemTra {
 	public static boolean CheckDate(String date) {
         boolean check = true;
 		String dateStr[] = date.split("/");
-        int ngay = Integer.parseInt(dateStr[0]), thang = Integer.parseInt(dateStr[1]), nam = Integer.parseInt(dateStr[3]);
+        int ngay = Integer.parseInt(dateStr[0]), thang = Integer.parseInt(dateStr[1]), nam = Integer.parseInt(dateStr[2]);
         if (ngay <= 0 | ngay > 31) {
             check = false;
             System.out.println("Ngay khong hop le!");
