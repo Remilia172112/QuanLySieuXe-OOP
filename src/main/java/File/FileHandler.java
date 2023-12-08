@@ -113,7 +113,7 @@ public class FileHandler {
                             tenFile = "dsx.txt";
                             ghiFile("15", tenFile);
                             //XE THE THAO
-                            themXe("SPORT01", "McLaren P1", "McLaren ", "Xe the thao", "Italy", 10, 40000, "A");
+                            themXe("SPORT01", "McLaren P1", "McLaren", "Xe the thao", "Italy", 10, 40000, "A");
                             themXe("SPORT02", "Ferrari Roma", "Ferrari", "Xe the thao", "ITALY", 10, 60000, "S");
                             themXe("SPORT03", "Ford GT", "Ford", "Xe the thao", "ITALY", 10, 50000, "B");
                             themXe("SPORT04" ,"Tesla Roadster" ,"Tesla", "Xe the thao" ,"USA" , 20 ,  90000, "A");

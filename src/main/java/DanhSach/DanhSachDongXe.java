@@ -152,6 +152,7 @@ public class DanhSachDongXe implements DanhSachChung {
     public void resetDsdx() {
         DongXe[] dsdx = getDsDongXe();
         for(int i = 0; i < dsdx.length; i++) {
+            dsdx[i].setSoLuong();
             dsdx[i].setDsMaXe();
         }
         setDsDX(dsdx);

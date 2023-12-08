@@ -47,7 +47,6 @@ public class Xe extends PhanTu {
                 if(!check) System.out.print("Ma xe phai trung 1 phan voi ma dong xe!! Moi nhap lai: ");    
             }
         } while (!check);
-        dsdx.resetDsdx();
     }
     public void setMaXe(String maXe) {
         this.maXe = maXe;

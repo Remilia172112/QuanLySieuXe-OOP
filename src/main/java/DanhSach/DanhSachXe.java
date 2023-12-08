@@ -2,7 +2,6 @@ package DanhSach;
 
 import File.FileHandler;
 import KiemTra.KiemTra;
-import SanPham.DongXe;
 import SanPham.PhanTu;
 import SanPham.Xe;
 import SanPham.XeMuiTran;
@@ -132,6 +131,8 @@ public class DanhSachXe implements DanhSachChung {
             soLuong = ++soLuongTemp;
             setdsXe(dsXe);
         }
+        DanhSachDongXe dsdx = new DanhSachDongXe();
+        dsdx.resetDsdx();
     }
 
     
@@ -186,6 +187,8 @@ public class DanhSachXe implements DanhSachChung {
                 themVaoDanhSach(pt);
             }
         }
+        DanhSachDongXe dsdx = new DanhSachDongXe();
+        dsdx.resetDsdx();
     }
     
     public void themPhanTuVaoDanhSach() {
@@ -229,16 +232,6 @@ public class DanhSachXe implements DanhSachChung {
         // Nếu tìm thấy
         if (viTri != -1) {
             Xe[] dsXeTemp = new Xe[soLuong-1];
-            DanhSachDongXe dsdx = new DanhSachDongXe();
-            DongXe[] dsdxtmp = dsdx.getDsDongXe(); 
-            // Xóa mã xe bên danh sách dòng xe
-            for(int i=0;i<dsdxtmp.length;i++) {
-                if(dsdxtmp[i].getTenDongXe().equals(getdsXe()[viTri].getLoaiXe())) {
-                    dsdxtmp[i].xoaMaSPKhoiDs(getdsXe()[viTri].getMaXe());
-                    break;
-                }
-            }
-            dsdx.setDsDX(dsdxtmp);
             // Xóa xe ra khỏi danh sách xe
             for(int i=0, k=0;i<soLuong;i++) {
                 if (i==viTri) continue;// bỏ phần tử
@@ -247,17 +240,6 @@ public class DanhSachXe implements DanhSachChung {
             soLuong--;
             setdsXe(dsXeTemp);
         } else System.out.println("Khong tim thay xe!");
-    }
-
-    public void xoaPhanTu(String mxe) {
-        Xe[] dsXeTemp = new Xe[soLuong-1];
-        // Xóa xe ra khỏi danh sách xe
-        for(int i=0, k=0;i<soLuong;i++) {
-            if (getdsXe()[i].getMaXe().equals(mxe)) continue;// bỏ phần tử
-            dsXeTemp[k++] = getdsXe()[i];
-        }
-        soLuong--;
-        setdsXe(dsXeTemp);
     }
     
     public PhanTu timPhanTu() { // tìm sản phẩm theo tên hoặc khoá (tương đối || tuyệt đối)

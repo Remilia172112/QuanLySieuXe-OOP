@@ -60,6 +60,7 @@ public class DongXe extends PhanTu {
     public void setSoLuong() {
         DanhSachXe dsx = new DanhSachXe();
         Xe[] dsxtmp = dsx.getdsXe();
+        soLuong = 0;
         for(int i = 0; i < dsxtmp.length; i++) {
             if(dsxtmp[i].getLoaiXe().equals(tenDongxe)) {
                 soLuong++;
@@ -166,17 +167,8 @@ public class DongXe extends PhanTu {
     public void xoaMaSPKhoiDs() {
         DanhSachXe dsx = new DanhSachXe();
         dsx.xoaPhanTu();
-    }
-
-    public void xoaMaSPKhoiDs(String mxe) {
-        String[] dsMaSP = new String[--soLuong];
-        // thủ tục copy từ mảng danh sách cũ
-        for(int i=0, k=0;i<soLuong;i++)
-        {
-            if (dsMaXe[i].equalsIgnoreCase(mxe)) continue; // bỏ qua phần tử
-            dsMaSP[k++] = dsMaXe[i];
-        }
-        setDsMaXe(dsMaSP);
+        soLuong--;
+        setDsMaXe();
     }
 
     public void xuatDongxe() {
