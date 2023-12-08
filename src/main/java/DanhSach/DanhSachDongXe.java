@@ -130,7 +130,7 @@ public class DanhSachDongXe implements DanhSachChung {
         DongXe[] dsdx = getDsDongXe();
         int vitri = -1;
         for(int i = 0; i < dsdx.length; i++) {
-            if(dsdx[i].getMaDongXe().contains(maxe)) {
+            if(maxe.contains(dsdx[i].getMaDongXe())) {
                 vitri = i;
                 break;
             }
@@ -142,7 +142,7 @@ public class DanhSachDongXe implements DanhSachChung {
         DongXe[] dsdx = getDsDongXe();
         int vitri = -1;
         for(int i = 0; i < dsdx.length; i++) {
-            if(dsdx[i].getMaDongXe().contains(maxe)) {
+            if(maxe.contains(dsdx[i].getMaDongXe())) {
                 vitri = i;
                 break;
             }
