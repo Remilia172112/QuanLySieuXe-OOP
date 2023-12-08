@@ -44,7 +44,7 @@ public class Xe extends PhanTu {
 
             if(check) {
                 check = dsdx.Checkmadongxe(maXe) == true;
-                if(!check) System.out.print("Ma xe phai trung 1 phan voi ma dong xe!!\n Moi nhap lai: ");    
+                if(!check) System.out.print("Ma xe phai trung 1 phan voi ma dong xe!! Moi nhap lai: ");    
             }
         } while (!check);
         dsdx.resetDsdx();

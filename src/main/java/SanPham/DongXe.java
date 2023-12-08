@@ -111,7 +111,7 @@ public class DongXe extends PhanTu {
         
         for(int i=0;i<soLuong;i++) {
 
-            System.out.println("Them ma xe thu "+(i+1));
+            System.out.println("Them ma xe thu "+(i+1)+":");
             do {
                 pt = (Xe) ttds.timPhanTu();
 
@@ -122,9 +122,12 @@ public class DongXe extends PhanTu {
                     if (chon == 1) ttds.themKPhanTuVaoDanhSach();
 
                 }
+                else if(!pt.getLoaiXe().equals(tenDongxe)) {
+                    System.out.println("Loai xe cua xe khong phu hop voi dong xe!");
+                }
                 else dsMaSp[i] = pt.getMaXe();
 
-            } while (pt == null);
+            } while (pt == null || !pt.getLoaiXe().equals(tenDongxe));
         }
         dsMaXe = dsMaSp;
     }
@@ -137,7 +140,8 @@ public class DongXe extends PhanTu {
             dsMaSP[i] = dsMaXe[i];
         DanhSachXe ttds = new DanhSachXe();
         ttds.themPhanTuVaoDanhSach();
-        dsMaSP[soLuong-1] = ttds.getdsXe()[soLuong-1].getMaXe();
+        dsMaSP[soLuong] = ttds.getdsXe()[ttds.getsoLuong()-1].getMaXe();
+        soLuong++;
         setDsMaXe(dsMaSP);
     }
 
@@ -147,11 +151,12 @@ public class DongXe extends PhanTu {
         // thủ tục copy từ mảng danh sách cũ
         for(int i=0;i<soLuong;i++) dsMaSP[i] = dsMaXe[i];
         dsMaSP[soLuong] = maxe;
+        soLuong++;
         setDsMaXe(dsMaSP);
     }
 
     public void themKMaSPVaoDs() {
-        System.out.print("Nhap so ma xe can them vao danh sach: ");
+        System.out.print("Nhap so xe can them vao danh sach: ");
         int k;
         k = KiemTra.checkNumber();
         for(int i=0;i<k;i++)
@@ -211,7 +216,7 @@ public class DongXe extends PhanTu {
         int chon;
         do {
             System.out.println("=== Sua thong tin dong xe ===");
-            System.out.println("1. Them ma xe vao danh sach ma xe");
+            System.out.println("1. Tao ma xe moi vao danh sach ma xe");
             System.out.println("2. Xoa ma xe khoi danh sach ma xe");
             System.out.println("3. Nhap moi danh sach ma xe");
             System.out.println("0. Thoat");
