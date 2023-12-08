@@ -213,22 +213,6 @@ public class KiemTra {
         }
 		return check;
 	}
-	public static boolean checkLoaimui(String text)
-	{
-		if(text.equals("Mem") || text.equals("Tu dong") ||text.equals("Tron") || text.equals("Vuot") || text.equals("Goc canh") || text.equals("Rong") || text.equals("Cat dut") || text.equals("Chia") || text.equals("Doi xung") || text.equals("Co dien"))
-		{
-			return true;
-		}
-		return false;
-	}
-	public static boolean checkHangxe(String text)
-	{
-		if(text.equals("A") || text.equals("B") || text.equals("C") || text.equals("D") || text.equals("S"))
-		{
-			return true;
-		}
-		return false;
-	}
 	public static String checkLoaixe() {
 		boolean check = false;
 		String str;
@@ -241,5 +225,27 @@ public class KiemTra {
             }
 		} while (!check);
 		return str;
+	}
+	public static boolean checkLoaimui(String text)
+	{
+		if(text.equals("Mem") || text.equals("Tu dong") ||text.equals("Tron") || text.equals("Vuot") || text.equals("Goc canh") || text.equals("Rong") || text.equals("Cat dut") || text.equals("Chia") || text.equals("Doi xung") || text.equals("Co dien"))
+		{
+			return true;
+		}
+		else{
+			System.out.print("Khong nhap dung Loai mui (Mem, Tu dong, Tron, Vuot, Goc canh, Rong, Cat dut, Chia, Doi xung, Co dien)!! Moi nhap lai: ");
+			return false;
+		}
+	}
+	public static boolean checkHangxe(String text)
+	{
+		String reg = "^(?i)[abcd]$";
+		Pattern pattern = Pattern.compile(reg);
+		Matcher matcher = pattern.matcher(text);
+		if (!matcher.matches() || text == "") {
+			System.out.print("Khong nhap dung hang xe (A,B,C,D,S)!! Moi nhap lai: ");
+			return false;
+		}
+		return true;
 	}
 }

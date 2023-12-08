@@ -27,6 +27,7 @@ public class XeTheThao extends Xe {
         do {
             check = true;
             hangxe = sc.nextLine();
+            hangxe = hangxe.toUpperCase();
             check = KiemTra.checkHangxe(hangxe);
         } while(!check);
     }

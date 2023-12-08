@@ -11,13 +11,7 @@ public abstract class PhanTu {
     int thanghientai = localDate.getMonthValue();
     int ngayhientai = localDate.getDayOfMonth();
     
-    public void nhap() {
-        System.out.printf("Noi dung xuat");
-    }
-    public void xuat() {
-        System.out.printf("Noi dung nhap");
-    }
-    public void suaThongTin() {
-        System.out.printf("Noi dung sua thong tin");
-    }
+    abstract public void nhap();
+    abstract public void xuat();
+    abstract public void suaThongTin();
 }
