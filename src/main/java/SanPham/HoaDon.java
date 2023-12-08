@@ -74,80 +74,206 @@ public class HoaDon extends PhanTu {
         this.dsXe = dsXe;
     }
 
+    // public void setDsXe() {
+    //     // Khai báo
+    //     DanhSachXe ttds = new DanhSachXe();
+    //     DanhSachKhachHang dskh = new DanhSachKhachHang();
+        
+    //     Xe[] dsxFile = ttds.getdsXe();
+    //     Xe[] dsx = new Xe[soLuongXe];
+
+    //     // Tìm khách hàng trong danh sách
+    //     KhachHang[] dsKhTemp = dskh.getDsKhachHang();
+    //     int vtkh = dskh.timViTriKhachHang(khachHang.getMaKhachHang());
+
+    //     // Lấy mảng sản phẩm đã mua
+    //     String[] dsspDamua = dsKhTemp[vtkh].getDsmspDamua();
+    //     int slspDamua = dsspDamua.length;
+    //     String[] dsmspDamuatmp = new String[slspDamua+soLuongXe];
+    //     for(int i = 0; i < slspDamua; i++) {
+    //         dsmspDamuatmp[i] = dsspDamua[i];
+    //     }
+    //     Xe pt, timThay;
+    //     int vtsp, stt;
+    //     System.out.print("Ban co muon xuat ra man hinh danh sach xe khong? (1 - in, 0 - khong): ");
+    //     int chon = KiemTra.checkNumber();
+    //     if (chon == 1) ttds.xuatDanhSach();
+
+    //     for(int i=0;i<soLuongXe;i++) {
+    //         stt=i+1;
+    //         System.out.println("Them xe thu "+stt);
+            
+    //         do {
+    //             System.out.print("Nhap ma xe:");
+    //             pt = (Xe) ttds.layPhanTuVoi(sc.nextLine());
+                
+    //             if (pt == null) 
+    //                 System.out.println("Khong tim thay xe!");
+    //             else {
+    //                 if(i>0) {
+    //                     if(dsx[i-1].getMaXe() == pt.getMaXe()) dsx[i-1].setSoLuong(dsx[i-1].getSoLuong()+1);
+    //                     else {
+    //                         dsx[i] = pt;
+    //                         dsx[i].setSoLuong(1);
+    //                     }
+    //                 }
+    //                 else {
+    //                     dsx[i] = pt;
+    //                     dsx[i].setSoLuong(1);
+    //                 }
+    //                 if (pt.getSoLuong() == 0) { // nếu sản phẩm đã hết hàng
+    //                     System.out.println("Xe da het hang, vui long chon xe khac!");
+    //                     pt=null;
+    //                     continue;
+    //                 }
+    //                 else {
+    //                     // Lưu mã sản phẩm riêng của người mua vào
+    //                     String tmp = pt.getMaXe() + dsKhTemp[vtkh].getMaKhachHang() + thanghientai + namhientai + slspDamua;
+    //                     dsmspDamuatmp[slspDamua++] = tmp;
+
+    //                     // tìm sản phẩm trong danh sách sp với mã sản phẩm
+    //                     timThay = (Xe) ttds.layPhanTuVoi(pt.getMaXe());
+                        
+    //                     // giảm số lượng sản phẩm trong danh sách vì đã thêm sản phẩm vào hoá đơn.
+    //                     timThay.setSoLuong(timThay.getSoLuong()-1);
+                        
+    //                     // tìm vị trí sản phẩm đã nhập trong danh sách
+    //                     vtsp = ttds.timViTriXe(pt.getMaXe());
+                        
+    //                     // cập nhật lại số lượng sản phẩm
+    //                     dsxFile[vtsp] = timThay;
+    //                     ttds.setdsXe(dsxFile);
+                        
+    //                     // cập nhật tổng tiền
+    //                     tongTien += pt.getPrice() * pt.getSoLuong();
+    //                 }
+    //             }
+    //         } while (pt == null);
+    //     }
+        
+        
+    //     // lấy thuộc tính tổng tiền đã thanh toán và số đơn hàng đã thanh toán
+    //     int tienTam = dsKhTemp[vtkh].getTongTienDaThanhToan();
+    //     int dhDaThanhToan = dsKhTemp[vtkh].getSoDonHangDaThanhToan();
+        
+    //     tienTam += tongTien; // cộng số tiền của cả hoá đơn đã nhập
+        
+    //     // Nếu là chỉnh sửa danh sách sản phẩm
+    //     if (dsXe != null) {
+    //         if (dsXe.length > 0) { // nếu danh sách sản phẩm > 0
+    //             int tongTienTraLai = 0;
+    //             int viTriCanChinhSua;
+    //             for(Xe x: dsXe) // ứng với từng phần tử
+    //             {
+    //                 // tìm sản phẩm trong danh sách với mã sản phẩm
+    //                 timThay = (Xe) ttds.layPhanTuVoi(x.getMaXe());
+                    
+    //                 // tăng số lượng sản phẩm trong danh sách vì xoá sản phẩm khỏi hoá đơn
+    //                 timThay.setSoLuong(timThay.getSoLuong()+x.getSoLuong());
+                    
+    //                 // tìm vị trí sản phẩm cần chỉnh sửa trong danh sách
+    //                 viTriCanChinhSua = ttds.timViTriXe(x.getMaXe());
+    //                 dsXe[viTriCanChinhSua] = timThay;
+                    
+    //                 // cập nhật lại danh sách
+    //                 ttds.setdsXe(dsXe);
+                    
+    //                 // tìm tổng tiền cần trả lại cho khách
+    //                 tongTienTraLai += x.getPrice() * x.getSoLuong();
+    //             }
+                
+    //             tienTam -= tongTienTraLai;
+    //         }
+    //     } else dhDaThanhToan++; // nếu đơn hàng mới hoàn toàn
+    //     // lưu lại
+    //     dsKhTemp[vtkh].setDsmspDamua(dsmspDamuatmp);
+    //     dsKhTemp[vtkh].setTongTienDaThanhToan(tienTam);
+    //     dsKhTemp[vtkh].setSoDonHangDaThanhToan(dhDaThanhToan);
+    //     dskh.setDsKhachHang(dsKhTemp);
+        
+    //     dsXe = dsx;
+    // }
+
     public void setDsXe() {
         // Khai báo
         DanhSachXe ttds = new DanhSachXe();
         DanhSachKhachHang dskh = new DanhSachKhachHang();
-        
-        Xe[] dsxFile = ttds.getdsXe();
-        Xe[] dsx = new Xe[soLuongXe];
 
         // Tìm khách hàng trong danh sách
         KhachHang[] dsKhTemp = dskh.getDsKhachHang();
         int vtkh = dskh.timViTriKhachHang(khachHang.getMaKhachHang());
 
         // Lấy mảng sản phẩm đã mua
-        int slspDamua = dsKhTemp[vtkh].getDsmspDamua().length;
-        String[] dsmspDamua = new String[slspDamua+soLuongXe];
-        System.arraycopy(dsKhTemp[vtkh].getDsmspDamua(), 0, dsmspDamua, 0, slspDamua);
+        String[] dsspDamua = dsKhTemp[vtkh].getDsmspDamua();
+        int slspDamua = dsspDamua.length;
+        String[] dsmspDamuatmp = new String[slspDamua+soLuongXe];
+        for(int i = 0; i < slspDamua; i++) {
+            dsmspDamuatmp[i] = dsspDamua[i];
+        }
 
+        Xe[] dsspFile = ttds.getdsXe();
+        Xe[] dssp = new Xe[soLuongXe];
+        
         Xe pt, timThay;
-        int vtsp, stt;
-        System.out.print("Ban co muon xuat ra man hinh danh sach xe khong? (1 - in, 0 - khong): ");
-        int chon = KiemTra.checkNumber();
-        if (chon == 1) ttds.xuatDanhSach();
+        int slcl, vtsp, chon;
+        // xem lại danh mục sản phẩm (tuỳ chọn)
+        System.out.print("Ban co muon xem lai danh sach xe? (0 - khong, 1 - xem):");
+        chon = Integer.parseInt(sc.nextLine());
+        
+        if (chon==1) ttds.xuatDanhSach();
+        
         for(int i=0;i<soLuongXe;i++) {
-            stt=i+1;
-            System.out.println("Them xe thu "+stt);
+            System.out.println("Them xe thu "+(i+1)+":");
             
             do {
-                System.out.print("Nhap ma xe:");
+                System.out.print("Nhap ma xe: ");
                 pt = (Xe) ttds.layPhanTuVoi(sc.nextLine());
                 
                 if (pt == null) 
-                    System.out.println("Khong tim thay xe!");
+                    System.out.println("Khong tim thay xe!!!");
                 else {
-                    if(i>0) {
-                        if(dsx[i-1].getMaXe() == pt.getMaXe()) dsx[i-1].setSoLuong(dsx[i-1].getSoLuong()+1);
-                        else {
-                            dsx[i] = pt;
-                            dsx[i].setSoLuong(1);
-                        }
-                    }
-                    else {
-                        dsx[i] = pt;
-                        dsx[i].setSoLuong(1);
-                    }
+                    dssp[i] = pt;
+                    
                     if (pt.getSoLuong() == 0) { // nếu sản phẩm đã hết hàng
-                        System.out.println("San pham da het hang, vui long chon xe khac!");
+                        System.out.println("Xe da het hang, vui long chon xe khac!");
                         pt=null;
                         continue;
                     }
-                    else {
-                        // Lưu mã sản phẩm riêng của người mua vào
-                        String tmp = pt.getMaXe() + dsKhTemp[vtkh].getMaKhachHang() + thanghientai + namhientai + slspDamua;
-                        dsmspDamua[slspDamua++] = tmp;
+                    // tìm sản phẩm trong danh sách sp với mã sản phẩm
+                    timThay = (Xe) ttds.layPhanTuVoi(pt.getMaXe());
+                    
+                    do {
 
-                        // tìm sản phẩm trong danh sách sp với mã sản phẩm
-                        timThay = (Xe) ttds.layPhanTuVoi(pt.getMaXe());
+                        pt.setSoLuong();
+
+                        // tính toán số lượng sản phẩm còn lại
+                        slcl = timThay.getSoLuong()-pt.getSoLuong();
                         
-                        // giảm số lượng sản phẩm trong danh sách vì đã thêm sản phẩm vào hoá đơn.
-                        timThay.setSoLuong(timThay.getSoLuong()-1);
-                        
-                        // tìm vị trí sản phẩm đã nhập trong danh sách
-                        vtsp = ttds.timViTriXe(pt.getMaXe());
-                        
-                        // cập nhật lại số lượng sản phẩm
-                        dsxFile[vtsp] = timThay;
-                        ttds.setdsXe(dsxFile);
-                        
-                        // cập nhật tổng tiền
-                        tongTien += pt.getPrice() * pt.getSoLuong();
+                        // nếu vượt quá số lượng sản phẩm hiện có
+                        if (slcl < 0) System.out.println("So luong xe khong du! Xe hien tai con: " + timThay.getSoLuong());
+                    } while (slcl < 0);
+                    
+                    // Lưu mã sản phẩm riêng của người mua vào
+                    for(int j = 0; j < pt.getSoLuong(); j++) {
+                        String tmp = pt.getMaXe() + dsKhTemp[vtkh].getMaKhachHang() + thanghientai + namhientai + (slspDamua+1);
+                        dsmspDamuatmp[slspDamua++] = tmp;
                     }
+
+                    // giảm số lượng sản phẩm trong danh sách vì đã thêm sản phẩm vào hoá đơn.
+                    timThay.setSoLuong(timThay.getSoLuong()-pt.getSoLuong());
+                    
+                    // tìm vị trí sản phẩm đã nhập trong danh sách
+                    vtsp = ttds.timViTriXe(pt.getMaXe());
+                    
+                    // cập nhật lại số lượng sản phẩm
+                    dsspFile[vtsp] = timThay;
+                    ttds.setdsXe(dsspFile);
+                    
+                    // cập nhật tổng tiền
+                    tongTien += pt.getPrice() * pt.getSoLuong();
                 }
             } while (pt == null);
         }
-        
         
         // lấy thuộc tính tổng tiền đã thanh toán và số đơn hàng đã thanh toán
         int tienTam = dsKhTemp[vtkh].getTongTienDaThanhToan();
@@ -170,10 +296,10 @@ public class HoaDon extends PhanTu {
                     
                     // tìm vị trí sản phẩm cần chỉnh sửa trong danh sách
                     viTriCanChinhSua = ttds.timViTriXe(x.getMaXe());
-                    dsXe[viTriCanChinhSua] = timThay;
+                    dsspFile[viTriCanChinhSua] = timThay;
                     
                     // cập nhật lại danh sách
-                    ttds.setdsXe(dsXe);
+                    ttds.setdsXe(dsspFile);
                     
                     // tìm tổng tiền cần trả lại cho khách
                     tongTienTraLai += x.getPrice() * x.getSoLuong();
@@ -182,13 +308,14 @@ public class HoaDon extends PhanTu {
                 tienTam -= tongTienTraLai;
             }
         } else dhDaThanhToan++; // nếu đơn hàng mới hoàn toàn
+        
         // lưu lại
-        dsKhTemp[vtkh].setDsmspDamua(dsmspDamua);
+        dsKhTemp[vtkh].setDsmspDamua(dsmspDamuatmp);
         dsKhTemp[vtkh].setTongTienDaThanhToan(tienTam);
         dsKhTemp[vtkh].setSoDonHangDaThanhToan(dhDaThanhToan);
         dskh.setDsKhachHang(dsKhTemp);
         
-        dsXe = dsx;
+        dsXe = dssp;
     }
 
     public int getSoHoaDon() {
@@ -432,8 +559,10 @@ public class HoaDon extends PhanTu {
         System.out.println("=== Sua thong tin hoa don ===");
         System.out.println("1. Sua so hoa don");
         System.out.println("2. Sua ma khach hang");
-        System.out.println("3. Sua danh sach xe");
-        System.out.println("4. Sua phuong thuc thanh toan");
+        System.out.println("3. Sua ma nhan vien lap hoa don");
+        System.out.println("4. Sua ngay lap hoa don");
+        System.out.println("5. Sua danh sach xe");
+        System.out.println("6. Sua phuong thuc thanh toan");
         System.out.println("0. Quay ve menu quan ly xe");
         System.out.println("===============================");
         int chon;
@@ -453,6 +582,14 @@ public class HoaDon extends PhanTu {
                     setKhachHang();
                     break;
                 case 3:
+                    System.out.println("Thong tin hien tai: "+getMnv());
+                    setMnv();
+                    break;
+                case 4:
+                    System.out.println("Thong tin hien tai: "+getNgaylapdon());
+                    setNgaylapdon();
+                    break;
+                case 5:
                     System.out.println("Thong tin hien tai: ");
                     // xuất danh sách sản phẩm
                     Xe[] dsx = (Xe[]) getDsXe();
@@ -463,7 +600,7 @@ public class HoaDon extends PhanTu {
                     setSoLuongXe();
                     setDsXe();
                     break;
-                case 4:
+                case 6:
                     System.out.println("Thong tin hien tai: "+getPhThThanhToan());
                     setPhThThanhToan();
                     break;

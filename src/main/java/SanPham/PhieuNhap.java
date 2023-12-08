@@ -174,7 +174,27 @@ public class PhieuNhap extends PhanTu {
                 }
             } while (pt == null);
         }
-        
+        // Nếu là chỉnh sửa danh sách sản phẩm
+        if (dsmspNhap != null) {
+            if (dsmspNhap.length > 0) { // nếu danh sách sản phẩm > 0
+                int viTriCanChinhSua;
+                for(Xe x: dsmspNhap) // ứng với từng phần tử
+                {
+                    // tìm sản phẩm trong danh sách với mã sản phẩm
+                    timThay = (Xe) ttds.layPhanTuVoi(x.getMaXe());
+                    
+                    // tăng số lượng sản phẩm trong danh sách vì xoá sản phẩm khỏi hoá đơn
+                    timThay.setSoLuong(timThay.getSoLuong()-x.getSoLuong());
+                    
+                    // tìm vị trí sản phẩm cần chỉnh sửa trong danh sách
+                    viTriCanChinhSua = ttds.timViTriXe(x.getMaXe());
+                    dsspFile[viTriCanChinhSua] = timThay;
+
+                    // cập nhật lại danh sách
+                    ttds.setdsXe(dsspFile);
+                }
+            }
+        }
         dsmspNhap = dssp;
     }
 
@@ -234,7 +254,6 @@ public class PhieuNhap extends PhanTu {
             System.out.println("3. Sua ma nhan vien lap phieu nhap");
             System.out.println("4. Sua ngay lap phieu nhap");
             System.out.println("5. Sua danh sach ma xe");
-            System.out.println("6. Sua so luong xe nhap");
             System.out.println("0. Quay ve menu quan ly xe");
             System.out.println("===============================");
             System.out.print("Nhap lua chon: ");
@@ -269,10 +288,6 @@ public class PhieuNhap extends PhanTu {
                     System.out.println("Nhap moi danh sach xe: ");
                     setSoluongNhap();
                     setDsXe();
-                    break;
-                case 6:
-                    System.out.println("Thong tin hien tai: "+getSoluongNhap());
-                    setSoluongNhap();
                     break;
                 default:
                     System.out.println("Hay chon lai!");
