@@ -79,7 +79,7 @@ public class TaiKhoan extends PhanTu {
             System.out.print("Nhap khong trung nhau!!!");
             return;
         }
-        System.out.print("Thay doi mat khau thanh cong!!!");
+        System.out.println("Thay doi mat khau thanh cong!!!");
         password = password_new;
     }
 
