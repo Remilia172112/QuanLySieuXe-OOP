@@ -63,9 +63,13 @@ public class KhachHang extends Nguoi {
         boolean check = false;
         do
         {
-            maKhachHang = KiemTra.checkMaso();
-            check = ttds.layPhanTuVoi(maKhachHang+"") == null;
-            if (!check) System.out.print("Ma khach hang da ton tai, moi nhap lai: ");
+            maKhachHang = sc.nextLine();
+            check = KiemTra.checkMSKH(maKhachHang);
+            if(!check) System.out.print("Nhap sai ma khach hang (KH), moi nhap lai: ");
+            if(check) {
+                check = ttds.layPhanTuVoi(maKhachHang+"") == null;
+                if (!check) System.out.print("Ma khach hang da ton tai, moi nhap lai: ");
+            }
         } while (!check);
     }
 

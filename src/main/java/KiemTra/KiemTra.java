@@ -42,7 +42,24 @@ public class KiemTra {
 		}
 		return true;
 	}
-
+	public static boolean checkMSKH(String input) {
+        String regex = "^KH\\d{2,}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.find();
+    }
+	public static boolean checkMSNV(String input) {
+        String regex = "^NV\\d{2,}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.find();
+    }
+	public static boolean checkMSQL(String input) {
+        String regex = "^QL\\d{2,}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.find();
+    }
 	public static boolean check_diachi(String text)
 	{
 		if(text == null || text == "")

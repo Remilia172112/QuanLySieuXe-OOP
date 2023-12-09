@@ -110,10 +110,14 @@ public class Xe extends PhanTu {
     public String getTenXe() {
         return tenXe;
     }
-    // chưa kiểm tra
+
     public void setTenXe() {
         System.out.print("Nhap ten xe: ");
-        tenXe = sc.nextLine();
+        boolean check = false;
+        do {
+            tenXe = sc.nextLine();
+            check = KiemTra.check_diachi(tenXe);
+        } while (!check);
     }
     public void setTenXe(String tenXe) {
         this.tenXe = tenXe;
@@ -122,10 +126,14 @@ public class Xe extends PhanTu {
     public void setThuongHieu(String thuongHieu) {
         this.thuongHieu = thuongHieu;
     }
-    // chưa kiểm tra
+
     public void setThuongHieu() {
         System.out.print("Nhap ten thuong hieu: ");
-        thuongHieu = sc.nextLine();
+        boolean check = false;
+        do {
+            thuongHieu  = sc.nextLine();
+            check = KiemTra.check_diachi(thuongHieu);
+        } while (!check);
     }
     public void setNoiSanXuat(String noiSanXuat) {
         this.noiSanXuat = noiSanXuat;

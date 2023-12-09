@@ -44,12 +44,7 @@ public class TaiKhoan extends PhanTu {
             if(check) {
                 check = dsnv.layPhanTuVoi(username) != null;
                 if (!check) {
-                    System.out.print("Ma nhan vien khong ton tai!! Ban co muon them nhan vien moi (1/0): ");
-                    int chon = KiemTra.checkNumber();
-                    if(chon == 1) {
-                        dsnv.themPhanTuVaoDanhSach();
-                        break;
-                    }
+                    System.out.print("Ma nhan vien khong ton tai!! Hay nhap lai: ");
                 }
             }
         }
@@ -135,9 +130,8 @@ public class TaiKhoan extends PhanTu {
         int chon;
         do {
             System.out.println("=== Sua thong tin nhan vien ===");
-            System.out.println("1. Sua tai khoan");
-            System.out.println("2. Sua mat khau");
-            System.out.println("3. Sua loai tai khoan");
+            System.out.println("1. Sua mat khau");
+            System.out.println("2. Sua loai tai khoan");
             System.out.println("0. Thoat");
             System.out.println("===============================");
             System.out.print("Nhap lua chon: ");
@@ -147,14 +141,10 @@ public class TaiKhoan extends PhanTu {
                     System.out.println("Thoat sua thong tin!!!");
                     break;
                 case 1:
-                    System.out.println("Thong tin hien tai: " + getUsername());
-                    setUsername();
-                    break;
-                case 2:
                     System.out.println("Thong tin hien tai: " + getPassword());
                     setPassword();
                     break;
-                case 3:
+                case 2:
                     System.out.println("Thong tin hien tai: " + getType());
                     setType();
                     break;

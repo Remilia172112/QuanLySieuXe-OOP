@@ -88,14 +88,24 @@ public class DanhSachTaiKhoan implements DanhSachChung {
         return check;
     }
 
-    public void themPhanTuVaoDanhSach() {    
+    public void themPhanTuVaoDanhSach() {
+        DanhSachNhanVien dsnv = new DanhSachNhanVien();
+        if(dsnv.getSoLuong() == soLuong) {
+            System.out.print("Tat ca nhan vien da co tai khoan");
+            return;
+        }    
         PhanTu pt;
         pt = new TaiKhoan();
         pt.nhap();
         themVaoDanhSach(pt);
     }
 
-    public void themPhanTuVaoDanhSach(String username, String type) {    
+    public void themPhanTuVaoDanhSach(String username, String type) {  
+        DanhSachNhanVien dsnv = new DanhSachNhanVien();
+        if(dsnv.getSoLuong() == soLuong) {
+            System.out.print("Tat ca nhan vien da co tai khoan");
+            return;
+        }
         TaiKhoan pt;
         pt = new TaiKhoan();
         pt.nhap(username, type);
@@ -155,6 +165,11 @@ public class DanhSachTaiKhoan implements DanhSachChung {
         setDsTaiKhoan(dsTaiKhoanTmp);
     }
     public void themKPhanTuVaoDanhSach() {
+        DanhSachNhanVien dsnv = new DanhSachNhanVien();
+        if(dsnv.getSoLuong() == soLuong) {
+            System.out.println("Tat ca nhan vien da co tai khoan!!");
+            return;
+        }
         System.out.print("Nhap so luong tai khoan can them vao danh sach: ");
         int sl = KiemTra.checkNumber();
         PhanTu pt;

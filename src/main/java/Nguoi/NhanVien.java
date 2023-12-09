@@ -60,9 +60,12 @@ public class NhanVien extends Nguoi {
         do {
             check = true;
             manhanvien = sc.nextLine();
-            check = ttds.layPhanTuVoi(manhanvien) == null;
-            if (!check) System.out.print("Ma nhan vien da ton tai, moi nhap lai: ");
-            check = KiemTra.check_maso(manhanvien);
+            check = KiemTra.checkMSNV(manhanvien) || KiemTra.checkMSQL(manhanvien);
+            if(!check) System.out.print("Nhap sai ma nhan vien (NV/QL), moi nhap lai: ");
+            if(check) {
+                check = ttds.layPhanTuVoi(manhanvien+"") == null;
+                if (!check) System.out.print("Ma nhan vien da ton tai, moi nhap lai: ");
+            }
         }
         while (!check);
     }
