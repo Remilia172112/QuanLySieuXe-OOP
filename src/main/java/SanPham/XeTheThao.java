@@ -34,7 +34,7 @@ public class XeTheThao extends Xe {
 
     @Override
     public void nhap(){
-        super.nhap();
+        super.nhapXTT();
         setHangxe();
     }
     @Override

@@ -11,6 +11,16 @@ public class ThanhToan {
     private CKTinDung PTTinDung = null;
     private CKViDienTu PTViDienTu = null;
 
+    public ThanhToan() {
+    }
+
+    public ThanhToan(String phuongThucThanhToan, CKNganHang PTNganHang, CKTinDung PTTinDung, CKViDienTu PTViDienTu) {
+        this.phuongThucThanhToan = phuongThucThanhToan;
+        this.PTNganHang = PTNganHang;
+        this.PTTinDung = PTTinDung;
+        this.PTViDienTu = PTViDienTu;
+    }
+    
     public String getPhuongThucThanhToan() {
         return phuongThucThanhToan;
     }

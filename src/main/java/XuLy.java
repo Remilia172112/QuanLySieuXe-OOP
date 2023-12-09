@@ -5,9 +5,6 @@ import SanPham.PhanTu;
 import KiemTra.KiemTra;
 
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class XuLy {
     private static Scanner sc = new Scanner(System.in);
     public static String username;
@@ -232,6 +229,17 @@ public class XuLy {
         System.out.println("==============================");
         System.out.print("Moi chon: ");
     }
+    private static void inMenuDX(String ten) {
+        System.out.println("==============================");
+        System.out.println("*** QUAN LY DANH SACH "+ten.toUpperCase()+" ***");
+        System.out.println("1. Xuat danh sach");
+        System.out.println("2. Tim "+ten);
+        System.out.println("3. Thong ke");
+        System.out.println("4. Tong so luong "+ten);
+        System.out.println("0. Quay lai menu quan ly");
+        System.out.println("==============================");
+        System.out.print("Moi chon: ");
+    }
     public static void quanLyDSX() {
         DanhSachXe ttds = new DanhSachXe();
         inMenu("xe");
@@ -407,7 +415,7 @@ public class XuLy {
     public static void quanLyDSDX() {
         DanhSachDongXe ttds = new DanhSachDongXe();
         DanhSachXe dsx = new DanhSachXe();
-        inMenu("dong xe");
+        inMenuDX("dong xe");
         int chon;
         do {
             chon = KiemTra.checkNumber();
@@ -417,33 +425,19 @@ public class XuLy {
             }
             switch (chon) {
                 case 1:
-                    ttds.nhapDanhSach();
-                    break;
-                case 2:
                     ttds.xuatDanhSach();
                     break;
-                case 3:
-                    Logger logger = Logger.getLogger("MyLogger");
-                    logger.log(Level.WARNING, "Vui long nhap danh sach xe truoc khi quan ly dong xe!");
-                    ttds.themKPhanTuVaoDanhSach();
-                    break;
-                case 4:
-                    ttds.chinhSuaThongTinPhanTu();
-                    break;
-                case 5:
-                    ttds.xoaPhanTu();
-                    break;
-                case 6:
+                case 2:
                     PhanTu pt = ttds.timPhanTu();
                     if (pt != null) {
                         System.out.println("** Thong tin tim thay **");
                         pt.xuat();
                     } else System.out.println("Khong tim thay!");
                     break;
-                case 7:
+                case 3:
                     ttds.thongKe();
                     break;
-                case 8:
+                case 4:
                     System.out.println("So luong: " + ttds.getSoLuong());
                     break;
                 default:
@@ -451,7 +445,7 @@ public class XuLy {
                     chon = 0;
                     break;
             }
-            if (chon!=0)inMenu("dong xe");
+            if (chon!=0)inMenuDX("dong xe");
         } while(chon!=0);
     }
     public static void quanLyDSHD() {

@@ -29,7 +29,7 @@ public class XeDien extends Xe {
 
     @Override
     public void nhap(){
-        super.nhap();
+        super.nhapXD();
         setDungluongpin();
     }
     @Override

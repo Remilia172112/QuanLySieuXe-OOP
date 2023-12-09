@@ -114,7 +114,7 @@ public class DanhSachXe implements DanhSachChung {
 
         for(int i=0;i<soLuongCurrent;i++){
             System.out.println("Them xe thu " + (i+1) + ": ");
-            System.out.print("Chon loai xe (Xe the thao/Xe mui tran/Xe dien): ");
+            System.out.println("Chon loai xe: ");
             tmp = KiemTra.checkLoaixe();
             if(tmp.equals("Xe the thao")) {
                 dsXe[i] = new XeTheThao();
@@ -169,7 +169,7 @@ public class DanhSachXe implements DanhSachChung {
         for(int i=0;i<sl;i++)
         {
             System.out.println("Them xe thu " + (i+1) + ": ");
-            System.out.print("Chon loai xe (Xe the thao/Xe mui tran/Xe dien): ");
+            System.out.println("Chon loai xe: ");
             tmp = KiemTra.checkLoaixe();
             if(tmp.equals("Xe the thao")) {
                 pt = new XeTheThao();
@@ -194,7 +194,7 @@ public class DanhSachXe implements DanhSachChung {
     public void themPhanTuVaoDanhSach() {
         PhanTu pt;
         String tmp;
-        System.out.print("Chon loai xe (Xe the thao/Xe mui tran/Xe dien): ");
+        System.out.println("Chon loai xe: ");
         tmp = KiemTra.checkLoaixe();
         if(tmp.equals("Xe the thao")) {
             pt = new XeTheThao();

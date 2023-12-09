@@ -110,7 +110,7 @@ public class DanhSachKhachHang implements DanhSachChung {
         for(int i=0;i<soLuong;i++) {
             kh = (KhachHang) dsKhachhang[i];
             FileHandler.themKH(kh.getMaKhachHang(), kh.getHoten(), kh.getNgaythangnamsinh(), kh.getGioitinh(), kh.getCCCD(), kh.getDiachi(), 
-                    kh.getSdt(), kh.getEmail(),kh.getDsmspDamua(), kh.getSoDonHangDaThanhToan(), kh.getTongTienDaThanhToan(), kh.getPhThThanhToan());
+                kh.getSdt(), kh.getEmail(),kh.getDsmspDamua(), kh.getSoDonHangDaThanhToan(), kh.getTongTienDaThanhToan(), kh.getPhThThanhToan());
         }
         this.dsKhachHang = (KhachHang[]) dsKhachhang;
     }

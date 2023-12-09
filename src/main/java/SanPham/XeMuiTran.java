@@ -33,7 +33,7 @@ public class XeMuiTran extends Xe {
 
     @Override
     public void nhap(){
-        super.nhap();
+        super.nhapXMT();
         setLoaimui();
     }
     @Override

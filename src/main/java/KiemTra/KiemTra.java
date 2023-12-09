@@ -215,16 +215,29 @@ public class KiemTra {
 	}
 	public static String checkLoaixe() {
 		boolean check = false;
-		String str;
+		int choose;
+		System.out.println("==============================");
+		System.out.println("1. Xe the thao");
+		System.out.println("2. Xe mui tran");
+		System.out.println("3. Xe dien");
+		System.out.println("==============================");
 		do {
-			str = sc.nextLine();
+			System.out.print("Moi chon: ");
+			choose = Integer.parseInt(sc.nextLine());
 			check = true;
-			if(!(str.equals("Xe the thao")||str.equals("Xe mui tran")||str.equals("Xe dien"))) {
-                System.out.print("Hay nhap dung loai xe: ");
-				check = false;
-            }
+			switch (choose) {
+				case 1:
+					return "Xe the thao";
+				case 2:
+					return "Xe mui tran";
+				case 3:
+					return "Xe dien";
+				default:
+					System.out.println("Hay chon so co trong menu!!!");
+					break;
+			}
 		} while (!check);
-		return str;
+		return "";
 	}
 	public static boolean checkLoaimui(String text)
 	{
@@ -248,4 +261,22 @@ public class KiemTra {
 		}
 		return true;
 	}
+	public static boolean checkMaxeTT(String input) {
+        String regex = "^SPORT\\d{2,}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.find();
+    }
+	public static boolean checkMaxeMT(String input) {
+        String regex = "^ROADSTER\\d{2,}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.find();
+    }
+	public static boolean checkMaxeD(String input) {
+        String regex = "^VINFAST\\d{2,}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.find();
+    }
 }

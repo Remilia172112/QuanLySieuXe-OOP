@@ -56,7 +56,7 @@ public class PhieuNhap extends PhanTu {
     }
     public void setMaNhaCC() {
         DanhSachNhaCungCap dsncc = new DanhSachNhaCungCap();
-        System.out.println("Ban co muon xuat ra man hinh danh sach nha cung cap khong? (1 - in, 0 - khong): ");
+        System.out.print("Ban co muon xuat ra man hinh danh sach nha cung cap khong? (1 - in, 0 - khong): ");
         int chon = KiemTra.checkNumber();
         if(chon == 1) {
             dsncc.xuatDanhSach();
