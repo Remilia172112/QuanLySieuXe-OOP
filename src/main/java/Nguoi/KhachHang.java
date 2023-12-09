@@ -103,7 +103,7 @@ public class KhachHang extends Nguoi {
             DanhSachXe ttds = new DanhSachXe();
             ttds.xuatDanhSach();
         }
-        System.out.println("Nhap day cac ma xe da mua, phan cach boi dau cham phay (;):");
+        System.out.println("Nhap day cac ma xe da mua, phan cach boi dau cham phay (;): ");
 
         String dsMaSP;
 
@@ -183,7 +183,7 @@ public class KhachHang extends Nguoi {
         String maSP;
         DanhSachXe ttds = new DanhSachXe();
         boolean check = false;
-        System.out.println("Ma xe da mua bao gom: ma xe + ma khach hang + thang nam mua xe");
+        System.out.println("Ma xe da mua bao gom: ma xe + ma khach hang + thang nam mua xe + thu tu mua");
         System.out.print("Ban co muon xuat ra man hinh danh sach xe khong? (1 - in, 0 - khong): ");
         int chon = KiemTra.checkNumber();
         if (chon == 1) {
@@ -260,7 +260,7 @@ public class KhachHang extends Nguoi {
 
             for(int i=0;i<dsmspDamua.length;i++) {
 
-                pt = (Xe) ttds.layPhanTuVoi(dsmspDamua[i].substring(0, dsmspDamua[i].length()-6-maKhachHang.length()));
+                pt = (Xe) ttds.layPhanTuVoi(dsmspDamua[i].substring(0, dsmspDamua[i].length()-7-maKhachHang.length()));
 
                 if (pt != null) System.out.printf("%-20s %-30s %-20s %-20s %-20s \n", dsmspDamua[i], pt.getTenXe(), pt.getThuongHieu(), pt.getNoiSanXuat(), pt.getPrice());
             }

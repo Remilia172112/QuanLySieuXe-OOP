@@ -6,7 +6,7 @@ public class DongXe extends PhanTu {
     private String tenDongxe;
     private int soLuong = 0;
     private String[] dsMaXe;
-    private  int thangbaoHanh ;
+    private int thangbaoHanh ;
 
     public DongXe() {
     }
@@ -203,6 +203,7 @@ public class DongXe extends PhanTu {
         }
         System.out.println("****************************");
     }
+    // Thiếu sửa tháng bảo hành
     @Override
     public void suaThongTin() {
         int chon;

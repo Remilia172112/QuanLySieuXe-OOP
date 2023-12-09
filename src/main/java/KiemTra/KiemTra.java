@@ -18,7 +18,7 @@ public class KiemTra {
 		}
 		return true;
 	}
-
+	
 	public static String checkMaso() {
         boolean check = false;
 		String str;
@@ -256,7 +256,7 @@ public class KiemTra {
 		Pattern pattern = Pattern.compile(reg);
 		Matcher matcher = pattern.matcher(text);
 		if (!matcher.matches() || text == "") {
-			System.out.print("Khong nhap dung hang xe (A,B,C,D,S)!! Moi nhap lai: ");
+			System.out.print("Khong nhap dung hang xe (S,A,B,C,D)!! Moi nhap lai: ");
 			return false;
 		}
 		return true;

@@ -3,7 +3,6 @@ package DanhSach;
 import File.FileHandler;
 import KiemTra.KiemTra;
 import Nguoi.NhanVien;
-import Nguoi.TaiKhoan;
 import SanPham.PhanTu;
 
 public class DanhSachNhanVien implements DanhSachChung {
@@ -79,7 +78,7 @@ public class DanhSachNhanVien implements DanhSachChung {
 
     public void themPhanTuVaoDanhSach() {    
         PhanTu pt;
-        pt = new TaiKhoan();
+        pt = new NhanVien();
         pt.nhap();
         themVaoDanhSach(pt);
     }

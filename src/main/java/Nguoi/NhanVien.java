@@ -9,7 +9,7 @@ public class NhanVien extends Nguoi {
     private String chucvu;
     private String ngayvaolam;
     private static int luongcoban = 4500000;
-    private double hesoluong = 1;
+    private double hesoluong = 1.0;
     private double luong;
     private double thuong;
     private char hang;

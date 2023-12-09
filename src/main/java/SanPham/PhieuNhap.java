@@ -183,7 +183,7 @@ public class PhieuNhap extends PhanTu {
                     // tìm sản phẩm trong danh sách với mã sản phẩm
                     timThay = (Xe) ttds.layPhanTuVoi(x.getMaXe());
                     
-                    // tăng số lượng sản phẩm trong danh sách vì xoá sản phẩm khỏi hoá đơn
+                    // giảm số lượng sản phẩm trong danh sách vì xoá sản phẩm khỏi hoá đơn
                     timThay.setSoLuong(timThay.getSoLuong()-x.getSoLuong());
                     
                     // tìm vị trí sản phẩm cần chỉnh sửa trong danh sách

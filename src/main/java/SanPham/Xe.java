@@ -8,9 +8,10 @@ public class Xe extends PhanTu {
     private String tenXe ;
     private String thuongHieu ;
     private String loaiXe;
-    private  String noiSanXuat ;
+    private String noiSanXuat ;
     private int soLuong ;
     private int price ;
+
     public Xe(){
     }
 
@@ -109,7 +110,7 @@ public class Xe extends PhanTu {
     public String getTenXe() {
         return tenXe;
     }
-
+    // chưa kiểm tra
     public void setTenXe() {
         System.out.print("Nhap ten xe: ");
         tenXe = sc.nextLine();
@@ -121,6 +122,7 @@ public class Xe extends PhanTu {
     public void setThuongHieu(String thuongHieu) {
         this.thuongHieu = thuongHieu;
     }
+    // chưa kiểm tra
     public void setThuongHieu() {
         System.out.print("Nhap ten thuong hieu: ");
         thuongHieu = sc.nextLine();

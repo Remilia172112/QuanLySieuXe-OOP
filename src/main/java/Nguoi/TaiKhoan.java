@@ -46,7 +46,10 @@ public class TaiKhoan extends PhanTu {
                 if (!check) {
                     System.out.print("Ma nhan vien khong ton tai!! Ban co muon them nhan vien moi (1/0): ");
                     int chon = KiemTra.checkNumber();
-                    if(chon == 1) dsnv.themPhanTuVaoDanhSach();
+                    if(chon == 1) {
+                        dsnv.themPhanTuVaoDanhSach();
+                        break;
+                    }
                 }
             }
         }

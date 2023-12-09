@@ -263,7 +263,7 @@ public class HoaDon extends PhanTu {
                     timThay.setSoLuong(timThay.getSoLuong()-pt.getSoLuong());
                     
                     // tìm vị trí sản phẩm đã nhập trong danh sách
-                    vtsp = ttds.timViTriXe(pt.getMaXe());
+                    vtsp = ttds.timViTriXe(timThay.getMaXe());
                     
                     // cập nhật lại số lượng sản phẩm
                     dsspFile[vtsp] = timThay;
