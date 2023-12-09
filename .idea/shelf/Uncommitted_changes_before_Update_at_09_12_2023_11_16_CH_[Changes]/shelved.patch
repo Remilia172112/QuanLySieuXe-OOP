@@ -1,0 +1,57 @@
+Index: src/main/java/SanPham/Xe.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package SanPham;\r\n\r\nimport DanhSach.DanhSachDongXe;\r\nimport DanhSach.DanhSachXe;\r\nimport KiemTra.KiemTra;\r\npublic class Xe extends PhanTu {\r\n    private String maXe ;\r\n    private String tenXe ;\r\n    private String thuongHieu ;\r\n    private String loaiXe;\r\n    private String noiSanXuat ;\r\n    private int soLuong ;\r\n    private int price ;\r\n\r\n    public Xe(){\r\n    }\r\n\r\n    public Xe(String maXe , String tenXe , String thuongHieu , String loaiXe, String noiSanXuat , int soLuong , int price){\r\n        this.maXe = maXe ;\r\n        this.tenXe = tenXe ;\r\n        this.thuongHieu = thuongHieu ;\r\n        this.loaiXe = loaiXe ;\r\n        this.noiSanXuat = noiSanXuat ;\r\n        this.soLuong = soLuong ;\r\n        this.price = price ;\r\n    }\r\n\r\n    public String getMaXe() {\r\n        return maXe;\r\n    }\r\n    public void setMaXe() {\r\n        DanhSachXe ttds = new DanhSachXe();\r\n        DanhSachDongXe dsdx = new DanhSachDongXe();\r\n        System.out.print(\"Ban co muon xuat ra man hinh danh sach dong xe khong? (1 - in, 0 - khong): \");\r\n        int chon = KiemTra.checkNumber();\r\n        if (chon == 1) dsdx.xuatDanhSachDongxe();\r\n        System.out.print(\"Nhap ma xe: \");\r\n        boolean check = false;\r\n        do\r\n        {\r\n            maXe = sc.nextLine();\r\n\r\n            check = ttds.layPhanTuVoi(maXe) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa\r\n            if (!check) System.out.print(\"Ma xe da ton tai, moi nhap lai: \");\r\n\r\n            if(check) {\r\n                check = dsdx.Checkmadongxe(maXe) == true;\r\n                if(!check) System.out.print(\"Ma xe phai trung 1 phan voi ma dong xe!! Moi nhap lai: \");    \r\n            }\r\n        } while (!check);\r\n    }\r\n    // Check mã xe theo mã của dòng xe của từng loại xe\r\n    public void setMaXeTT() {\r\n        DanhSachXe ttds = new DanhSachXe();\r\n        System.out.println(\"Ma xe chung cua loai xe the thao: SPORT\");\r\n        System.out.print(\"Nhap ma xe: \");\r\n        boolean check = false;\r\n        do\r\n        {\r\n            maXe = sc.nextLine();\r\n\r\n            check = ttds.layPhanTuVoi(maXe) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa\r\n            if (!check) System.out.print(\"Ma xe da ton tai, moi nhap lai: \");\r\n\r\n            if(check) {\r\n                check = KiemTra.checkMaxeTT(maXe);\r\n                if(!check) System.out.print(\"Ma xe phai trung 1 phan voi ma dong xe!! Moi nhap lai: \");    \r\n            }\r\n        } while (!check);\r\n    }\r\n    public void setMaXeMT() {\r\n        DanhSachXe ttds = new DanhSachXe();\r\n        System.out.println(\"Ma xe chung cua loai xe mui tran: ROADSTER\");\r\n        System.out.print(\"Nhap ma xe: \");\r\n        boolean check = false;\r\n        do\r\n        {\r\n            maXe = sc.nextLine();\r\n\r\n            check = ttds.layPhanTuVoi(maXe) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa\r\n            if (!check) System.out.print(\"Ma xe da ton tai, moi nhap lai: \");\r\n\r\n            if(check) {\r\n                check = KiemTra.checkMaxeMT(maXe);\r\n                if(!check) System.out.print(\"Ma xe phai trung 1 phan voi ma dong xe!! Moi nhap lai: \");    \r\n            }\r\n        } while (!check);\r\n    }\r\n    public void setMaXeD() {\r\n        DanhSachXe ttds = new DanhSachXe();\r\n        System.out.println(\"Ma xe chung cua loai xe dien: VINFAST\");\r\n        System.out.print(\"Nhap ma xe: \");\r\n        boolean check = false;\r\n        do\r\n        {\r\n            maXe = sc.nextLine();\r\n\r\n            check = ttds.layPhanTuVoi(maXe) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa\r\n            if (!check) System.out.print(\"Ma xe da ton tai, moi nhap lai: \");\r\n\r\n            if(check) {\r\n                check = KiemTra.checkMaxeD(maXe);\r\n                if(!check) System.out.print(\"Ma xe phai trung 1 phan voi ma dong xe!! Moi nhap lai: \");    \r\n            }\r\n        } while (!check);\r\n    }\r\n    public void setMaXe(String maXe) {\r\n        this.maXe = maXe;\r\n    }\r\n    public String getTenXe() {\r\n        return tenXe;\r\n    }\r\n    // chưa kiểm tra\r\n    public void setTenXe() {\r\n        System.out.print(\"Nhap ten xe: \");\r\n        tenXe = sc.nextLine();\r\n    }\r\n    public void setTenXe(String tenXe) {\r\n        this.tenXe = tenXe;\r\n    }\r\n\r\n    public void setThuongHieu(String thuongHieu) {\r\n        this.thuongHieu = thuongHieu;\r\n    }\r\n    // chưa kiểm tra\r\n    public void setThuongHieu() {\r\n        System.out.print(\"Nhap ten thuong hieu: \");\r\n        thuongHieu = sc.nextLine();\r\n    }\r\n    public void setNoiSanXuat(String noiSanXuat) {\r\n        this.noiSanXuat = noiSanXuat;\r\n    }\r\n    public void setNoiSanXuat() {\r\n        System.out.print(\"Nhap noi san xuat: \");\r\n        noiSanXuat = sc.nextLine();\r\n    }\r\n    public void setSoLuong(int soLuong) {\r\n        this.soLuong = soLuong;\r\n    }\r\n    public void setSoLuong() {\r\n        System.out.print(\"Nhap so luong: \");\r\n        soLuong = KiemTra.checkNumber();\r\n    }\r\n    public void setPrice(int price) {\r\n        this.price = price;\r\n    }\r\n    public void setPrice() {\r\n        System.out.print(\"Vui long nhap gia: \");\r\n        price = KiemTra.checkNumber();\r\n    }\r\n    public String getThuongHieu() {\r\n        return thuongHieu;\r\n    }\r\n\r\n    public String getNoiSanXuat() {\r\n        return noiSanXuat;\r\n    }\r\n\r\n    public int getSoLuong() {\r\n        return soLuong;\r\n    }\r\n\r\n    public int getPrice() {\r\n        return price;\r\n    }\r\n    \r\n    public String getLoaiXe() {\r\n        return loaiXe;\r\n    }\r\n\r\n    public void setLoaiXe(String loaiXe) {\r\n        this.loaiXe = loaiXe;\r\n    }\r\n\r\n    public void setLoaiXe() {\r\n        DanhSachDongXe dsdx = new DanhSachDongXe();\r\n        loaiXe = dsdx.getLoaixe(maXe);\r\n    }\r\n\r\n    @Override\r\n    public void nhap(){\r\n        setMaXe();\r\n        setTenXe();\r\n        setThuongHieu();\r\n        setLoaiXe();\r\n        setNoiSanXuat();\r\n        setSoLuong();\r\n        setPrice();\r\n    }\r\n    // Các phương thức nhập riêng cho từng loại xe\r\n    public void nhapXTT(){\r\n        setMaXeTT();\r\n        setTenXe();\r\n        setThuongHieu();\r\n        setLoaiXe();\r\n        setNoiSanXuat();\r\n        setSoLuong();\r\n        setPrice();\r\n    }\r\n    public void nhapXMT(){\r\n        setMaXeMT();\r\n        setTenXe();\r\n        setThuongHieu();\r\n        setLoaiXe();\r\n        setNoiSanXuat();\r\n        setSoLuong();\r\n        setPrice();\r\n    }\r\n    public void nhapXD(){\r\n        setMaXeD();\r\n        setTenXe();\r\n        setThuongHieu();\r\n        setLoaiXe();\r\n        setNoiSanXuat();\r\n        setSoLuong();\r\n        setPrice();\r\n    }\r\n    @Override\r\n    public void xuat() {\r\n        System.out.printf(\"%-20s %-25s %-20s %-20s %-20s %-15s %-20s \\n\",maXe,tenXe,thuongHieu,loaiXe,noiSanXuat,soLuong,price);\r\n    }\r\n    @Override\r\n    public void suaThongTin() {\r\n        int chon;\r\n        do {\r\n            System.out.println(\"=== Sua thong tin xe ===\");\r\n            System.out.println(\"1. Sua ma xe\");\r\n            System.out.println(\"2. Sua ten xe\");\r\n            System.out.println(\"3. Sua thuong hieu\");\r\n            System.out.println(\"4. Sua noi san xuat\");\r\n            System.out.println(\"5. Sua so luong\");\r\n            System.out.println(\"6. Sua gia\");\r\n            System.out.println(\"0. Quay ve menu truoc\");\r\n            System.out.println(\"===============================\");\r\n            System.out.print(\"Nhap lua chon: \");\r\n            chon = KiemTra.checkNumber();\r\n            switch (chon) {\r\n                case 0:\r\n                    System.out.println(\"Thoat sua thong tin xe!!\");\r\n                    break;\r\n                case 1:\r\n                    System.out.println(\"Thong tin hien tai: \"+getMaXe());\r\n                    setMaXe();\r\n                    break;\r\n                case 2:\r\n                    System.out.println(\"Thong tin hien tai: \"+getTenXe());\r\n                    setTenXe();\r\n                    break;\r\n                case 3:\r\n                    System.out.println(\"Thong tin hien tai: \"+getThuongHieu());\r\n                    setThuongHieu();\r\n                    break;\r\n                case 4:\r\n                    System.out.println(\"Thong tin hien tai: \"+getNoiSanXuat());\r\n                    setNoiSanXuat();\r\n                    break;\r\n                case 5:\r\n                    System.out.println(\"Thong tin hien tai: \"+getSoLuong());\r\n                    setSoLuong();\r\n                    break;\r\n                case 6:\r\n                    System.out.println(\"Thong tin hien tai: \"+getPrice());\r\n                    setPrice();\r\n                    break;\r\n                default:\r\n                    System.out.println(\"Hay chon lai!\");\r\n                    break;\r\n            }\r\n        } while(chon!=0);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/SanPham/Xe.java b/src/main/java/SanPham/Xe.java
+--- a/src/main/java/SanPham/Xe.java	(revision 2c55cf92bc896ba76831032aecadb8a7b902c122)
++++ b/src/main/java/SanPham/Xe.java	(date 1702135814707)
+@@ -39,7 +39,6 @@
+         do
+         {
+             maXe = sc.nextLine();
+-
+             check = ttds.layPhanTuVoi(maXe) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
+             if (!check) System.out.print("Ma xe da ton tai, moi nhap lai: ");
+ 
+@@ -76,7 +75,6 @@
+         do
+         {
+             maXe = sc.nextLine();
+-
+             check = ttds.layPhanTuVoi(maXe) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
+             if (!check) System.out.print("Ma xe da ton tai, moi nhap lai: ");
+ 
+@@ -110,10 +108,14 @@
+     public String getTenXe() {
+         return tenXe;
+     }
+-    // chưa kiểm tra
+     public void setTenXe() {
+         System.out.print("Nhap ten xe: ");
+-        tenXe = sc.nextLine();
++        boolean check;
++        do{
++            check = true ;
++            tenXe = sc.nextLine() ;
++            check = KiemTra.check_name(tenXe) ;
++        }while (!check) ;
+     }
+     public void setTenXe(String tenXe) {
+         this.tenXe = tenXe;
+@@ -125,7 +127,12 @@
+     // chưa kiểm tra
+     public void setThuongHieu() {
+         System.out.print("Nhap ten thuong hieu: ");
+-        thuongHieu = sc.nextLine();
++        boolean check = false;
++        do {
++            check = true ;
++            thuongHieu = sc.nextLine();
++            check = KiemTra.check_name(thuongHieu) ;
++        }while(! check ) ;
+     }
+     public void setNoiSanXuat(String noiSanXuat) {
+         this.noiSanXuat = noiSanXuat;

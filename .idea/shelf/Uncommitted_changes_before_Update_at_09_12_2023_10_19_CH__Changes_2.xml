@@ -1,0 +1,89 @@
+<changelist name="Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2" date="1702135177322" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 09/12/2023 10:19 CH [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/Nguoi/KhachHang.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/Nguoi/KhachHang.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/KhachHang.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachNhanVien.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachNhanVien.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/DanhSachNhanVien.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/Nguoi/NhanVien.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/Nguoi/NhanVien.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/NhanVien.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachXe.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachXe.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/DanhSachXe.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachChung.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachChung.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/DanhSachChung.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/File/FileHandler.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/File/FileHandler.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/FileHandler.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/ThanhToan/ThanhToan.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/ThanhToan/ThanhToan.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/ThanhToan.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachKhachHang.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachKhachHang.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/DanhSachKhachHang.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/KiemTra/KiemTra.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/KiemTra/KiemTra.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/KiemTra.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachTaiKhoan.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachTaiKhoan.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/DanhSachTaiKhoan.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachPhieuNhap.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachPhieuNhap.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/DanhSachPhieuNhap.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachHoaDon.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachHoaDon.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/DanhSachHoaDon.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachNhaCungCap.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachNhaCungCap.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/DanhSachNhaCungCap.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/XuLy.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/XuLy.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/XuLy.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/Nguoi/Nguoi.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/Nguoi/Nguoi.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/Nguoi.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachDongXe.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/DanhSach/DanhSachDongXe.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/DanhSachDongXe.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/QuanLySieuXe-OOP/Nguoi/TaiKhoan.class" />
+    <option name="AFTER_PATH" value="out/production/QuanLySieuXe-OOP/Nguoi/TaiKhoan.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_12_2023_10_19_CH_[Changes]2/TaiKhoan.class" />
+  </binary>
+</changelist>
