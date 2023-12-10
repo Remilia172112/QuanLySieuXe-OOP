@@ -22,7 +22,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
     }
 
     public NhaCungCap[] getdsNhaCC() { // đọc từ file
-        String data = FileHandler.docFile("./dsncc.txt");
+        String data = FileHandler.docFile("dsncc.txt");
         String[] dArr = data.split("\n"); // tạo mảng từ file
 
         // nếu file rỗng

@@ -112,7 +112,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         HoaDon[] dshd = getdsHoaDon();
         for(int i = 0; i < dshd.length; i++) {
             Xe[] dsxhd = dshd[i].getDsXe();
-            for (int j = 0; j < dshd.length; j++) {
+            for (int j = 0; j < dsxhd.length; j++) {
                 if(dsxhd[j].getLoaiXe().equals(loaixe)) tong += dsxhd[j].getPrice()*dsxhd[j].getSoLuong();
             }
         }
@@ -124,23 +124,31 @@ public class DanhSachHoaDon implements DanhSachChung {
         HoaDon[] dshd = getdsHoaDon();
         for (int i = 0; i < dshd.length; i++) {
             Xe[] dsxhd = dshd[i].getDsXe();
-            for (int j = 0; j < dshd.length; j++) {
+            for (int j = 0; j < dsxhd.length; j++) {
                 tong += dsxhd[j].getSoLuong();
             }
         }
         return tong;
     }
 
-    public int Soxedabantheoloai(String loaixe) {
+    public void Soxedabantheoloai(String loaixe) {
         int tong = 0;
         HoaDon[] dshd = getdsHoaDon();
         for (int i = 0; i < dshd.length; i++) {
             Xe[] dsxhd = dshd[i].getDsXe();
-            for (int j = 0; j < dshd.length; j++) {
+            for (int j = 0; j < dsxhd.length; j++) {
                 if(dsxhd[j].getLoaiXe().equals(loaixe)) tong += dsxhd[j].getSoLuong();
             }
         }
-        return tong;
+        System.out.println("So " + loaixe.toLowerCase() + " da ban: " + tong);
+        for (int i = 0; i < dshd.length; i++) {
+            Xe[] dsxhd = dshd[i].getDsXe();
+            for (int j = 0; j < dsxhd.length; j++) {
+                if(dsxhd[j].getLoaiXe().equals(loaixe)) {
+                    System.out.println(dsxhd[j].getMaXe() + ": " + dsxhd[j].getSoLuong());
+                }
+            }
+        }
     }
 
     public void Thongketheongay() {
@@ -336,7 +344,7 @@ public class DanhSachHoaDon implements DanhSachChung {
                 case 2:
                     System.out.println("Chon loai xe muon thong ke: ");
                     String tmp = KiemTra.checkLoaixe();
-                    System.out.println("So " + tmp.toLowerCase() + " da ban duoc: " + Soxedabantheoloai(tmp));
+                    Soxedabantheoloai(tmp);
                     System.out.println("Tong tien da ban duoc: " + Tongtientheoloai(tmp));
                     break;
                 case 3:

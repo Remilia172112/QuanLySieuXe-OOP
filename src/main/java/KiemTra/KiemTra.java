@@ -201,7 +201,7 @@ public class KiemTra {
             check = false;
             System.out.println("Thang khong hop le!");
         }
-        if (nam <= 1920 || nam > 2022) {
+        if (nam <= 1920 || nam > 2100) {
             check = false;
             System.out.println("Nam khong hop le!");
         }
