@@ -143,11 +143,9 @@ public class DanhSachHoaDon implements DanhSachChung {
             Xe[] dsxhd = dshd[i].getDsXe();
             for (int j = 0; j < dsxhd.length; j++) if(dsxhd[j].getLoaiXe().equals(loaixe)) {
                 tong += dsxhd[j].getSoLuong();
-                for(int k = 0; k < dsx.length; k++) {
-                    if(dsx[k].getMaXe().equals(dsxhd[j].getMaXe())) {
-                        dsx[k].setSoLuong(dsx[k].getSoLuong()+dsxhd[j].getSoLuong());
-                        break;
-                    }
+                for(int k = 0; k < dsx.length; k++) if(dsx[k].getMaXe().equals(dsxhd[j].getMaXe())) {
+                    dsx[k].setSoLuong(dsx[k].getSoLuong()+dsxhd[j].getSoLuong());
+                    break;
                 }
             }
         }

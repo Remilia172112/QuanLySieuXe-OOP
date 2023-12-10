@@ -135,11 +135,9 @@ public class DanhSachPhieuNhap implements DanhSachChung {
             Xe[] dsxpn = dspn[i].getDsXe();
             for (int j = 0; j < dsxpn.length; j++) if(dsxpn[j].getLoaiXe().equals(loaixe)) {
                 tong += dsxpn[j].getSoLuong();
-                for(int k = 0; k < dsx.length; k++) {
-                    if(dsx[k].getMaXe().equals(dsxpn[j].getMaXe())) {
-                        dsx[k].setSoLuong(dsx[k].getSoLuong()+dsxpn[j].getSoLuong());
-                        break;
-                    }
+                for(int k = 0; k < dsx.length; k++) if(dsx[k].getMaXe().equals(dsxpn[j].getMaXe())) {
+                    dsx[k].setSoLuong(dsx[k].getSoLuong()+dsxpn[j].getSoLuong());
+                    break;
                 }
             }
         }
