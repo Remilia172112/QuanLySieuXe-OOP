@@ -133,22 +133,26 @@ public class DanhSachHoaDon implements DanhSachChung {
 
     public void Soxedabantheoloai(String loaixe) {
         int tong = 0;
+        DanhSachXe dstmp = new DanhSachXe();
+        Xe[] dsx = dstmp.getdsXe();
+        for (int i = 0; i < dsx.length; i++) {
+            dsx[i].setSoLuong(0);
+        }
         HoaDon[] dshd = getdsHoaDon();
         for (int i = 0; i < dshd.length; i++) {
             Xe[] dsxhd = dshd[i].getDsXe();
-            for (int j = 0; j < dsxhd.length; j++) {
-                if(dsxhd[j].getLoaiXe().equals(loaixe)) tong += dsxhd[j].getSoLuong();
-            }
-        }
-        System.out.println("So " + loaixe.toLowerCase() + " da ban: " + tong);
-        for (int i = 0; i < dshd.length; i++) {
-            Xe[] dsxhd = dshd[i].getDsXe();
-            for (int j = 0; j < dsxhd.length; j++) {
-                if(dsxhd[j].getLoaiXe().equals(loaixe)) {
-                    System.out.println(dsxhd[j].getMaXe() + ": " + dsxhd[j].getSoLuong());
+            for (int j = 0; j < dsxhd.length; j++) if(dsxhd[j].getLoaiXe().equals(loaixe)) {
+                tong += dsxhd[j].getSoLuong();
+                for(int k = 0; k < dsx.length; k++) {
+                    if(dsx[k].getMaXe().equals(dsxhd[j].getMaXe())) {
+                        dsx[k].setSoLuong(dsx[k].getSoLuong()+dsxhd[j].getSoLuong());
+                        break;
+                    }
                 }
             }
         }
+        System.out.println("So " + loaixe.toLowerCase() + " da ban: " + tong);
+        for (int i = 0; i < dsx.length; i++) if(dsx[i].getSoLuong() != 0) System.out.println(dsx[i].getMaXe() + ": " + dsx[i].getSoLuong());
     }
 
     public void Thongketheongay() {

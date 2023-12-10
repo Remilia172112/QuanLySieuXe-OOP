@@ -31,7 +31,7 @@ public class XuLy {
                 case 1:
                     System.out.print("Tai khoan: ");
                     String user1 = sc.nextLine();
-                    System.out.print("Mat khau : ");
+                    System.out.print("Mat khau:  ");
                     String pass1 = sc.nextLine();
                     TaiKhoan tk1 = dstk.checkLogin(user1, pass1);
                     if(tk1 != null) {
@@ -49,7 +49,7 @@ public class XuLy {
                 case 2:
                     System.out.print("Tai khoan: ");
                     String user = sc.nextLine();
-                    System.out.print("Mat khau : ");
+                    System.out.print("Mat khau:  ");
                     String pass = sc.nextLine();
                     TaiKhoan tk = dstk.checkLogin(user, pass);
                     if(tk != null) {
