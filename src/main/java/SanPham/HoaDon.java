@@ -150,7 +150,7 @@ public class HoaDon extends PhanTu {
                     // Lưu mã sản phẩm riêng của người mua vào
                     for(int j = 0; j < pt.getSoLuong(); j++) {
                         dsspDamua = Arrays.copyOf(dsspDamua, dsspDamua.length+1);
-                        String tmp = pt.getMaXe() + dsKhTemp[vtkh].getMaKhachHang() + thanghientai + namhientai + (slspDamua+1);
+                        String tmp = pt.getMaXe() + dsKhTemp[vtkh].getMaKhachHang() + thanghientai + namhientai + ++slspDamua;
                         dsspDamua[dsspDamua.length-1] = tmp;
                     }
                     // giảm số lượng sản phẩm trong danh sách vì đã thêm sản phẩm vào hoá đơn.
