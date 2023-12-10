@@ -88,7 +88,11 @@ public class HoaDon extends PhanTu {
         // Lấy mảng sản phẩm đã mua
         String[] dsspDamua = dsKhTemp[vtkh].getDsmspDamua();
         int slspDamua = dsspDamua.length;
-
+        if(slspDamua >= 99) {
+            System.out.print("He thong da qua tai!!!");
+            return;
+        }
+        
         Xe[] dsspFile = ttds.getdsXe();
         Xe[] dssp = new Xe[soLuongXe];
         String[] madachon = new String[0];
@@ -150,7 +154,9 @@ public class HoaDon extends PhanTu {
                     // Lưu mã sản phẩm riêng của người mua vào
                     for(int j = 0; j < pt.getSoLuong(); j++) {
                         dsspDamua = Arrays.copyOf(dsspDamua, dsspDamua.length+1);
-                        String tmp = pt.getMaXe() + dsKhTemp[vtkh].getMaKhachHang() + thanghientai + namhientai + ++slspDamua;
+                        String tmp;
+                        if(slspDamua < 9) tmp = pt.getMaXe() + dsKhTemp[vtkh].getMaKhachHang() + thanghientai + namhientai + "0" + ++slspDamua;
+                        else tmp = pt.getMaXe() + dsKhTemp[vtkh].getMaKhachHang() + thanghientai + namhientai + ++slspDamua;
                         dsspDamua[dsspDamua.length-1] = tmp;
                     }
                     // giảm số lượng sản phẩm trong danh sách vì đã thêm sản phẩm vào hoá đơn.

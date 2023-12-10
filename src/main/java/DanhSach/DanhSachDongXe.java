@@ -113,7 +113,7 @@ public class DanhSachDongXe implements DanhSachChung {
             int namhientai = localDate.getYear();
             int thanghientai = localDate.getMonthValue();
             for(String a:dsmspdm) {
-                String dateyearbuy = a.substring(a.length() - 7, a.length()-1);
+                String dateyearbuy = a.substring(a.length() - 8, a.length()-2);
                 int namdathang = Integer.parseInt(dateyearbuy.substring(2));
                 int thangdaqua = thanghientai - Integer.parseInt(dateyearbuy.substring(0, 2));
                 if(namdathang > namhientai) thangdaqua += (namdathang-namhientai)*12;
