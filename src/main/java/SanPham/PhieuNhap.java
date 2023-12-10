@@ -242,6 +242,7 @@ public class PhieuNhap extends PhanTu {
         setMaNV(username);
         setNgaynhap();
         setSoLoaiNhap();
+        setTongTien(0);
         setDsXe();
     }
     @Override
@@ -251,6 +252,7 @@ public class PhieuNhap extends PhanTu {
         setMaNV();
         setNgaynhap();
         setSoLoaiNhap();
+        setTongTien(0);
         setDsXe();
     }
     @Override
