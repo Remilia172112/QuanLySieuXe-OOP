@@ -101,8 +101,8 @@ public class HoaDon extends PhanTu {
         int slcl, vtsp, chon;
         // xem lại danh mục sản phẩm (tuỳ chọn)
         System.out.print("Ban co muon xem lai danh sach xe? (1 - xem, 0 - khong): ");
-        chon = Integer.parseInt(sc.nextLine());
-        
+        chon = KiemTra.checkNumber();
+        chon = (chon == 0) ? 0 : 1 ;
         if (chon==1) ttds.xuatDanhSach();
         
         for(int i=0;i<soLoaiXe;i++) {
@@ -279,7 +279,7 @@ public class HoaDon extends PhanTu {
     }
     
     public void setNgaylapdon() {
-        System.out.print("Sua dung ngay thang nam hien tai de lam ngay lap don? (1 - co, 0 - khong): ");
+        System.out.print("Su dung ngay thang nam hien tai de lam ngay lap don? (1 - co, 0 - khong): ");
         int chon = KiemTra.checkNumber();
         if(chon == 1) ngaylapdon = ngayhientai + "/" + thanghientai + "/" + namhientai;
         else {
@@ -452,7 +452,7 @@ public class HoaDon extends PhanTu {
         System.out.printf("%-20s %-20s %-20s %-25s %-30s\n", "So hoa don", "So luong xe", "Tong tien", "Ten khach hang", "Phuong thuc thanh toan");
         System.out.printf("%-20s %-20s %-20s %-25s %-30s \n", soHoaDon, soLoaiXe, tongTien, khachHang.getHoten(), phThThanhToan);
         System.out.println("\nDanh sach xe: \n");
-        System.out.printf("%-20s %-25s %-20s %-20s %-15s %-20s \n","Ma xe", "Ten xe", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
+        System.out.printf("%-20s %-25s %-20s %-20s %-20s %-15s %-20s \n","Ma xe", "Ten xe", "Thuong hieu", "Loai xe", "Noi san xuat", "So luong", "Gia");
         for(int i = 0; i< dsXe.length; i++)
         dsXe[i].xuat();
         System.out.println("\n**************************");

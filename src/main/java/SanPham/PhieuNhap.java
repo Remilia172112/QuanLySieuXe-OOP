@@ -260,7 +260,7 @@ public class PhieuNhap extends PhanTu {
         System.out.printf("%-20s %-20s %-20s %-20s \n","Ma phieu nhap", "Ma nha cung cap", "Ma nha vien", "Ngay nhap");
         System.out.printf("%-20s %-20s %-20s %-20s  \n", maPhieuNhap, maNhaCC , maNV , ngaynhap);
         System.out.println("\nDanh sach san pham: \n");
-        System.out.printf("%-20s %-25s %-20s %-20s %-15s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
+        System.out.printf("%-20s %-25s %-20s %-20s %-20s %-15s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Loai xe", "Noi san xuat", "So luong", "Gia");
         for(int i = 0; i< dsmspNhap.length; i++) dsmspNhap[i].xuat();
         System.out.println("\n**************************");
     }
