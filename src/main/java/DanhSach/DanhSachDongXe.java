@@ -118,8 +118,8 @@ public class DanhSachDongXe implements DanhSachChung {
                 int thangdaqua = thanghientai - Integer.parseInt(dateyearbuy.substring(0, 2));
                 if(namdathang > namhientai) thangdaqua += (namdathang-namhientai)*12;
                 int thangbaohang = Timthangbaohanh(a);
-                if(thangbaohang > thangdaqua) System.out.printf("Ma xe khach hang: " + a + "con thoi han bao hanh");
-                else System.out.printf("Ma xe khach hang: " + a + "het thoi han bao hanh");
+                if(thangbaohang > thangdaqua) System.out.println("Ma xe khach hang: " + a + "con thoi han bao hanh");
+                else System.out.println("Ma xe khach hang: " + a + "het thoi han bao hanh");
             }
         }
         else {
