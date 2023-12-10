@@ -325,12 +325,12 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         int chon;
         do {
             System.out.println("=== Thong ke ===");
-            System.out.println("1. In phieu nhap nhap boi nhan vien ");
-            System.out.println("2. In phieu nhap nhap vao ngay ");
-            System.out.println("3. In phieu nhap nhap boi nha cung cap");
-            System.out.println("4. Thong ke tong");
-            System.out.println("5. Thong ke theo loai xe");
-            System.out.println("6. Thong ke theo khoang thoi gian");
+            System.out.println("1. Thong ke tong");
+            System.out.println("2. Thong ke theo loai xe");
+            System.out.println("3. Thong ke theo khoang thoi gian");
+            System.out.println("4. In phieu nhap nhap boi nhan vien ");
+            System.out.println("5. In phieu nhap nhap vao ngay ");
+            System.out.println("6. In phieu nhap nhap boi nha cung cap");
             System.out.println("0. Quay lai menu truoc");
             System.out.print("Moi chon: ");
             PhieuNhap[] dspn = getdsPhieuNhap();
@@ -339,6 +339,20 @@ public class DanhSachPhieuNhap implements DanhSachChung {
             chon = KiemTra.checkNumber();;
             switch (chon) {
                 case 1:
+                    System.out.println("So phieu da nhap: " + soLuong);
+                    System.out.println("So xe da nhap: " + Soxedaban());
+                    System.out.println("Tong tien da nhap: " + Tongtien());
+                    break;
+                case 2:
+                    System.out.println("Chon loai xe muon thong ke: ");
+                    String tmplx = KiemTra.checkLoaixe();
+                    System.out.println("So " + tmplx.toLowerCase() + " da nhap: " + Soxedabantheoloai(tmplx));
+                    System.out.println("Tong tien da nhap: " + Tongtientheoloai(tmplx));
+                    break;
+                case 3:
+                    Thongketheongay();
+                    break;
+                case 4:
                     System.out.print("Nhap ma nhan vien can loc: ");
                     giatricanloc = sc.nextLine();
                     check = false;
@@ -358,7 +372,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
                         }
                     }
                     break;
-                case 2:
+                case 5:
                     System.out.print("Nhap thang can loc: ");
                     int tmp = KiemTra.checkMonth();
                     check = false;
@@ -378,7 +392,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
                         }
                     }
                     break;
-                case 3:
+                case 6:
                     System.out.print("Nhap ma nha cung cap can loc: ");
                     giatricanloc = sc.nextLine();
                     check = false;
@@ -397,20 +411,6 @@ public class DanhSachPhieuNhap implements DanhSachChung {
                                 dspn[i].xuat();
                         }
                     }
-                    break;
-                case 4:
-                    System.out.println("So phieu da nhap: " + soLuong);
-                    System.out.println("So xe da nhap: " + Soxedaban());
-                    System.out.println("Tong tien da nhap: " + Tongtien());
-                    break;
-                case 5:
-                    System.out.println("Chon loai xe muon thong ke: ");
-                    String tmplx = KiemTra.checkLoaixe();
-                    System.out.println("So " + tmplx.toLowerCase() + " da nhap: " + Soxedabantheoloai(tmplx));
-                    System.out.println("Tong tien da nhap: " + Tongtientheoloai(tmplx));
-                    break;
-                case 6:
-                    Thongketheongay();
                     break;
                 default:
                     chon=0;

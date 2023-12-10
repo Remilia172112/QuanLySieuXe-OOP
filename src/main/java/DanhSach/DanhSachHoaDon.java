@@ -180,7 +180,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         }
         if(count == 0) System.out.println("Khong tim thay ket qua yeu cau!!!");
     }
-    
+
     public void nhapDanhSach() {
         System.out.println("Moi nhap so luong hoa don:");
         
@@ -319,25 +319,37 @@ public class DanhSachHoaDon implements DanhSachChung {
         dsHoaDon = getdsHoaDon();
         do {
             System.out.println("=== Thong ke ===");
-            System.out.println("1. Loc hoa don co tong tien da thanh toan >= n");
-            System.out.println("2. Loc khach hang co phuong thuc thanh toan xac dinh");
-            System.out.println("3. Thong ke tong");
-            System.out.println("4. Thong ke theo loai xe");
-            System.out.println("5. Thong ke theo khoang thoi gian");
+            System.out.println("1. Thong ke tong");
+            System.out.println("2. Thong ke theo loai xe");
+            System.out.println("3. Thong ke theo khoang thoi gian");
+            System.out.println("4. Loc hoa don co tong tien da thanh toan >= n");
+            System.out.println("5. Loc khach hang co phuong thuc thanh toan xac dinh");
             System.out.println("0. Quay lai menu truoc");
             System.out.print("Moi chon: ");
-
             chon = KiemTra.checkNumber();
-
             switch (chon) {
                 case 1:
+                    System.out.println("So don da ban duoc: " + soLuong);
+                    System.out.println("So xe da ban duoc: " + Soxedaban());
+                    System.out.println("Tong tien da ban duoc: " + Tongtien());
+                    break;
+                case 2:
+                    System.out.println("Chon loai xe muon thong ke: ");
+                    String tmp = KiemTra.checkLoaixe();
+                    System.out.println("So " + tmp.toLowerCase() + " da ban duoc: " + Soxedabantheoloai(tmp));
+                    System.out.println("Tong tien da ban duoc: " + Tongtientheoloai(tmp));
+                    break;
+                case 3:
+                    Thongketheongay();
+                    break;
+                case 4:
                     System.out.print("Nhap so luong don hang can tim: ");
                     n = KiemTra.checkNumber();
                     for (HoaDon hoaDon: dsHoaDon) {
                         if (hoaDon.getTongTien() >= n) hoaDon.xuat();
                     }
                     break;
-                case 2:
+                case 5:
                     System.out.println("1. Tien mat");
                     System.out.println("2. Tai khoan ngan hang");
                     System.out.println("3. Tai khoan the tin dung");
@@ -362,20 +374,6 @@ public class DanhSachHoaDon implements DanhSachChung {
                     for (HoaDon hoaDon: dsHoaDon) {
                         if (hoaDon.getPhThThanhToan().equals(st)) hoaDon.xuat();
                     }
-                    break;
-                case 3:
-                    System.out.println("So don da ban duoc: " + soLuong);
-                    System.out.println("So xe da ban duoc: " + Soxedaban());
-                    System.out.println("Tong tien da ban duoc: " + Tongtien());
-                    break;
-                case 4:
-                    System.out.println("Chon loai xe muon thong ke: ");
-                    String tmp = KiemTra.checkLoaixe();
-                    System.out.println("So " + tmp.toLowerCase() + " da ban duoc: " + Soxedabantheoloai(tmp));
-                    System.out.println("Tong tien da ban duoc: " + Tongtientheoloai(tmp));
-                    break;
-                case 5:
-                    Thongketheongay();
                     break;
                 default:
                     chon = 0;
