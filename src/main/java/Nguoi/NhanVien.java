@@ -13,7 +13,7 @@ public class NhanVien extends Nguoi {
     private double luong;
     private double thuong;
     private char hang;
-    private int soNgayNghiTrongThang = 0;
+    private int soNgayNghiTrongThang;
 
     public NhanVien() {
     }
@@ -79,7 +79,7 @@ public class NhanVien extends Nguoi {
     }
 
     public void setNgayvaolam() {
-        System.out.print("Sua dung ngay thang nam hien tai de lam ngay vao lam? (1/0): ");
+        System.out.print("Sua dung ngay thang nam hien tai de lam ngay vao lam? (1 - co, 0 - khong): ");
         int chon = KiemTra.checkNumber();
         if(chon == 1) ngayvaolam = ngayhientai + "/" + thanghientai + "/" + namhientai;
         else {
@@ -231,6 +231,7 @@ public class NhanVien extends Nguoi {
         setManhanvien();
         setChucvu();
         setNgayvaolam();
+        setSongaynghitrongthang(0);
         super.nhap();   
         System.out.print("Ban co muon tao tai khoan cho nhan vien nay khong? (1 - co, 0 - khong)");
         int chon = KiemTra.checkNumber();

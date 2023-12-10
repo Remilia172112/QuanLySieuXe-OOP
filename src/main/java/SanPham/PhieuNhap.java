@@ -102,7 +102,7 @@ public class PhieuNhap extends PhanTu {
         this.ngaynhap = ngaynhap;
     }
     public void setNgaynhap() {
-        System.out.print("Sua dung ngay thang nam hien tai de lam ngay lap don? (1/0): ");
+        System.out.print("Sua dung ngay thang nam hien tai de lam ngay lap don? (1 - co, 0 - khong): ");
         int chon = KiemTra.checkNumber();
         if(chon == 1) ngaynhap = ngayhientai + "/" + thanghientai + "/" + namhientai;
         else {

@@ -107,48 +107,46 @@ public class KhachHang extends Nguoi {
             DanhSachXe ttds = new DanhSachXe();
             ttds.xuatDanhSach();
         }
-        System.out.println("Nhap day cac ma xe da mua, phan cach boi dau cham phay (;): ");
+        System.out.print("Nhap so luong ma muon cap nhat: ");
+        int soluong = KiemTra.checkNumber();
 
-        String dsMaSP;
-
-        String[] dsMaSpArr;
+        String[] dsMaSpArr = new String[soluong];
 
         DanhSachXe ttds = new DanhSachXe(); // tạo đối tượng DanhSachSanPham
 
         boolean check;
-        do {
-            check = true;
-            dsMaSP = sc.nextLine(); // đọc từ input
-            dsMaSpArr = dsMaSP.split(";"); // tách thành mảng bởi dấu ;
+        for(int  i = 0; i < soluong; i++) {
+            System.out.print("Nhap ma xe khach hang thu " + (i+1) + ":");
+            do {
+                check = true;
 
-            for(int i=0;i<dsMaSpArr.length;i++) { // ứng với từng phần tử mảng
+                dsMaSpArr[i] = sc.nextLine(); // đọc từ input
                 if (ttds.kiemtraChuoidonhang(dsMaSpArr[i]) == -1){ // nếu không tìm thấy
                     check = false;
-                    System.out.println("Khong tim thay ma xe tai vi tri thu " + i);
-                    break;
+                    System.out.print("Khong tim thay ma xe!!! Hay nhap lai: ");
+                    continue;
                 }
-                String dateyearbuy = dsMaSpArr[i].substring(dsMaSpArr[i].length() - 7, 6);
+                String dateyearbuy = dsMaSpArr[i].substring(dsMaSpArr[i].length() - 7, dsMaSpArr[i].length()-1);
                 if(!KiemTra.isValidMonthYear(dateyearbuy)) {
                     check = false;
-                    System.out.println("Thang nam khong hop le tai vi tri thu " + i);
-                    break;
+                    System.out.print("Thang nam khong hop le!!! Hay nhap lai: ");
+                    continue;
                 }
                 LocalDate localDate = LocalDate.now();
                 int namhientai = localDate.getYear();
                 int thanghientai = localDate.getMonthValue();
-                if(Integer.parseInt(dateyearbuy.substring(dateyearbuy.length() - 4)) > namhientai) {
+                if(Integer.parseInt(dateyearbuy.substring(2)) > namhientai) {
                     check = false;
-                    System.out.println("Nam mua xe lon hon nam hien tai tai vi tri thu " + i);
-                    break;
+                    System.out.print("Nam mua xe lon hon nam hien tai!!! Hay nhap lai: ");
+                    continue;
                 }
                 if(Integer.parseInt(dateyearbuy.substring(0, 2)) > thanghientai) {
                     check = false;
-                    System.out.println("Thang mua xe lon hon thang hien tai tai vi tri thu " + i);
-                    break;
+                    System.out.print("Thang mua xe lon hon thang hien tai!!! Hay nhap lai: ");
+                    continue;
                 }
-            }
-            if (!check) System.out.println("Day cac ma xe khong hop le, hay nhap lai!");
-        } while (!check);
+            } while (!check);
+        }
         setDsmspDamua(dsMaSpArr);
     }
 
@@ -201,7 +199,7 @@ public class KhachHang extends Nguoi {
                 System.out.println("Khong tim thay ma xe");
                 continue;
             }
-            String dateyearbuy = maSP.substring(maSP.length() - 7, 6);
+            String dateyearbuy = maSP.substring(maSP.length() - 7, maSP.length()-1);
             if(!KiemTra.isValidMonthYear(dateyearbuy)) {
                 check = false;
                 System.out.println("Thang nam khong hop le");
@@ -210,7 +208,7 @@ public class KhachHang extends Nguoi {
             LocalDate localDate = LocalDate.now();
             int namhientai = localDate.getYear();
             int thanghientai = localDate.getMonthValue();
-            if(Integer.parseInt(dateyearbuy.substring(dateyearbuy.length() - 4)) > namhientai) {
+            if(Integer.parseInt(dateyearbuy.substring(2)) > namhientai) {
                 check = false;
                 System.out.println("Nam mua xe lon hon nam hien tai");
                 continue;
@@ -238,7 +236,7 @@ public class KhachHang extends Nguoi {
         setMaKhachHang();
         super.nhap();
         setPhThThanhToan();
-        System.out.println("Cap nhat danh sach da mua cua khach hang? (1/0): ");
+        System.out.println("Cap nhat danh sach da mua cua khach hang? (1 - co, 0 - khong): ");
         int chon = KiemTra.checkNumber();
         if(chon == 1) {
             System.out.println("Ma xe da mua bao gom: ma xe + ma khach hang + thang nam mua xe");
