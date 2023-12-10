@@ -9,7 +9,7 @@ import ThanhToan.*;
 public class HoaDon extends PhanTu {
     private String ngaylapdon;
     private int soHoaDon;
-    private int soLuongXe;
+    private int soLoaiXe;
     private int tongTien = 0;
     private String phThThanhToan;
     private KhachHang khachHang;
@@ -19,9 +19,9 @@ public class HoaDon extends PhanTu {
     public HoaDon() {
     }
 
-    public HoaDon(int soHoaDon, int soLuongXe, int tongTien,String ngaylapdon, String mnv,KhachHang khachHang, Xe[] dsXe) {
+    public HoaDon(int soHoaDon, int soLoaiXe, int tongTien,String ngaylapdon, String mnv,KhachHang khachHang, Xe[] dsXe) {
         this.soHoaDon = soHoaDon;
-        this.soLuongXe = soLuongXe;
+        this.soLoaiXe = soLoaiXe;
         this.tongTien = tongTien;
         this.ngaylapdon = ngaylapdon;
         this.mnv = mnv;
@@ -94,7 +94,7 @@ public class HoaDon extends PhanTu {
         }
         
         Xe[] dsspFile = ttds.getdsXe();
-        Xe[] dssp = new Xe[soLuongXe];
+        Xe[] dssp = new Xe[soLoaiXe];
         String[] madachon = new String[0];
         
         Xe pt, timThay;
@@ -105,7 +105,7 @@ public class HoaDon extends PhanTu {
         
         if (chon==1) ttds.xuatDanhSach();
         
-        for(int i=0;i<soLuongXe;i++) {
+        for(int i=0;i<soLoaiXe;i++) {
             System.out.println("Them xe thu "+(i+1)+":");
             
             do {
@@ -241,17 +241,17 @@ public class HoaDon extends PhanTu {
         this.soHoaDon = soHoaDon;
     }
 
-    public int getSoLuongXe() {
-        return soLuongXe;
+    public int getSoLoaiXe() {
+        return soLoaiXe;
     }
 
-    public void setSoLuongXe(int soLuongXe) {
-        this.soLuongXe = soLuongXe;
+    public void setSoLoaiXe(int soLoaiXe) {
+        this.soLoaiXe = soLoaiXe;
     }
 
-    public void setSoLuongXe() {
-        System.out.print("Nhap so luong xe: ");
-        soLuongXe = KiemTra.checkNumber();
+    public void setSoLoaiXe() {
+        System.out.print("Nhap so loai xe can mua: ");
+        soLoaiXe = KiemTra.checkNumber();
     }
 
     public int getTongTien() {
@@ -428,27 +428,29 @@ public class HoaDon extends PhanTu {
     // Nhập version đã đăng nhập
     public void nhap(String username){
         setSoHoaDon();
-        setSoLuongXe();
+        setSoLoaiXe();
         setNgaylapdon();
         setMnv(username);
         setKhachHang();
+        setTongTien(0);
         setDsXe();
         setPhThThanhToan();
     }
     @Override
     public void nhap(){
         setSoHoaDon();
-        setSoLuongXe();
+        setSoLoaiXe();
         setNgaylapdon();
         setMnv();
         setKhachHang();
+        setTongTien(0);
         setDsXe();
         setPhThThanhToan();
     }
     @Override
     public void xuat() {
         System.out.printf("%-20s %-20s %-20s %-25s %-30s\n", "So hoa don", "So luong xe", "Tong tien", "Ten khach hang", "Phuong thuc thanh toan");
-        System.out.printf("%-20s %-20s %-20s %-25s %-30s \n", soHoaDon, soLuongXe, tongTien, khachHang.getHoten(), phThThanhToan);
+        System.out.printf("%-20s %-20s %-20s %-25s %-30s \n", soHoaDon, soLoaiXe, tongTien, khachHang.getHoten(), phThThanhToan);
         System.out.println("\nDanh sach xe: \n");
         System.out.printf("%-20s %-25s %-20s %-20s %-15s %-20s \n","Ma xe", "Ten xe", "Thuong hieu", "Noi san xuat", "So luong", "Gia");
         for(int i = 0; i< dsXe.length; i++)
@@ -498,7 +500,7 @@ public class HoaDon extends PhanTu {
                         dsx[i].xuat();
                     
                     System.out.println("Nhap moi danh sach xe: ");
-                    setSoLuongXe();
+                    setSoLoaiXe();
                     setDsXe();
                     break;
                 case 6:

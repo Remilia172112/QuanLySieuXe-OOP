@@ -1,5 +1,7 @@
 package SanPham;
 
+import java.util.Arrays;
+
 import DanhSach.*;
 import KiemTra.KiemTra;
 
@@ -9,19 +11,19 @@ public class PhieuNhap extends PhanTu {
     private String maNV;
     private String ngaynhap;
     private Xe[] dsmspNhap;
-    private int SoluongNhap;
+    private int soLoaiNhap;
     private int tongTien = 0;
 
     public PhieuNhap(){
     }
 
-    public PhieuNhap(String maPhieuNhap , String maNhaCC , String maNV , String ngaynhap, Xe[] dsmspNhap, int SoluongNhap, int tongTien){
+    public PhieuNhap(String maPhieuNhap , String maNhaCC , String maNV , String ngaynhap, Xe[] dsmspNhap, int soLoaiNhap, int tongTien){
         this.maPhieuNhap = maPhieuNhap;
         this.maNhaCC = maNhaCC;
         this.maNV = maNV;
         this.ngaynhap = ngaynhap;
         this.dsmspNhap = dsmspNhap;
-        this.SoluongNhap = SoluongNhap;
+        this.soLoaiNhap = soLoaiNhap;
         this.tongTien = tongTien;
     }
 
@@ -132,7 +134,8 @@ public class PhieuNhap extends PhanTu {
         DanhSachDongXe dsdx = new DanhSachDongXe();
         
         Xe[] dsspFile = ttds.getdsXe();
-        Xe[] dssp = new Xe[SoluongNhap];
+        Xe[] dssp = new Xe[soLoaiNhap];
+        String[] madachon = new String[0];
         
         Xe pt, timThay;
         int vtsp, stt, chon;
@@ -141,7 +144,7 @@ public class PhieuNhap extends PhanTu {
         chon = KiemTra.checkNumber();
         if (chon==1) dsdx.xuatDanhSach();
         
-        for(int i=0;i<SoluongNhap;i++) {
+        for(int i=0;i<soLoaiNhap;i++) {
             stt=i+1;
             System.out.println("Nhap xe thu "+stt);
             
@@ -153,6 +156,20 @@ public class PhieuNhap extends PhanTu {
                     System.out.println("Khong tim thay xe!");
                 else {
                     dssp[i] = pt;
+
+                    boolean check = false;
+                    for(int k=0; k < madachon.length; k++) {
+                        if(madachon[k].equals(pt.getMaXe())) {
+                            System.out.println("Xe da co trong phieu nhap, vui long chon xe khac!!!");
+                            pt=null;
+                            check = true;
+                            break;
+                        }
+                    }
+                    if(check) continue;
+
+                    madachon = Arrays.copyOf(madachon, madachon.length+1);
+                    madachon[i] = pt.getMaXe();
                     
                     // tìm sản phẩm trong danh sách sp với mã sản phẩm
                     timThay = (Xe) ttds.layPhanTuVoi(pt.getMaXe());
@@ -167,13 +184,14 @@ public class PhieuNhap extends PhanTu {
                     
                     // cập nhật lại số lượng sản phẩm
                     dsspFile[vtsp] = timThay;
-                    ttds.setdsXe(dsspFile);
                     
                     // cập nhật tổng tiền
                     tongTien += pt.getPrice() * pt.getSoLuong();
                 }
             } while (pt == null);
         }
+        // Cập nhật lên file
+        ttds.setdsXe(dsspFile);
         // Nếu là chỉnh sửa danh sách sản phẩm
         if (dsmspNhap != null) {
             if (dsmspNhap.length > 0) { // nếu danh sách sản phẩm > 0
@@ -198,16 +216,16 @@ public class PhieuNhap extends PhanTu {
         dsmspNhap = dssp;
     }
 
-    public int getSoluongNhap() {
-        return SoluongNhap;
+    public int getSoLoaiNhap() {
+        return soLoaiNhap;
     }
 
-    public void setSoluongNhap(int SoluongNhap) {
-        this.SoluongNhap = SoluongNhap;
+    public void setSoLoaiNhap(int soLoaiNhap) {
+        this.soLoaiNhap = soLoaiNhap;
     }
-    public void setSoluongNhap() {
-        System.out.print("Nhap so xe can nhap: ");
-        SoluongNhap = KiemTra.checkNumber();
+    public void setSoLoaiNhap() {
+        System.out.print("Nhap so loai xe can nhap: ");
+        soLoaiNhap = KiemTra.checkNumber();
     }
 
     public int getTongTien() {
@@ -223,7 +241,7 @@ public class PhieuNhap extends PhanTu {
         setMaNhaCC();
         setMaNV(username);
         setNgaynhap();
-        setSoluongNhap();
+        setSoLoaiNhap();
         setDsXe();
     }
     @Override
@@ -232,7 +250,7 @@ public class PhieuNhap extends PhanTu {
         setMaNhaCC();
         setMaNV();
         setNgaynhap();
-        setSoluongNhap();
+        setSoLoaiNhap();
         setDsXe();
     }
     @Override
@@ -286,7 +304,7 @@ public class PhieuNhap extends PhanTu {
                         dsx[i].xuat();
                     
                     System.out.println("Nhap moi danh sach xe: ");
-                    setSoluongNhap();
+                    setSoLoaiNhap();
                     setDsXe();
                     break;
                 default:

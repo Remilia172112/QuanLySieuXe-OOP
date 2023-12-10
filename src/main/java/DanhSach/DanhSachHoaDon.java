@@ -61,7 +61,7 @@ public class DanhSachHoaDon implements DanhSachChung {
 
             slsp = Integer.parseInt(lArr[m++]);
             
-            hd.setSoLuongXe(slsp);
+            hd.setSoLoaiXe(slsp);
 
             // đọc danh sách sản phẩm
             dsx = new Xe[slsp];
@@ -86,7 +86,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         for(int i=0;i<soLuong;i++) {
             // đọc từng phần tử từ mảng dsHoaDon
             hd = (HoaDon) dsHoaDon[i];
-            FileHandler.themHd(hd.getSoHoaDon(), hd.getNgaylapdon(), hd.getMnv(),hd.getKhachHang().getMaKhachHang(), hd.getPhThThanhToan(), hd.getTongTien(),hd.getSoLuongXe(), hd.getDsXe());
+            FileHandler.themHd(hd.getSoHoaDon(), hd.getNgaylapdon(), hd.getMnv(),hd.getKhachHang().getMaKhachHang(), hd.getPhThThanhToan(), hd.getTongTien(),hd.getSoLoaiXe(), hd.getDsXe());
         }
         this.dsHoaDon = (HoaDon[])dsHoaDon;
     }

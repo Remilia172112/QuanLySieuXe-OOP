@@ -56,7 +56,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
             pn.setTongTien(Integer.parseInt(lArr[m++]));
 
             sl = Integer.parseInt(lArr[m++]);
-            pn.setSoluongNhap(sl);
+            pn.setSoLoaiNhap(sl);
 
             dsx = new Xe[sl];
             for(int j=0;j<sl;j++) {
@@ -79,7 +79,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
         for(int i=0;i<soLuong;i++) {
             pn = (PhieuNhap) dsPhieuNhap[i];
-            FileHandler.themPN(pn.getMaPhieuNhap(), pn.getNgaynhap(), pn.getMaNhaCC(), pn.getMaNV(), pn.getTongTien(), pn.getSoluongNhap(), pn.getDsXe());
+            FileHandler.themPN(pn.getMaPhieuNhap(), pn.getNgaynhap(), pn.getMaNhaCC(), pn.getMaNV(), pn.getTongTien(), pn.getSoLoaiNhap(), pn.getDsXe());
         }
 
         this.dsPhieuNhap = (PhieuNhap[]) dsPhieuNhap;
