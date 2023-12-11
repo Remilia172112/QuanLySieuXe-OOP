@@ -53,7 +53,7 @@ public class Xe extends PhanTu {
     public void setMaXeTT() {
         DanhSachXe ttds = new DanhSachXe();
         Xe[] dsx = ttds.getdsXe();
-        int stt = -1;
+        int stt = 1;
         for(int i = 0; i < dsx.length; i++) {
             if(dsx[i].getLoaiXe().equals("Xe the thao")) {
                 stt = Integer.parseInt(dsx[i].getMaXe().substring(5))+1;
@@ -81,7 +81,7 @@ public class Xe extends PhanTu {
     public void setMaXeMT() {
         DanhSachXe ttds = new DanhSachXe();
         Xe[] dsx = ttds.getdsXe();
-        int stt = -1;
+        int stt = 1;
         for(int i = 0; i < dsx.length; i++) {
             if(dsx[i].getLoaiXe().equals("Xe mui tran")) {
                 stt = Integer.parseInt(dsx[i].getMaXe().substring(8))+1;
@@ -109,7 +109,7 @@ public class Xe extends PhanTu {
     public void setMaXeD() {
         DanhSachXe ttds = new DanhSachXe();
         Xe[] dsx = ttds.getdsXe();
-        int stt = -1;
+        int stt = 1;
         for(int i = 0; i < dsx.length; i++) {
             if(dsx[i].getLoaiXe().equals("Xe dien")) {
                 stt = Integer.parseInt(dsx[i].getMaXe().substring(7))+1;

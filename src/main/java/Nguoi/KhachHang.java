@@ -59,8 +59,10 @@ public class KhachHang extends Nguoi {
     
     public void setMaKhachHang() {
         DanhSachKhachHang ttds = new DanhSachKhachHang();
-        KhachHang[] dsnv = ttds.getDsKhachHang();
-        int stt = Integer.parseInt(dsnv[ttds.getSoLuong()-1].getMaKhachHang().substring(2)) + 1;
+        KhachHang[] dskh = ttds.getDsKhachHang();
+        int stt;
+        if(dskh != null) stt = Integer.parseInt(dskh[ttds.getSoLuong()-1].getMaKhachHang().substring(2)) + 1;
+        else stt = 1;
         if(stt>9) maKhachHang = "KH" + stt;
         else maKhachHang = "KH0" + stt;
         System.out.println("Ma nhan vien: " + maKhachHang);
