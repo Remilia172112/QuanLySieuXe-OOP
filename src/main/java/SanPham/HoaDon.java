@@ -187,6 +187,7 @@ public class HoaDon extends PhanTu {
             if (dsXe.length > 0) { // nếu danh sách sản phẩm > 0
                 int tongTienTraLai = 0;
                 int viTriCanChinhSua;
+                int sltr = 0;
                 for(Xe x: dsXe) // ứng với từng phần tử
                 {
                     // tìm sản phẩm trong danh sách với mã sản phẩm
@@ -194,7 +195,8 @@ public class HoaDon extends PhanTu {
                     
                     // tăng số lượng sản phẩm trong danh sách vì xoá sản phẩm khỏi hoá đơn
                     timThay.setSoLuong(timThay.getSoLuong()+x.getSoLuong());
-                    
+                    sltr += x.getSoLuong();
+
                     // tìm vị trí sản phẩm cần chỉnh sửa trong danh sách
                     viTriCanChinhSua = ttds.timViTriXe(x.getMaXe());
                     dsspFile[viTriCanChinhSua] = timThay;
@@ -205,8 +207,10 @@ public class HoaDon extends PhanTu {
                     // tìm tổng tiền cần trả lại cho khách
                     tongTienTraLai += x.getPrice() * x.getSoLuong();
                 }
-                
                 tienTam -= tongTienTraLai;
+                // Thu lại biển số xe
+                String[] tmp = new String[dsspDamua.length-sltr];
+                for(int i = sltr, k = 0; i < dsspDamua.length; i++) tmp[k++] = dsspDamua[i];
             }
         } else dhDaThanhToan++; // nếu đơn hàng mới hoàn toàn
         
