@@ -317,7 +317,12 @@ public class HoaDon extends PhanTu {
 
     public void setSoLoaiXe() {
         System.out.print("Nhap so loai xe can mua: ");
-        soLoaiXe = KiemTra.checkNumber();
+        boolean check = false;
+        do {
+            soLoaiXe = KiemTra.checkNumber();
+            check = soLoaiXe > 0;
+            if(!check) System.out.print("Nhap so lon hon 0!!! Moi nhap lai: ");
+        } while(!check);
     }
 
     public int getTongTien() {

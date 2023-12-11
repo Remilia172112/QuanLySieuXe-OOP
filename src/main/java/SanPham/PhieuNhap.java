@@ -255,7 +255,12 @@ public class PhieuNhap extends PhanTu {
     }
     public void setSoLoaiNhap() {
         System.out.print("Nhap so loai xe can nhap: ");
-        soLoaiNhap = KiemTra.checkNumber();
+        boolean check = false;
+        do {
+            soLoaiNhap = KiemTra.checkNumber();
+            check = soLoaiNhap > 0;
+            if(!check) System.out.print("Nhap so lon hon 0!!! Moi nhap lai: ");
+        } while(!check);
     }
 
     public int getTongTien() {
