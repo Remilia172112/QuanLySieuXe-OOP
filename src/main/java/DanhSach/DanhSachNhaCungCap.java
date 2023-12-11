@@ -272,7 +272,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
                         } 
                     }
                     if (!check) {
-                        System.out.println("Ma nhan vien ko ton tai.");
+                        System.out.println("Ma nha cung cap ko ton tai.");
                         break;
                     } else{
                         for(int i=0;i<soLuong;i++) {
@@ -292,7 +292,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
                         } 
                     }
                     if (!check) {
-                        System.out.println("Ngay nay khong co phieu nhap.");
+                        System.out.println("Khong ton tai nha cung cap co sdt nay.");
                         break;
                     } else{
                         for(int i=0;i<soLuong;i++) {
