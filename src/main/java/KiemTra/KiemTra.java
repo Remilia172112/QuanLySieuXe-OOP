@@ -156,12 +156,20 @@ public class KiemTra {
 	}
 	public static boolean isNumber(String str) {
 		try {
-			Double.parseDouble(str);
+			Integer.parseInt(str);
 			return true;
 		} catch (NumberFormatException e) {
 			return false;
 		}
 	}
+	public static boolean isDecimal(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 	public static boolean isValidMonthYear(String input) {
         // Sử dụng biểu thức chính quy để kiểm tra định dạng MMYYYY
         String regex = "^(0[1-9]|1[0-2])(20\\d{2})$";

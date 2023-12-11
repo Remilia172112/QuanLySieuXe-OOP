@@ -116,7 +116,7 @@ public class NhanVien extends Nguoi {
         String ch;
         do {
             ch = sc.nextLine();
-            check = KiemTra.isNumber(ch);
+            check = KiemTra.isDecimal(ch);
         } while (!check);
         hesoluong = Double.parseDouble(ch);
     }
