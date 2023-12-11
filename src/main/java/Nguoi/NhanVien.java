@@ -57,7 +57,7 @@ public class NhanVien extends Nguoi {
         DanhSachNhanVien ttds = new DanhSachNhanVien();
         NhanVien[] dsnv = ttds.getDsNhanVien();
         int stt;
-        if(dsnv != null) stt = Integer.parseInt(dsnv[ttds.getSoLuong()-1].getManhanvien().substring(2)) + 1;
+        if(dsnv.length != 0) stt = Integer.parseInt(dsnv[ttds.getSoLuong()-1].getManhanvien().substring(2)) + 1;
         else stt = 1;
         if(stt>9) manhanvien = "NV" + stt;
         else manhanvien = "NV0" + stt;

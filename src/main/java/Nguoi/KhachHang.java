@@ -61,7 +61,7 @@ public class KhachHang extends Nguoi {
         DanhSachKhachHang ttds = new DanhSachKhachHang();
         KhachHang[] dskh = ttds.getDsKhachHang();
         int stt;
-        if(dskh != null) stt = Integer.parseInt(dskh[ttds.getSoLuong()-1].getMaKhachHang().substring(2)) + 1;
+        if(dskh.length != 0) stt = Integer.parseInt(dskh[ttds.getSoLuong()-1].getMaKhachHang().substring(2)) + 1;
         else stt = 1;
         if(stt>9) maKhachHang = "KH" + stt;
         else maKhachHang = "KH0" + stt;

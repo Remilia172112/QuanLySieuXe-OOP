@@ -38,7 +38,7 @@ public class PhieuNhap extends PhanTu {
     public void setMaPhieuNhap() {
         DanhSachPhieuNhap ttds = new DanhSachPhieuNhap();
         PhieuNhap[] dspn = ttds.getdsPhieuNhap();
-        if(dspn != null) maPhieuNhap = dspn[ttds.getsoLuong()-1].getMaPhieuNhap() + 1;
+        if(dspn.length != 0) maPhieuNhap = dspn[ttds.getsoLuong()-1].getMaPhieuNhap() + 1;
         else maPhieuNhap = 1;
         System.out.println("So phieu nhap: " + maPhieuNhap);
         // System.out.print("Nhap ma phieu nhap: ");
