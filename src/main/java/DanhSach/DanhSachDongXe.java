@@ -227,7 +227,27 @@ public class DanhSachDongXe implements DanhSachChung {
             setDsDX(dsDmSp);
         } else System.out.println("Khong tim thay!");
     }
-
+    public void xoaPhanTuMaXe(String mx, String loaixe) {
+        DongXe[] dsdx = getDsDongXe();
+        int viTri1 = -1, viTri2 = -1;
+        for (int i = 0; i < dsdx.length; i++) if(dsdx[i].getTenDongXe().equals(loaixe)) {
+            viTri1 = i;
+            break;
+        }
+        String[] dsdxx = dsdx[viTri1].getDsMaXe();
+        for (int i = 0; i < dsdxx.length; i++) if(dsdxx[i].equals(mx)) {
+            viTri2 = i;
+            break;
+        }
+        // Nếu tìm thấy
+        String[] dsdxxtmp = new String[dsdxx.length - 1];
+        for (int i = 0, k = 0; i < dsdxx.length; i++) {
+            if (i == viTri2) continue; // bỏ phần tử
+            dsdxxtmp[k++] = dsdxx[i];
+        }
+        dsdx[viTri1].setDsMaXe(dsdxxtmp);
+        setDsDX(dsdx);
+    }
     public void xoaPhanTu() {
         System.out.println("Tim dong xe can xoa: ");
 
@@ -244,6 +264,7 @@ public class DanhSachDongXe implements DanhSachChung {
 
             soLuong--;
             setDsDX(dsDm);
+            System.out.println("Xoa thanh cong!!!");
         } else System.out.println("Khong tim thay dong xe!");
     }
 

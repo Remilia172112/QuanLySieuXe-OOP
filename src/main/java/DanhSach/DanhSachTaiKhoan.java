@@ -159,7 +159,7 @@ public class DanhSachTaiKhoan implements DanhSachChung {
     public void themVaoDanhSach(PhanTu pt){
         TaiKhoan[] dsTaiKhoanTmp = new TaiKhoan[soLuong + 1];
         for (int i = 0; i < soLuong; i++)
-            dsTaiKhoanTmp[i] = dsTaiKhoan[i];
+            dsTaiKhoanTmp[i] = getDsTaiKhoan()[i];
         dsTaiKhoanTmp[soLuong] = (TaiKhoan) pt;
         soLuong++;
         setDsTaiKhoan(dsTaiKhoanTmp);
@@ -207,6 +207,26 @@ public class DanhSachTaiKhoan implements DanhSachChung {
             setDsTaiKhoan(dsnv);
         }
     }
+    public void xoaPhanTu(String mnv) {
+        TaiKhoan[] dstktmp = getDsTaiKhoan();
+        int viTri = -1;
+        for (int i = 0; i < dstktmp.length; i++) if(dstktmp[i].getUsername().equals(mnv)) {
+            viTri = i;
+            break;
+        }
+        // Nếu tìm thấy
+        if (viTri != -1) {
+            TaiKhoan[] dsTaiKhoanTmp = new TaiKhoan[soLuong - 1];
+
+            for (int i = 0, k = 0; i < soLuong; i++) {
+                if (i == viTri)
+                    continue; // bỏ phần tử
+                dsTaiKhoanTmp[k++] = getDsTaiKhoan()[i];
+            }
+            soLuong--;
+            setDsTaiKhoan(dsTaiKhoanTmp);
+        }
+    }
     public void xoaPhanTu() {
         // Tìm tài khoản trước
         System.out.println("Tim tai khoan can xoa: ");
@@ -223,6 +243,7 @@ public class DanhSachTaiKhoan implements DanhSachChung {
 
             soLuong--;
             setDsTaiKhoan(dsTaiKhoanTmp);
+            System.out.println("Xoa thanh cong!!!");
         } else
             System.out.println("Khong tim thay tai khoan!");
     }
@@ -254,14 +275,14 @@ public class DanhSachTaiKhoan implements DanhSachChung {
                     if (dsTaiKhoanTmp[i].getUsername().equalsIgnoreCase(giaTriCanTim))
                         return dsTaiKhoanTmp[i];
                 if (loai == 2)
-                    if (dsTaiKhoanTmp[i].getPassword() == giaTriCanTim)
+                    if (dsTaiKhoanTmp[i].getPassword().equals(giaTriCanTim))
                         return dsTaiKhoanTmp[i];
             } else {
                 if (loai == 1)
                     if (dsTaiKhoanTmp[i].getUsername().contains(giaTriCanTim))
                         return dsTaiKhoanTmp[i];
                 if (loai == 2)
-                    if (dsTaiKhoanTmp[i].getPassword() == giaTriCanTim)
+                    if (dsTaiKhoanTmp[i].getPassword().equals(giaTriCanTim))
                         return dsTaiKhoanTmp[i];
             }
         }
@@ -295,14 +316,14 @@ public class DanhSachTaiKhoan implements DanhSachChung {
                     if (dsTaiKhoanTmp[i].getUsername().equalsIgnoreCase(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsTaiKhoanTmp[i].getPassword() == giaTriCanTim)
+                    if (dsTaiKhoanTmp[i].getPassword().equals(giaTriCanTim))
                         return i;
             } else {
                 if (loai == 1)
                     if (dsTaiKhoanTmp[i].getUsername().contains(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsTaiKhoanTmp[i].getPassword() == giaTriCanTim)
+                    if (dsTaiKhoanTmp[i].getPassword().equals(giaTriCanTim))
                         return i;
             }
         }

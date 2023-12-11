@@ -1,5 +1,5 @@
 4
 NV01#123#nhan vien
 NV02#123#nhan vien
-QL01#123#quan ly
-QL02#123#quan ly
+NV03#123#quan ly
+NV04#123#quan ly

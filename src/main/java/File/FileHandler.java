@@ -23,7 +23,7 @@ public class FileHandler {
     }
     //them danh sach dong` xe vao` file dsdx.txt
     public static void themDX(String maDongXe, String tenDongXe, int soLuong, int Thangbaohanh,String[] dsMaSanPham) {
-        String tmp = maDongXe+"#"+tenDongXe+"#"+Thangbaohanh+"#"+soLuong;
+        String tmp = maDongXe+"#"+tenDongXe+"#"+Thangbaohanh+"#"+dsMaSanPham.length;
         for(int i=0;i<dsMaSanPham.length;i++) tmp += "#" + dsMaSanPham[i];
         ghiFile(tmp, "dsdx.txt");
     }
@@ -137,8 +137,8 @@ public class FileHandler {
                             ghiFile("4", tenFile);
                             themNv("NV01", "Tran Van A", "nhan vien", "17/07/2004", "nam", "052204016288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "tranvana@gmail.com", "17/07/2023", 0.5, 0);
                             themNv("NV02", "Tran Van B", "nhan vien","30/07/2000", "nu", "054524226300", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "tranvanb@gmail.com", "21/09/2023", 1.2, 0);
-                            themNv("QL01", "Tran Thi C", "quan ly","01/01/1950", "nam", "022201236288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly1@gmail.com", "12/09/2023", 0.4, 1);
-                            themNv("QL02", "Tran Bui D", "quan ly","02/02/2000", "nu", "054504012328", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly2@gmail.com", "25/12/2023", 2, 1);
+                            themNv("NV03", "Tran Thi C", "quan ly","01/01/1950", "nam", "022201236288", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly1@gmail.com", "12/09/2023", 0.4, 1);
+                            themNv("NV04", "Tran Bui D", "quan ly","02/02/2000", "nu", "054504012328", "273 An Duong Vuong, P3, Q5, TP.HCM", "0938412413", "quanly2@gmail.com", "25/12/2023", 2, 1);
                             break;
                         case 2:
                             tenFile = "dskh.txt";
@@ -153,8 +153,8 @@ public class FileHandler {
                             ghiFile("4", tenFile);
                             themTK("NV01", "123", "nhan vien");
                             themTK("NV02", "123", "nhan vien");
-                            themTK("QL01", "123", "quan ly");
-                            themTK("QL02", "123", "quan ly");
+                            themTK("NV03", "123", "quan ly");
+                            themTK("NV04", "123", "quan ly");
                             break;
                         case 4:
                             tenFile = "dsdx.txt";

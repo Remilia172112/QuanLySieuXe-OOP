@@ -58,19 +58,24 @@ public class KhachHang extends Nguoi {
     }
     
     public void setMaKhachHang() {
-        System.out.print("Nhap ma khach hang: ");
         DanhSachKhachHang ttds = new DanhSachKhachHang();
-        boolean check = false;
-        do
-        {
-            maKhachHang = sc.nextLine();
-            check = KiemTra.checkMSKH(maKhachHang);
-            if(!check) System.out.print("Nhap sai ma khach hang (KH), moi nhap lai: ");
-            if(check) {
-                check = ttds.layPhanTuVoi(maKhachHang+"") == null;
-                if (!check) System.out.print("Ma khach hang da ton tai, moi nhap lai: ");
-            }
-        } while (!check);
+        KhachHang[] dsnv = ttds.getDsKhachHang();
+        int stt = Integer.parseInt(dsnv[ttds.getSoLuong()-1].getMaKhachHang().substring(2)) + 1;
+        if(stt>9) maKhachHang = "KH" + stt;
+        else maKhachHang = "KH0" + stt;
+        System.out.println("Ma nhan vien: " + maKhachHang);
+        // System.out.print("Nhap ma khach hang: ");
+        // boolean check = false;
+        // do
+        // {
+        //     maKhachHang = sc.nextLine();
+        //     check = KiemTra.checkMSKH(maKhachHang);
+        //     if(!check) System.out.print("Nhap sai ma khach hang (KH), moi nhap lai: ");
+        //     if(check) {
+        //         check = ttds.layPhanTuVoi(maKhachHang+"") == null;
+        //         if (!check) System.out.print("Ma khach hang da ton tai, moi nhap lai: ");
+        //     }
+        // } while (!check);
     }
 
     public ThanhToan getPhThThanhToan() {

@@ -229,7 +229,7 @@ public class DanhSachHoaDon implements DanhSachChung {
         HoaDon[] dsHoaDonTemp = new HoaDon[soLuong+1];
         
         for(int i=0;i<soLuong;i++)
-            dsHoaDonTemp[i] = dsHoaDon[i];
+            dsHoaDonTemp[i] = getdsHoaDon()[i];
         dsHoaDonTemp[soLuong] = (HoaDon) pt;
         
         soLuong++;
@@ -279,6 +279,7 @@ public class DanhSachHoaDon implements DanhSachChung {
             
             soLuong--;
             setdsHoaDon(dsHoaDonTemp);
+            System.out.println("Xoa thanh cong!!!");
         } else System.out.println("Khong tim thay hoa don!");
     }
 

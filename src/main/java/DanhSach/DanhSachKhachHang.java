@@ -194,6 +194,7 @@ public class DanhSachKhachHang implements DanhSachChung {
             
             soLuong--;
             setDsKhachHang(dsKhachHangTmp);
+            System.out.println("Xoa thanh cong!!!");
         } else System.out.println("Khong tim thay khach hang!");
     }
     public PhanTu timPhanTu(){ // tìm khách hàng theo tên hoặc khoá (tương đối || tuyệt đối)
@@ -224,14 +225,14 @@ public class DanhSachKhachHang implements DanhSachChung {
                     if (dsKhachHangTmp[i].getHoten().equalsIgnoreCase(giaTriCanTim))
                         return dsKhachHangTmp[i];
                 if (loai == 2)
-                    if (dsKhachHangTmp[i].getMaKhachHang() == giaTriCanTim)
+                    if (dsKhachHangTmp[i].getMaKhachHang().equals(giaTriCanTim))
                         return dsKhachHangTmp[i];
             } else {
                 if (loai == 1)
                     if (dsKhachHangTmp[i].getHoten().contains(giaTriCanTim))
                         return dsKhachHangTmp[i];
                 if (loai == 2)
-                    if (dsKhachHangTmp[i].getMaKhachHang() == giaTriCanTim)
+                    if (dsKhachHangTmp[i].getMaKhachHang().equals(giaTriCanTim))
                         return dsKhachHangTmp[i];
             }
         }
@@ -265,14 +266,14 @@ public class DanhSachKhachHang implements DanhSachChung {
                     if (dsKhachHangTmp[i].getHoten().equalsIgnoreCase(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsKhachHangTmp[i].getMaKhachHang() == giaTriCanTim)
+                    if (dsKhachHangTmp[i].getMaKhachHang().equals(giaTriCanTim))
                         return i;
             } else {
                 if (loai == 1)
                     if (dsKhachHangTmp[i].getHoten().contains(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsKhachHangTmp[i].getMaKhachHang() == giaTriCanTim)
+                    if (dsKhachHangTmp[i].getMaKhachHang().equals(giaTriCanTim))
                         return i;
             }
         }

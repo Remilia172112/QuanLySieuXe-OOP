@@ -137,7 +137,7 @@ public class DanhSachNhanVien implements DanhSachChung {
         // tạo mảng tạm
         NhanVien[] dsNhanVienTmp = new NhanVien[soLuong + 1];
         for (int i = 0; i < soLuong; i++)
-            dsNhanVienTmp[i] = dsNhanVien[i];
+            dsNhanVienTmp[i] = getDsNhanVien()[i];
         dsNhanVienTmp[soLuong] = (NhanVien) pt;
         soLuong++;
         setDsNhanVien(dsNhanVienTmp);
@@ -177,11 +177,12 @@ public class DanhSachNhanVien implements DanhSachChung {
                     continue; // bỏ phần tử
                 dsNhanVienTmp[k++] = getDsNhanVien()[i];
             }
-
+            DanhSachTaiKhoan dstk = new DanhSachTaiKhoan();
+            dstk.xoaPhanTu(getDsNhanVien()[viTri].getManhanvien());
             soLuong--;
             setDsNhanVien(dsNhanVienTmp);
-        } else
-            System.out.println("Khong tim thay nhan vien!");
+            System.out.println("Xoa thanh cong!!!");
+        } else System.out.println("Khong tim thay nhan vien!");
     }
     public PhanTu timPhanTu() { // tìm nhân viên theo tên hoặc khoá (tương đối || tuyệt đối)
         int loai;
@@ -211,14 +212,14 @@ public class DanhSachNhanVien implements DanhSachChung {
                     if (dsNhanVienTmp[i].getHoten().equalsIgnoreCase(giaTriCanTim))
                         return dsNhanVienTmp[i];
                 if (loai == 2)
-                    if (dsNhanVienTmp[i].getManhanvien() == giaTriCanTim)
+                    if (dsNhanVienTmp[i].getManhanvien().equals(giaTriCanTim))
                         return dsNhanVienTmp[i];
             } else {
                 if (loai == 1)
                     if (dsNhanVienTmp[i].getHoten().contains(giaTriCanTim))
                         return dsNhanVienTmp[i];
                 if (loai == 2)
-                    if (dsNhanVienTmp[i].getManhanvien() == giaTriCanTim)
+                    if (dsNhanVienTmp[i].getManhanvien().equals(giaTriCanTim))
                         return dsNhanVienTmp[i];
             }
         }
@@ -252,14 +253,14 @@ public class DanhSachNhanVien implements DanhSachChung {
                     if (dsNhanVienTmp[i].getHoten().equalsIgnoreCase(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsNhanVienTmp[i].getManhanvien() == giaTriCanTim)
+                    if (dsNhanVienTmp[i].getManhanvien().equals(giaTriCanTim))
                         return i;
             } else {
                 if (loai == 1)
                     if (dsNhanVienTmp[i].getHoten().contains(giaTriCanTim))
                         return i;
                 if (loai == 2)
-                    if (dsNhanVienTmp[i].getManhanvien() == giaTriCanTim)
+                    if (dsNhanVienTmp[i].getManhanvien().equals(giaTriCanTim))
                         return i;
             }
         }

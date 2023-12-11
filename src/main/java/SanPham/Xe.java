@@ -52,57 +52,87 @@ public class Xe extends PhanTu {
     // Check mã xe theo mã của dòng xe của từng loại xe
     public void setMaXeTT() {
         DanhSachXe ttds = new DanhSachXe();
-        System.out.println("Ma xe chung cua loai xe the thao: SPORT");
-        System.out.print("Nhap ma xe: ");
-        boolean check = false;
-        do
-        {
-            maXe = sc.nextLine();
-
-            check = ttds.layPhanTuVoi(maXe) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
-            if (!check) System.out.print("Ma xe da ton tai, moi nhap lai: ");
-
-            if(check) {
-                check = KiemTra.checkMaxeTT(maXe);
-                if(!check) System.out.print("Ma xe phai trung 1 phan voi ma dong xe!! Moi nhap lai: ");    
+        Xe[] dsx = ttds.getdsXe();
+        int stt = -1;
+        for(int i = 0; i < dsx.length; i++) {
+            if(dsx[i].getLoaiXe().equals("Xe the thao")) {
+                stt = Integer.parseInt(dsx[i].getMaXe().substring(5))+1;
             }
-        } while (!check);
+        }
+        if(stt>9) maXe = "SPORT" + stt;
+        else maXe = "SPORT0" + stt;
+        System.out.println("Ma xe: " + maXe);
+        // System.out.println("Ma xe chung cua loai xe the thao: SPORT");
+        // System.out.print("Nhap ma xe: ");
+        // boolean check = false;
+        // do
+        // {
+        //     maXe = sc.nextLine();
+
+        //     check = ttds.layPhanTuVoi(maXe) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
+        //     if (!check) System.out.print("Ma xe da ton tai, moi nhap lai: ");
+
+        //     if(check) {
+        //         check = KiemTra.checkMaxeTT(maXe);
+        //         if(!check) System.out.print("Ma xe phai trung 1 phan voi ma dong xe!! Moi nhap lai: ");    
+        //     }
+        // } while (!check);
     }
     public void setMaXeMT() {
         DanhSachXe ttds = new DanhSachXe();
-        System.out.println("Ma xe chung cua loai xe mui tran: ROADSTER");
-        System.out.print("Nhap ma xe: ");
-        boolean check = false;
-        do
-        {
-            maXe = sc.nextLine();
-
-            check = ttds.layPhanTuVoi(maXe) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
-            if (!check) System.out.print("Ma xe da ton tai, moi nhap lai: ");
-
-            if(check) {
-                check = KiemTra.checkMaxeMT(maXe);
-                if(!check) System.out.print("Ma xe phai trung 1 phan voi ma dong xe!! Moi nhap lai: ");    
+        Xe[] dsx = ttds.getdsXe();
+        int stt = -1;
+        for(int i = 0; i < dsx.length; i++) {
+            if(dsx[i].getLoaiXe().equals("Xe mui tran")) {
+                stt = Integer.parseInt(dsx[i].getMaXe().substring(8))+1;
             }
-        } while (!check);
+        }
+        if(stt>9) maXe = "ROADSTER" + stt;
+        else maXe = "ROADSTER0" + stt;
+        System.out.println("Ma xe: " + maXe);
+        // System.out.println("Ma xe chung cua loai xe mui tran: ROADSTER");
+        // System.out.print("Nhap ma xe: ");
+        // boolean check = false;
+        // do
+        // {
+        //     maXe = sc.nextLine();
+
+        //     check = ttds.layPhanTuVoi(maXe) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
+        //     if (!check) System.out.print("Ma xe da ton tai, moi nhap lai: ");
+
+        //     if(check) {
+        //         check = KiemTra.checkMaxeMT(maXe);
+        //         if(!check) System.out.print("Ma xe phai trung 1 phan voi ma dong xe!! Moi nhap lai: ");    
+        //     }
+        // } while (!check);
     }
     public void setMaXeD() {
         DanhSachXe ttds = new DanhSachXe();
-        System.out.println("Ma xe chung cua loai xe dien: VINFAST");
-        System.out.print("Nhap ma xe: ");
-        boolean check = false;
-        do
-        {
-            maXe = sc.nextLine();
-
-            check = ttds.layPhanTuVoi(maXe) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
-            if (!check) System.out.print("Ma xe da ton tai, moi nhap lai: ");
-
-            if(check) {
-                check = KiemTra.checkMaxeD(maXe);
-                if(!check) System.out.print("Ma xe phai trung 1 phan voi ma dong xe!! Moi nhap lai: ");    
+        Xe[] dsx = ttds.getdsXe();
+        int stt = -1;
+        for(int i = 0; i < dsx.length; i++) {
+            if(dsx[i].getLoaiXe().equals("Xe dien")) {
+                stt = Integer.parseInt(dsx[i].getMaXe().substring(7))+1;
             }
-        } while (!check);
+        }
+        if(stt>9) maXe = "VINFAST" + stt;
+        else maXe = "VINFAST0" + stt;
+        System.out.println("Ma xe: " + maXe);
+        // System.out.println("Ma xe chung cua loai xe dien: VINFAST");
+        // System.out.print("Nhap ma xe: ");
+        // boolean check = false;
+        // do
+        // {
+        //     maXe = sc.nextLine();
+
+        //     check = ttds.layPhanTuVoi(maXe) == null; // kiểm tra mã sản phẩm xem đã tồn tại trong danh sách chưa
+        //     if (!check) System.out.print("Ma xe da ton tai, moi nhap lai: ");
+
+        //     if(check) {
+        //         check = KiemTra.checkMaxeD(maXe);
+        //         if(!check) System.out.print("Ma xe phai trung 1 phan voi ma dong xe!! Moi nhap lai: ");    
+        //     }
+        // } while (!check);
     }
     public void setMaXe(String maXe) {
         this.maXe = maXe;

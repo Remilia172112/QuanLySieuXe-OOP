@@ -106,7 +106,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
     public void themVaoDanhSach(PhanTu pt) {
         NhaCungCap[] dsNhaCCTemp = new NhaCungCap[soLuong+1];
         for(int i=0;i<soLuong;i++)
-            dsNhaCCTemp[i] = dsNhaCC[i];
+            dsNhaCCTemp[i] = getdsNhaCC()[i];
         dsNhaCCTemp[soLuong] = (NhaCungCap) pt;
         soLuong++;
         setdsNhaCC(dsNhaCCTemp);
@@ -149,11 +149,12 @@ public class DanhSachNhaCungCap implements DanhSachChung {
 
             soLuong--;
             setdsNhaCC(dsNhaCCTemp);
+            System.out.println("Xoa thanh cong!!!");
         } else System.out.println("Khong tim thay nha cung cap!");
     }
     public PhanTu timPhanTu() { // tìm theo tên hoặc khoá (tương đối || tuyệt đối)
         int loai;
-        System.out.print("Tim nha cc theo ten (1) hay theo khoa (2), vui long chon: ");
+        System.out.print("Tim nha cc theo ten (1) hay theo ma (2), vui long chon: ");
 
         loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;
@@ -193,7 +194,7 @@ public class DanhSachNhaCungCap implements DanhSachChung {
     }
     public int timViTriPhanTu() {
         int loai;
-        System.out.print("Tim nha cung cap theo ten (1) hay theo khoa (2), vui long chon: ");
+        System.out.print("Tim nha cung cap theo ten (1) hay theo ma (2), vui long chon: ");
 
         loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;

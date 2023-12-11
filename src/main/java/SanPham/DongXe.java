@@ -89,6 +89,7 @@ public class DongXe extends PhanTu {
 
     public void setDsMaXe(String[] dsMaXe) {
         this.dsMaXe = dsMaXe;
+        soLuong = dsMaXe.length;
     }
 
     public void setDsMaXe() {

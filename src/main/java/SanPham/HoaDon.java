@@ -228,17 +228,19 @@ public class HoaDon extends PhanTu {
     }
 
     public void setSoHoaDon() {
-        System.out.print("Nhap so hoa don: ");
         DanhSachHoaDon ttds = new DanhSachHoaDon();
-        
-        boolean check;
-        do
-        {
-            check = true;
-            soHoaDon = KiemTra.checkNumber();
-            check = ttds.layPhanTuVoi(soHoaDon+"") == null;
-            if (!check) System.out.print("So hoa don da ton tai, moi nhap lai: ");
-        } while (!check);
+        HoaDon[] dsnv = ttds.getdsHoaDon();
+        soHoaDon = dsnv[ttds.getsoLuong()-1].getSoHoaDon() + 1;
+        System.out.println("Ma hoa don: " + soHoaDon);
+        // System.out.print("Nhap so hoa don: ");
+        // boolean check;
+        // do
+        // {
+        //     check = true;
+        //     soHoaDon = KiemTra.checkNumber();
+        //     check = ttds.layPhanTuVoi(soHoaDon+"") == null;
+        //     if (!check) System.out.print("So hoa don da ton tai, moi nhap lai: ");
+        // } while (!check);
     }
 
     public void setSoHoaDon(int soHoaDon) {

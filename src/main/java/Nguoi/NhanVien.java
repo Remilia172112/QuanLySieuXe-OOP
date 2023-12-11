@@ -54,20 +54,25 @@ public class NhanVien extends Nguoi {
     }
 
     public void setManhanvien() {
-        System.out.print("Nhap ma nhan vien: ");
         DanhSachNhanVien ttds = new DanhSachNhanVien();
-        boolean check = false;
-        do {
-            check = true;
-            manhanvien = sc.nextLine();
-            check = KiemTra.checkMSNV(manhanvien) || KiemTra.checkMSQL(manhanvien);
-            if(!check) System.out.print("Nhap sai ma nhan vien (NV/QL), moi nhap lai: ");
-            if(check) {
-                check = ttds.layPhanTuVoi(manhanvien+"") == null;
-                if (!check) System.out.print("Ma nhan vien da ton tai, moi nhap lai: ");
-            }
-        }
-        while (!check);
+        NhanVien[] dsnv = ttds.getDsNhanVien();
+        int stt = Integer.parseInt(dsnv[ttds.getSoLuong()-1].getManhanvien().substring(2)) + 1;
+        if(stt>9) manhanvien = "NV" + stt;
+        else manhanvien = "NV0" + stt;
+        System.out.println("Ma nhan vien: " + manhanvien);
+        // System.out.print("Nhap ma nhan vien: ");
+        // boolean check = false;
+        // do {
+        //     check = true;
+        //     manhanvien = sc.nextLine();
+        //     check = KiemTra.checkMSNV(manhanvien) || KiemTra.checkMSQL(manhanvien);
+        //     if(!check) System.out.print("Nhap sai ma nhan vien (NV/QL), moi nhap lai: ");
+        //     if(check) {
+        //         check = ttds.layPhanTuVoi(manhanvien+"") == null;
+        //         if (!check) System.out.print("Ma nhan vien da ton tai, moi nhap lai: ");
+        //     }
+        // }
+        // while (!check);
     }
 
     public String getNgayvaolam() {
@@ -233,7 +238,7 @@ public class NhanVien extends Nguoi {
         setNgayvaolam();
         setSongaynghitrongthang(0);
         super.nhap();   
-        System.out.print("Ban co muon tao tai khoan cho nhan vien nay khong? (1 - co, 0 - khong)");
+        System.out.print("Ban co muon tao tai khoan cho nhan vien nay khong? (1 - co, 0 - khong): ");
         int chon = KiemTra.checkNumber();
         chon = (chon==0) ? 0 : 1;
         if (chon == 1) setTaikhoan();

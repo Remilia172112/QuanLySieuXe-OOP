@@ -153,7 +153,7 @@ public class DanhSachXe implements DanhSachChung {
     public void themVaoDanhSach(PhanTu pt) {
         Xe[] dsXeTemp = new Xe[soLuong+1];
         for(int i=0;i<soLuong;i++){
-            dsXeTemp[i] = dsXe[i];
+            dsXeTemp[i] = getdsXe()[i];
         }
         dsXeTemp[soLuong] = (Xe) pt;
         soLuong++;
@@ -237,14 +237,17 @@ public class DanhSachXe implements DanhSachChung {
                 if (i==viTri) continue;// bỏ phần tử
                 dsXeTemp[k++] = getdsXe()[i];
             }
+            DanhSachDongXe dsdx = new DanhSachDongXe();
+            dsdx.xoaPhanTuMaXe(getdsXe()[viTri].getMaXe(), getdsXe()[viTri].getLoaiXe());
             soLuong--;
             setdsXe(dsXeTemp);
+            System.out.println("Xoa thanh cong!!!");
         } else System.out.println("Khong tim thay xe!");
     }
     
     public PhanTu timPhanTu() { // tìm sản phẩm theo tên hoặc khoá (tương đối || tuyệt đối)
         int loai;
-        System.out.print("Tim xe theo ten (1) hay theo khoa (2), vui long chon: ");
+        System.out.print("Tim xe theo ten (1) hay theo ma (2), vui long chon: ");
 
         loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;
@@ -286,7 +289,7 @@ public class DanhSachXe implements DanhSachChung {
     
     public int timViTriPhanTu() {
         int loai;
-        System.out.print("Tim xe theo ten (1) hay theo khoa (2), vui long chon: ");
+        System.out.print("Tim xe theo ten (1) hay theo ma (2), vui long chon: ");
 
         loai = KiemTra.checkNumber();
         loai = (loai != 2) ? 1 : 2;

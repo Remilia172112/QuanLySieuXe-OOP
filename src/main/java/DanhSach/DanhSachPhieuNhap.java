@@ -219,7 +219,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
     public void themVaoDanhSach(PhanTu pt) {
         PhieuNhap[] dsXeTemp = new PhieuNhap[soLuong+1];
         for(int i=0;i<soLuong;i++)
-            dsXeTemp[i] = dsPhieuNhap[i];
+            dsXeTemp[i] = getdsPhieuNhap()[i];
         dsXeTemp[soLuong] = (PhieuNhap) pt;
         soLuong++;
         setdsXe(dsXeTemp);
@@ -268,6 +268,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
             soLuong--;
             setdsXe(dsXeTemp);
+            System.out.println("Xoa thanh cong!!!");
         } else System.out.println("Khong tim thay phieu nhap!");
     }
 

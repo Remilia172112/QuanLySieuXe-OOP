@@ -86,7 +86,7 @@ public class KiemTra {
 		Pattern pattern = Pattern.compile(reg);
 		Matcher matcher = pattern.matcher(name);
 		if (!matcher.matches()) {
-			System.out.println("Nhap sai dinh dang ten!!! Moi nhap lai: ");
+			System.out.print("Nhap sai dinh dang ten!!! Moi nhap lai: ");
 			return false;
 		}
 		return true;
@@ -269,7 +269,7 @@ public class KiemTra {
 	}
 	public static boolean checkHangxe(String text)
 	{
-		String reg = "^(?i)[abcd]$";
+		String reg = "^(?i)[abcds]$";
 		Pattern pattern = Pattern.compile(reg);
 		Matcher matcher = pattern.matcher(text);
 		if (!matcher.matches() || text == "") {

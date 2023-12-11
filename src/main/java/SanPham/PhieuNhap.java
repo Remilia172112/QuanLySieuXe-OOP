@@ -36,16 +36,19 @@ public class PhieuNhap extends PhanTu {
         this.maPhieuNhap = maPhieuNhap;
     }
     public void setMaPhieuNhap() {
-        System.out.print("Nhap ma phieu nhap: ");
         DanhSachPhieuNhap ttds = new DanhSachPhieuNhap();
-        boolean check = false;
-        do
-        {
-            check = true;
-            maPhieuNhap = sc.nextLine();
-            check = (ttds.layPhanTuVoi(maPhieuNhap) == null); // kiểm tra mã xem đã tồn tại trong danh sách chưa
-            if (!check) System.out.print("Ma phieu nhap da ton tai, moi nhap lai: ");
-        } while (!check);
+        PhieuNhap[] dsnv = ttds.getdsPhieuNhap();
+        maPhieuNhap = dsnv[ttds.getsoLuong()-1].getMaPhieuNhap() + 1;
+        System.out.println("Ma phieu nhap: " + maPhieuNhap);
+        // System.out.print("Nhap ma phieu nhap: ");
+        // boolean check = false;
+        // do
+        // {
+        //     check = true;
+        //     maPhieuNhap = sc.nextLine();
+        //     check = (ttds.layPhanTuVoi(maPhieuNhap) == null); // kiểm tra mã xem đã tồn tại trong danh sách chưa
+        //     if (!check) System.out.print("Ma phieu nhap da ton tai, moi nhap lai: ");
+        // } while (!check);
     }
 
 
