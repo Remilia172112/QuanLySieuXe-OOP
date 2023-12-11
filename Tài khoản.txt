@@ -1,0 +1,13 @@
+- Tài khoản nhân viên:
+Tài khoản: NV01
+Mật khẩu: 123
+
+Tài khoản: NV02
+Mật khẩu: 123
+
+- Tài khoản quản lý:
+Tài khoản: NV03
+Mật khẩu: 123
+
+Tài khoản: NV04
+Mật khẩu: 123
