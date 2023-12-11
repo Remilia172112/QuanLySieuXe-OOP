@@ -205,7 +205,13 @@ public class DanhSachDongXe implements DanhSachChung {
 
     public void themKPhanTuVaoDanhSach() {
         System.out.print("Nhap so luong dong xe can them vao danh sach: \n");
-        int sl = KiemTra.checkNumber();
+        int sl;
+        boolean check = false;
+        do {
+            sl = KiemTra.checkNumber();
+            check = sl > 0;
+            if(!check) System.out.print("Nhap so lon hon 0!!! Moi nhap lai: ");
+        } while(!check);
         PhanTu pt;
         for(int i=0;i<sl;i++)
         {

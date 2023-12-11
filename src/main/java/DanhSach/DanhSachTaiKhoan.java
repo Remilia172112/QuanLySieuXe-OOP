@@ -171,7 +171,13 @@ public class DanhSachTaiKhoan implements DanhSachChung {
             return;
         }
         System.out.print("Nhap so luong tai khoan can them vao danh sach: ");
-        int sl = KiemTra.checkNumber();
+        int sl;
+        boolean check = false;
+        do {
+            sl = KiemTra.checkNumber();
+            check = sl > 0;
+            if(!check) System.out.print("Nhap so lon hon 0!!! Moi nhap lai: ");
+        } while(!check);
         PhanTu pt;
         for (int i = 0; i < sl; i++) {
             pt = new TaiKhoan();

@@ -172,8 +172,8 @@ public class Xe extends PhanTu {
         boolean check = false;
         do {
             soLuong = KiemTra.checkNumber();
-            check = soLuong != 0;
-            if(!check) System.out.print("Nhap so khac 0!!! Moi nhap lai: ");
+            check = soLuong > 0;
+            if(!check) System.out.print("Nhap so lon hon 0!!! Moi nhap lai: ");
         } while(!check);
     }
     public void setPrice(int price) {
