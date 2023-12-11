@@ -274,9 +274,9 @@ public class DanhSachHoaDon implements DanhSachChung {
             
             for(int i=0, k=0;i<soLuong;i++) {
                 if (i==viTri) continue; // bỏ phần tử
-                dsHoaDonTemp[k++] = dsHoaDon[i];
+                dsHoaDonTemp[k++] = getdsHoaDon()[i];
             }
-            
+            getdsHoaDon()[viTri].resetDsXe();
             soLuong--;
             setdsHoaDon(dsHoaDonTemp);
             System.out.println("Xoa thanh cong!!!");

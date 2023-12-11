@@ -132,6 +132,32 @@ public class PhieuNhap extends PhanTu {
         this.dsmspNhap = dsmspNhap;
     }
 
+    public void resetDsXe() {
+        // Khai báo
+        DanhSachXe ttds = new DanhSachXe();
+        
+        Xe[] dsspFile = ttds.getdsXe();
+        
+        Xe timThay;
+        if (dsmspNhap.length > 0) { // nếu danh sách sản phẩm > 0
+            int viTriCanChinhSua;
+            for(Xe x: dsmspNhap) // ứng với từng phần tử
+            {
+                // tìm sản phẩm trong danh sách với mã sản phẩm
+                timThay = (Xe) ttds.layPhanTuVoi(x.getMaXe());
+                
+                // giảm số lượng sản phẩm trong danh sách vì xoá sản phẩm khỏi hoá đơn
+                timThay.setSoLuong(timThay.getSoLuong()-x.getSoLuong());
+                
+                // tìm vị trí sản phẩm cần chỉnh sửa trong danh sách
+                viTriCanChinhSua = ttds.timViTriXe(x.getMaXe());
+                dsspFile[viTriCanChinhSua] = timThay;
+                // cập nhật lại danh sách
+                ttds.setdsXe(dsspFile);
+            }
+        }
+    }
+    
     public void setDsXe() {
         // Khai báo
         DanhSachXe ttds = new DanhSachXe();

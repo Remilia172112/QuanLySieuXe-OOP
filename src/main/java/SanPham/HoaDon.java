@@ -75,6 +75,65 @@ public class HoaDon extends PhanTu {
     public void setDsXe(Xe[] dsXe) {
         this.dsXe = dsXe;
     }
+    
+    public void resetDsXe() {
+        // Khai báo
+        DanhSachXe ttds = new DanhSachXe();
+        DanhSachKhachHang dskh = new DanhSachKhachHang();
+        // Tìm khách hàng trong danh sách
+        KhachHang[] dsKhTemp = dskh.getDsKhachHang();
+        int vtkh = dskh.timViTriKhachHang(khachHang.getMaKhachHang());
+        Xe[] dsspFile = ttds.getdsXe();
+        Xe[] dssp = new Xe[soLoaiXe];
+        // Lấy mảng sản phẩm đã mua
+        String[] dsspDamua = dsKhTemp[vtkh].getDsmspDamua();
+        Xe timThay;
+         // lấy thuộc tính tổng tiền đã thanh toán và số đơn hàng đã thanh toán
+        int tienTam = dsKhTemp[vtkh].getTongTienDaThanhToan();
+        int dhDaThanhToan = dsKhTemp[vtkh].getSoDonHangDaThanhToan();
+        
+        tienTam += tongTien; // cộng số tiền của cả hoá đơn đã nhập
+        
+        // Nếu là chỉnh sửa danh sách sản phẩm
+        if (dsXe != null) {
+            if (dsXe.length > 0) { // nếu danh sách sản phẩm > 0
+                int tongTienTraLai = 0;
+                int viTriCanChinhSua;
+                int sltr = 0;
+                for(Xe x: dsXe) // ứng với từng phần tử
+                {
+                    // tìm sản phẩm trong danh sách với mã sản phẩm
+                    timThay = (Xe) ttds.layPhanTuVoi(x.getMaXe());
+                    
+                    // tăng số lượng sản phẩm trong danh sách vì xoá sản phẩm khỏi hoá đơn
+                    timThay.setSoLuong(timThay.getSoLuong()+x.getSoLuong());
+                    sltr += x.getSoLuong();
+
+                    // tìm vị trí sản phẩm cần chỉnh sửa trong danh sách
+                    viTriCanChinhSua = ttds.timViTriXe(x.getMaXe());
+                    dsspFile[viTriCanChinhSua] = timThay;
+                    
+                    // cập nhật lại danh sách
+                    ttds.setdsXe(dsspFile);
+                    
+                    // tìm tổng tiền cần trả lại cho khách
+                    tongTienTraLai += x.getPrice() * x.getSoLuong();
+                }
+                tienTam -= tongTienTraLai;
+                // Thu lại biển số xe
+                String[] tmp = new String[dsspDamua.length-sltr];
+                for(int i = sltr, k = 0; i < dsspDamua.length; i++) tmp[k++] = dsspDamua[i];
+            }
+        } else dhDaThanhToan++; // nếu đơn hàng mới hoàn toàn
+        
+        // lưu lại
+        dsKhTemp[vtkh].setDsmspDamua(dsspDamua);
+        dsKhTemp[vtkh].setTongTienDaThanhToan(tienTam);
+        dsKhTemp[vtkh].setSoDonHangDaThanhToan(dhDaThanhToan);
+        dskh.setDsKhachHang(dsKhTemp);
+        
+        dsXe = dssp;
+    }
 
     public void setDsXe() {
         // Khai báo

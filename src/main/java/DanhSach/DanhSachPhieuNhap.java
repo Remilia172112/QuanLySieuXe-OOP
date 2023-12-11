@@ -266,6 +266,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
                 dsXeTemp[k++] = getdsPhieuNhap()[i];
             }
 
+            getdsPhieuNhap()[viTri].resetDsXe();
             soLuong--;
             setdsXe(dsXeTemp);
             System.out.println("Xoa thanh cong!!!");
