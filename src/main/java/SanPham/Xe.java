@@ -169,7 +169,12 @@ public class Xe extends PhanTu {
     }
     public void setSoLuong() {
         System.out.print("Nhap so luong: ");
-        soLuong = KiemTra.checkNumber();
+        boolean check = false;
+        do {
+            soLuong = KiemTra.checkNumber();
+            check = soLuong != 0;
+            if(!check) System.out.print("Nhap so khac 0!!! Moi nhap lai: ");
+        } while(!check);
     }
     public void setPrice(int price) {
         this.price = price;
