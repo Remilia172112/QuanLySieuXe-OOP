@@ -30,7 +30,11 @@ public class XeMuiTran extends Xe {
             check = KiemTra.checkLoaimui(loaimui);
         } while(!check);
     }
-
+    @Override
+    public String in() {
+        String data = super.in() + "\t\tLoai mui: " + getLoaimui() + "\n\n";
+        return data;
+    }
     @Override
     public void nhap(){
         super.nhapXMT();

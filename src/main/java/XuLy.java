@@ -88,13 +88,15 @@ public class XuLy {
             System.out.println("2.  Sua thong tin ca nhan");
             System.out.println("3.  Tao hoa don moi");
             System.out.println("4.  In danh sach hoa don");
-            System.out.println("5.  Tao phieu nhap moi");
-            System.out.println("6.  In danh sach phieu nhap");
-            System.out.println("7.  Them khach hang moi");
-            System.out.println("8.  In danh sach khach hang");
-            System.out.println("9.  In danh sach xe");
-            System.out.println("10. Xem bao hanh voi ma khach hang");
-            System.out.println("11. Thay doi mat khau tai khoan");
+            System.out.println("5.  In file hoa don");
+            System.out.println("6.  Tao phieu nhap moi");
+            System.out.println("7.  In danh sach phieu nhap");
+            System.out.println("8.  In file phieu nhap");
+            System.out.println("9.  Them khach hang moi");
+            System.out.println("10. In danh sach khach hang");
+            System.out.println("11. In danh sach xe");
+            System.out.println("12. Xem bao hanh voi ma khach hang");
+            System.out.println("13. Thay doi mat khau tai khoan");
             System.out.println("0.  Thoat chuong trinh");
             System.out.println("==============================");
             System.out.print("Moi chon: ");
@@ -117,24 +119,30 @@ public class XuLy {
                     dshd.xuatDanhSach();
                     break;
                 case 5:
-                    dspn.themPhanTuVaoDanhSach(username);
+                    dshd.inhoadon();
                     break;
                 case 6:
-                    dspn.xuatDanhSach();
+                    dspn.themPhanTuVaoDanhSach(username);
                     break;
                 case 7:
-                    dskh.themKPhanTuVaoDanhSach();
+                    dspn.xuatDanhSach();
                     break;
                 case 8:
-                    dskh.xuatDanhSach();
+                    dspn.inphieunhap();
                     break;
                 case 9:
-                    dsx.xuatDanhSach();
+                    dskh.themKPhanTuVaoDanhSach();
                     break;
                 case 10:
-                    dsdx.Checkbaohanh();
+                    dskh.xuatDanhSach();
                     break;
                 case 11:
+                    dsx.xuatDanhSach();
+                    break;
+                case 12:
+                    dsdx.Checkbaohanh();
+                    break;
+                case 13:
                     dstk.changePasswordds(username);
                     break;
                 default:

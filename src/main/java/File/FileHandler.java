@@ -210,6 +210,15 @@ public class FileHandler {
             System.out.println("Khong the ghi file!");
         }
     }
+    public static void inFile (String giaTri, String tenFile){
+        try {
+            FileWriter fw = new FileWriter(tenFile);
+            fw.write(giaTri);
+            fw.close();
+        } catch (Exception e) {
+            System.out.println("Khong the ghi file!");
+        }
+    }
     //Reset file theo tên
     public static void resetFile(String tenFile) {
         try {

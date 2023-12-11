@@ -1,4 +1,5 @@
 package DanhSach;
+
 import File.FileHandler;
 import KiemTra.KiemTra;
 import Nguoi.*;
@@ -257,6 +258,10 @@ public class DanhSachHoaDon implements DanhSachChung {
 
     
     public void chinhSuaThongTinPhanTu() {
+        if(soLuong == 0) {
+            System.out.println("Khong ton tai hoa don nao!!");
+            return;
+        }
         System.out.println("Tim hoa don can chinh sua: ");
         int viTri = timViTriPhanTu();
         
@@ -270,6 +275,10 @@ public class DanhSachHoaDon implements DanhSachChung {
 
     
     public void xoaPhanTu() {
+        if(soLuong == 0) {
+            System.out.println("Khong ton tai hoa don nao!!");
+            return;
+        }
         System.out.println("Tim hoa don can xoa: ");
         
         int viTri = timViTriPhanTu();
@@ -328,7 +337,29 @@ public class DanhSachHoaDon implements DanhSachChung {
         }
         return null;
     }
-
+    
+    public void inhoadon() {
+        if(soLuong == 0) {
+            System.out.println("Khong ton tai hoa don nao!!");
+            return;
+        }
+        System.out.println("Tim hoa don can in: ");
+        
+        int viTri = timViTriPhanTu();
+        
+        if (viTri != -1) {
+            HoaDon hd = getdsHoaDon()[viTri];
+            String data = "============================================================================\n" + //
+                        "=                            Thong tin phieu nhap                          =\n" + //
+                    "============================================================================" ;
+            data += "\nSo hoa don: " + hd.getSoHoaDon() + "\nNgay lap don: " + hd.getNgaylapdon()  + "\nMa nhan vien: " + hd.getMnv() + "\nMa khach hang: " + hd.getKhachHang().getMaKhachHang() + "\nTong tien: " + hd.getTongTien() + "\n";
+            data += "============================== Danh sach xe ================================\n";
+            Xe[] dsx = hd.getDsXe();
+            for(int i = 0; i < dsx.length; i++) data += dsx[i].in();
+            FileHandler.inFile(data, "HD"+hd.getSoHoaDon()+".txt");
+            System.out.println("In thanh cong!!!");
+        } else System.out.println("Khong tim thay hoa don!");
+    }
     
     public void thongKe() {
         int chon, n;

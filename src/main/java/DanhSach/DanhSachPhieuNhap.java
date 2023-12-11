@@ -336,6 +336,28 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         return null;
     }
 
+    public void inphieunhap() {
+        if(soLuong == 0) {
+            System.out.println("Khong ton tai phieu nhap nao!!");
+            return;
+        }
+        System.out.println("Tim phieu nhap can in: ");
+        
+        int viTri = timViTriPhanTu();
+        
+        if (viTri != -1) {
+            PhieuNhap hd = getdsPhieuNhap()[viTri];
+            String data = "============================================================================\n" + //
+                    "=                            Thong tin phieu nhap                          =\n" + //
+                    "============================================================================" ;
+            data += "\nSo phieu nhap: " + hd.getMaPhieuNhap() + "\nNgay lap phieu: " + hd.getNgaynhap()  + "\nMa nhan vien: " + hd.getMaNV() + "\nNha cung cap: " + hd.getMaNhaCC() + "\nTong tien: " + hd.getTongTien() + "\n";
+            data += "============================== Danh sach xe ================================\n";
+            Xe[] dsx = hd.getDsXe();
+            for(int i = 0; i < dsx.length; i++) data += dsx[i].in();
+            FileHandler.inFile(data, "PN"+hd.getMaPhieuNhap()+".txt");
+            System.out.println("In thanh cong!!!");
+        } else System.out.println("Khong tim thay phieu nhap!");
+    }
     
     public void thongKe() { // thong kê theo ngày, theo nha cung cap 
         int chon;

@@ -26,7 +26,11 @@ public class XeDien extends Xe {
         int so = KiemTra.checkNumber();
         dungluongpin = so + " kWh";
     }
-
+    @Override
+    public String in() {
+        String data = super.in() + "\t\tDung luong pin: " + getDungluongpin() + "\n\n";
+        return data;
+    }
     @Override
     public void nhap(){
         super.nhapXD();

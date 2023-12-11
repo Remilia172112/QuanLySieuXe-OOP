@@ -31,7 +31,11 @@ public class XeTheThao extends Xe {
             check = KiemTra.checkHangxe(hangxe);
         } while(!check);
     }
-
+    @Override
+    public String in() {
+        String data = super.in() + "\t\tDung luong pin: " + getHangxe() + "\n\n";
+        return data;
+    }
     @Override
     public void nhap(){
         super.nhapXTT();

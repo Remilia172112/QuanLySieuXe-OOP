@@ -250,6 +250,13 @@ public class Xe extends PhanTu {
         setSoLuong();
         setPrice();
     }
+    public String in() {
+        String data = "Ma xe: " + getMaXe() + "\t\tTen xe: " + getTenXe() 
+        + "\t\tThuong hieu: " + getThuongHieu() + "\t\tLoai xe: " + getLoaiXe() 
+        + "\t\tNoi san xuat: " + getNoiSanXuat() + "\nSo luong: " + getSoLuong()
+        + "\t\tGia: " + getPrice();
+        return data;
+    }
     @Override
     public void xuat() {
         System.out.printf("%-20s %-25s %-20s %-20s %-20s %-15s %-20s \n",maXe,tenXe,thuongHieu,loaiXe,noiSanXuat,soLuong,price);
