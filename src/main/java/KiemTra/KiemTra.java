@@ -151,10 +151,6 @@ public class KiemTra {
 				check = false;
 				System.out.print("Nhap sai so!!! Moi nhap lai: ");
 			}
-			if(check) {
-				check = Integer.parseInt(str) != 0;
-				if(!check) System.out.print("Nhap so khac 0!!! Moi nhap lai: ");
-			}
 		} while (!check);
 		return Integer.parseInt(str);
 	}
