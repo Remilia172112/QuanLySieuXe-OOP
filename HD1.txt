@@ -1,0 +1,18 @@
+=============================================================================================================================
+=                                                  Thong tin phieu nhap                                                     =
+=============================================================================================================================
+So hoa don: 1
+Ngay lap don: 11/12/2023
+Ma nhan vien: NV01
+Ma khach hang: KH01
+Tong tien: 290000
+===================================================== Danh sach xe ==========================================================
+Ma xe: SPORT01		Ten xe: McLaren P1		Thuong hieu: McLaren		Loai xe: Xe the thao		Noi san xuat: Italy
+So luong: 2		Gia: 40000		Dung luong pin: A
+
+Ma xe: SPORT02		Ten xe: Ferrari Roma		Thuong hieu: Ferrari		Loai xe: Xe the thao		Noi san xuat: ITALY
+So luong: 3		Gia: 60000		Dung luong pin: S
+
+Ma xe: VINFAST01		Ten xe: VinFast VF e34		Thuong hieu: VINFAST		Loai xe: Xe dien		Noi san xuat: VIETNAM
+So luong: 1		Gia: 30000		Dung luong pin: 200 kWh
+

@@ -347,11 +347,11 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         
         if (viTri != -1) {
             PhieuNhap hd = getdsPhieuNhap()[viTri];
-            String data = "============================================================================\n" + //
-                    "=                            Thong tin phieu nhap                          =\n" + //
-                    "============================================================================" ;
+            String data = "============================================================================================================================="+
+            "=                                                  Thong tin phieu nhap                                                     ="+
+            "=============================================================================================================================\n";
             data += "\nSo phieu nhap: " + hd.getMaPhieuNhap() + "\nNgay lap phieu: " + hd.getNgaynhap()  + "\nMa nhan vien: " + hd.getMaNV() + "\nNha cung cap: " + hd.getMaNhaCC() + "\nTong tien: " + hd.getTongTien() + "\n";
-            data += "============================== Danh sach xe ================================\n";
+            data += "===================================================== Danh sach xe ==========================================================\n";
             Xe[] dsx = hd.getDsXe();
             for(int i = 0; i < dsx.length; i++) data += dsx[i].in();
             FileHandler.inFile(data, "PN"+hd.getMaPhieuNhap()+".txt");

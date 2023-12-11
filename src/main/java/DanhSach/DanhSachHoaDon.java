@@ -349,11 +349,11 @@ public class DanhSachHoaDon implements DanhSachChung {
         
         if (viTri != -1) {
             HoaDon hd = getdsHoaDon()[viTri];
-            String data = "============================================================================\n" + //
-                        "=                            Thong tin phieu nhap                          =\n" + //
-                    "============================================================================" ;
+            String data = "============================================================================================================================="+
+            "=                                                  Thong tin hoa don                                                     ="+
+            "=============================================================================================================================\n";
             data += "\nSo hoa don: " + hd.getSoHoaDon() + "\nNgay lap don: " + hd.getNgaylapdon()  + "\nMa nhan vien: " + hd.getMnv() + "\nMa khach hang: " + hd.getKhachHang().getMaKhachHang() + "\nTong tien: " + hd.getTongTien() + "\n";
-            data += "============================== Danh sach xe ================================\n";
+            data += "===================================================== Danh sach xe ==========================================================\n";
             Xe[] dsx = hd.getDsXe();
             for(int i = 0; i < dsx.length; i++) data += dsx[i].in();
             FileHandler.inFile(data, "HD"+hd.getSoHoaDon()+".txt");
