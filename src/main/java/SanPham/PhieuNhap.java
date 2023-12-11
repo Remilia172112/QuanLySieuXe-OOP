@@ -6,7 +6,7 @@ import DanhSach.*;
 import KiemTra.KiemTra;
 
 public class PhieuNhap extends PhanTu {
-    private String maPhieuNhap;
+    private int maPhieuNhap;
     private String maNhaCC;
     private String maNV;
     private String ngaynhap;
@@ -17,7 +17,7 @@ public class PhieuNhap extends PhanTu {
     public PhieuNhap(){
     }
 
-    public PhieuNhap(String maPhieuNhap , String maNhaCC , String maNV , String ngaynhap, Xe[] dsmspNhap, int soLoaiNhap, int tongTien){
+    public PhieuNhap(int maPhieuNhap , String maNhaCC , String maNV , String ngaynhap, Xe[] dsmspNhap, int soLoaiNhap, int tongTien){
         this.maPhieuNhap = maPhieuNhap;
         this.maNhaCC = maNhaCC;
         this.maNV = maNV;
@@ -28,18 +28,19 @@ public class PhieuNhap extends PhanTu {
     }
 
 
-    public String getMaPhieuNhap() {
+    public int getMaPhieuNhap() {
         return maPhieuNhap;
     }
 
-    public void setMaPhieuNhap(String maPhieuNhap) {
+    public void setMaPhieuNhap(int maPhieuNhap) {
         this.maPhieuNhap = maPhieuNhap;
     }
     public void setMaPhieuNhap() {
         DanhSachPhieuNhap ttds = new DanhSachPhieuNhap();
-        PhieuNhap[] dsnv = ttds.getdsPhieuNhap();
-        maPhieuNhap = dsnv[ttds.getsoLuong()-1].getMaPhieuNhap() + 1;
-        System.out.println("Ma phieu nhap: " + maPhieuNhap);
+        PhieuNhap[] dspn = ttds.getdsPhieuNhap();
+        if(dspn != null) maPhieuNhap = dspn[ttds.getsoLuong()-1].getMaPhieuNhap() + 1;
+        else maPhieuNhap = 1;
+        System.out.println("So phieu nhap: " + maPhieuNhap);
         // System.out.print("Nhap ma phieu nhap: ");
         // boolean check = false;
         // do
@@ -260,7 +261,7 @@ public class PhieuNhap extends PhanTu {
     }
     @Override
     public void xuat() {
-        System.out.printf("%-20s %-20s %-20s %-20s \n","Ma phieu nhap", "Ma nha cung cap", "Ma nha vien", "Ngay nhap");
+        System.out.printf("%-20s %-20s %-20s %-20s \n","So phieu nhap", "Ma nha cung cap", "Ma nha vien", "Ngay nhap");
         System.out.printf("%-20s %-20s %-20s %-20s  \n", maPhieuNhap, maNhaCC , maNV , ngaynhap);
         System.out.println("\nDanh sach san pham: \n");
         System.out.printf("%-20s %-25s %-20s %-20s %-20s %-15s %-20s \n","Ma san pham", "Ten san pham", "Thuong hieu", "Loai xe", "Noi san xuat", "So luong", "Gia");

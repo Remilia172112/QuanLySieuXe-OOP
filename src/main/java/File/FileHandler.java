@@ -34,7 +34,7 @@ public class FileHandler {
     }
 
     //Thêm phieu nhap vào file dspn.txt
-    public static void themPN(String maPhieuNhap, String ngaynhap, String maNhaCC , String maNV, int tongTien, int SoluongNhap, Xe[] dsmspNhap) {
+    public static void themPN(int maPhieuNhap, String ngaynhap, String maNhaCC , String maNV, int tongTien, int SoluongNhap, Xe[] dsmspNhap) {
         String tmp = maPhieuNhap + "#" + ngaynhap + "#" + maNhaCC + "#" + maNV + "#" + tongTien + "#" + SoluongNhap;
         for(int i=0;i<dsmspNhap.length;i++)
         {

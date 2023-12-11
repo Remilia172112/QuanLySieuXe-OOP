@@ -44,7 +44,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
             pn = new PhieuNhap();
 
-            pn.setMaPhieuNhap(lArr[m++]);
+            pn.setMaPhieuNhap(Integer.parseInt(lArr[m++]));
 
             pn.setNgaynhap(lArr[m++]);
 
@@ -274,8 +274,8 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
     
     public PhanTu timPhanTu() { // tìm sản phẩm theo tên hoặc khoá (tương đối || tuyệt đối)
-        System.out.print("Nhap ma phieu nhap can tim:");
-        String giaTriCanTim = sc.nextLine();
+        System.out.print("Nhap so phieu nhap can tim:");
+        int giaTriCanTim = KiemTra.checkNumber();
         int chon;
 
         System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
@@ -285,10 +285,10 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         PhieuNhap[] dsNCCTmp = getdsPhieuNhap();
         for(int i=0;i<soLuong;i++) {
             if (chon == 1) { // tìm chính xác
-                if (dsNCCTmp[i].getMaPhieuNhap().equalsIgnoreCase(giaTriCanTim))
+                if (dsNCCTmp[i].getMaPhieuNhap() == giaTriCanTim)
                     return dsNCCTmp[i];
             } else {
-                if (dsNCCTmp[i].getMaPhieuNhap().contains(giaTriCanTim))
+                if (dsNCCTmp[i].getMaPhieuNhap() == giaTriCanTim)
                     return dsNCCTmp[i];
             }
         }
@@ -297,8 +297,8 @@ public class DanhSachPhieuNhap implements DanhSachChung {
 
     
     public int timViTriPhanTu() {
-        System.out.print("Nhap ma phieu nhap can tim vi tri :");
-        String giaTriCanTim = sc.nextLine();
+        System.out.print("Nhap so phieu nhap can tim vi tri :");
+        int giaTriCanTim = KiemTra.checkNumber();
         int chon;
 
         System.out.print("Ban can tim chinh xac (1) hay tim tuong doi (2), vui long chon: ");
@@ -308,10 +308,10 @@ public class DanhSachPhieuNhap implements DanhSachChung {
         PhieuNhap[] dsNCCTmp = getdsPhieuNhap();
         for(int i=0;i<soLuong;i++) {
             if (chon == 1) { // tìm chính xác
-                if (dsNCCTmp[i].getMaPhieuNhap().equalsIgnoreCase(giaTriCanTim))
+                if (dsNCCTmp[i].getMaPhieuNhap() == giaTriCanTim)
                     return i;
             } else {
-                if (dsNCCTmp[i].getMaPhieuNhap().contains(giaTriCanTim))
+                if (dsNCCTmp[i].getMaPhieuNhap() == giaTriCanTim)
                     return i;
             }
         }
@@ -323,7 +323,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
     public PhanTu layPhanTuVoi(String thamSo) { // tìm phần tử cụ thể với mã phieu nhap 
         PhieuNhap[] dspn = getdsPhieuNhap();
         for(int i=0;i<soLuong;i++) {
-            if (dspn[i].getMaPhieuNhap().equalsIgnoreCase(thamSo))
+            if (dspn[i].getMaPhieuNhap() == Integer.parseInt(thamSo))
                 return dspn[i];
         }
         return null;
@@ -345,7 +345,7 @@ public class DanhSachPhieuNhap implements DanhSachChung {
             PhieuNhap[] dspn = getdsPhieuNhap();
             String giatricanloc;
             boolean check;
-            chon = KiemTra.checkNumber();;
+            chon = KiemTra.checkNumber();
             switch (chon) {
                 case 1:
                     System.out.println("So phieu da nhap: " + soLuong);

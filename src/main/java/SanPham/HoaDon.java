@@ -229,8 +229,9 @@ public class HoaDon extends PhanTu {
 
     public void setSoHoaDon() {
         DanhSachHoaDon ttds = new DanhSachHoaDon();
-        HoaDon[] dsnv = ttds.getdsHoaDon();
-        soHoaDon = dsnv[ttds.getsoLuong()-1].getSoHoaDon() + 1;
+        HoaDon[] dshd = ttds.getdsHoaDon();
+        if(dshd != null) soHoaDon = dshd[ttds.getsoLuong()-1].getSoHoaDon() + 1;
+        else soHoaDon = 1;
         System.out.println("Ma hoa don: " + soHoaDon);
         // System.out.print("Nhap so hoa don: ");
         // boolean check;
