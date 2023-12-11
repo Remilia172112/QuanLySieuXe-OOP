@@ -73,6 +73,10 @@ public class TaiKhoan extends PhanTu {
         }
         System.out.print("Nhap mat khau moi: ");
         var password_new = sc.nextLine();
+        if(!password_new.equals(password)) {
+            System.out.print("Ban dang nhap mat khau cu!!!");
+            return;
+        }
         System.out.print("Nhap lai mat khau: ");
         var password_new_again = sc.nextLine();
         if(!password_new.equals(password_new_again)) {
