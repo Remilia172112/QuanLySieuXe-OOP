@@ -12,18 +12,22 @@
 |  4  | 3122560064 | [TRỊNH CAO SANG ](https://www.facebook.com/sang.trinhcao.79)                |
 |  5  | 3122410239 | [LÊ THẾ MINH ](https://www.facebook.com/minh.lethe.186590)                  |
 
--   Menu Chính
+-   Menu Chính:
 
     ![alt text](./images/Menu-Đăng-nhập.png)
 
--   Menu Quản Lý
+-   Menu Quản Lý:
 
     ![alt text](./images/Menu-Quản-lý.png)
 
--   Menu Nhân viên
+-   Menu Nhân viên:
 
     ![alt text](./images/Menu-Nhân-viên.png)
 
--   Mô hình
+-   Hóa đơn:
+
+    ![alt text](./images/Hóa-đơn.png)
+
+-   Mô hình:
 
     ![alt text](./images/Mô-hình.png)

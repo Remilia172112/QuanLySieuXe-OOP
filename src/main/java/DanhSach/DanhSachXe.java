@@ -142,7 +142,7 @@ public class DanhSachXe implements DanhSachChung {
             return;
         }
         System.out.println("=== Danh sach xe ===");
-        System.out.printf("%-20s %-25s %-20s %-20s %-20s %-20s %-20s \n","Ma xe", "Ten xe", "Thuong hieu", "Loai xe", "Noi san xuat", "So luong", "Gia");
+        System.out.printf("%-20s %-25s %-20s %-20s %-20s %-15s %-20s \n","Ma xe", "Ten xe", "Thuong hieu", "Loai xe", "Noi san xuat", "So luong", "Gia");
         for(int i=0;i<soLuong;i++) {
             dsXe[i].xuat();
         }

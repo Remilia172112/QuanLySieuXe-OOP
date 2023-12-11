@@ -176,12 +176,7 @@ public class HoaDon extends PhanTu {
                 else {
                     dssp[i] = pt;
                     
-                    if (pt.getSoLuong() == 0) { // nếu sản phẩm đã hết hàng
-                        System.out.println("Xe da het hang, vui long chon xe khac!!!");
-                        pt=null;
-                        continue;
-                    }
-
+                    
                     boolean check = false;
                     for(int k=0; k < madachon.length; k++) {
                         if(madachon[k].equals(pt.getMaXe())) {
@@ -192,7 +187,13 @@ public class HoaDon extends PhanTu {
                         }
                     }
                     if(check) continue;
-
+                    
+                    if (pt.getSoLuong() == 0) { // nếu sản phẩm đã hết hàng
+                        System.out.println("Xe da het hang, vui long chon xe khac!!!");
+                        pt=null;
+                        continue;
+                    }
+                    
                     madachon = Arrays.copyOf(madachon, madachon.length+1);
                     madachon[i] = pt.getMaXe();
 
