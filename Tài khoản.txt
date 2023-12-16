@@ -11,3 +11,6 @@ Mật khẩu: 123
 
 Tài khoản: NV04
 Mật khẩu: 123
+
+- Thông tin nhóm ở ./README.md
+- Main ở ./src/main/java/Main.java. Em xin cảm ơn!!!
